@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        padding: 0;
+        margin: 0;
+    }
+    p{
+        margin: 0;
+    }
+    ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .scro{
+        position: relative;
+        width: 1920px;
+        height: 425px;
+        overflow: hidden;
+    }
+    .scro input{
+        display: none;
+    }
+    .scro ul{
+        height: 100%;
+    }
+    .scro ul li{
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: opacity 1.5s ease;
+    }
+    .scro ul li img{
+        display: block;
+    }
+
+    .scro p{
+        position: absolute;
+        bottom: 18px;
+        left: 24px;
+        overflow: hidden;
+    }
+    .scro p label{
+        float: left;
+        width: 12px;
+        height: 12px;
+        margin: 0 5px;
+        border-radius: 50%;
+        background-color: red;
+    }
+    .scro p label:hover{
+        background-color: green;
+    }
+
+    [id="one"]:checked ~ ul li:not(:nth-child(1)){
+        opacity: 0;
+    }
+    [id="two"]:checked ~ ul li:not(:nth-child(2)){
+        opacity: 0;
+    }
+    [id="three"]:checked ~ ul li:not(:nth-child(3)){
+        opacity: 0;
+    }
+
+    [id="one"]:checked ~ p > [for="one"],
+    [id="two"]:checked ~ p > [for="two"],
+    [id="three"]:checked ~ p > [for="three"]{
+        background-color: green;
+    }
+    
+</style>
+<body>
+    <div class="scro">
+        <input id="one" type="radio" name="scro" checked>
+        <input id="two" type="radio" name="scro">
+        <input id="three" type="radio" name="scro">
+        <ul>
+            <li><img src="images/scro1.jpg"></li>
+            <li><img src="images/scro2.jpg"></li>
+            <li><img src="images/scro3.jpg"></li>
+        </ul>
+        <p>
+            <label for="one"></label>
+            <label for="two"></label>
+            <label for="three"></label>
+        </p>
+    </div>
+
+    <script>
+        var p=0;
+        var int=setInterval(function(){
+            document.querySelectorAll('.scro [type="radio"]')[p].checked=true;
+            document.querySelector('.scro > ul').style.transform='translate(-${p*590}px)';
+            p=p+1 > 2 ? 0: p+1;
+        },3000);
+    </script>
+</body>
+</html>

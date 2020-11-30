@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<div id="app">
+
+
+  <input type="text" v-model="name">
+  <h2>{{name}}</h2>
+  
+  <hr>
+
+  <input type="text" v-model="info.name">
+  <h2>{{info.name}}</h2>
+
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    name: '张三',
+    info: {
+      name: '张三'
+    }
+  },
+  watch: {
+    name(){
+      console.log('name已改变');
+    },
+    /*
+    普通的监听，不支持深度监听
+    info(val){
+      console.log('info已改变');
+    },
+    */
+
+    /*deep 深度监听，这样info下面的所有属性发现改变，都能侦听到*/
+    info: {
+      handler(){
+        console.log('info已改变');
+      },
+      deep: true
+    },
+    /* 如果不想监听info整个对象，你也可以一对一的监听，这样不需要开启深度监听*/
+    'info.name'(){
+      console.log('info.name已改变');
+    }
+
+  },
+
+})
+</script>
+
+</body>
+</html>

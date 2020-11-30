@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<div id="app">
+
+  {{name}}
+
+  <div :id="id"></div>
+
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    name: '张三',
+    id: 'box'
+  },
+  
+  //创建之前，
+  beforeCreate(){
+    // 在创建之前，初始化methods中，开始初始化生命周期方法
+    // 这里也可以输出loading 显示
+    console.log(this);
+
+    console.log(this.name);//不能访问data中的变量，因为还没有初始化到。
+  },
+  //创建之后
+  created(){
+    // 在创建之后，data中的数据已经加载进来了，此时可以访问data中的变量，例如：
+
+    console.log(this.name); //输出张三
+
+     // created 生命周期适合做什么？
+     // 1. 读写data中的变量
+     // 2. 显示loading加载状态
+     // 3. ajax加载后端接口数据，获取到后端的数据，然后赋值到data当中 【重点】 
+
+  },
+  //挂载之前
+  beforeMount(){
+    //在挂载之前 页面中模板还没有被编译，比如还是 {{name}} 这样的模板。
+
+    console.log( document.getElementById('box') ); //输出null，因为尺寸模板还没有被编译
+  },
+  //挂载之后
+  mounted(){
+    //在挂载之后，模板已经被编译了，此时，你可以很安全的执行dom操作
+
+    console.log( document.getElementById('box') ); //找到dom对象
+  },
+  //更新之前
+  beforeUpdate(){
+    //一刷新页面的时候（第一次打开），这个生命周期并不会执行，为什么？因为没有触发更新
+    // 如何才能触发这个方法？你只要更新一下data当中的变量即可
+    console.log('更新之前',this.name);
+  },
+  //更新之后
+  updated(){
+    //一刷新页面的时候（第一次打开），这个生命周期并不会执行，为什么？因为没有触发更新
+    // 如何才能触发这个方法？你只要更新一下data当中的变量即可
+    console.log('更新之后', this.name);
+  },
+  //销毁之前
+  beforeDestroy(){
+    //一刷新页面的时候（第一次打开），这个生命周期并不会执行，为什么？必须要手动销毁之后，才会有执行
+    //可以再控制台使用 app.$destroy() 手动销毁实例，销毁之后，data中的数据就不能动态更新了。
+    //销毁之后，也可以读取data中的数据，这个销毁只是销毁数据监听
+    console.log('销毁之前');
+  },
+  //销毁之后
+  destroyed(){
+    //销毁这里一般用于比如清除定时器 clearIntelval
+    //或者卸载一些用不到的dom
+    //或者比如首页播放了视频，有声音，然后你又突然切换到其他页面，此时有可能视频没有被销毁，还在播放，这次需要销毁。
+    console.log('销毁之后');
+  },
+
+  methods: {
+    hello(){
+      console.log('first');
+    }
+  }
+
+})
+</script>
+
+</body>
+</html>

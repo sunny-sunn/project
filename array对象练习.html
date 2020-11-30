@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  		.sortbtn{
+			padding: 10px 60px;
+			position: relative;
+			cursor: pointer;
+			user-select: none;
+		}
+		.sortbtn::before,
+		.sortbtn::after{
+			position: absolute;
+			right: 10px;
+			font-size: 12px;
+		}
+		.sortbtn::before{
+			content: "▲";
+			top: 5px;
+		}
+		.sortbtn::after{
+			content: "▼";
+			bottom: 5px;
+		}
+		.sortbtn.asc::before,
+		.sortbtn.desc::after{
+			color: blue;
+		}
+</style>
+<body>
+
+  <h1>学生成绩表</h1>
+    
+  <p>
+    <button onclick="add()">添加成绩</button>
+  </p>
+  
+  <table border="1" cellspacing="0" cellpadding="8" width="500">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th class="sortbtn" onclick="sortBy(this,'name','chinese')">姓名</th>
+        <th class="sortbtn" onclick="sortBy(this,'score','number')">得分</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  
+  </table>
+
+  <div id="btn"></div>
+
+  <script>
+    var grade = [
+      { name: '张三1', score: 60 },
+      { name: '李四2', score: 20 },
+      { name: '张三3', score: 50 },
+      { name: '李四4', score: 30 },
+      { name: '张三5', score: 100 },
+      { name: '李四6', score: 40 },
+      { name: '张三7', score: 90 },
+      { name: '李四8', score: 80 },
+      { name: '张三9', score: 70 },
+      { name: '李四10', score: 10 },
+    ];
+
+    var _grade=[].concat(grade);
+
+    var cpage = 1;  //页码全局变量，方便各函数内部调用
+    list(cpage);
+
+    function list(page) {
+      var perpage = 6;
+      var total = grade.length;
+      var totalPage = Math.ceil(total / perpage);
+
+      if (page > totalPage) page -= 1;  //防止最后一页删除完所有记录，页码不前进一位
+      cpage = page;  //将当前页 赋值给 全局变量 （全局变量同步当前页码，方便del函数内部调用
+
+      var start = (page - 1) * perpage;
+      var end = start + perpage;
+      var data = grade.slice(start, end);
+
+      var listTemp = '';
+      for (var i = 0; i < data.length; i++) {
+        var index = start + i;
+        listTemp += '<tr>\
+                <td>'+ (index + 1) + '</td>\
+                <td>'+ data[i].name + '</td>\
+                <td>'+ data[i].score + '</td>\
+                <td><button onclick="del(' + index + ')"">删除</button></td>\
+              </tr>';
+      }
+      document.getElementById('tbody').innerHTML = listTemp;
+
+      var pageTemp = '';
+      if (page > 1) {
+        pageTemp = '<button onclick="list(' + (page - 1) + ')">上页</button>';
+      }
+      for (var p = 1; p <= totalPage; p++) {
+        var activeClass = (p === page ? 'active' : '');
+        pageTemp += '<button class="' + activeClass + '" onclick="list(' + p + ')">' + p + '</button>';
+      }
+      if (page < totalPage) {
+        pageTemp += '<button onclick="list(' + (page + 1) + ')">下页</button>';
+      }
+      document.getElementById('btn').innerHTML = pageTemp;
+    }
+
+    function add() {
+      grade.push({
+        name: prompt('姓名'),
+        score: prompt('得分'),
+      });
+
+      list(cpage);
+    }
+
+    // 删除
+    function del(i) {
+      if (confirm('您确定要删除此项吗？')) {
+        grade.splice(i, 1);
+        list(cpage);
+      }
+    }
+
+    // 排序
+		function sortBy(th, field, type){
+			if(th.className==='sortbtn'){
+				th.className='sortbtn asc'; //asc
+				orderBy(grade, field, type,'asc');
+			}else if(th.className=='sortbtn asc'){
+				th.className='sortbtn desc'; //desc
+				orderBy(grade, field, type,'desc');
+			}else{
+				th.className='sortbtn';
+				grade = [].concat(_grade);
+			}
+			list(cpage);
+		}
+
+    function orderBy(arr, field, type, flag) {
+
+      flag = (flag === 'asc' ? 1 : -1);
+      arr.sort(function (a, b) {
+        if (type === 'string') {
+          return a[field].localeCompare(b) * flag;
+        } else if (type === 'number') {
+          return (a[field] - b[field]) * flag;
+        } else if (type === 'chinese') {
+          return a[field].localeCompare(b[field], 'zh') * flag;
+        }
+      })
+      return arr;
+    }  
+
+  </script>
+
+</body>
+</html>

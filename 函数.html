@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="a.js"></script>
+    <script src="b.js"></script> -->
+</head>
+
+<body>
+
+    <div id="tree"></div>
+
+    <script>
+
+        // alert(a);
+
+        // 
+        // function add(a,b){
+        //     alert(a+b);
+        // }
+        // add(1,2);
+
+        // add(1,2);
+        // function add(a,b){
+        //     alert(a+b);
+        // }
+
+        // var add = function (a,b){
+        //     alert(a+b);
+        // }
+        // add(1,2);
+
+
+        // 
+        // function fun(){
+        //     for(var i=0;i<10;i++){
+        //         if(i==5) break;
+        //         // if(i==5) return 'over';
+        //         console.log(i);
+        //     }
+        // }
+
+        // fun();
+        // // console.log(fun());
+
+
+        // 
+        // var tree = [
+        //     {
+        //         name: '基本语法',
+        //         children: [
+        //             { name: '语句' },
+        //             { name: '语句以分号结尾' },
+        //             { name: '语句和表达式' }
+        //         ]
+        //     },
+        //     {
+        //         name: '数据类型',
+        //         children: [
+        //             { name: '概述' },
+        //             {
+        //                 name: '原始类型',
+        //                 children: [
+        //                     { name: '字符串' },
+        //                     { name: '数值' },
+        //                     { name: '布尔' }
+        //                 ]
+        //             },
+        //             { name: '合成类型' }
+        //         ]
+        //     }
+        // ]
+
+        // // var temp = '<ul>';
+        // // for(var i=0;i<tree.length;i++){
+        // //     temp += '<li>';
+        // //     temp += tree[i].name;
+
+        // //     // 判断是否有二级子类
+        // //     if(tree[i].children instanceof Array && tree[i].children.length > 0){
+        // //         temp += '<ul>';
+        // //         for(var j=0;j<tree[i].children.length;j++){
+        // //             temp += '<li>';
+        // //             temp += tree[i].children[j].name;
+
+        // //             // 判断是否有三级子类
+        // //             if(tree[i].children[j].children instanceof Array && tree[i].children[j].children.length > 0){
+        // //                 temp += '<ul>';
+        // //                 for(var k=0;k<tree[i].children[j].children.length;k++){
+        // //                     temp += '<li>';
+        // //                     temp += tree[i].children[j].children[k].name + '</li>';
+        // //                 }
+        // //                 temp += '</ul>';
+        // //             }
+
+        // //             temp += '</li>';
+        // //         }
+        // //         temp += '</ul>';
+        // //     }
+
+        // //     temp += '</li>';
+        // // }
+        // // temp += '</ul>';
+
+        // // document.getElementById('tree').innerHTML = temp;
+
+
+        // // 递归
+        // function treeNav(data){
+        //     var temp = '<ul>';
+        //     for(var i=0;i<data.length;i++){
+        //         temp += '<li>'+data[i].name;
+
+        //         // 递归实现
+        //         if(data[i].children && data[i].children.length > 0){
+        //             temp += treeNav(data[i].children);
+        //         }
+
+        //         temp += '</li>';
+        //     }
+        //     temp += '</ul>';
+        //     return temp;
+        // }
+        // document.getElementById('tree').innerHTML = treeNav(tree);
+
+
+        // // 
+        // function forEach(arr,callback){
+        //     for(var i=0;i<arr.length;i++){
+        //         callback(arr[i],i,arr,999);
+        //     }
+        // }
+
+        // var arr = ['a','b','c'];
+
+        // forEach(arr,function(item,index,arr,no){
+        //     console.log(item,index,arr,no);
+        // })
+
+
+        // // 全局变量，局部变量
+        // var a = 2;
+
+        // function  fn(){
+        //     a = 5;
+        //     console.log(a);
+        // }
+        // fn();
+
+        // console.log(a);
+
+
+        // // 
+        // function foo(x){
+        //     if(x > 100){
+        //         let tmp = x - 100;
+        //     }
+        //     console.log(tmp);
+        // }
+        // foo(50);
+
+
+        // // 
+        // console.log(a);  // undefined
+        // var a = 'a';
+
+        // function foo(){
+        //     console.log(a);
+        //     var a = 'a1';
+        // }
+        // foo();  // undefined
+
+
+        // // 
+        // var a = 1;
+
+        // function foo(){
+        //     a = 10;
+        //     console.log(a);
+        //     return;
+        //     function a(){};
+        // }
+        // foo();  // 10
+        // console.log(a);  // 1
+
+
+        // // 
+        // var a = 1;
+        // var x = function () {
+        //     console.log(a);
+        // };
+
+        // function f() {
+        //     var a = 2;
+        //     x();
+        // }
+
+        // f(); // 1
+
+
+        // // 
+        // function max(){
+        //     var args = arguments;
+        //     if (args[0] instanceof Array){
+        //         args = args[0];
+        //     }else if(typeof args[0] === 'string'){
+        //         args = args[0].split(',')
+        //     }
+        //     var maxNum=args[0];
+        //     for (var i=0;i<args.length;i++){
+        //         if (args[i]>maxNum){
+        //             maxNum = args[i];
+        //         }
+        //     }
+        //     return Number(maxNum);
+        // }
+        // console.log(max(1,2,3,4,6));
+        // console.log(max([1,2,3,4,6]));
+        // console.log(max('1,2,3,4,6'));
+
+
+        // // 类数组转真正的数组
+        // // // 使用array的slice
+        // // function fn(){
+        // //     console.log(arguments);
+        // //     var args = Array.prototype.slice.call(arguments);
+        // //     console.log(args);
+        // // }
+        // // fn();
+
+        // // // [...类数组对象]
+        // // function fn(){
+        // //     console.log(arguments);
+        // //     var args = [...arguments];
+        // //     console.log(args);
+        // // }
+        // // fn();
+
+        // // Array.from
+        // function fn(){
+        //     console.log(arguments);
+        //     var args = Array.from(arguments);
+        //     console.log(args);
+        // }
+        // fn();
+
+
+        // // 闭包
+        // function f1() {
+        //     var a = 999;
+        //     function f2() {
+        //         return a;
+        //     }
+        //     return f2;
+        // }
+        // console.log(f1()());
+
+
+        // // 闭包经典题
+        // function add() {
+        //     var num = 0;
+        //     function sum() {
+        //         num = num + 1;
+        //         console.log(num);
+        //     }
+        //     return sum;
+        // }
+        // var fn = add();
+        // fn();
+        // fn();
+        // fn();
+
+
+        // // 立即调用
+        // (function(){
+        //     console.log(11);
+        // })();
+
+        // (function(){
+        //     console.log(222);
+        // }());
+
+
+        // 
+        'use strict'
+        a = 10;
+        console.log(a);
+
+
+    </script>
+</body>
+
+</html>

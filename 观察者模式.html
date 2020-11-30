@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+//观察者模式（订阅者-发布者模式）
+var Event = {
+
+  //任务
+  task: {},
+
+  //订阅  addEventListener
+  on: function( type, fn ){
+
+    if (!this.task[type]) {
+      this.task[type] = [];
+    }
+
+    if(typeof fn === 'function'){
+      this.task[type].push( fn );
+    }
+
+  },
+
+  //触发 dispatchEvent
+  emit: function(){
+
+    //取出下面触发函数Event.emit('baozhi',1,2,3,4)中第一个参数，也就是baozhi
+    var type = [].shift.call(arguments);
+    var fns = this.task[type];
+
+    //如果不存在任何任务，或者任务数量为0，则退出触发
+    if (!fns || !fns.length) return;
+
+    //订阅多次 挨个处理调用
+    for (var i = 0; i < fns.length; ++i) {
+      fns[i].apply(this, arguments);//apply 调用执行 上面25添加的函数
+    }
+
+  },
+
+  //移除 removeEventListener
+  remove: function(type, fn){
+
+    //删除所有任务
+    if(!arguments.length){
+      this.task = {};
+      return;
+    }
+    var fns = this.task[type];
+    if (!fns || !fns.length) return;
+
+    // 挨个处理删除
+    for (var i = 0; i < fns.length; ++i) {
+      if (fns[i] === fn) {
+        fns.splice(i, 1);
+      }
+    }
+
+  }
+
+} 
+
+//订阅 1次 报纸
+function baozhi(a,b,c,d){
+  console.log(a,b,c,d);
+
+}
+Event.on('baozhi', baozhi);
+
+// //订阅 2次 报纸
+// Event.on('baozhi',function(a,b){
+//   console.log(a,b);
+// })
+
+// //订阅 3次 报纸
+// Event.on('baozhi',function(a,b){
+//   console.log('第三次执行');
+// })
+
+//订阅 牛奶
+function niunai(name){
+  console.log('收到'+name+'牛奶');
+}
+
+Event.on('niunai', niunai);
+
+//触发 订阅 报纸
+setInterval(function(){
+  Event.emit('baozhi',1,2,3,4);
+},1000);
+
+//清除 2秒后
+// setTimeout(function(){
+//   Event.remove('baozhi', baozhi);
+// },2000)
+
+//触发 订阅 牛奶
+setInterval(function(){
+  Event.emit('niunai','光明');
+},1200)
+
+</script>
+
+</body>
+</html>

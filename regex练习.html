@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <form name="myform" action="http://www.baidu.com" method="POST" onsubmit="return checkForm()">
+    <input name="zip" placeholder="邮箱"><br>
+    <input name="tel" placeholder="固话"><br>
+    <input name="mobile" placeholder="手机"><br>
+    <input name="unit" placeholder="单位"><br>
+    <input name="price" placeholder="单价"><br>
+    <input name="color" placeholder="颜色"><br>
+    <input name="username" placeholder="用户名"><br>
+    <input name="password" placeholder="密码"><br>
+    <input name="extension" placeholder="扩展名"><br>
+    <input name="mail" placeholder="邮箱"><br>
+    <input name="url" placeholder="网址"><br>
+    <input name="birthday" placeholder="生日"><br><br>
+    <button>提交</button>
+  </form>
+
+  <script>
+
+    function checkForm() {
+      var myform = document.forms['myform'];
+    
+      var zip = myform['zip'];
+      var zipVal = zip.value.trim();
+
+      if(!zipVal){
+        alert('请输入邮编！');
+        zip.focus();
+        return false;
+      }
+
+      if(!/^\d{6}$/.test(zipVal)){
+        alert('邮编输入格式不正确！');
+        zip.focus();
+        return false;
+      }
+
+
+      var tel = myform['tel'];
+      var telVal = tel.value.trim();
+
+      if(!/^0\d{2,3}-?\d{7,8}$/.test(telVal)){
+        alert('固话输入格式不正确！');
+        tel.focus();
+        return false;
+      }
+
+
+      var mobile = myform['mobile'];
+      var mobileVal = mobile.value.trim();
+
+      if(!/^1\d{10}$/.test(mobileVal)){
+        alert('电话输入格式不正确！');
+        mobile.focus();
+        return false;
+      }
+
+
+      var unit = myform['unit'];
+      var unitVal = unit.value.trim();
+
+      if(!/\d+\.？\d+(px|em|rem|%)?$/.test(munitVal)){
+        alert('单位输入格式不正确！');
+        unit.focus();
+        return false;
+      }
+
+
+      var price = myform['price'];
+      var priceVal = price.value.trim();
+
+      if(!/^\d+\.？\d+$/.test(priceVal)){
+        alert('单价输入格式不正确！');
+        price.focus();
+        return false;
+      }
+
+
+      var color = myform['color'];
+      var colorVal = color.value.trim();
+
+      if(!/^#[0-9a-fA-F]{3}|[0-9a-fA-F]{6}$/.test(colorVal)){
+        alert('颜色输入格式不正确！');
+        color.focus();
+        return false;
+      }
+
+
+      var username = myform['username'];
+      var usernameVal = username.value.trim();
+
+      if(!/^\w{3,15}$/.test(usernameVal)){
+        alert('用户名输入格式不正确！');
+        username.focus();
+        return false;
+      }
+
+
+      var password = myform['password'];
+      var passwordVal = password.value.trim();
+
+      if(!/^\w{6,15}$/.test(passwordVal)){
+        alert('密码输入格式不正确！');
+        password.focus();
+        return false;
+      }
+
+
+      var extension = myform['extension'];
+      var extensionVal = extension.value.trim();
+
+      if(!/^.+\.(jpg|gif|png)$/.test(extensionVal)){
+        alert('扩展名输入格式不正确！');
+        extension.focus();
+        return false;
+      }
+
+
+      var mail = myform['mail'];
+      var mailVal = mail.value.trim();
+
+      if(!/^\w+@\w+\.\w+$/.test(mailVal)){
+        alert('邮箱输入格式不正确！');
+        mail.focus();
+        return false;
+      }
+
+
+      var url = myform['url'];
+      var urlVal = url.value.trim();
+
+      if(!/^https?:\/\/\w+\.\w+\.\w+$/.test(urlVal)){
+        alert('网址输入格式不正确！');
+        url.focus();
+        return false;
+      }  
+
+
+      var birthday = myform['birthday'];
+      var birthdaylVal = birthday.value.trim();
+
+      if(!/^([12]\d{3})[-/.年](^0[1-9]|1[0-2]$)[-/.月](0[1-9]|[1-2][0-9]|30|31)日?$/.test(birthdayVal)){
+        alert('生日输入格式不正确！');
+        birthday.focus();
+        return false;
+      } 
+
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  #box{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+</style>
+
+<body>
+<!-- 
+  <div id="box"></div> <br>
+  <button onclick="play()">开始</button>
+
+  <script>
+    function play() {
+      var div = document.getElementById('box');
+      var opacity = 1;
+      var fader = setInterval(function () {
+        opacity -= 0.1;
+        if (opacity >= 0) {
+          div.style.opacity = opacity;
+        } else {
+          clearInterval(fader);
+        }
+      }, 100);
+    }
+  </script> -->
+
+
+  <!-- 防抖 -->
+  <input type="text" oninput="search(this)" placeholder="搜索">
+
+  <script>
+
+    var timer = null;
+    function search(input){
+      clearTimeout(timer);
+      timer = setTimeout(function(){
+        console.log(input.value);
+      },2500)
+    }
+
+  </script>
+
+  <!-- 节流 -->
+  <div style="height: 5000px;"></div>
+  <script>
+    var prev = Date.now();
+    var delay = 100;
+    document.onscroll = function () {
+      var now = Date.now();
+      if (now - prev >= delay) {
+        console.log('执行了1次');
+        prev = Date.now();
+      }
+    }
+  </script>
+
+
+  <input type="text" id="title">
+  <script>
+    title.onkeypress = function () { 
+      setTimeout(function () { 
+        this.value = this.value.toUpperCase();
+       }.bind(this),0)
+     }
+  </script>
+</body>
+</html>

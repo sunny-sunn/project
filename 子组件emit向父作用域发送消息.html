@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .zoom{
+      position:fixed;
+      right:20px;
+      top: 12px;
+      font-size: 30px;
+      margin: 0;
+    }
+    </style>
+  
+</head>
+<body>
+  <div id="app">
+
+    <ly-article :font-size="10" @change="handelChange"></ly-article>
+
+    <h4>当前字号：{{fontSize}}</h4>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-article',{
+      props:['fontSize'],
+      data(){
+        return {
+          size:this.fontSize
+        }
+      },
+      watch:{
+        size(val){
+          this.$emit('change',val);
+        }
+      },
+      template:`
+      <div :style="{fontSize: size+'px'}">
+        <h1 style="font-size: 3em">文章标题</h1>
+        <p style="font-size: 1.4em">文章正文</p>
+
+        <p class="zoom">
+          <button @click="size -= 1">-</button>
+          <button @click="size += 1">+</button>
+        </p>
+      </div>
+
+      `
+    })
+    var app = new Vue({
+      el:'#app',
+      data:{
+        fontSize:10
+      },
+      methods:{
+        handelChange(size){
+          this.fontSize = size;
+          console.log('当前字号=',size);
+        }
+      }
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function Person(name){
+      this.name = name;
+    }
+    Person.prototype.getName = function(){
+      console.log(this.name);
+    };
+    var ins = null;
+    var SinglePerson = function(name){
+      if(ins === null){
+        ins = new Person(name);
+      }
+      return ins;
+    }
+    SinglePerson('张三').getName();
+    SinglePerson('李四').getName();
+    SinglePerson('王五').getName();
+  </script>
+  
+</body>
+</html>

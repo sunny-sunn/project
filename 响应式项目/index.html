@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>如友</title>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1971511_td6c534rgc.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/swiper.css">
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/swiper.min.js"></script>
+</head>
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <div class="container masthead">
+      <a class="logo"><img src="images/logo.png"></a>
+      <a class="toggle"><i class="iconfont iconxiangmu"></i></a>
+      <ul class="nav">
+        <div class="ntitle">
+          <h2>网站导航</h2>
+          <p ><img src="images/cha.png"></p>
+        </div>
+        <li><a class="active">网站首页</a></li>
+        <li><a>关于如友</a></li>
+        <li><a>产品中心</a></li>
+        <li><a>厂房设备</a></li>
+        <li><a>招商加盟</a></li>
+        <li><a>新闻中心</a></li>
+        <li><a>天猫商城</a></li>
+        <li><a>联系我们</a></li>
+      </ul>
+      <div class="mask"></div>
+    </div>
+
+    <script>
+      $(function () {
+
+        $('.toggle').click(function () {
+          $('.nav').toggleClass('opened');
+          $('.mask').fadeToggle(300);
+          $('html').toggleClass('noscroll');
+        })
+        $('.mask').click(function(){
+          $('.nav').toggleClass('opened');
+          $(this).fadeOut(300);
+          $('html').removeClass('noscroll');
+        })
+        $('.ntitle').on('click','p',function () {
+          $(this).parent().parent().toggleClass('opened');
+          $('.mask').fadeOut(300);
+          $('html').removeClass('noscroll');
+        })
+
+      })
+    </script>
+      
+  </div>
+
+  <!-- 主体部分 -->
+  <div class="main">
+
+    <!-- 轮播图 -->
+    <div class="slide">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><a><img src="images/slide1.jpg"></a></div>
+          <div class="swiper-slide"><a><img src="images/slide2.jpg"></a></div>
+          <div class="swiper-slide"><a><img src="images/slide3.jpg"></a></div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+  
+      <script>
+        var swiper1 = new Swiper('.slide .swiper-container', {
+          loop: true,
+          autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            bulletClass: 'swiper-square',
+            bulletActiveClass: 'swiper-square-active',
+            clickable: true,
+          },
+        })
+      </script>
+    </div>
+
+    <!-- 产品分类 -->
+    <div class="pro-sort">
+      <div class="container sort-box">
+    
+        <ul class="series">
+          <li class="active"><a>智能浴室柜</a></li>
+          <li><a>北欧浴室柜</a></li>
+          <li><a>现代浴室柜</a></li>
+          <li><a>美式浴室柜</a></li>
+        </ul>
+    
+        <div class="series-img active">
+          <a><img src="images/series1.jpg"></a>
+        </div>
+        <div class="series-img">
+          <a><img src="images/series2.jpg"></a>
+        </div>
+        <div class="series-img">
+          <a><img src="images/series3.jpg"></a>
+        </div>
+        <div class="series-img">
+          <a><img src="images/series4.jpg"></a>
+        </div>
+    
+        <script>
+          + function (doc) {
+
+            var DEFAULTS = {
+              active: 0,
+              eventType: 'click',
+              change: function () { },
+            }
+
+            function Tab(selector, options) {
+
+              options = Object.assign({}, DEFAULTS, options);//浅拷贝
+
+              doc.querySelectorAll(selector).forEach(function (tab) {
+                var lis = tab.querySelectorAll('.series li');
+                var panels = tab.querySelectorAll('.series-img');
+
+                //默认选中效果
+                setTimeout(function () {
+                  lis[options.active].dispatchEvent(new Event(options.eventType));
+                }, 0)
+
+                lis.forEach(function (li) {
+                  li.addEventListener(options.eventType, function () {
+                    lis.forEach(function (li) {
+                      li.classList.remove('active');
+                    })
+                    this.classList.add('active');
+
+                    var index = Array.from(lis).indexOf(this);
+
+                    panels.forEach(function (panel) {
+                      panel.classList.remove('active');
+                    })
+
+                    panels[index].classList.add('active');
+
+                    options.change && options.change(this);
+
+                  })
+                })
+
+              })
+
+            }
+
+            window.Tab = Tab;
+
+          }(document);
+
+          var t1 = new Tab('.sort-box', {
+            active: 0,
+            change: function (li) {
+              console.log(li.innerText);
+            }
+          });
+
+        </script>
+    
+      </div>
+    </div>
+
+    <!-- 产品中心 -->
+    <div class="pro-center">
+      <div class="container center-box">
+
+        <div class="title">
+          <h2>产品中心</h2>
+          <p>立志将公司打造成为国内实木浴室柜行业的领先生产企业</p>
+        </div>
+
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <ul>
+                <li><a>
+                  <img src="images/center1.jpg">
+                  <p>轻奢浴室柜洗手盆柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center2.jpg" width="220">
+                  <p>北欧浴室柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center3.jpg" width="220">
+                  <p>北欧实木浴室柜</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center1.jpg" width="220">
+                  <p>轻奢浴室柜洗手盆柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center2.jpg" width="220">
+                  <p>北欧浴室柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center3.jpg" width="220">
+                  <p>北欧实木浴室柜</p>
+                </a></li>
+              </ul>
+            </div>
+
+            <div class="swiper-slide">
+              <ul>
+                <li><a>
+                  <img src="images/center4.jpg" width="220">
+                  <p>轻奢浴室柜洗手盆柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center5.jpg" width="220">
+                  <p>北欧浴室柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center6.jpg" width="220">
+                  <p>北欧实木浴室柜</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center4.jpg" width="220">
+                  <p>轻奢浴室柜洗手盆柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center5.jpg" width="220">
+                  <p>北欧浴室柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center6.jpg" width="220">
+                  <p>北欧实木浴室柜</p>
+                </a></li>
+              </ul>
+            </div>
+
+            <div class="swiper-slide">
+              <ul>
+                <li><a>
+                  <img src="images/center7.jpg" width="220">
+                  <p>轻奢浴室柜洗手盆柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center8.jpg" width="220">
+                  <p>北欧浴室柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center9.jpg" width="220">
+                  <p>北欧实木浴室柜</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center7.jpg" width="220">
+                  <p>轻奢浴室柜洗手盆柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center8.jpg" width="220">
+                  <p>北欧浴室柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center9.jpg" width="220">
+                  <p>北欧实木浴室柜</p>
+                </a></li>
+              </ul>
+            </div>
+
+            <div class="swiper-slide">
+              <ul>
+                <li><a>
+                  <img src="images/center10.jpg" width="220">
+                  <p>轻奢浴室柜洗手盆柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center11.jpg" width="220">
+                  <p>北欧浴室柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center12.jpg" width="220">
+                  <p>北欧实木浴室柜</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center10.jpg" width="220">
+                  <p>轻奢浴室柜洗手盆柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center11.jpg" width="220">
+                  <p>北欧浴室柜组合</p>
+                </a></li>
+                <li><a>
+                  <img src="images/center12.jpg" width="220">
+                  <p>北欧实木浴室柜</p>
+                </a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      
+        <script>
+          var swiper2 = new Swiper('.pro-center .swiper-container', {
+            loop: true,
+            autoplay: true,
+            slidesPerView:'auto',
+            slidesPerGroup: 1,
+          })
+        </script>
+
+      </div>
+    </div>
+
+    <!-- 关于如友 -->
+    <div class="about">
+      <div class="container">
+
+        <div class="title">
+          <h2>关于如友</h2>
+          <p>立志将公司打造成为国内实木浴室柜行业的领先生产企业</p>
+        </div>
+
+        <p class="about-info">江西如友厨卫科技有限公司总投资5000万元，其中固定资产4500万元，项目用地面积18.43亩。该项目于2019年3月签约，7月开工建设，项目总建筑面积22100平方米，主要建设生产车间、办公楼、仓库及相关附属配套设施，购置实木砂光线、数控加工中心、异形打磨机组合线、自动喷涂线、除尘器、叉车及各类台锯等主要设备32台(套),项目预计2019年12月建成,可形成年产3万套实木家居的生产能力。项目建成投产后年产值达2200万元，上交税收90万元；达产达标后年产值达4500万元，上交税收180万元...</p>
+
+        <div class="about-data row">
+          <div class="col-xs-6 col-sm-3 data">
+            <h3>5000</h3>
+            <p>总投资5000万元</p>
+          </div>
+          <div class="col-xs-6 col-sm-3 data">
+            <h3>18.43</h3>
+            <p>项目用地面积18.43亩</p>
+          </div>
+          <div class="col-xs-6 col-sm-3 data">
+            <h3>4500</h3>
+            <p>年产值达4500万元</p>
+          </div>
+          <div class="col-xs-6 col-sm-3 data">
+            <h3>180</h3>
+            <p>上交税收180万元</p>
+          </div>
+        </div>
+        
+        <a>了解更多</a>
+      </div>
+    </div>
+
+    <!-- 新闻中心 -->
+    <div class="news">
+      <div class="container">
+
+        <div class="title">
+          <h2>新闻中心</h2>
+          <p>立志将公司打造成为国内实木浴室柜行业的领先生产企业</p>
+        </div>
+        
+        <div class="news-center row">
+        
+          <div class="news-info col-sm-4 col-md-4 col-lg-4">
+            <a><img src="images/news1.jpg"></a>
+            <div class="news-content">
+              <a>
+                <span>2019-09-21</span>
+                <h4>浴室柜如何保养 浴室柜保养知识介绍</h4>
+                <p>随着房子的不断升值，作为高收纳、高颜值的浴室柜，越发受到户主的青睐，特别是定...</p>
+              </a>
+              <a>查看详情</a>
+            </div>
+          </div>
+        
+          <div class="news-info col-sm-4 col-md-4 col-lg-4">
+            <a><img src="images/news2.jpg"></a>
+            <div class="news-content">
+              <a>
+                <span>2020-01-07</span>
+                <h4>家用浴室柜的保养常识与技巧</h4>
+                <p>浴室柜作为卫浴间一个重要的洁具，是卫浴间最主要的储物家具，使用率最为频繁。因...</p>
+              </a>
+              <a>查看详情</a>
+            </div>
+          </div>
+        
+          <div class="news-info col-sm-4 col-md-4 col-lg-4">
+            <a><img src="images/news3.jpg"></a>
+            <div class="news-content">
+              <a>
+                <span>2020-01-07</span>
+                <h4>【知识】浴室柜保养最全攻略</h4>
+                <p>一款合用的浴室柜，既能提升浴室美观度，又能实现浴室的实用收纳，看着整洁的卫浴...</p>
+              </a>
+              <a>查看详情</a>
+            </div>
+          </div>
+        
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- 我们的服务 -->
+    <div class="service">
+      <div class="container">
+
+        <div class="title">
+          <h2>我们的服务</h2>
+          <p>立志将公司打造成为国内实木浴室柜行业的领先生产企业</p>
+        </div>
+
+        <div class="service-content">
+          <ul>
+            <li>
+              <a>
+                <div class="icon"></div>
+                <div class="img-text"><p>网上预约</p><p>免费量尺</p></div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="icon"></div>
+                <div class="img-text"><p>客户沟通</p><p>设计方案</p></div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="icon"></div>
+                <div class="img-text"><p>方案确定</p><p>签订合同</p></div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="icon"></div>
+                <div class="img-text"><p>下单生产</p><p>配送安装</p></div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="icon"></div>
+                <div class="img-text"><p>售后服务</p><p>5年质保</p></div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer">
+    <div class="container">
+
+      <div class="row footer-con">
+
+        <div class="col-sm-4 footer-top">
+          <ul>
+            <li><a>智能浴室柜</a></li>
+            <li><a>北欧浴室柜</a></li>
+            <li><a>现代浴室柜</a></li>
+            <li><a>美式浴室柜</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-sm-4 footer-main">
+          <h5><a>联系我们</a></h5>
+          <ul>
+            <li><a>电话：0793-8798798</a></li>
+            <li><a>邮箱：rycg666@163.com</a></li>
+            <li><a>网址：www.zjruyou.com</a></li>
+            <li><a>地址：江西省上饶经济技术开发区兴业大道99号5号楼</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-sm-4 code-img">
+          <ul>
+            <li>
+              <img src="images/ruyou.jpg">
+              <p>企业官网</p>
+            </li>
+           <li>
+              <img src="images/tianmao.jpg">
+              <p>天猫商城</p>
+           </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bar">
+        <p>
+          <span>© 2019 江西如友厨卫科技有限公司 All Rights Reserved&nbsp;&nbsp;</span>
+          <a>赣ICP备19004157号</a>
+        </p>
+        <p>
+          <span>技术支持：</span>
+          <a>鼎城网络</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+</body>
+</html>

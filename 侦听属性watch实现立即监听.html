@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <input type="text" v-model="name"> <br><br>
+    <input type="text" v-model="age">
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      name: '张三',
+      age: 20
+    },
+    watch: {
+      //普通监听，一打开页面（刷新），并不会立即监听，而只是再name值改变的时候才开始监听。
+      name(){
+        console.log('正在监听姓名');
+      },
+      //immediate 开启立即监听，这样一打开页面（刷新），就会执行一遍下面的handler函数
+      age: {
+        handler(){
+          console.log('正在监听年龄');
+        },
+        immediate: true
+      }
+    }
+
+  })
+  </script>
+
+</body>
+</html>

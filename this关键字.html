@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // var A = {
+    //   name:'张三',
+    //   getName:function(){
+    //     return '姓名:' + this.name;
+    //   }
+    // };
+
+    // var name = '艺兴';
+    // var b = A.getName;
+    // console.log(b());
+
+    // // var B = {
+    // //   name:'李四'
+    // // }
+    // // B.getName = A.getName;
+    // // console.log(B.getName());
+
+
+    // // 1、指向全局
+    // console.log(this); //window
+    // function fn(){
+    //   console.log(this); //window
+    // }
+
+    // // 2、指向实例
+    // function Person(){
+    //   console.log(this);
+    // }
+    // var p1 = new Person();
+
+    // // 3、指向对象
+    // var obj = {
+    //   name: '艺兴',
+    //   fn:function(){
+    //     console.log(this.name);
+    //   }
+    // }
+    // obj.fn();
+
+
+    // 
+    // var obj ={};
+    // var f = function(){
+    //   return this;
+    // };
+    // console.log(f() === window);
+    // console.log(f.call(obj) === obj);
+
+
+    // 
+    // var a = [10,2,4,15,9];
+    // console.log(Math.max.apply(null,a));
+
+
+    // 
+    // var o = {
+    //   f1: function () {
+    //     console.log(this);
+    //     var f2 = function () {
+    //       console.log(o);
+    //     }();
+    //   }
+    // }
+    // o.f1();
+
+    // var o = {
+    //   f1: function () {
+    //     console.log(this);
+    //     var that = this;
+    //     var f2 = function () {
+    //       console.log(that);
+    //     }();
+    //   }
+    // }
+    // o.f1();
+
+    // var o = {
+    //   f1: function () {
+    //     var f2 = function () {
+    //       console.log(this);
+    //     }.call(o);
+    //   }
+    // }
+    // o.f1();
+
+    // var o = {
+    //   f1: function () {
+    //     var f2 = function () {
+    //       console.log(this);
+    //     }.apply(o);
+    //   }
+    // }
+    // o.f1();
+
+
+    // 
+    var d = new Date();
+    // var print = d.getTime.call(d);
+    var print = d.getTime.bind(d);
+    console.log(print);
+  </script>
+</body>
+</html>

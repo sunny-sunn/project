@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <style>
+    .leftnav {
+      width: 200px;
+    }
+
+    .leftnav h2 {
+      margin: 0;
+      margin-bottom: 5px;
+      background-color: #ccc;
+      font-size: 16px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .leftnav h2.active {
+      background-color: black;
+      color: white;
+    }
+
+    .leftnav ul {
+      display: none;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      background-color: #f0f0f0;
+      margin-bottom: 5px;
+    }
+
+    .leftnav ul li {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="leftnav">
+
+    <h2>导航一</h2>
+    <ul>
+      <li>子导航1</li>
+      <li>子导航2</li>
+      <li>子导航3</li>
+      <li>子导航4</li>
+    </ul>
+    <h2>导航二</h2>
+    <ul>
+      <li>子导航1</li>
+      <li>子导航2</li>
+      <li>子导航3</li>
+      <li>子导航4</li>
+    </ul>
+    <h2>导航三</h2>
+    <ul>
+      <li>子导航1</li>
+      <li>子导航2</li>
+      <li>子导航3</li>
+      <li>子导航4</li>
+    </ul>
+  </div>
+
+  <script>
+    setTimeout(function(){
+      var active = localStorage.getItem('active') || 0;
+      $('h2').eq(active).trigger('click');
+    },60)
+
+    $('h2').click(function(){
+      localStorage.setItem('active',$(this).index('h2'));
+      $(this).addClass('active').siblings('h2').removeClass('active');
+      $(this).next().slideToggle().siblings('ul').slideUp();
+    })
+  </script>
+
+</body>
+
+</html>
