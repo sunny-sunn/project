@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在线留言</title>
+  <style>
+   button,input,textarea{
+      font-family: inherit;
+      font-size: inherit;
+      padding: 2px 6px;
+    }
+    body{
+      font-size: 14px;
+      margin: 0;
+      padding: 20px;
+    }
+    h1{
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    #list{
+      float: left;
+      width: 50%;
+    }
+    #list img{
+      max-width: 100px;
+      height: auto;
+    }
+    #write{
+      float: right;
+      width: 45%;
+    }
+    table{
+      border-collapse: collapse;
+      width: 100%;
+      margin: auto;
+    }
+    th,td{
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th{
+      background-color: #f0f0f0;
+    }
+    th.date{
+      text-align: center;
+      width: 240px;
+    }
+    td{
+      padding: 20px;
+    }
+    td.nodata{
+      text-align: center;
+    }
+    #pager{
+      text-align: center;
+      padding: 20px;
+    }
+    #pager button.active{
+      color: red;
+    }
+    .upload{
+      display: inline-block;
+      padding: 5px 15px;
+      border: 1px solid #9c9c9c;
+      cursor: pointer;
+      font-size: 14px;
+      color: #4c4c4c;
+    }
+    .upload input{
+      display: none;
+    }
+    .batch{
+      margin-bottom: 20px;
+    }
+    .batch label{
+      margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+<h1>在线留言</h1>
+
+<div class="batch">
+  <label><input type="checkbox" onchange="checkAll(this)"> 全选</label>
+  <button onclick="batchDel()">批量删除</button>
+</div>
+
+<div id="list">
+  <table>
+    <tbody id="tbody">
+      
+    </tbody>
+  </table>
+
+  <div id="pager">
+
+  </div>
+
+</div>
+
+<form id="write">
+  <table>
+    <tr>
+      <th>留言标题</th>
+      <td><input id="title" type="text" placeholder="请输入标题"></td>
+    </tr>
+    <tr>
+      <th>图片上传</th>
+      <td>
+        <label class="upload">
+          图片上传
+          <input type="file" onchange="upload(this)">
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <th>留言内容</th>
+      <td><textarea id="content" cols="50" rows="5" placeholder="请输入留言内容"></textarea></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>
+        <button type="button" onclick="addItem()">提交</button>
+        <button type="reset">重置</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+<script src="js/ajax.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  img{
+    margin-bottom: 10px;
+  }
+</style>
+<body>
+  
+  <input type="search" placeholder="请输入标题" oninput="search(this)">
+  <ul id="list"></ul>
+
+  <script>
+
+    list();
+
+    var res = {};
+
+    function list(page) {
+
+      document.getElementById('list').innerHTML = '<img src="images/loading.gif">';
+      var xhr = new XMLHttpRequest();
+      
+      xhr.onload = xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            res = JSON.parse(xhr.responseText);
+            show(res.result);
+          }
+        }
+      }
+
+      xhr.open('GET', 'http://cloud.scnew.com.cn/api/course/book');
+      xhr.send();
+    }
+
+    function show(data){
+
+      var perpage = 6;
+      var total = grade.length;
+      var totalPage = Math.ceil(total / perpage);
+
+      if (page > totalPage) page -= 1;  //防止最后一页删除完所有记录，页码不前进一位
+      cpage = page;  //将当前页 赋值给 全局变量 （全局变量同步当前页码，方便del函数内部调用
+
+      var start = (page - 1) * perpage;
+      var end = start + perpage;
+      var data = grade.slice(start, end);
+
+      var listTemp = '';
+      for (var i = 0; i < data.length; i++) {
+        var index = start + i;
+        listTemp += '<tr>\
+                <td>'+ (index + 1) + '</td>\
+                <td>'+ data[i].name + '</td>\
+                <td>'+ data[i].score + '</td>\
+                <td><button onclick="del(' + index + ')"">删除</button></td>\
+              </tr>';
+      }
+      document.getElementById('tbody').innerHTML = listTemp;
+
+      
+
+      document.getElementById('list').innerHTML = data.reduce(function(temp,item){
+        return temp + '<li><img src="'+item.cover+'" width="50" align="absmiddle">------'+item.title+'------'+item.author+'</li>';
+      },'')
+    }
+
+    function search(input){
+      var val = input.value.trim();
+      if(!res.result) return;
+
+      var searchData = res.result.filter(function(item){
+        return new RegExp(val,'ig').test(item.title) || 
+               new RegExp(val,'ig').test(item.author) ||  
+               val === '';
+      })
+      show(searchData);
+    }
+
+  </script>
+  
+</body>
+</html>

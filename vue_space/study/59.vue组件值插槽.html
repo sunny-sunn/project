@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <ly-header>666666</ly-header>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-header', {
+      template:`
+      <div class="header">
+        <slot></slot>
+      </div>
+      `
+    })
+
+    var app = new Vue({
+      el:'#app',
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<style>
+  .icheckbox{
+    display: inline-block;
+  }
+  .icheckbox input{
+    display: none;
+  }
+  .icheckbox span{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    vertical-align: middle;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+  }
+  .icheckbox input:checked + span::before{
+    content: "✔";
+  }
+  </style>
+
+<body>
+
+  <input type="checkbox">篮球
+  <input type="checkbox">足球
+  <input type="checkbox">排球
+
+  <script>
+    $(':checkbox').each(function(){
+      var text = this.nextSibling;
+      $(this).wrap('<label class="icheckbox"/>').parent().append('<span/>',text);
+    })
+  </script>
+  
+</body>
+</html>

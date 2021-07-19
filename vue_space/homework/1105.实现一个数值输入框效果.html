@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <button @click="number -= 1" v-bind:disabled="number === minNumber">-</button>
+    <input type="text" v-model="number">
+    <button @click="number += 1" v-bind:disabled="number === maxNumber">+</button>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        number:1,
+        maxNumber:10,
+        minNumber:1
+      },
+    });
+  </script>
+  
+</body>
+</html>

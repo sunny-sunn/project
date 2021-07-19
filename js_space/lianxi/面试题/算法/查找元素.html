@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function search(arr, k) {
+      for(var i=0;i<arr.length-1;i++){
+        for(var j =1;j<arr.length;j++){
+          if (arr[i] + arr[j] == k){
+            return [arr[i],arr[j]];
+          }
+        }
+      }
+    }
+    console.log(search([1, 2, 3, 6, 8, 9], 5));
+  </script>
+</body>
+</html>

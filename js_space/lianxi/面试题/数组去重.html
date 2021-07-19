@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- <script>
+
+    // function unique5(arr) {
+    //   var x = new Set(arr);
+    //   return [...x];
+    // }
+
+
+  </script> -->
+
+
+
+  <ul>
+    <li>点击</li>
+</ul>
+<script>
+    var ul=document.getElementsByTagName('ul')[0];
+    var li=document.getElementsByTagName('li')[0];
+    ul.addEventListener('click', function(){
+      alert('我是ul,我被点击了');
+    }, false);
+    li.addEventListener('click', function(){
+      alert('我是li,我被点击了');
+    }, false);
+</script>
+  
+</body>
+</html>

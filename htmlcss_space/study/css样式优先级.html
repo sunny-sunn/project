@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    /* !important>行内>id>（类=属性）>标签>默认样式 */
+    div{color: red!important;}
+    [nmae="box"]{color: blue;}
+    .box{color: green;}
+    #box{color: pink;}
+
+    p span.cur{color: red;}
+    p .txt{color: green;}
+    
+</style>
+
+<body>
+    
+    <div id="box" name="box" class="box" style="color: purple;">文本</div>
+    
+    <p>
+        <span class="txt">首页</span> | <span class="txt cur">关于</span>
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>qq界面</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    flex: none; /*相当于 flex: 0 0 auto */
+  }
+  body{
+    color: #6c6c6c;
+    font-size: 16px;
+  }
+  .app{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 670px;
+    height: 500px;
+    top: 20px;
+    left: 200px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .4);
+    background-color: white;
+    user-select: none;
+  }
+  .app .dragbar{
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    bottom: 0;
+    right: 0;
+    cursor: nw-resize;
+  }
+  .app .topbar{
+    line-height: 40px;
+    background-image: linear-gradient(to right,#00ACF3,#00E37D);
+    text-align: center;
+    color: white;
+    cursor: default;
+  }
+
+  .app .navbar{
+    border-bottom: 1px solid #EBEBEB;
+    line-height: 50px;
+    text-align: center;
+  }
+
+  .app .main{
+    display: flex;
+    flex-grow: 1;
+  }
+  .app .main .chat,
+  .app .main .list{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app .main .chat{
+    flex-grow: 1;
+  }
+
+  .app .main .chat .log{
+    flex-grow: 1;
+    padding: 12px;
+  }
+  .app .main .chat .send{
+    padding: 12px;
+    height: 200px;
+    border-top: 1px solid #EBEBEB;
+  }
+
+  .app .main .list{
+    width: 200px;
+    border-left: 1px solid #EBEBEB;
+  }
+
+  .app .main .list .notice{
+    padding: 12px;
+    height: 180px;
+    border-bottom: 1px solid #EBEBEB;
+  }
+  .app .main .list .member{
+    flex-grow: 1;
+    padding: 12px;
+  }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+
+    <div class="topbar">顶部</div>
+    <div class="navbar">菜单</div>
+
+    <div class="main">
+
+      <div class="chat">
+
+        <div class="log">聊天日志</div>
+        <div class="send">发布内容</div>
+
+      </div>
+
+      <div class="list">
+
+        <div class="notice">公告</div>
+        <div class="member">成员</div>
+
+      </div>
+
+    </div>
+
+    <div class="dragbar"></div>
+
+  </div>
+
+  <script>
+    //拖拽移动框
+    document.querySelector('.topbar').onmousedown = function(ev){
+      var app = this.parentElement;
+      var oldX = ev.clientX;
+      var oldY = ev.clientY;
+      var startLeft = app.offsetLeft;
+      var startTop = app.offsetTop;
+
+      document.onmousemove = function(ev){
+        var left = ev.clientX - oldX + startLeft;
+        var top = ev.clientY - oldY + startTop;
+        app.style.top = top + 'px';
+        app.style.left = left+'px';
+      }
+
+      document.onmouseup= function(){
+        document.onmousemove = null;
+        document.onmouseup = null; 
+      }
+    }
+
+    //拖拽改变大小
+
+    document.querySelector('.dragbar').onmousedown = function(ev){
+      var app = this.parentElement;
+      var oldX = ev.clientX;
+      var oldY = ev.clientY;
+      var startWidth = app.offsetWidth;
+      var startHeight = app.offsetHeight;
+
+      document.onmousemove = function(ev){
+        var width = ev.clientX - oldX + startWidth;
+        var height = ev.clientY - oldY + startHeight;
+        if(width<=600) width = 600;
+        if(height<=490) height = 490;
+        app.style.width = width + 'px';
+        app.style.height = height + 'px';
+      }
+
+      document.onmouseup= function(){
+        document.onmousemove = null;
+        document.onmouseup = null; 
+      }
+    }
+  </script>
+
+</body>
+</html>

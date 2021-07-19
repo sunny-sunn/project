@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #ball{
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  #box{
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background-color: black;
+    right: 20px;
+    top: 20px;
+    padding: 20px;
+  }
+
+  #box div{
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+  }
+</style>
+<body>
+  
+  <div id="ball" draggable="true"></div>
+  <div id="box"></div>
+
+  <script>
+    document.getElementById('box').ondragenter = function(){
+      this.style.backgroundColor = 'blue';
+    }
+
+    document.getElementById('box').ondragover = function(ev){
+      ev.preventDefault();
+    }
+
+    document.getElementById('box').ondragleave = function(){
+      this.style.backgroundColor = '';
+    }
+
+    document.getElementById('box').ondrop = function(ev){
+      var _ball = document.getElementById('ball').cloneNode();
+      _ball.id = '';
+      _ball.innerText = Math.round(Math.random() * 30);
+
+      this.append(_ball);
+      this.style.backgroundColor = '';
+    }
+  </script>
+</body>
+</html>

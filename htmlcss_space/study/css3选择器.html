@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+    /* 直接使用索引值 */
+    /* ul li:nth-child(1){
+        background-color: red;
+    }
+    ul li:nth-child(4){
+        background-color: green;
+    } */
+
+    /* 偶数行 */
+    /* ul li:nth-child(even){
+        background-color: red;
+    } */
+
+    /* 奇数行 */
+    /* ul li:nth-child(odd){
+        background-color: green;
+    } */
+
+    /* ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        width: 320px;
+    }
+    ul li{
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    ul li:nth-child(3n){
+        margin-right: 0;
+    } */
+
+    /* ul li:first-child{
+        background-color: red;
+    }
+    ul li:last-child{
+        background-color: green;
+    } */
+
+    /* ul li:not(.two){
+        background-color: red;
+    } */
+
+    ul li:not(:first-child){
+        background-color: red;
+    }
+
+    ::selection{
+        background-color: orange;
+        color: white;
+    }
+
+    ::placeholder{
+        color: red;
+    }
+
+    ::-webkit-scrollbar{
+        width: 6px;
+        height: 6px;
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: rgb(255, 0, 0,.7);
+        border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover{
+
+        background-color: rgb(255, 0, 0,1);
+    }
+    .scrollbar{
+        width: 100px;
+        height: 100px;
+        overflow: auto;
+        background-color: #f0f0f0;
+    }
+</style>
+<body>
+    <ul>
+        <li>aaaaa</li>
+        <li class="two">bbbbb</li>
+        <li>ccccc</li>
+        <li>ddddd</li>
+    </ul>
+
+    <input type="text" placeholder="用户名">
+
+    <div class="scrollbar">
+        <div style="width: 500px; height: 1000px;">11</div>
+    </div>
+</body>
+</html>

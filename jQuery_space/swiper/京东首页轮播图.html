@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/swiper.css">
+</head>
+<style>
+  .swiper-container{
+    width: 520px;
+    height: 280px;
+  }
+  .swiper-pagination{
+    text-align: left;
+    margin-left: 5px;
+  }
+  .swiper-square{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, .3);
+    margin: 0 3px;
+    border-radius: 4px;
+  }
+  .swiper-square-active{
+    background-color: white;
+  }
+  .my-button-prev,
+  .my-button-next{
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, .3);
+    color: white;
+    font-size: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .my-button-prev{
+    left: -30px;
+  }
+  .my-button-next{
+    right: -30px;
+  }
+  .my-button-prev span,
+  .my-button-next span{
+    position: absolute;
+    font-weight: bold;
+  }
+  .my-button-prev span{
+    right: 10px;
+  }
+  .my-button-next span{
+    left: 10px;
+  }
+</style>
+<body>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="images/img1.jpg" width="520" height="280">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/img2.jpg" width="520" height="280">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/img3.jpg" width="520" height="280">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/img4.jpg" width="520" height="280">
+      </div>
+    </div>
+    <div class="my-button-prev"><span><</span></div>
+    <div class="my-button-next"><span>></span></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <script src="js/swiper.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: true,
+      pagination: {
+        el: '.swiper-pagination',
+        bulletClass : 'swiper-square',
+        bulletActiveClass: 'swiper-square-active',
+        clickable:true,
+      },
+    });
+    document.querySelector('.my-button-prev').onclick = function(){
+      swiper.slidePrev();
+    }
+    document.querySelector('.my-button-next').onclick = function(){
+      swiper.slideNext();
+    }
+  </script>
+  
+</body>
+</html>

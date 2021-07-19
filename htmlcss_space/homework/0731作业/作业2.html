@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: #E74D3D;
+    }
+    .box{
+        width: 700px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -350px;
+        background-color: #ED7063;
+        line-height: 100px;
+        text-align: center;
+        overflow: hidden;
+    }
+    .box span{
+        font-size: 50px;
+        color: white;
+    }
+    .box .bar{
+        width: 700px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -350px;
+        background-color: white;
+        transform: translateX(-700px);
+        animation: radio 2s linear infinite;
+    }
+    @keyframes radio{
+        0% {
+            transform: translateX(-700px);
+            }
+        50% {
+            transform: translateX(-350px);
+            }
+        100% {
+            transform: translateX(0);
+            }
+    }
+</style>
+<body>
+    <div class="box">
+        <span>LOADING...</span>
+        <div class="bar"></div>
+    </div>   
+</body>
+</html>

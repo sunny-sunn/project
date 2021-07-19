@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    B组件：<ly-com-b></ly-com-b>
+    <hr>
+    A组件：<ly-com-a></ly-com-a>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    let bus = new Vue();
+
+    Vue.component('ly-com-a', {
+      data(){
+        return {
+          msg:'等待...',
+        }
+      },
+      created(){
+        bus.$on('send',msg => {
+          this.msg = msg;
+        })
+      },
+      template: `
+        <h2>接收来自B组件的消息：{{msg}}</h2>
+        `
+    })
+
+    Vue.component('ly-com-b', {
+      template: `
+        <button @click="send">发送消息给A组件</button>
+      `,
+      methods:{
+        send(){
+          bus.$emit('send','我来自火星！');
+        }
+      }
+    })
+
+    var app = new Vue({
+      el: '#app',
+    });
+  </script>
+  
+</body>
+</html>

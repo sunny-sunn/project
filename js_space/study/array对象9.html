@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <ul id="list"></ul>
+
+  <script>
+
+    // 
+    // var arr = [1,2,3,4,5];
+    // var sum = arr.reduce(function(a,b){
+    //   return a+b;
+    // })
+    // console.log(sum);
+
+
+    // 
+    // var arr = [
+    //   { price: 10 },
+    //   { price: 15 },
+    //   { price: 3 },
+    //   { price: 8 },
+    // ];
+    // var sum = arr.reduce(function (a, b) {
+    //   return a + b.price;
+    // }, 0)
+    // console.log(sum);
+
+
+    // 
+    var sites = [
+      { name: '张三', score: 75 },
+      { name: '李四', score: 80 },
+      { name: '张飞', score: 15 },
+      { name: '张总', score: 75 },
+      { name: '张亮', score: 75 },
+    ];
+
+    // var listTemp = sites.reduceRight(function (temp, item, index) {
+    //   return temp + `<li>
+    //     ${index}---
+    //     ${item.name}-----
+    //     ${item.score}
+    //     </li>`;
+    // }, '') || '<li>没有数据！</li>';
+    // document.getElementById('list').innerHTML = listTemp;
+
+    var maxResult = sites.reduce(function (a,b) { 
+      if(a.score < b.score){
+        a = b;
+      }
+      return a;
+     })
+     console.log(maxResult);
+
+  </script>
+</body>
+</html>

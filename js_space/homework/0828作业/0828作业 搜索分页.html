@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button,input{
+      box-sizing: border-box;
+      font-family: inherit;
+      padding: 6px 10px;
+      font-size: inherit;
+      border:1px solid #ccc;
+    }
+    button.active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  
+<p>
+  <input placeholder="请输入关键字">
+
+  起始：
+  <input id="start" type="date" size="10">
+
+  结束：
+  <input id="end" type="date" size="10">
+  
+  <button onclick="find()">搜索</button>
+</p>
+
+<table border="1" cellspacing="0" cellpadding="8" width="760">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>姓名</th>
+      <th>得分</th>
+      <th>日期</th>
+    </tr>	
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<p id="pager"></p>
+
+<script>
+var keyword = ''; //搜索关键字
+
+var sites = [
+  {name:'张三',score:75,date:'2020-1-20'},
+  {name:'李四',score:80,date:'2020-2-1'},
+  {name:'龚贤',score:90,date:'2020-2-12'},
+  {name:'张飞',score:15,date:'2020-3-15'},
+  {name:'张总',score:75,date:'2020-4-10'},
+  {name:'张亮',score:75,date:'2020-5-10'},
+  {name:'刘备',score:85,date:'2020-4-2'},
+];
+
+//页面一打开的时候就执行
+list(1);
+
+//搜索函数
+function search(input){
+  keyword = input.value.trim();
+
+  //立即刷新列表
+  list(1);
+  
+}
+
+//成绩列表
+function list(page){
+
+  //根据关键字搜索，默认关键字是空
+  var searchData = sites.filter(function(item){
+    return item.name.indexOf(keyword) !== -1 ||
+           String(item.score).indexOf(keyword) !== -1;
+  })
+
+  //列表模板累加
+  var listTemp = '';
+  for(var i=0;i<searchData.length;i++){
+    listTemp += '<tr>\
+      <td>'+(i+1)+'</td>\
+      <td>'+searchData[i].name+'</td>\
+      <td>'+searchData[i].score+'</td>\
+      <td>'+searchData[i].date+'</td>\
+    </tr>';
+  }
+  if(!searchData.length){
+    listTemp = '<tr><td colspan="3" align="center">没有找到数据！</td></tr>'
+  }
+  document.getElementById('tbody').innerHTML = listTemp;
+  
+}
+
+function find(){
+  var date1 = Date.parse(document.getElementById('start').value);
+  var date2 = Date.parse(document.getElementById('end').value);
+  sites = sites.filter(function(item){
+    var t = Date.parse(item.date);
+    return date1 <=t && t<=date2;
+  })
+  list(1);
+}
+
+
+</script>
+
+</body>
+</html>

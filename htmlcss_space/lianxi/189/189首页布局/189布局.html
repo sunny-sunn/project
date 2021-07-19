@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  /* reset css */
+  body{
+    margin: 0;
+    font-family: \5FAE\8F6F\96C5\9ED1,verdana;
+    font-size: 14px;
+    color: #4b4b4b;
+  }
+  a{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  a img{
+    border: none;
+  }
+  ul{
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  p,h1,h2,h3,h4,h5,h6{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  input,button{
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    outline: none;
+    padding: 0;
+    border: 1px solid transparent;
+  }
+  button{
+    cursor: pointer;
+  }
+
+  /* utils css */
+  .clearfix::before,
+  .clearfix::after{
+    display: table;
+    content: "";
+  }
+  .clearfix::after{
+    clear: both;
+  }
+
+  .pull-left{
+    float: left;
+  }
+
+  .block-center{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .text-center{
+    text-align: center;
+  }
+
+  .pull-right{
+    float: right;
+  }
+
+
+  /* layout css */
+  .inner{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .inner::after{
+    display: block;
+    content: "";
+    clear: both;
+    font-size: 0;
+    visibility: hidden;
+  }
+
+  .topbar{
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #E4E4E4;
+  }
+  .topbar .welcome{
+    float: left;
+    width: 250px;
+    line-height: 30px;
+    background-color: antiquewhite;
+    text-align: center;
+  }
+  .topbar .toplink{
+    float: right;
+    width: 480px;
+    line-height: 30px;
+    background-color: antiquewhite;
+    text-align: center;
+  }
+  .masthead{
+    background-color: white;
+  }
+  .search{
+    line-height: 120px;
+    text-align: center;
+  }
+
+  .navbar{
+    background-color: #FF8200;
+  }
+  .topnav-cate,
+  .topnav-menu{
+    line-height: 46px;
+    text-align: center;
+    color: white;
+    
+  }
+  .topnav-cate{
+    float: left;
+    width: 190px;
+    background-color: rgba(255, 255, 255, .6);
+  }
+  .topnav-menu{
+    float: right;
+    width: 1010px;
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .banner{
+    position: relative;
+    height: 420px;
+    background-color: #3B7CBB;
+  }
+
+  .leftmenu,
+  .payarea{
+    position: absolute;
+    background-color: white;
+  }
+
+  .leftmenu{
+    width: 190px;
+    line-height: 418px;
+    top: 0;
+    left: 50%;
+    margin-left: -600px;
+    text-align: center;
+  }
+
+  .payarea{
+    top: 5px;
+    width: 222px;
+    left: 50%;
+    line-height: 408px;
+    text-align: center;
+    margin-left: 378px;
+  }
+
+
+  </style>
+</head>
+<body>
+
+<!-- header start -->
+<div class="header">
+
+    <div class="topbar">
+
+      <div class="inner">
+        
+        <div class="welcome">welcome</div>
+        <div class="toplink">toplink</div>
+
+      </div>
+
+    </div>
+
+    <div class="masthead">
+
+      <div class="inner">
+        
+        <div class="search">search</div>
+
+      </div>
+
+    </div>
+
+    <div class="navbar">
+
+      <div class="inner">
+
+        <div class="topnav-cate">
+          topnav cate
+        </div>
+
+        <div class="topnav-menu">
+          topnav menu
+        </div>
+
+      </div>
+
+    </div>
+
+
+</div>
+<!-- header start -->
+
+
+<!-- banner start -->
+<div class="banner">
+
+  <div class="leftmenu">
+    leftmenu
+  </div>
+
+  <div class="payarea">
+    payarea
+  </div>
+
+</div>
+<!-- banner end -->
+
+
+
+
+
+
+</body>
+</html>

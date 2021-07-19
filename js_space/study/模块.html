@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script type="module">
+    // import {name,age,getAge,getGender as getXb} from './js/person.js';
+
+    // function getGender(){ }
+    // console.log(name);
+    // console.log(age);
+    // console.log(getAge());
+    // console.log(getXb());
+
+
+    // import {math} from './js/person.js'; //不使用default
+
+    // import math from './js/person.js';
+
+    // console.log(math.add(1,2));
+
+    import math,* as tools from './js/person.js';
+
+    console.log(math.add(1,2),tools.name,tools.age,tools.getAge());
+  </script>
+  
+</body>
+</html>

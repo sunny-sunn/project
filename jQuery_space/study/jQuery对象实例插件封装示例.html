@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+  <div>abc</div>
+  <p>vgbgf</p>
+  <div>abc</div>
+  <p>dhubgd</p>
+
+  <script>
+    $.fn.extend({
+      upper(){
+        return this.each(function(){
+          var str = this.innerText.toUpperCase();
+          this.innerText = str;
+        })
+      },
+      bold(){
+        return this.each(function(){
+          $(this).css('font-weight','bold');
+        })
+      }
+    })
+
+    $('div,p').upper().bold();
+  </script>
+  
+</body>
+</html>

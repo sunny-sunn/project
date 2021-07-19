@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    ul{
+        list-style-type: none;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+    a{
+        color: inherit;
+        text-decoration: none;
+    }
+    p{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .box{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #27AE60;
+    }
+    .box .nav{
+        width: 500px;
+        height: 45px;
+        line-height: 45px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 26px;
+        background-color: #1e8449;
+    }
+    .box .nav ul li{
+        color: white;
+        font-weight: bold;
+        padding-left: 16px;
+        padding-right: 16px;
+        float: left;
+        position: relative;
+    }
+    .box .nav ul li .menu{
+        display: none;
+        width: 220px;
+        height: 135px;
+        background-color: #9B59B6;
+        position: absolute;
+        left: 0;
+        top: 45px;
+    }
+    .box .nav ul li .menu p{
+        font-weight: normal;
+        padding-left: 16px;
+    }
+    .box .nav ul li:hover{
+        background-color: #9B59B6;
+    }
+    .box .nav ul li:hover div{
+        display: block;
+    }
+
+</style>
+<body>
+    <div class="box">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="#">HOME</a>
+                </li>
+                <li>
+                    <a href="#">SERVICES</a>
+                    <div class="menu">
+                        <p><a href="#">Web Design</a></p>
+                        <p><a href="#">Web Development</a></p>
+                        <p><a href="#">Web Hosting</a></p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">ABOUT</a>
+                    <div class="menu">
+                        <p><a href="#">Our Company</a></p>
+                        <p><a href="#">Our Team</a></p>
+                        <p><a href="#">Our Reach</a></p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">BLOG</a>
+                </li>
+                <li>
+                    <a href="#">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a{
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    ul{
+      list-style: none;
+    }
+
+    /* .container{
+      padding-left: 15px;
+      padding-right: 15px;
+    } */
+    .header{
+      position: relative;
+      background-color: #ececec;
+    }
+    .masthead{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      /* padding: 0; */
+    }
+    .logo{
+      width: 100px;
+      height: 34px;
+      line-height: 34px;
+      background-color: red;
+      text-align: center;
+      /* padding: 0 15px; */
+      margin: 15px;
+    }
+    .toggle{
+      width: 40px;
+      /* height: 40px; */
+      line-height: 40px;
+      color: white;
+      background-color: #666;
+      text-align: center;
+      border-radius: 4px;
+      margin: 15px;
+    }
+    .nav{
+      display: none;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
+    }
+    .nav a{
+      display: block;
+      line-height: 40px;
+      margin: 0 15px;
+    }
+    .nav a.active{
+      color: red;
+      border-bottom: 2px solid red;
+    }
+    .slide{
+      height: 280px;
+      background-color: #888;
+    }
+    @media screen and (min-width: 768px) {
+      .container{
+        width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .toggle{
+        display: none;
+      }
+      .nav{
+        display: flex !important;
+        position: static;
+        width: auto;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+      }
+    }
+    @media screen and (min-width: 992px) {
+      .container{
+        width: 970px;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      .container{
+        width: 1170px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+
+    <div class="container masthead">
+      <a class="logo">标志</a>
+      <a class="toggle">三</a>
+
+      <ul class="nav">
+        <li><a href="#" class="active">网站首页</a></li>
+        <li><a href="#">关于我们</a></li>
+        <li><a href="#">产品介绍</a></li>
+        <li><a href="#">公司新闻</a></li>
+        <li><a href="#">合作伙伴</a></li>
+        <li><a href="#">联系我们</a></li>
+      </ul>
+
+    </div>
+
+    <div class="slide"></div>
+
+  </div>
+
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script>
+    $(function(){
+      $('.toggle').click(function(){
+        $('.nav').slideToggle(300);
+      })
+    })
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <ul>
+      <li v-for="item in students">
+        <router-link :to="'/home/'+item.id+'/'+item.name+'/'+item.age">{{item.name}}</router-link>
+      </li>
+    </ul>
+
+    <router-view></router-view>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+  <script>
+    const home = { template: `<div><h2>我是首页页面- {{$route.params}}</h2></div>` };
+
+    const router = new VueRouter({
+      routes: [
+        { path: '/home/:id/:name/:age', component: home }
+      ]
+    });
+
+    const app = new Vue({
+      el: '#app',
+      router,
+      data: {
+        students: [
+          { id: 1, name: '张三', age: 30 },
+          { id: 2, name: '李四', age: 20 },
+          { id: 3, name: '王五', age: 24 },
+        ]
+      }
+    });
+  </script>
+  
+</body>
+</html>

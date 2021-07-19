@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table td{
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+</style>
+<body>
+    <button id="btn">新建表格</button>
+
+    <br><br>
+
+    <table>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <script>
+        document.getElementById('btn').onclick=function(){
+            var row = window.prompt('请输入行');
+            var col = window.prompt('请输入列');
+
+            var trs = '';
+            for(var i=0;i<row;i++){
+                trs = trs + '<tr>';
+
+                for(var j=0;j<col;j++){
+                    trs = trs + '<td>' + ( (i*col) + (j+1) ) + '</td>';
+                }
+                trs = trs + '</tr>';
+            }
+            document.getElementById('tbody').innerHTML = trs;
+        }
+    </script>
+</body>
+</html>

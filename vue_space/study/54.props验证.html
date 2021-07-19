@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <ly-list :data="news"></ly-list>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-list', {
+      props: {
+        data: {
+          type: Array,
+          required: true,
+        },
+        page: {
+          type: Number,
+          validator(val) {
+            return /^[0-9]+$/.test(val);
+          },
+          default: 1
+        },
+        perpage: {
+          type: Number,
+          default: 5
+        }
+      },
+      computed: {
+        pageData() {
+          let start = (this.page - 1) * this.perpage;
+          let end = start + this.perpage;
+          return this.data.slice(start, end);
+        }
+      },
+      template: `
+          <ul>
+            <li
+            v-for="item in pageData"
+            :key="item.id"
+            >{{item.title}}</li>
+          </ul>
+          `
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        page: 1,
+        perpage: 2,
+        news: [
+          { id: 1, title: '标题1' },
+          { id: 2, title: '标题2' },
+          { id: 3, title: '标题3' },
+          { id: 4, title: '标题4' },
+          { id: 5, title: '标题5' },
+          { id: 6, title: '标题6' },
+          { id: 7, title: '标题7' },
+          { id: 8, title: '标题8' },
+          { id: 9, title: '标题9' },
+        ]
+      }
+    });
+  </script>
+  
+</body>
+</html>

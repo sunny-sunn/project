@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
+    .bar{
+      display: flex;
+      list-style: none;
+    }
+    .bar li{
+      padding: 10px 20px;
+    }
+    .active{
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <ly-bar :data="bars">
+      <template v-slot="row"  v-for="index in bars">
+        <a :href="row.url" @click="change(index)" :class="{active:index ==row.id}">{{row.icon}} {{row.name}}</a>
+      </template>
+    </ly-bar>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-bar', {
+      props: {
+        data: Array
+      },
+      template: `
+          <ul class="bar">
+            <li
+             v-for="item in bars"
+             :key="item.id">
+              <slot v-bind="item">{{item.name}}</slot>
+            </li>
+          </ul>
+          `
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        bars: [
+          { id: 1, name: '首页', url: '#home', icon: '❤', active: false },
+          { id: 2, name: '关于', url: '#about', icon: '✪', active: false },
+          { id: 3, name: '新闻', url: '#news', icon: '✿', active: false },
+          { id: 4, name: '联系', url: '#contact', icon: '☎', active: false },
+        ]
+      },
+      methods: {
+        change(index) {
+          this.bars.forEach(row => {
+            if (row.active === false) {
+              row.active = true
+            }
+          });
+        }
+      }
+    })
+  </script>
+  
+</body>
+</html>

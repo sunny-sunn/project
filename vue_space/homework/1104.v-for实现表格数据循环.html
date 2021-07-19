@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    
+    <table border="1">
+      <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>分数</th>
+      </tr>
+      <tr v-for="(val,index) in info" v-bind:key="index">
+        <th>{{val.num}}</th>
+        <th>{{val.name}}</th>
+        <th>{{val.gender}}</th>
+        <th>{{val.score}}</th>
+      </tr>
+    </table>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        info:[
+          {num:1,name:'张三',gender:'男',score:80},
+          {num:2,name:'李四',gender:'男',score:70}
+        ]
+      }
+    });
+  </script>
+
+</body>
+</html>

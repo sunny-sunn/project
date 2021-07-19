@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    
+    <table border="1">
+      <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>分数</th>
+      </tr>
+      <template v-if="chengji.length">
+        <tr v-for="item in _chengji" v-bind:key="item.id">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.gender}}</td>
+          <td>{{item.score}}</td>
+        </tr>
+      </template>
+      <tr v-else>
+        <td colspan="4" align="center">暂无数据</td>
+      </tr>
+    </table>
+    <br>
+
+    <button 
+    v-for="p in totalpage"
+    :style="{color:p === page?'red':''}"
+    @click="goPage(p)"
+    >{{p}}</button>
+
+    <select v-model.number="perpage">
+      <option value="2">每页2条</option>
+      <option value="3">每页3条</option>
+      <option value="4">每页4条</option>
+    </select>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        page:1,
+        perpage:2,
+        chengji:[
+          {id:1,name:'张三1',gender:'男',score:80},
+          {id:2,name:'李四1',gender:'男',score:70},
+          {id:3,name:'张三2',gender:'男',score:80},
+          {id:4,name:'李四2',gender:'男',score:70},
+          {id:5,name:'张三3',gender:'男',score:80},
+          {id:6,name:'李四3',gender:'男',score:70}
+        ]
+      },
+      computed:{
+        totalpage(){
+          return Math.ceil(this.chengji.length/this.perpage);
+        },
+        _chengji(){
+          // if(this.page > this.totalpage) this.page -= 1;
+          var start = (this.page - 1) * this.perpage;
+          var end = start + this.perpage;
+          return this.chengji.slice(start,end);
+        }
+      },
+      methods:{
+        goPage(p){
+          this.page = p;
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

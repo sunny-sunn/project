@@ -1,0 +1,602 @@
+@import url('./font.css');
+
+@import url('./reset.css');
+
+/* layout css */
+.app,
+.header,
+.tabbar {
+  max-width: 750px;
+  width: 100%;
+  background-color: white;
+}
+
+.app {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main {
+  padding-top: var(--header-height);
+  padding-bottom: var(--tabbar-height);
+}
+
+.header,
+.tabbar {
+  display: flex;
+  position: fixed;
+  z-index: 99;
+}
+
+/* 头部 */
+.header {
+  top: 0;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  height: var(--header-height);
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 0.3rem;
+  font-weight: normal;
+}
+
+/* 底部 */
+.tabbar {
+  bottom: 0;
+  height: var(--tabbar-height);
+}
+
+.tabbar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tabbar a i {
+  font-size: 0.4rem;
+  margin-bottom: 0.05rem;
+  color: #555;
+}
+
+.tabbar a span {
+  font-size: 0.2rem;
+  color: #848484;
+}
+
+.tabbar a.active i {
+  color: #ee1133;
+}
+
+.tabbar a.active span {
+  color: #000;
+}
+
+/* 首页 */
+/* 轮播图 */
+/* .swiper {
+  position: relative;
+  height: 5.13rem;
+  padding: 0;
+  overflow: hidden;
+}
+.swiper .swiper_item ul li{
+  position: absolute;
+  height: 5.13rem;
+  top: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.swiper .swiper_item ul li img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.swiper .swiper_item ul li.open{
+  opacity: 1;
+}
+.swiper .swiper_pages {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.45rem;
+}
+.swiper .swiper_pages ul li {
+  float: left;
+  width: 0.12rem;
+  height: 0.12rem;
+  overflow: hidden;
+  margin: 0 0.05rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  text-indent: 100px;
+  cursor: pointer;
+}
+.swiper .swiper_pages ul li.active {
+  background: rgba(0, 0, 0, 0.7);
+  width: 0.31rem;
+  border-radius: 0.12rem;
+} */
+
+/* 官方正品 */
+.official{
+  width: 100%;
+  height: 0.58rem;
+  color: #666;
+  background-color: #fff;
+}
+.official ul li {
+  float: left;
+  width: 25%;
+  font-size: 0.18rem;
+  line-height: 0.58rem;
+  text-align: center;
+}
+.official ul::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+.official ul li i{
+  font-size: 0.28rem;
+  vertical-align: bottom;
+}
+
+/* 新品专区 */
+.new{
+  position: relative;
+  height: 6.33rem;
+  margin-top: 0.17rem;
+  background-color: #fff;
+}
+.new > p{
+  position: absolute;
+  padding-top: 0.25rem;
+  font-size: 0.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.new > p::before{
+  display: block;
+  position: absolute;
+  top: 0.46rem;
+  left: -0.42rem;
+  width: 0.28rem;
+  height: 0.04rem;
+  background-color: #bfbfbf;
+  content: "";
+}
+.new > p::after{
+  display: block;
+  position: absolute;
+  top: 0.46rem;
+  right: -0.42rem;
+  width: 0.28rem;
+  height: 0.04rem;
+  background-color: #bfbfbf;
+  content: "";
+}
+.new .iqoo {
+ margin-left: 0.38rem;
+ margin-right: 0.38rem;
+ padding-top: 0.94rem;
+ border-bottom: 2px solid #efefef;
+}
+.new .iqoo > img{
+  width: 6.74rem;
+  height: auto;
+}
+.new .iqoo > div{
+  float: left;
+  margin: 0.32rem 0;
+}
+.new .iqoo::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+.new .iqoo .iqoo5{
+  position: relative;
+  line-height: 0.3rem;
+  padding-left: 0.14rem;
+}
+.new .iqoo .iqoo5 .iq{
+  font-size: 0.2rem;
+  font-weight: bold;
+}
+.new .iqoo .iqoo5::after{
+  display: block;
+  position: absolute;
+  top: 0.05rem;
+  left: 1.3rem;
+  width: 1px;
+  height: 0.64rem;
+  background-color: #f2f2f2;
+  content: "";
+}
+.new .iqoo .retail{
+  font-size: 0.2rem;
+  margin-left: 0.4rem;
+  line-height: 0.3rem;
+}
+.new .iqoo .retail ul li{
+  float: left;
+}
+.new .iqoo .retail ul::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+.new .iqoo .retail .retail-1 li{
+  padding-right: 0.2rem;
+}
+.new .iqoo .retail .retail-2 li{
+  color: #bababa;
+  padding-right: 0.2rem;
+}
+.new .iqoo .retail .retail-2 li i{
+  margin-left: 0.14rem;
+}
+
+/* 超值拼团 */
+.value{
+  position: relative;
+  background-color: #fff;
+  margin-top: 0.2rem;
+}
+.value > p{
+  position: absolute;
+  padding-top: 0.25rem;
+  font-size: 0.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.value > p::before{
+  display: block;
+  position: absolute;
+  top: 0.46rem;
+  left: -0.42rem;
+  width: 0.28rem;
+  height: 0.04rem;
+  background-color: #bfbfbf;
+  content: "";
+}
+.value > p::after{
+  display: block;
+  position: absolute;
+  top: 0.46rem;
+  right: -0.42rem;
+  width: 0.28rem;
+  height: 0.04rem;
+  background-color: #bfbfbf;
+  content: "";
+}
+.value .usb{
+  margin-left: 0.4rem;
+  margin-right: 0.3rem;
+  padding-top: 1.08rem;
+  padding-bottom: 0.46rem;
+  overflow: hidden;
+}
+.value .usb ul {
+  width: 1000px;
+}
+.value .usb ul li{
+  float: left;
+  margin-right: 0.1rem;
+  text-align: center;
+}
+.value .usb ul::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+.value .usb ul li img{
+  width: 2.8rem;
+  height: auto;
+}
+.value .usb ul li p{
+  width: 2.38rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.value .usb ul li p.ausb{
+  font-size: 0.2rem
+}
+.value .usb ul li p.wusb{
+  font-size: 0.18rem;
+  color: #797979;
+}
+.value .usb ul li p.price{
+  font-size: 0.18rem;
+}
+.value .usb ul li p.price span{
+  color: red;
+}
+.value .usb ul li del{ 
+  font-size: 0.16rem;
+  color: #e5e5e5;
+}
+.more {
+  text-align: center;
+  border-top: 1px solid #f0f0f0;
+}
+.more p{
+  padding: 0.38rem 0;
+  font-size: 0.24rem;
+  color: #999;
+}
+.more p i{
+  font-size: 0.24rem;
+  padding-left: 0.15rem;
+}
+
+/* 热销机型 */
+.sale{
+  background-color: #fff;
+  margin-top: 0.2rem;
+}
+.sale > p{
+  position: absolute;
+  padding-top: 0.25rem;
+  font-size: 0.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.sale > p::before{
+  display: block;
+  position: absolute;
+  top: 0.46rem;
+  left: -0.42rem;
+  width: 0.28rem;
+  height: 0.04rem;
+  background-color: #bfbfbf;
+  content: "";
+}
+.sale > p::after{
+  display: block;
+  position: absolute;
+  top: 0.46rem;
+  right: -0.42rem;
+  width: 0.28rem;
+  height: 0.04rem;
+  background-color: #bfbfbf;
+  content: "";
+}
+.sale .hot{
+  margin: 0 0.85rem;
+  padding-top: 0.86rem;
+  padding-bottom: 0.46rem;
+}
+.sale .hot ul li{
+  float: left;
+  text-align: center;
+}
+.sale .hot ul::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+.sale .hot ul li:last-child{
+  float: right;
+}
+.sale .hot ul li img{
+  width: 2.08rem;
+  height: auto;
+}
+.sale .hot ul li p.vi{
+  font-weight: bold;
+  padding-top: 20px;
+}
+.sale .hot ul li p.vo{
+  font-size: 14px;
+  color: #666;
+}
+.sale .hot ul li p.much{
+  font-size: 14px;
+  font-weight: bold;
+  color: red;
+  padding-bottom: 30px;
+}
+
+/* 精品配件 */
+.boutique{
+  background-color: #fff;
+  margin-top: 10px;
+  margin-bottom: 58px;
+}
+.boutique > p{
+  position: absolute;
+  padding-top: 0.25rem;
+  font-size: 0.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.boutique > p::before{
+  display: block;
+  position: absolute;
+  top: 0.46rem;
+  left: -0.42rem;
+  width: 0.28rem;
+  height: 0.04rem;
+  background-color: #bfbfbf;
+  content: "";
+}
+.boutique > p::after{
+  display: block;
+  position: absolute;
+  top: 0.46rem;
+  right: -0.42rem;
+  width: 0.28rem;
+  height: 0.04rem;
+  background-color: #bfbfbf;
+  content: "";
+}
+.boutique .parts{
+  margin: 0 30px;
+  padding-top: 65px;
+  padding-bottom: 20px;
+}
+.boutique .parts ul li{
+  float: left;
+  text-align: center;
+}
+.boutique .parts ul::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+.boutique .parts ul li:last-child{
+  float: right;
+}
+.boutique .parts ul li p{
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.boutique .parts ul li p.x30{
+  font-weight: bold;
+  padding-top: 20px;
+}
+.boutique .parts ul li p.pro{
+  font-size: 14px;
+  color: #666;
+}
+.boutique .parts ul li p.pri{
+  font-size: 14px;
+  font-weight: bold;
+  color: red;
+  padding-bottom: 30px;
+}
+
+/* 全部分类 */
+.classify {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-color: white;
+}
+
+.classify .leftnav,
+.classify .content {
+  height: 100%;
+  overflow: auto;
+}
+
+.classify .leftnav::-webkit-scrollbar {
+  display: none;
+}
+
+.classify .leftnav {
+  position: absolute;
+  width: 1.64rem;
+  height: calc(100vh - 1.9rem);
+  border-right: 1px solid #f0f0f0;
+  background-color: white;
+  z-index: 10;
+}
+
+.classify .leftnav li {
+  position: relative;
+  line-height: 1.1rem;
+  font-size: 0.24rem;
+  text-align: center;
+  font-weight: bold;
+  color: #0b0b0b;
+  cursor: pointer;
+}
+
+.classify .leftnav li:hover {
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.classify .leftnav li.active {
+  color: #ee0204;
+}
+
+.classify .leftnav li.active::before {
+  position: absolute;
+  content: " ";
+  width: 0.05rem;
+  height: 0.33rem;
+  background-color: #ee0204;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.classify .content {
+  position: relative;
+  padding-left: 1.89rem;
+  padding-right: 0.26rem;
+}
+
+.classify .product-title {
+  text-align: center;
+}
+
+.classify .product-title img {
+  margin-top: 0.32rem;
+  margin-bottom: 0.32rem;
+  width: 5.35rem;
+  height: auto;
+}
+
+.classify .product-title h4 {
+  margin-top: 0.16rem;
+  margin-bottom: 0.16rem;
+  font-size: 0.22rem;
+}
+
+.classify .product-title h4::before {
+  content: "── ";
+}
+
+.classify .product-title h4::after {
+  content: " ──";
+}
+
+.classify .product-list {
+  overflow: hidden;
+}
+
+.classify .product-list a {
+  float: left;
+  width: 50%;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 0.34rem;
+  padding-left: 0.09rem;
+  padding-right: 0.09rem;
+}
+
+.classify .product-list a img {
+  width: 1.22rem;
+  height: auto;
+}
+
+.classify .product-list .desc,
+.classify .product-list h4 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.classify .product-list h4 {
+  font-size: 0.18rem;
+}
+
+.classify .product-list .desc {
+  color: #b2b2b2;
+  font-size: 0.16rem;
+}
+
+.classify .product-list .price {
+  font-weight: bold;
+  font-size: 0.18rem;
+}

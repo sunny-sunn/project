@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  html,body{
+    background-color: #3570B6;
+  }
+/* reset css */
+  body{
+    margin: 0;
+    padding: 50px;
+    font-family: \5FAE\8F6F\96C5\9ED1,verdana;
+    font-size: 14px;
+    color: #4b4b4b;
+  }
+  a{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  a img{
+    border: none;
+  }
+  ul{
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  p,h1,h2,h3,h4,h5,h6{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  input,button{
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    outline: none;
+    padding: 0;
+    border: 1px solid transparent;
+  }
+  button{
+    cursor: pointer;
+  }
+
+  /* layout css */
+  .leftmenu{
+    width: 190px;
+    height: 420px;
+    background-color: white;
+  }
+
+  .leftmenu li{
+    position: relative;
+    line-height: 60px;
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #E8E8E8;
+    border-right: 1px solid #E8E8E8;
+    font-size: 0;
+  }
+
+  .leftmenu li .icon{
+    display: inline-block;
+    width: 41px;
+    height: 41px;
+    background: url(images/189_icons.png) no-repeat;
+    vertical-align: middle;
+    margin: -8px 9px 0 7px;
+  }
+
+  .leftmenu li .arrow{
+    position: absolute;
+    width: 6px;
+    height: 10px;
+    background: url(images/189_icons.png) no-repeat -175px -64px;
+    top: 50%;
+    margin-top: -5px;
+    right: 14px;
+  }
+
+  .leftmenu li .icon.buy{
+    background-position: -10px -104px;
+  }
+
+  .leftmenu li .icon.select{
+    background-position: -10px -159px;
+  }
+
+  .leftmenu li .title{
+    font-size: 14px;
+    color: #777;
+  }
+
+  .leftmenu li .submenu{
+    display: none;
+    position: absolute;
+    width: 560px;
+    height: 320px;
+    border: 1px solid #E8E8E8;
+    background-color: white;
+    z-index: 999;
+    left: 189px;
+    top: 0;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .leftmenu li:hover{
+    background-color: white;
+  }
+
+  .leftmenu li:hover .submenu{
+    display: block;
+  
+  }
+  </style>
+</head>
+<body>
+  
+
+
+<div class="leftmenu">
+  <ul>
+    <li>
+      <i class="icon buy"></i> 
+      <a href="#" class="title">套餐/靓号</a>
+      <i class="arrow"></i>
+      <div class="submenu">
+        <p>子菜单1 </p>
+      </div>
+    </li>
+    <li>
+      <i class="icon select"></i> 
+      <a href="#" class="title">宽带</a>
+      <i class="arrow"></i>
+      <div class="submenu">
+        <p>子菜单3</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+</body>
+</html>

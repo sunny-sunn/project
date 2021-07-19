@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    我叫{{_name}}，今年{{age}}。
+  </div>
+
+  <script>
+  var info = {
+    _name: '张三',
+    _age: 20,
+  }
+
+  var app = document.querySelector( '#app' );
+  var temp = app.innerHTML;
+
+  //监测info下对象所有属性的读写变化
+  Object.defineProperties(info, {
+    name: {
+      get: function(){
+        return this._name;
+      },
+      set: function( val ){
+        this._name = val;
+        render();
+      },
+    },
+    age: {
+      get: function(){
+        return this._age;
+      },
+      set: function( val ){
+        this._age = val;
+        render();
+      },
+    },
+  });
+  
+
+  render();
+
+  function parseTemp( str, data ){
+    
+    return str.replace(/\{\{(\w+?)}}/g,function(match, key){
+      return data[key];
+    });
+  
+  }
+
+  function render(){
+    app.innerHTML = parseTemp( temp, info );
+  }
+
+  </script>
+
+
+
+</body>
+</html>

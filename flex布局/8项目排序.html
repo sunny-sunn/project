@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .box{
+    display: flex;
+  }
+  .box span{
+    width: 100px;
+    height: 60px;
+    background-color: red;
+    color: white;
+  }
+  .box span:nth-child(1){
+    order: 2;
+  }
+  .box span:nth-child(2){
+    order: 3;
+  }
+  .box span:nth-child(3){
+    order: 0;
+  }
+  .box span:nth-child(4){
+    order: 4;
+  }
+</style>
+<body>
+  <div class="box">
+    <span>项目1</span>
+    <span>项目2</span>
+    <span>项目3</span>
+    <span>项目4</span>
+    <span>项目5</span>
+  </div>
+</body>
+</html>

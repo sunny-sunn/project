@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/flex_grid.css">
+  <style>
+  /*
+  1. 不要把业务代码写入 flex_grid.css文件中，因为它一个独立的css插件。
+  */
+
+  /* 
+  2. 不要直接覆盖container类，这会导致栅格系统错乱，不可以再定一个类补丁一下
+  */
+  .container{
+    width: 100px;
+  }
+
+  /*
+  3. 不要直接覆盖row类，这会导致所有的行被污染
+  */
+  .row{
+    background-color: red;
+  }
+
+
+  </style>
+</head>
+<body>
+  
+
+<div class="container">
+
+  <div class="row">
+    <!-- 4. 以下在row和col之间外套一个标签div.nav会导致栅格系统出错 -->
+    <div class="nav">
+      <div class="col-xs-6"></div>
+      <div class="col-xs-6"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 5. 以下写法直接导致内容安全宽度没有 -->
+<div class="banner">
+  <div class="row">
+    <div class="col-xs-6"></div>
+  </div>
+</div>
+
+<!-- 6. 以下写法非常臃肿多余 -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

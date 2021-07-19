@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button{
+      font-family: initial;
+    }
+    .active{
+      color:red;
+    }
+  </style>
+</head>
+<body>
+
+  <ul id="list"></ul>
+
+  <div id="pager"></div>
+
+  <script>
+  var fruit = ['苹果', '桔子', '香蕉', '菠萝', '芒果', '甘蔗', '葡萄', '西瓜'];
+
+  list(1);
+  function list(page){
+    var perpage = 2;
+    var total = fruit.length;
+    var totalPage = Math.ceil(total / perpage);
+    var start = (page - 1) * perpage;
+    var end = start + perpage;
+    var data = fruit.slice(start, end);
+
+    // 累加列表
+    var listTemp = '';
+    for (var i = 0; i < data.length; i++) {
+      var index=start+i;
+      listTemp += '<li>'+index + data[i] +'<button onclick="del('+index+')">删除 </button></li>';
+    }
+    document.getElementById('list').innerHTML = listTemp;
+
+    // 累加页码
+    var pageTemp='';
+    if(page>1){
+      pageTemp ='<button onclick="list('+(page-1)+')">上页</button>';
+    }
+    for (var p = 1; p <= totalPage; p++) {
+      var activeClass = (p === page ? 'active' : '');
+      pageTemp += '<button class="' + activeClass + '" onclick="list(' + p + ')">' + p + '</button>';
+    }
+    if(page<totalPage){
+      pageTemp +='<button onclick="list('+(page+1)+')">下页</button>';
+    }
+    document.getElementById('pager').innerHTML = pageTemp;
+  }
+  
+  function del(i){
+    if(confirm('您确定要删除此项吗？')){
+      fruit.splice(i,1);
+      list(1);
+    }
+  }
+
+  </script>
+</body>
+</html>

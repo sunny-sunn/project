@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 
+        // var str = 'global';
+        // function foo() {
+        //     console.log(str); // undefined
+        //     var str = 'local';
+        //     console.log(str); // local
+        // }
+        // foo();
+        // console.log(str); // global
+
+
+        // 
+        // var a = 1;
+        // function foo() {
+        //     a = 10;
+        //     console.log(a); // 10
+        //     return;
+        //     function a() { };
+        // }
+        // foo();
+        // console.log(a); // 1
+
+
+        // 
+        // var str = 'global';
+        // function a() {
+        //     console.log(str); // global
+        // }
+        // function foo(fn) {
+        //     var str = 'local';
+        //     fn();
+        // }
+        // foo(a);
+        // console.log(str); // global
+
+
+        // 
+        // function fn(){
+        //     var num = 3;
+        //     return function(){
+        //         var n=0;
+        //         console.log(++n); // 1
+        //         console.log(++num); // 4
+        //     }
+        // }
+        // var a=fn();
+        // a(); // 1
+        // a(); // 5
+
+
+        // 
+        // var person={
+        //     name:'张三',
+        //     age:20,
+        // };
+        // function foo(info){
+        //     info.name='李四';
+        //     console.log(person);
+        // }
+        // foo(person);
+        // console.log(person);
+
+
+        // 
+        function fun(n, o) {
+            console.log(o);
+            return {
+                fun: function (m) {
+                    return fun(m, n);
+                }
+            };
+        }
+        var a = fun(0);
+        a.fun(1);
+        a.fun(2);
+        a.fun(3);
+        var b = fun(0).fun(1).fun(2).fun(3);
+        var c = fun(0).fun(1);
+
+    </script>
+</body>
+
+</html>

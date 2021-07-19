@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>上侧边主体脚部结构1</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      flex: none; /*相当于 flex: 0 0 auto */
+    }
+    .container{
+      display: flex;
+      height: 100vh;
+    }
+    .header,
+    .footer{
+      background-color: #B3C0D1;
+      line-height: 60px;
+      text-align: center;
+    }
+    .container .container{
+      display: flex;
+      flex-direction: row;
+      height: auto;
+      flex-grow: 1;
+    }
+    .container.horizontal{
+      flex-direction: row !important;
+    }
+    .container.vertical{
+      flex-direction: column !important;
+    }
+    .aside{
+      display: flex;
+      width: 200px;
+      background-color: #D3DCE6;
+      justify-content: center;
+      align-items: center;
+    }
+    .main{
+      display: flex;
+      flex-grow: 1;
+      background-color: #E9EEF3;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container vertical">
+
+    <div class="header">头部</div>
+
+    <div class="container">
+
+      <div class="aside">侧边栏</div>
+
+      <div class="container vertical">
+
+        <div class="main">主体</div>
+        <div class="footer">脚部</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+</body>
+</html>

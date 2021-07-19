@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!-- <button id="btn1">添加事件</button>
+  <button id="btn2">移除事件</button>
+
+  <script>
+    var ok = function(){
+      alert('111');
+    }
+
+    document.getElementById('btn1').addEventListener('click',ok,true);
+
+    document.getElementById('btn2').addEventListener('click',function(){
+      alert('移除成功！');
+      document.getElementById('btn1').removeEventListener('click',ok,true);
+    })
+  </script> -->
+  
+
+  <button id="payBtn">支付</button>
+
+  <script>
+    document.getElementById('payBtn').addEventListener('click',function(){
+      alert('正在支付...');
+    },{
+      once:true
+    })
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <style>
+  .search{
+    display: inline-block;
+    position: relative;
+  }
+  .search::after{
+    display: block;
+    content: "";
+    clear: both;
+    visibility: hidden;
+  }
+  .search > input{
+    float: left;
+    font-family: inherit;
+    box-sizing: border-box;
+    padding: 0;
+    outline: none;
+    font-size: 12px;
+  }
+
+  .search .camera{
+    position: absolute;
+    right: 68px;
+    top: 50%;
+    margin-top: -6.5px;
+    width: 16px;
+    height: 13px;
+    background: url(images/icons.png) no-repeat;
+  }
+  .search .camera [type="file"]{
+    display: none;
+  }
+  .search .camera:hover{
+    background-position: 0 -18px;
+    cursor: pointer;
+  }
+  .search .input{
+    width: 430px;
+    height: 36px;
+    border: 2px solid #e2231a;
+    padding-left: 17px;
+  }
+  .search .btn{
+    width: 58px;
+    height: 36px;
+    border: none;
+    background: #e2231a url(images/zoom.png) no-repeat 50% 50%;
+    cursor: pointer;
+  }
+  </style>
+
+  <div class="search">
+    <label class="camera">
+      <input type="file">
+    </label>
+    <input type="text" placeholder="针式打印机" class="input">
+    <input type="button" class="btn">
+  </div>
+
+
+
+</body>
+</html>

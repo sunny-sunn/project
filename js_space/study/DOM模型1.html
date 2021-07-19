@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- <p id="p"></p>
+  <script>
+    console.log(document.nodeType);
+    var p = document.getElementById('p');
+    console.log(p.nodeType);
+    console.log(p.firstChild.nodeType);
+  </script> -->
+
+
+  <input name="hobby" type="checkbox"> 篮球
+  <input name="hobby" type="checkbox"> 排球
+  <input name="hobby" type="checkbox"> 足球
+  <button onclick="getHobby()">获取爱好</button>
+
+  <script>
+    function getHobby(){
+      var hobbys = document.getElementsByName('hobby');
+      var result = [];
+      for(var i=0;i<hobbys.length;i++){
+        var checkbox = hobbys[i];
+        if(checkbox.checked===true){
+          result.push(checkbox.nextSibling.nodeValue.trim());
+        }
+      }
+      console.log(result);
+    }
+  </script>
+
+</body>
+</html>

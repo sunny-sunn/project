@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    html{
+      background-color: #f0f0f0;
+    }
+    .dialog{
+      position: fixed;
+      min-width: 300px;
+      background-color: white;
+      border-radius: 4px;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, .3);
+      left: 50%;
+      transform: translate(-50%, -120%);
+      z-index: 999;
+      transition: transform .3s ease;
+    }
+  
+    .dialog-opened{
+      transform: translate(-50%, 50%);
+    }
+  
+    .dialog-hd,
+    .dialog-bd,
+    .dialog-ft{
+      padding: 20px;
+    }
+    .dialog-hd{
+      display: flex;
+      justify-content: space-between;
+    }
+    .dialog-hd a{
+      font-size: 18px;
+    }
+  
+    .dialog-ft{
+      display: flex;
+      justify-content: flex-end;
+    }
+    .dialog-ft button{
+      margin-left: 10px;
+    }
+    .dialog-mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 99;
+    opacity: 0;
+    transition: opacity .6s ease, visibility .6s ease;
+    visibility: hidden;
+  }
+  .dialog-mask-opened{
+    opacity: 1;
+    visibility: visible;
+  }
+    </style>  
+</head>
+<body>
+  <div id="app">
+
+    <ly-dialog title="会员登录" :visible.sync="visible" width="500px" top="50vh">
+      
+      <form>
+        <p>
+          <input type="text" placeholder="用户名">
+        </p>
+        <p>
+          <input type="password" placeholder="密码">
+        </p>
+      </form>
+
+      <template v-slot:footer>
+        <button @click="visible=false">关闭</button>
+      </template>
+
+    </ly-dialog>
+
+    <button @click="visible=true">注册会员</button>
+
+    <h2>{{visible}}</h2>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-dialog', {
+      props:{
+        visible:Boolean,
+        title:{
+          type:String,
+          default:'标题'
+        },
+        width:String,
+      },
+      data(){
+        return {
+          show:this.visible
+        }
+      },
+      watch:{
+        visible(val){
+          this.show = val;;
+        },
+        show(val){
+          this.$emit('update:visible',val);
+        }
+      },
+      template:`
+      <div
+      class="dialog-mask"
+        :class="{'dialog-mask-opened':show}"
+        @click.self="show=false">
+
+        <div 
+          class="dialog"
+          :class="{'dialog-opened':show}"
+          :style="{width}">
+
+          <div class="dialog-hd">
+            <slot name="title">{{title}}</slot>
+            <a @click="show=false">&times;</a>
+          </div>
+
+          <div class="dialog-bd">
+            <slot>主体</slot>
+          </div>
+
+          <div class="dialog-ft">
+            <slot name="footer">
+              <button @click="show=false">取消</button>
+              <button>确定</button>
+            </slot>
+          </div>
+          
+        </div>
+
+      </div>
+      `,
+      mounted(){
+        window.onkeydown= ev => {
+          if(ev.keyCode===27) this.show=false;
+        }
+      }
+    })
+
+    var app = new Vue({
+      el:'#app',
+      data:{
+        visible:false
+      }
+    });
+  </script>
+  
+</body>
+</html>

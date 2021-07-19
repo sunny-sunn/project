@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  html{
+    background-color: #f0f0f0;
+  }
+  .map{
+    position: relative;
+    width: 500px;
+    height: 400px;
+    background-color: #999;
+    overflow: hidden;
+  }
+
+  .map b{
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    border:2px solid red;
+  }
+  .map i{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(0, 0, 255, .3);
+    border: 2px solid white;
+    border-radius: 50%;
+  }
+  </style>
+</head>
+<body>
+
+<p>
+  <button onclick="create()">创建坐标点</button>
+  <button onclick="getXY()">获取经纬度</button>
+</p>
+
+<div id="map" class="map">
+
+</div>
+
+<script>
+function create(){
+  var num = prompt('请输入个数！');
+  var map = document.getElementById('map');
+  var mapWidth = map.clientWidth;
+  var mapHeight = map.clientHeight;
+
+  var temp = '';
+  for(var i=0;i<num;i++){
+
+    var x = Math.round( Math.random() * (mapWidth-34) );
+    var y = Math.round( Math.random() * (mapHeight-19) );
+
+    temp +=`<b style="left:${x}px;top:${y}px;"></b>`;
+  }
+
+  map.innerHTML = temp;
+
+}
+
+function getXY(){
+  var xy = prompt('请输入坐标用空格分割！');// 10 20
+  var arr = xy.split(' ');
+  var x = arr[0] - 75;
+  var y = arr[1] - 75;
+
+  var temp = `<i style="left:${x}px;top:${y}px;"></i>`;
+  map.innerHTML += temp;
+}
+// {name:}
+</script>
+
+
+</body>
+</html>

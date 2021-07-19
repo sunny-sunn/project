@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+<style>
+  .panel{
+    border: 1px solid #ccc;
+    padding: 25px;
+    border-radius: 4px;
+  }
+  table{
+    width: 100%;
+    border-collapse: collapse;
+  }
+  caption{
+    font-weight: bold;
+  }
+  th,td{
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #363636;
+    text-align: left;
+  }
+  tbody tr:hover{
+    background-color: #eee;
+  }
+
+  .stripe tbody tr:nth-child(even){
+    background-color: antiquewhite;
+  }
+
+  .border th, .border td{
+    border: 1px solid #ccc;
+  }
+
+  .condensed th, .condensed td{
+    padding: 5px;
+  }
+
+  tr.active, td.active{
+    background-color: blue;
+  }
+  tr.danger, td.danger{
+    background-color: red;
+  }
+  tr.success, td.success{
+    background-color: green;
+  }
+  tr.warning, td.warning{
+    background-color: orange;
+  }
+  tr.info, td.info{
+    background-color: gray;
+  }
+  .thead{
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  .thead::-webkit-scrollbar{
+    opacity: 0;
+  }
+  .tbody{
+    overflow: auto;
+    height: 200px;
+  }
+</style>
+
+<div class="panel">
+
+  <!-- <div class="thead"> -->
+    <table class="stripe border">
+      <colgroup>
+        <col width="15%">
+        <col>
+        <col width="25%">
+        <col width="25%">
+      </colgroup>
+      <caption>学生成绩表</caption>
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>姓名</th>
+          <th>学历</th>
+          <th>分数</th>
+        </tr>
+      </thead>
+    </table>
+  <!-- </div> -->
+  <div class="tbody">
+    <table class="stripe border">
+      <colgroup>
+        <col width="15%">
+        <col>
+        <col width="25%">
+        <col width="25%">
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>10001</td>
+          <td>张三</td>
+          <td>本科</td>
+          <td>76</td>
+        </tr>
+        <tr>
+          <td>10002</td>
+          <td>李四</td>
+          <td>本科</td>
+          <td>92</td>
+        </tr>
+        <tr>
+          <td>10003</td>
+          <td>王二</td>
+          <td>大专</td>
+          <td>80</td>
+        </tr>
+        <tr>
+          <td>10003</td>
+          <td>王二</td>
+          <td>大专</td>
+          <td>80</td>
+        </tr>
+        <tr>
+          <td>10003</td>
+          <td>王二</td>
+          <td>大专</td>
+          <td>80</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+</body>
+</html>

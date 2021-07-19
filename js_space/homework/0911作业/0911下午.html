@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+/* .box{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: slateblue;
+}
+.box .content{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: rosybrown;
+} */
+
+/* .box{
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  background-color: slateblue;
+}
+.box .content{
+  display: inline-block;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  background-color: rosybrown;
+} */
+
+
+/* *{
+  margin: 0;
+  padding: 0;
+}
+html,body{
+  height: 100%;
+}
+.toper{
+  width: 50%;
+  height: 50%;
+  background-color: lightcyan;
+  margin: 0 auto;
+}
+.footer{
+  width: 100%;
+  height: 50%;
+}
+.footer .left{
+  float: left;
+  width: 50%;
+  height: 100%;
+  background-color: lightgoldenrodyellow;
+}
+.footer .right{
+  float: right;
+  width: 50%;
+  height: 100%;
+  background-color: lightgray;
+} */
+
+</style>
+<body>
+
+  <!-- <div class="toper"></div>
+  <div class="footer">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div> -->
+
+  <!-- <div class="box">
+    <p class="content"></p>
+  </div> -->
+
+  <!-- <script>
+
+    //数组去重
+    var arr = [1,1,2,3,4,5,5,6];
+    function repeat(arr) {
+      var temp = [];
+      for (var i = 0; i < arr.length; i++) {
+        if (temp.indexOf(arr[i]) == -1) {
+          temp.push(arr[i]);
+        }
+      }
+      return temp;
+    }
+    console.log(repeat(arr));
+
+    var arr = [1,1,2,3,4,5,5,6];
+    function repeat(arr) {
+      var temp = [];
+      var index = [];
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = i + 1; j < arr.length; j++) {
+          if (arr[i] === arr[j]) {
+            i++;
+            j = i;
+          }
+        }
+        temp.push(arr[i]);
+        index.push[i];
+      }
+      return temp;
+    }
+    console.log(repeat(arr));
+
+  </script> -->
+
+
+  <!-- <script>
+    function f1() {
+      var n = 999;
+      nAdd = function () {
+        n += 1
+      }
+      function f2() {
+        alert(n);
+      }
+      return f2;
+    }
+    var result = f1();
+    result(); // 999
+    nAdd();
+    result(); // 1000
+  </script> -->
+
+
+  <!-- <script>
+    function fn(arr){
+      if(Object.prototype.toString.call(arr).slice(8,-1) !== 'Array') return;
+      var length = arr.length;
+      var i = 0;
+      return function(){
+        if(i<length) console.log(arr[i++]);
+      }
+    }
+    var arr = [1,4,5,8,100];
+    setInterval(fn(arr),1000);
+  </script> -->
+
+
+  <script>
+    function createNew() {
+      let obj = new Object();
+
+      let func = [].shift.call(arguments);
+      obj.__proto__ = func.prototype;
+      func.apply(obj, arguments);
+      return obj;
+    }
+
+    function people(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    let peo = createNew(people, 'Bob', 22)
+    console.log(peo.name);
+    console.log(peo.age);
+  </script>
+
+
+  <!-- <script>
+    var obj = {
+      apple: 0,
+      banana: { weight: 52, price: 100 },
+      cherry: 97
+    };
+
+    //浅拷贝
+    // function simpleCopy(obj) {
+    //   var obj2 = Array.isArray(obj) ? [] : {};
+    //   for (let i in obj) {
+    //     obj2[i] = obj[i];
+    //   }
+    //   return obj2;
+    // }
+    // var result = simpleCopy(obj);
+    // console.log(result);
+
+    //深拷贝
+    function deepCopy(obj) {
+      var newObj = obj.constructor === Array ? [] : {};
+      if (typeof obj !== 'object') {
+        return obj;
+      } else {
+        for (var i in obj) {
+          if (typeof obj[i] === 'object') {
+            newObj[i] = deepCopy(obj[i]);
+          } else {
+            newObj[i] = obj[i];
+          }
+        }
+      }
+      return newObj;
+    }
+    var result = deepCopy(obj);
+    console.log(result);
+  </script> -->
+  
+
+  <script>
+    function instanceOf(left, right) {
+      var r = right.prototype;
+      var l = left.__proto__;
+      while (true) {
+        if (l === null) return false;
+        if (l === r) return true;
+        l = l.__proto__;
+      }
+    }
+
+    var arr = [1, 2];
+    console.log(instanceOf(arr, Array));
+  </script>
+
+
+  <!-- <script>
+    function create(obj) {
+      function F() { }
+      F.prototype = obj
+      return new F()
+    }
+  </script> -->
+
+</body>
+</html>

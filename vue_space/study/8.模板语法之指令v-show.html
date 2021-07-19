@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+  
+    <button v-show="Math.random() > 0.5">按钮</button>
+  
+  </div>
+
+  <script src="js/vue.js"></script>
+
+  <script>
+    // v-show是控制元素显示和隐藏的指令，它主要是利用display:none属性
+    var app = new Vue({
+      el:'#app',
+    });
+  </script>
+  
+</body>
+</html>

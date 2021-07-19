@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button onclick="getBook()">留言信息</button>
+
+  <ul id="list"></ul>
+
+  <button onclick="addBook()">添加留言</button>
+
+  
+
+
+<script src="ajax.js"></script>
+<script>
+//ajax全局配置，每个xhr请求都会附带这个授权码
+$.config = {
+  headers: {
+    'SC-Token': 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk'
+  },
+}
+
+//查询留言
+function getBook(){
+
+  //公共的方法
+  // $.ajax({
+  //   url: 'http://cloud.scnew.com.cn/api/feedback/user',
+  //   data: {
+  //     tid:0,
+  //   },
+  //   success: function(res){
+  //     document.getElementById('list').innerHTML = res.result.reduce(function(temp,item){
+  //       return temp + '<li>'+item.title+'</li>';
+  //     },'');
+  //   }
+  // });
+
+  //别名方法
+  $.get('http://cloud.scnew.com.cn/api/feedback/user', {
+    tid:0,
+  },function(res){
+    document.getElementById('list').innerHTML = res.result.reduce(function(temp,item){
+      return temp + '<li>'+item.id+'-----'+item.title+'-------<button onclick="delBook('+item.id+')">删除留言</button></li>';
+    },'');
+  })
+
+}
+
+//添加留言
+function addBook(){
+
+  //POST提交
+  $.post('http://cloud.scnew.com.cn/api/feedback/add',{
+    asker: 1,
+    tid: 0,
+    title: 'ajax999999',
+    content:  'ajax888888',
+  },function(res){
+    console.log(res);
+  })
+
+}
+
+//删除留言
+function delBook(id){
+
+  if(confirm('您确定要删除？')){
+    //DELETE
+    $.delete('http://cloud.scnew.com.cn/api/feedback/user/'+id,{},function(res){
+      console.log(res);
+      getBook();
+    })
+  }
+
+}
+
+</script>
+
+</body>
+</html>

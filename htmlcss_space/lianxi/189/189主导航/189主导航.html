@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+<style>
+/*reset css*/
+a{
+  text-decoration: none;
+  color: inherit;
+}
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+p{
+  margin: 0;
+  padding: 0;
+}
+
+.inner{
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inner::after{
+  display: block;
+  content: "";
+  clear: both;
+  font-size: 0;
+  visibility: hidden;
+}
+
+.mainbar{
+  background-color: #FF8200;
+  line-height: 45px;
+}
+
+.mainbar .title{
+  float: left;
+  margin: 0;
+  width: 190px;
+  height: 45px;
+  background: url(images/189_icons.png) no-repeat -223px -716px;
+}
+.mainbar .navbar{
+  float: left;
+  margin-left: 40px;
+}
+.mainbar .navbar li{
+  float: left;
+}
+.mainbar .navbar li a{
+  position: relative;
+  padding-left: 10px;
+  display: block;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  width: 110px;
+}
+.mainbar .navbar li a::before{
+  position: absolute;
+  content: "";
+  width: 4px;
+  height: 14px;
+  background-color: transparent;
+  top: 50%;
+  margin-top: -7px;
+  left: 0;
+}
+.mainbar .navbar li a:hover::before,
+.mainbar .navbar li a.active::before{
+  background-color: white;
+}
+
+.mainbar .login{
+  float: right;
+  font-size: 13.6px;
+  color: white;
+}
+.mainbar .login i.user{
+  display: inline-block;
+  width: 16px;
+  height: 14px;
+  background: url(images/189_icons.png) no-repeat -231px -189px;
+  vertical-align: middle;
+  margin-top: -3px;
+}
+.mainbar .login:hover{
+  text-decoration: underline;
+}
+</style>
+  
+<div class="mainbar">
+
+  <div class="inner">
+
+    <h4 class="title"></h4>
+
+    <ul class="navbar">
+      <li><a href="#" class="active">首页</a></li>
+      <li><a href="#">流量</a></li>
+      <li><a href="#">宽带光纤</a></li>
+      <li><a href="#">老用户</a></li>
+      <li><a href="#">自助服务</a></li>
+      <li><a href="#">资费专区</a></li>
+      <li><a href="#">服务监督</a></li>
+    </ul>
+
+    <a href="#" class="login">
+      <i class="user"></i> 登录
+    </a>
+
+  </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .l-radio{
+        display: inline-block;
+        margin-right: 20px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .l-radio input{
+        display: none;
+    }
+    .l-radio span{
+        display: block;
+    }
+    
+    .l-radio span::before{
+        display: inline-block;
+        content: "";
+        width: 16px;
+        height: 16px;
+        border: 1px solid #c0c0c0;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-right: 8px;
+        text-align: center;
+        line-height: .88;
+    }
+    .l-radio span:hover::before{
+        border-color: red;
+    }
+    .l-radio input:checked + span{
+        color: red;
+    }
+    .l-radio input:checked + span::before{
+        content: "•";
+        border-color: red;
+    }
+</style>
+<body>
+    <label class="l-radio">
+       <input name="gender" type="radio" value="男">
+       <span>男</span>
+    </label><label class="l-radio">
+        <input name="gender" type="radio" value="女">
+        <span>女</span>
+    </label>
+    
+</body>
+</html>

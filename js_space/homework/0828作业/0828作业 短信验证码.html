@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function random(a,b){
+    //   return ('000000'+Math.floor(Math.random() * (b - a + 1)) + a).slice(-6);
+    // }
+    // console.log(random(0,999999));
+
+    var code;
+    function random(){
+      code = '';
+      var codeLength = 6;
+      var arr = ['0','1','2','3','4','5','6','7','8','9'];
+      for (var i=0;i<codeLength;i++){
+        var index = Math.floor(Math.random() * 10);
+        code += arr[index];
+      }
+      return code;
+    }
+    console.log(random());
+
+  </script>
+</body>
+</html>

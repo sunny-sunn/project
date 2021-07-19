@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #imgList img {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    vertical-align: top;
+  }
+</style>
+<body>
+  
+  <label class="upload">
+    上传图片
+    <input id="upfile" type="file" accept="image/*" multiple>
+  </label>
+
+  <div id="imgList"></div>
+  <br><br>
+
+
+  <script>
+    document.getElementById('upfile').onchange = function(){
+      window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+      var files = this.files;
+      for(var i=0;i<files.length;i++){
+        var img = document.createElement('img');
+        img.src = window.URL.createObjectURL(files[i]);
+        img.ondblclick = function(){
+          this.remove();
+        }
+        document.getElementById('imgList').append(img);
+      }
+    }
+  </script>
+
+</body>
+</html>

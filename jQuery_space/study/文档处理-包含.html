@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+  <ul class="nav">
+    <li>首页</li>
+    <li>关于
+      <ul>
+        <li>222</li>
+        <li>333</li>
+      </ul>
+    </li>
+    <li>联系</li>
+  </ul>
+
+  <ul>
+    <li>111</li>
+  </ul>
+
+  <div>
+    <div>
+      <p>段落</p>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+      // $('ul').wrap('<div/>');
+
+      // $('p').unwrap();
+
+      // $('ul').wrapAll('<div>/');
+
+      $('li').wrapInner('<a/>');
+    })
+  </script>
+
+</body>
+</html>

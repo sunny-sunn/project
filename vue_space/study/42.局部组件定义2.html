@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <LyA></LyA>
+    <LyB></LyB>
+    <LyA></LyA>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    const LyA = {template:`<h2>局部组件LyA</h2>`};
+    const LyB = {template:`<h2>局部组件LyB</h2>`};
+    const LyC = {
+      components:{
+        LyA
+      },
+      template:`<div>
+        <LyA></LyA>
+        <LyB></LyB>
+      </div>`
+    };
+    var app = new Vue({
+      el:'#app',
+      components:{
+        LyA:'LyA',
+        LyB:'LyB',
+        LyC:'LyC'
+      }
+    });
+  </script>
+  
+</body>
+</html>

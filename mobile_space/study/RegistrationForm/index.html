@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/picker.min.js"></script>
+  <script src="js/date.js"></script>
+</head>
+<body>
+
+    <div class="header">
+      <h1>应聘登记表</h1>
+      <div class="title">
+        <h2>杭州方大丝绸有限公司</h2>
+        <h3>应聘登记表</h3>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="main">
+        <ul>
+          <li>
+            <h5>应聘岗位<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>填表日期<i>*</i></h5>
+            <div class="pick" id="date">请选择</div>
+          </li>
+          <li>
+            <h5>姓名<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>性别<i>*</i></h5>
+            <div class="pick" id="gender">请选择</div>
+          </li>
+          <li>
+            <h5>出生日期<i>*</i></h5>
+            <div class="pick" id="date">请选择</div>
+          </li>
+          <li>
+            <h5>民族<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>政治面貌<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>婚否<i>*</i></h5>
+            <div class="pick" id="date">请选择</div>
+          </li>
+          <li>
+            <h5>健康状况<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>籍贯(省、市)<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>联系方式<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>电子邮箱<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>学历<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>现住地<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>目前是否在职<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>预计到岗时间<i>*</i></h5>
+            <div class="pick" id="date">请选择</div>
+          </li>
+          <li>
+            <h5>期望薪资<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>外语水平<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>计算机水平<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>教育经历(请至少完整填写一行)<i>*</i></h5>
+            <table border="1">
+              <tr>
+                <td>时间</td>
+                <td>毕业院校</td>
+                <td>专业</td>
+                <td>详细情况</td>
+              </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </table>
+          </li>
+          <li>
+            <h5>工作经历(请至少完整填写一行，没有则写<span>'无'</span>)<i>*</i></h5>
+            <table border="1">
+              <tr>
+                <td>时间</td>
+                <td>毕业院校</td>
+                <td>专业</td>
+                <td>详细情况</td>
+              </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </table>
+          </li>
+          <li>
+            <h5>个人荣誉</h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>兴趣特长</h5>
+            <input type="text" placeholder="请输入">
+          </li>
+          <li>
+            <h5>自我评价<i>*</i></h5>
+            <input type="text" placeholder="请输入">
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer"></div>
+
+  <script>
+    var date = document.getElementById('date');
+
+    var data1 = [
+      {
+        text: '2018',
+        value: 1
+      },
+      {
+        text: '2019',
+        value: 2
+      },
+      {
+        text: '2020',
+        value: 3
+      },
+      {
+        text: '2021',
+        value: 4
+      }
+    ];
+
+    var data2 = [
+      {
+        text: '01',
+        value: 1
+      },
+      {
+        text: '02',
+        value: 2
+      },
+      {
+        text: '03',
+        value: 3
+      },
+      {
+        text: '04',
+        value: 4
+      },
+      {
+        text: '05',
+        value: 5
+      },
+      {
+        text: '06',
+        value: 6
+      },
+      {
+        text: '07',
+        value: 7
+      },
+      {
+        text: '08',
+        value: 8
+      },
+      {
+        text: '09',
+        value: 9
+      },
+      {
+        text: '10',
+        value: 10
+      },
+      {
+        text: '11',
+        value: 11
+      },
+      {
+        text: '12',
+        value: 12
+      }
+    ];
+
+    var data3 = [
+      {
+        text: '01',
+        value: 1
+      }, {
+        text: '02',
+        value: 2
+      },
+      {
+        text: '03',
+        value: 3
+      },
+      {
+        text: '04',
+        value: 4
+      },
+      {
+        text: '05',
+        value: 5
+      }, {
+        text: '06',
+        value: 6
+      },
+      {
+        text: '07',
+        value: 7
+      },
+      {
+        text: '08',
+        value: 8
+      },
+      {
+        text: '10',
+        value: 10
+      }, {
+        text: '11',
+        value: 11
+      },
+      {
+        text: '12',
+        value: 12
+      },
+      {
+        text: '13',
+        value: 13
+      },
+      {
+        text: '14',
+        value: 14
+      }, {
+        text: '15',
+        value: 15
+      },
+      {
+        text: '16',
+        value: 16
+      },
+      {
+        text: '17',
+        value: 17
+      },
+      {
+        text: '18',
+        value: 18
+      }, {
+        text: '19',
+        value: 19
+      },
+      {
+        text: '20',
+        value: 20
+      },
+      {
+        text: '21',
+        value: 21
+      },
+      {
+        text: '22',
+        value: 22
+      }, {
+        text: '23',
+        value: 23
+      },
+      {
+        text: '24',
+        value: 24
+      },
+      {
+        text: '25',
+        value: 25
+      }
+    ];
+
+    var picker = new Picker({
+      data: [data1, data2, data3],
+      selectedIndex: [0, 1, 2],
+    });
+
+    picker.on('picker.select', function (selectedVal, selectedIndex) {
+      date.innerText = data1[selectedIndex[0]].text + ' ' + data2[selectedIndex[1]].text + ' ' + data3[selectedIndex[2]].text;
+    })
+
+    // picker.on('picker.change', function (index, selectedIndex) {
+    //   console.log(index);
+    //   console.log(selectedIndex);
+    // });
+
+    // picker.on('picker.valuechange', function (selectedVal, selectedIndex) {
+    //   console.log(selectedVal);
+    //   console.log(selectedIndex);
+    // });
+
+    date.addEventListener('click', function () {
+      picker.show();
+    });
+  </script>
+  
+</body>
+</html>

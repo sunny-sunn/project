@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 20px;
+    }
+    input,button,textarea{
+      font-family: inherit;
+      font-size: 14px;
+      padding: 2px 10px;
+    }
+    #list{
+      width: 600px;
+    }
+    #list img{
+      max-width: 100px;
+      height: auto;
+      vertical-align: middle;
+    }
+    #list .item{
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+      background-color: antiquewhite;
+    }
+    #list .item .item{
+      background-color: white;
+      margin-left: 25px;
+    }
+    button.active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  
+<h2>用户评论</h2>
+
+<div class="batch">
+  <input type="checkbox"> 全选 <button>批量删除</button>
+</div>
+
+<div id="list">
+  <div class="item">
+    <input type="checkbox">  建飞：<img src="images/1.jpg" width="50" alt="" align="absmiddle"> 已订购，人类顶级工业结晶。
+  </div>
+  <div class="item">
+    <input type="checkbox"> 
+    龚贤：又是这个iPhon4的设计 落后三星十年有余！
+  </div>
+
+  <div class="item">
+    <input type="checkbox"> 
+    业辉：又是这个iPhon4的设计 落后三星十年有余！
+  </div>
+</div>
+
+<div id="pager">
+  <button>上页</button>
+  <button class="active">1</button>
+  <button>2</button>
+  <button>下页</button>
+</div>
+
+<br>
+
+<h2>填写评论</h2>
+
+<form>
+
+  <input type="file"><br>
+  <br>
+  <textarea cols="60" rows="3" id="content" placeholder="输入评论内容"></textarea> <br><br>
+  <button>发布评论</button>
+</form>
+
+<script src="js/ajax.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

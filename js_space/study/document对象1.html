@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    +function () {
+      var style = document.createElement('style');
+      style.textContent = `.kefu{
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            right: 20px;
+            bottom: 20px;
+            background-color: red;
+        }`;
+      document.head.append(style);
+      var div = document.createElement('div');
+      div.className = 'kefu';
+      document.body.append(div);
+    }()
+  </script>
+
+  <!-- <script src="http://v.scnew.com.cn/ebook/kefu.js"></script> -->
+</body>
+</html>

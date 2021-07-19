@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function date(time, format) {
+    //   var symbol = [], flag = 0;
+    //   format.replace(/\w+(.)\w+(.)\w+/, function (match, $1, $2) {
+    //     symbol[0] = $1;
+    //     symbol[1] = $2;
+    //   })
+    //   time = time.replace(/-/g, function (match) {
+    //     return symbol[flag++];
+    //   })
+    //   if (format.length > 5) {
+    //     time += '日';
+    //   }
+    //   return time;
+    // }
+    // console.log(date('2020-08-22', 'y/m/d'));
+    // console.log(date('2020-08-22', 'y.m.d'));
+    // console.log(date('2020-08-22', 'y年m月d日'));
+
+    function date(time, format) {
+      var d1 = new Date(time);
+      var y = d1.getFullYear();
+      var m = ('0' + (d1.getMonth() + 1)).slice(-2);
+      var d = ('0' + d1.getDate()).slice(-2);
+
+      var h = ('0' + d1.getHours()).slice(-2);
+      var i = ('0' + d1.getMinutes()).slice(-2);
+      var s = ('0' + d1.getSeconds()).slice(-2);
+
+      return format.replace(/y/gi, y)
+        .replace(/m/gi, m)
+        .replace(/d/gi, d)
+        .replace(/h/gi, h)
+        .replace(/i/gi, i)
+        .replace(/s/gi, s);
+    }
+
+    console.log(date('2020-08-22', 'y/m/d'));
+    console.log(date('2020-08-22', 'y.m.d'));
+    console.log(date('2020-08-22', 'y年m月d日'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function findlongest(str) {
+      var arr = str.split(' ');
+      var temp = arr[0];
+      for (var i = 1; i < arr.length; i++) {
+        if (temp.length < arr[i].length) {
+          temp = arr[i];
+        }
+      }
+      return temp;
+    }
+
+    console.log(findlongest('Web Development tutorial'));
+
+  </script>
+</body>
+
+</html>

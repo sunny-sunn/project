@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <style>
+    .arrow{
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      border-style: solid;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: black;
+      border-right:none;
+
+      /* transparent 透明 */
+    }
+  </style>
+<!-- 
+  <div class="arrow">
+
+  </div> -->
+
+
+  <style>
+  .talk{
+    display: inline-block;
+    white-space: nowrap;
+    margin-bottom: 20px;
+  }
+  .talk p,
+  .talk i{
+    display: inline-block;
+  }
+
+  .talk p{
+    margin: 0;
+    background-color: blueviolet;
+    padding: 20px;
+    border-radius: 4px;
+  }
+  .talk i{
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-style: solid;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: blueviolet;
+    border-right:none;
+  }
+
+  .talk.top p,
+  .talk.top i{
+    vertical-align: top;
+  }
+  .talk.top i{
+    margin-top: 5px;
+  }
+
+  .talk.middle p,
+  .talk.middle i{
+    vertical-align: middle;
+    color: white;
+  }
+
+  .talk.bottom p,
+  .talk.bottom i{
+    vertical-align: bottom;
+  }
+  .talk.bottom i{
+    margin-bottom: 5px;
+  }
+  </style>
+
+  <div class="talk middle">
+    <p>今天晚上想吃点啥？</p><i></i>
+  </div>
+
+  <div class="talk middle">
+    <p>今天晚上想吃点啥？</p><i></i>
+  </div>
+
+  <div class="talk middle">
+    <p>今天晚上想吃点啥？</p><i></i>
+  </div>
+
+</body>
+</html>

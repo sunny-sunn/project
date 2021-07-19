@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <button onclick="submit()">获取评论</button>
+
+  </div>
+
+  <script src="js/axios.js"></script>
+  <script src="js/http.js"></script>
+  <script src="js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:'#app',
+      data:{
+        list:[],
+        form:{},
+        loading:true,
+      },
+      created(){
+        http.get('feedback/user?tid=0').then(res => {
+          this.list = res.result;
+          this.loading = false;
+        })
+      },
+      methods:{
+        submit(){
+          http.post('feedback/add',{asker:1,tid:0,...this.form}).then(res => {
+            alert('留言成功！');
+          })
+        }
+      }
+    });
+  </script>
+  
+</body>
+</html>

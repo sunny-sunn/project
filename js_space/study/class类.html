@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    // es5
+    // function Person(){
+    //   this.age = 20;
+    // }
+    // Person.prototype.age = 30;
+    // Person.prototype.getAge = function(){
+    //   return 80;
+    // }
+    // var p1 = new Person();
+    // console.log(p1.age);
+    // console.log(p1.getAge());
+
+    // es6
+    // class Person {
+    //   age = 30;
+    //   getAge() {
+    //     return 80;
+    //   }
+    //   // 构造函数
+    //   constructor() {
+    //     this.age = 20;
+    //   }
+    // }
+    // var p1 = new Person();
+    // console.log(p1.age);
+    // console.log(p1.getAge());
+
+
+    class Person{
+      age = 30;
+      name = '张三';
+      gender = '男';
+
+      getAge(){
+        return this.age;
+      }
+      getName(){
+        return this.name;
+      }
+      getGender(){
+        return this.gender;
+      }
+      constructor(){
+        this.getAge = this.getAge.bind(this);
+        this.getName = this.getName.bind(this);
+        this.getGender = this.getGender.bind(this);
+      }
+    }
+    var p1 = new Person();
+    console.log(p1.getAge());
+    console.log(p1.getName());
+    console.log(p1.getGender());
+  </script>
+
+</body>
+</html>

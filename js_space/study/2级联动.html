@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  select{
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+  }
+</style>
+
+<body>
+  
+  <select id="prov"></select>
+
+  <select id="city">
+    <option value="">请选择</option>
+  </select>
+
+  <select id="area">
+    <option value="">请选择</option>
+  </select>
+
+  <script>
+    var citys = [
+      {
+        id: 1,
+        name: '浙江省',
+        children: [
+          { id: 11, 
+            name: '杭州市',
+            children:[
+              {id:111,name:'经开区'},
+              {id:112,name:'高新区'},
+            ]
+          },
+          { id: 12, 
+            name: '宁波市',
+            children:[
+              {id:121,name:'A区'},
+              {id:122,name:'B区'},
+            ]
+          },
+          { id: 13, 
+            name: '温州市',
+            children:[
+              {id:131,name:'C区'},
+              {id:132,name:'D区'},
+            ]
+          }
+        ],
+      },
+      {
+        id: 2,
+        name: '江西省',
+        children: [
+          { id: 11, name: '南昌市' },
+          { id: 12, name: '九江市' },
+          { id: 13, name: '上饶市' }
+        ],
+      }
+    ];
+
+    showOptions('#prov',citys);
+
+    function showOptions(selector,data){
+      var temp = '<option value = "">请选择</option>';
+      for(var i=0;i<data.length;i++){
+        temp += `<option value = "${data[i].id}">${data[i].name}</option>`;
+      }
+      document.querySelector(selector).innerHTML = temp;
+    }
+
+    document.querySelector('#prov').onchange = function(){
+      var index = this.selectedIndex - 1;
+      if(index == -1){
+        document.querySelector('#city').innerHTML = '<option value = "">请选择</option>';
+        return;
+      }
+      showOptions('#city',citys[index].children);
+    }
+
+    document.querySelector('#city').onchange = function(){
+      var index = this.selectedIndex - 1;
+      if(index == -1){
+        document.querySelector('#area').innerHTML = '<option value = "">请选择</option>';
+        return;
+      }
+      showOptions('#area',citys[index].children[index].children);
+    }
+  </script>
+
+</body>
+</html>

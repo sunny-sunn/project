@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <h2>不会缓存的组件</h2>
+
+    <button @click="active1='ly-home'">首页</button>
+    <button @click="active1='ly-about'">关于</button>
+
+    <component :is="active1"></component>
+
+    <br><br>
+
+    <h2>会缓存的组件</h2>
+
+    <button @click="active2='ly-home'">首页</button>
+    <button @click="active2='ly-about'">关于</button>
+
+    <keep-alive>
+      <component :is="active2"></component>
+    </keep-alive>
+
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-home', {
+      template: `
+      <div>
+        <h4>网址首页</h4>
+        <input type="text">
+      </div>
+      `
+    })
+
+    Vue.component('ly-about', {
+      template: `
+      <div>
+        <h4>关于我们</h4>
+        <input type="text">
+      </div>
+      `
+    })
+
+
+    var app = new Vue({
+      el: '#app',
+      data:{
+        active1:'ly-home',
+        active2:'ly-home'
+      }
+    });
+  </script>
+  
+</body>
+</html>

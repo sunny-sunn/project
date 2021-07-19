@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">会员注册</h1>
+    <form action="">
+        <table border="0" cellpadding="10" cellspacing="1" bgcolor="black" align="center">
+            <tr bgcolor="white">
+                <th align="right">用户名：</th>
+                <td>
+                    <input type="text" placeholder="请输入用户名" multiple>
+                    <p>用户必须是字母开头，后面字母或者数字不能大于15位</p>
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">密码：</th>
+                <td>
+                    <input type="password" placeholder="请输入密码" multiple>
+                    <p>密码必须大于6位数</p>
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">确认密码：</th>
+                <td>
+                    <input type="password" placeholder="请确认密码" multiple>
+                    <p>密码必须大于6位数</p>
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">性别：</th>
+                <td>
+                    <label>
+                        <input name="gender" type="radio" value="man">男
+                    </label>
+                    <label>
+                        <input name="gender" type="radio" value="woman">女
+                    </label>
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">爱好：</th>
+                <td>
+                    <label>
+                        <input name="hobby" type="checkbox" value="打球">打球
+                    </label>
+                    <label>
+                        <input name="hobby" type="checkbox" value="游泳">游泳
+                    </label>
+                    <label>
+                        <input name="hobby" type="checkbox" value="看书">看书
+                    </label>
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">学历：</th>
+                <td>
+                    <select>
+                        <option value="">学历</option>
+                        <option value="1">中专</option>
+                        <option value="2">大专</option>
+                        <option value="3">本科</option>
+                    </select>
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">技能：</th>
+                <td>
+                    <select multiple>
+                        <option value="">技能</option>
+                        <option value="1">打球</option>
+                        <option value="2">游泳</option>
+                        <option value="3">看书</option>
+                    </select>
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">头像：</th>
+                <td>
+                    <input type="file">
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">邮箱：</th>
+                <td>
+                    <input type="email" placeholder="请输入邮箱" multiple>
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">生日：</th>
+                <td>
+                    <input type="date">
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">时间：</th>
+                <td>
+                    <input type="time">
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">颜色：</th>
+                <td>
+                    <input type="color">
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">主页：</th>
+                <td>
+                    <input type="url" placeholder="请输入网址">
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">搜索：</th>
+                <td>
+                    <input type="search" placeholder="请输入搜索内容">
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">电话：</th>
+                <td>
+                    <input type="tel" placeholder="请输入电话">
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">范围：</th>
+                <td>
+                    <input type="range" min="100" max="200" step="10">
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">金额：</th>
+                <td>
+                    <input type="number" placeholder="请选择金额">
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">城市：</th>
+                <td>
+                    <input type="text" placeholder="请选择城市" list="city">
+                    <datalist id="city">
+                        <option value="nanchang">南昌</option>
+                    <option value="guangzhou">广州</option>
+                    <option value="beijing">北京</option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th align="right">备注：</th>
+                <td>
+                    <textarea cols="30" rows="5" placeholder="请输入备注"></textarea>
+                </td>
+            </tr>
+            <tr bgcolor="white">
+                <th></th>
+                <td>
+                    <input type="submit" value="确认注册">
+                    <input type="reset" value="重置">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

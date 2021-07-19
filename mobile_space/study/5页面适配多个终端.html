@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    span{
+      display: block;
+      line-height: 100px;
+      text-align: center;
+      background-color: red;
+    }
+
+    /* 0-768 手机 默认 */
+    .container{
+      padding: 0 15px;
+    }
+
+    /* 768-992 平板 */
+    @media screen and (min-width: 768px) {
+      .container{
+        width: 750px;
+        margin: auto;
+        padding: 0;
+        background-color: red;
+      }
+    }
+
+    /* 992-1170 中等屏幕 */
+    @media screen and (min-width: 992px) {
+      .container{
+        width: 970px;
+      }
+    }
+
+    /* 1200以上 大型屏幕 */
+    @media screen and (min-width: 1200px) {
+      .container{
+        width: 1170px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span>内容</span>
+  </div>
+</body>
+</html>

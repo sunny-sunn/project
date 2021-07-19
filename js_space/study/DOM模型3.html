@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- <div id="box">
+    文本
+  </div>
+  
+  <script>
+    var box = document.getElementById('box');
+
+    var b1 = document.createElement('b');
+    var b2 = document.createElement('b');
+
+    // box.insertBefore(b1,box.firstChild);
+    // box.insertBefore(b2,box.firstChild);
+
+    // box.append(b1,b2);
+    box.prepend(b1,b2);
+  </script> -->
+
+
+  <!-- <input type="checkbox" id="cb">
+
+  <script>
+    var label = document.createElement('label');
+    var cb = document.getElementById('cb');
+
+    cb.before(label);
+    label.appendChild(cb);
+  </script> -->
+
+
+  <button id="btn">按钮</button>
+
+  <script>
+    var btn = document.getElementById('btn');
+    var a = document.createElement('a');
+    a.innerText = btn.innerText;
+
+    // btn.parentElement.replaceChild(a,btn);
+    btn.replaceWith(a);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <button @click="counter += 1">点赞{{counter}}</button>
+
+    <button @click="clickMe">单击</button>
+
+    <button @click="add(1,2)">相加</button>
+
+    <button @click="foo">事件对象</button>
+
+    <button @click="fn(8,$event)">事件对象</button>
+    <br>
+
+    <button @contextmenu.prevent="log('右击了！')">阻止默认动作</button>
+
+    <div @click="log('按钮被单击了！')">
+      <button @click.stop="log('按钮单击！')">阻止冒泡</button>
+    </div>
+
+    <button @click.once="log('触发了！')">只触发一次</button>
+
+    <div @click.self="log('只能单击div才能出发！')">
+      <span>
+        <button>只能点到div触发</button>
+      </span>
+    </div>
+
+    <div @scroll="scroll" ref="bar" style="height:100px; width:200px; overflow: auto;">
+      <div style="height: 300px;background-color: red;"></div>
+    </div>
+
+
+    <input @keyup.enter="submit" placeholder="按回车键">
+    <input @keyup.space="submit" placeholder="按空格键">
+
+    <button @click.ctrl="log('您按住ctrl单击了')">ctrl</button>
+    <button @click.shift="log('您按住shift单击了')">shift</button>
+    <button @click.alt="log('您按住alt单击了')">alt</button>
+
+    <button @click.left="log('您按左键了！')">left</button>
+    <button @click.middle="log('您按中键了！')">middle</button>
+    <button @click.right="log('您按右键了！')">right</button>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        counter:0,
+      },
+      methods:{
+        clickMe(){
+          alert('hello');
+        },
+        add(a,b){
+          console.log(a+b);
+        },
+        foo(event){
+          console.log(event);
+        },
+        fn(num,event){
+          console.log(num,event);
+        },
+        log(msg){
+          console.log(msg);
+        },
+        scroll(ev){
+          console.log(ev.target.scrollTop);
+        },
+        submit(){
+          alert('您按了键盘!');
+        }
+      }
+    });
+  </script>
+  
+</body>
+</html>

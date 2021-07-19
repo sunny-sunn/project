@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    button {
+      font-family: inherit;
+    }
+  
+    button.active {
+      color: red;
+    }
+  </style>
+
+	</head>
+	<body>
+
+    <h1>学生成绩表</h1>
+    
+    <p>
+      <button onclick="add()">添加成绩</button>
+    </p>
+    
+    <table border="1" cellspacing="0" cellpadding="8" width="500">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>得分</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    
+    </table>
+
+    <div id="btn"></div>
+		
+    <script>
+      var grade = [
+        { name: '张三1', score: 75 },
+        { name: '李四2', score: 80 },
+        { name: '张三3', score: 75 },
+        { name: '李四4', score: 80 },
+        { name: '张三5', score: 75 },
+        { name: '李四6', score: 80 },
+        { name: '张三7', score: 75 },
+        { name: '李四8', score: 80 },
+        { name: '张三9', score: 75 },
+        { name: '李四10', score: 80 },
+      ];
+
+      var cpage = 1;  //页码全局变量，方便各函数内部调用
+      list(cpage);
+
+      function list(page) {
+        var perpage = 2;
+        var total = grade.length;
+        var totalPage = Math.ceil(total / perpage);
+
+        if (page > totalPage) page -= 1;  //防止最后一页删除完所有记录，页码不前进一位
+        cpage = page;  //将当前页 赋值给 全局变量 （全局变量同步当前页码，方便del函数内部调用
+
+        var start = (page - 1) * perpage;
+        var end = start + perpage;
+        var data = grade.slice(start, end);
+
+        var listTemp = '';
+        for (var i = 0; i < data.length; i++) {
+          var index = start + i;
+          listTemp += '<tr>\
+        					<td>'+ (index + 1) + '</td>\
+        					<td>'+ data[i].name + '</td>\
+        					<td>'+ data[i].score + '</td>\
+                  <td>'+ '<button onclick="del(' + index + ')"">删除</button>' + '</td>\
+        				</tr>';
+        }
+        document.getElementById('tbody').innerHTML = listTemp;
+
+        var pageTemp = '';
+        if (page > 1) {
+          pageTemp = '<button onclick="list(' + (page - 1) + ')">上页</button>';
+        }
+        for (var p = 1; p <= totalPage; p++) {
+          var activeClass = (p === page ? 'active' : '');
+          pageTemp += '<button class="' + activeClass + '" onclick="list(' + p + ')">' + p + '</button>';
+        }
+        if (page < totalPage) {
+          pageTemp += '<button onclick="list(' + (page + 1) + ')">下页</button>';
+        }
+        document.getElementById('btn').innerHTML = pageTemp;
+      }
+
+      function add() {
+        grade.push({
+          name: prompt('姓名'),
+          score: prompt('得分'),
+        });
+
+        list(cpage);
+      }
+
+      // 删除
+      function del(i) {
+        if (confirm('您确定要删除此项吗？')) {
+          grade.splice(i, 1);
+          list(cpage);
+        }
+      }
+
+    </script>
+  </body>
+</html>

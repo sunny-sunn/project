@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    我叫{{name}}，今年{{age}}。
+  </div>
+
+  <script>
+    let app = document.getElementById('app');
+    let temp = app.innerHTML;
+    let info = {
+      name: '张三',
+      age: 20
+    };
+
+    let data = new Proxy(info, {
+      set(obj, name, value) {
+        obj[name] = value;
+        render();
+      }
+    });
+
+    render();
+
+    function render() {
+      app.innerHTML = temp.replace(/\{\{\w+\}\}/g, str => {
+        str = str.substring(2, str.length - 2);
+        return info[str];
+      });
+    }
+  </script>
+
+</body>
+</html>

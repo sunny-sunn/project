@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="shortcut icon" href="images/seecen.ico">
+</head>
+<style>
+    html,body{
+        margin: 0;
+        background-color: #21AD7E;
+        font-size: 14px;
+        color: #333;
+    }
+    input{
+        padding: 0;
+        box-sizing: border-box;
+        font-family: inherit;
+        outline: none;
+    }
+    p{
+        margin: 0;
+    }
+
+    .box{
+        box-sizing: border-box;
+        width: 380px;
+        height: 420px;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        padding: 35px;
+        border-radius: 3px;
+        user-select: none;
+    }
+    .box .logo{
+        text-align: center;
+        margin-bottom: 38px;
+        cursor: pointer;
+    }
+
+    .box .write{
+        text-align: center;
+        overflow: hidden;
+    }
+    .box .write input{
+        width: 310px;
+        height: 40px;
+        border: 1px solid #CFE0DA;
+        margin-bottom: 18px;
+        padding-left: 15px;
+        border-radius: 3px;
+    }
+    .box .write input::placeholder{
+        color: #B1BFBA;
+    }
+    .box .write input:focus{
+        border: 1px solid #B1BFBA;
+    }
+    .box .write [name=check]{
+        display: none;
+    }
+    .box .write span{
+        display: block;
+        cursor: pointer;
+        float: left;
+    }
+    .box .write span::before{
+        display: inline-block;
+        content: "";
+        width: 20px;
+        height: 20px;
+        border: 1px solid #CFE0DA;
+        border-radius: 4px;
+        margin-right: 10px;
+        vertical-align: middle;
+        color: #444;
+        vertical-align: middle;
+    }
+    .box .write [name=check]:checked +span::before{
+        /* content: "√";
+        color: #28C08D; */
+        background: url(images/icon_right.png) no-repeat 50% 50%;
+    }
+    .box .write a{
+        text-decoration: none;
+        color: inherit;
+        float: right;
+    }
+    .box .write a:hover{
+        text-decoration: underline;
+    }
+    .box .write button{
+        width: 310px;
+        height: 40px;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color: #28C08D;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .box .footer{
+        text-align: center;
+        padding-top: 52px;
+    }
+    .box .footer a{
+        text-decoration: none;
+        color: #28C08D;
+    }
+    .box .footer a:hover{
+        text-decoration: underline;
+    }
+    .box .footer img{
+        padding-left: 2px;
+        vertical-align: bottom;
+    }
+    </style>
+<body>
+    <div class="box">
+        <p class="logo"><img src="images/logo (2).png"></p>
+        <form class="write">
+            <p><input type="email" placeholder="邮箱"></p>
+            <p><input type="password" placeholder="密码"></p>
+            <label>
+                <input name="check" type="checkbox">
+                <span>记住账号</span>
+            </label>
+            <a href="#">忘记密码</a>
+            <br>
+            <button>登录</button>
+            
+        </form>
+        <p class="footer">没有账号，
+            <a href="#">马上注册
+                <img src="images/icon_arrow.png"></a>
+            
+        </p>
+    </div>
+</body>
+</html>

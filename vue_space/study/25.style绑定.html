@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <!--1. 静态的 -->
+    <div style="color:red;font-size: 24px;">文本1</div>
+
+    <!--2. 动态的 使用对象模式 -->
+    <div :style="{color:'red',fontSize: '24px'}">文本2</div>
+
+    <!--3. 动态的 将对象放入data中，当然也可以放入计算属性中 -->
+    <div :style="text1">文本2</div>
+
+    <!--4. 动态的 数组 后面对象newStyle覆盖前面oldStyle的对象 -->
+    <div :style="[ oldStyle, newStyle]">文本3</div>
+
+    <!--5. 自动添加前缀，会自动侦测并添加相应的前缀 -webkit -ms -o  -->
+    <div :style="{transition: 'all 0.3s'}">前缀</div>
+
+    <!--6. 多重值，先使用最右侧的，不支持然后往进一位判断，后备机制 -->
+    <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+  var app = new Vue({
+    el: '#app',
+    data:{
+      text1: {
+        color:'red',
+        fontSize: '24px'
+      },
+      oldStyle: {
+        color: 'blue',
+        fontSize: '30px'
+      },
+      newStyle: {
+        color:'yellow'
+      }
+    }
+  })
+  </script>
+  
+</body>
+</html>

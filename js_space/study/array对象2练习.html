@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1>学生成绩表</h1>
+
+  <p>
+    <button onclick="add()">添加成绩</button>
+    <button onclick="sort()">分数排序</button>
+    <button onclick="highe()">最高分</button>
+    <button onclick="low()">最低分</button>
+    <button onclick="avg()">平均分</button>
+    <button onclick="pass()">及格人数</button>
+    <button onclick="batchDel()">批量删除</button>
+    <input oninput="search(this)" placeholder="请输入关键字">
+  </p>
+
+  <table border="1" cellspacing="0" cellpadding="8" width="500">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>得分</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      <tr>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+
+    var sites = [
+      { stuName: '张三', stuGrade: 75 },
+      { stuName: '李四', stuGrade: 80 },
+      { stuName: '张四', stuGrade: 75 },
+      { stuName: '李五', stuGrade: 80 },
+      { stuName: '张五', stuGrade: 75 },
+      { stuName: '李六', stuGrade: 80 },
+      { stuName: '张六', stuGrade: 75 },
+      { stuName: '李七', stuGrade: 80 },
+    ];
+
+    function list(arr) {
+      var temp = '';
+      for (var i = 0; i < arr.length; i++) {
+        temp += '<tr>\
+        <td>'+ (i + 1) + '</td>\
+        <td>'+ arr[i].stuName + '</td>\
+        <td>'+ arr[i].stuGrade + '</td>\
+        </tr>';
+      }
+      document.getElementById('tbody').innerHTML = temp;
+    }
+    list(sites);
+
+    // 添加成绩
+    function add() {
+      var stuName = prompt('姓名');
+      var stuGrade = prompt('分数');
+      sites.push({
+        stuName: stuName,
+        stuGrade: Number(stuGrade),
+      });
+      list(sites);
+    }
+
+    // 分数排序
+    function sort() {
+      for (var i = 0; i < sites.length; i++) {
+        for (var j = 0; j < i + 1; j++) {
+          if (sites[i].stuGrade > sites[j].stuGrade) {
+            var str = sites[i].stuGrade;
+            sites[i].stuGrade = sites[j].stuGrade;
+            sites[j].stuGrade = str;
+            var temp = sites[i].stuName;
+            sites[i].stuName = sites[j].stuName;
+            sites[j].stuName = temp;
+          }
+        }
+      }
+      list(sites);
+    }
+
+    // 最高分
+    function highe() {
+      var str = sites[0].stuGrade;
+      for (var i = 0; i < sites.length; i++) {
+        if (str < sites[i].stuGrade) {
+          str = sites[i].stuGrade;
+        }
+      }
+      alert('最高分：' + str);
+    }
+
+    // 最低分
+    function low() {
+      var str = sites[0].stuGrade;
+      for (var i = 0; i < sites.length; i++) {
+        if (str > sites[i].stuGrade) {
+          str = sites[i].stuGrade;
+        }
+      }
+      alert('最低分：' + str);
+    }
+
+    // 平均分
+    function avg() {
+      var sum = 0;
+      for (var i = 0; i < sites.length; i++) {
+        sum = sum + sites[i].stuGrade;
+      }
+      var str = sum / sites.length;
+      alert('平均分：' + str.toFixed(1));
+    }
+
+    // 及格人数
+    function pass() {
+      var str = 0;
+      for (var i = 0; i < sites.length; i++) {
+        if (sites[i].stuGrade >= 60) {
+          str++;
+        }
+      }
+      alert('及格人数：' + str);
+    }
+
+    // 批量删除
+    function batchDel() {
+      var ids = prompt('请输入名称');
+      ids = ids.split(',');
+      sites = sites.filter(function (item) {
+        return !ids.includes(String(item.stuName));
+      })
+
+      list(sites);
+    }
+
+    // 搜索
+    function search(input) {
+      var keyword = input.value.trim();
+      var result = sites.filter(function (item) {
+        return item.stuName.indexOf(keyword) !== -1 ||
+          String(item.stuGrade).indexOf(keyword) !== -1;
+      })
+      list(result);
+    }
+
+  </script>
+
+</body>
+
+</html>

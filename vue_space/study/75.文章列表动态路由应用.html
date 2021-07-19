@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <router-view></router-view>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script src="js/axios.js"></script>
+  <script src="js/http.js"></script>
+  <script src="js/vue-router.js"></script>
+  <script>
+    const list = {
+      template: `
+          <div>
+            <h2>评论列表</h2>
+            <ul>
+              <li v-for="item in comment">
+                <router-link :to="'/article/list/'+item.id">{{item.title}}</router-link>
+              </li>
+            </ul>
+          </div>
+          `,
+      data() {
+        return {
+          comment: []
+        }
+      },
+      created() {
+        http.get('feedback/user?tid=0').then(res => {
+          this.comment = res.result;
+        })
+      }
+    };
+
+    const detail = {
+      template: `
+          <div>
+            <h2>评论详情</h2>
+            <h4>{{info.title}}</h4>
+            <p>{{info.content}}</p>
+            <br><hr>
+            <button @click="$router.back()">返回列表</button>
+            <router-link to="/article/list/4033">下一页</router-link>
+          </div>
+          `,
+      data() {
+        return {
+          info: {}
+        }
+      },
+      created() {
+        this.fetch(this.$route.params.id);
+      },
+      watch: {
+        $route(to) {
+          this.fetch(to.params.id);
+        }
+      },
+      methods: {
+        fetch(id) {
+          http.get('feedback/user/' + id).then(res => {
+            this.info = res.result;
+          })
+        }
+      }
+    };
+
+    const router = new VueRouter({
+      routes: [
+        { path: '/article/list', component: list },
+        { path: '/article/list/:id', component: detail },
+      ]
+    });
+
+    const app = new Vue({
+      el: '#app',
+      router,
+    });
+  </script>
+  
+</body>
+</html>

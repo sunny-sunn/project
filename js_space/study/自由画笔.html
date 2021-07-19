@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=c, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  
+  html,body{
+    background-color: #ccc;
+  }
+  #mywork{
+    background-color: white;
+    cursor: url('pen.png'), default;
+  }
+  </style>
+</head>
+<body>
+  
+  <c-anvas id="mywork" width="800" height="500"></canvas>
+
+  <script>
+  var mywork = document.getElementById('mywork');
+  var ctx = mywork.getContext('2d');
+  ctx.lineWidth = 3;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle='#FF0000';
+
+  mywork.onmousedown = function(ev){
+
+    var startX = ev.clientX;
+    var startY = ev.clientY;
+
+    ctx.moveTo(startX, startY);
+
+    document.onmousemove = function(ev){
+      var endX = ev.clientX;
+      var endY = ev.clientY;
+      ctx.lineTo(endX, endY);
+      ctx.stroke();
+    }
+
+    document.onmouseup = function(ev){
+      document.onmousemove = null;
+    }
+  }
+
+  </script>
+
+</body>
+</html>

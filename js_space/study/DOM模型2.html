@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .gx-checkbox [type="checkbox"] {
+    display: none;
+    cursor: pointer;
+  }
+
+  .gx-checkbox>span::before {
+    content: " ";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  .gx-checkbox>input:checked+span {
+    color: red;
+    text-align: center;
+  }
+
+  .gx-checkbox>input:checked+span::before {
+    border-color: red;
+    content: "✔";
+  }
+</style>
+<body>
+
+  <!-- <div id="box">
+    <p>111</p>
+    <p>222</p>
+  </div>
+  <script>
+    var box = document.getElementById('box');
+    // console.log(box.childNodes);
+    var nodes = box.childNodes;
+
+    var arr = [];
+    for(var i=0;i<nodes.length;i++){
+      if(nodes[i].nodeType !==3) continue;
+      arr.push(nodes[i]);
+    }
+    console.log(arr);
+  </script> -->
+
+  <!-- <div></div>
+  <script>
+    var div = document.createElement('div');
+    div.innerText = 'add';
+    console.log(div.isConnected);
+    document.body.appendChild(div);
+    console.log(div.isConnected);
+  </script> -->
+
+  <!-- <div id="box">
+    段落
+  </div>
+  <p id="p">文本</p>
+  <script>
+    var p = document.getElementById('p');
+    document.getElementById('box').appendChild(p);
+  </script> -->
+
+  <!-- <button id="btn">按钮</button>
+  <div id="box"></div>
+  <script>
+    var btn = document.getElementById('btn');
+    btn.onclick = function(){
+      alert(111);
+    }
+    var _btn = btn.cloneNode(true);
+    var box = document.getElementById('box');
+    box.appendChild(_btn);
+  </script> -->
+
+  <!-- <div id="box">
+    文本  <b></b> 文字 <i></i> 最后
+  </div>
+  <script>
+    var p = document.createElement('p');
+    var box = document.getElementById('box');
+    box.insertBefore(p, box.childNodes[2]);
+  </script> -->
+
+  <input type="checkbox"> 复选框
+  <script>
+    var label = document.createElement('label');
+    label.className = 'gx-checkbox';
+    var span = document.createElement('span');
+
+    var checkbox = document.querySelector('[type="checkbox"]');
+    span.appendChild(checkbox.nextSibling);
+
+    checkbox.parentElement.insertBefore(label, checkbox);
+
+    label.appendChild(checkbox);
+    label.appendChild(span);
+  </script>
+
+
+  <!-- <input type="checkbox"> 篮球
+  <input type="checkbox"> 足球
+  <input type="checkbox"> 排球
+
+  <script>
+    var label = document.createElement('label');
+    label.className = 'chencbox';
+  </script> -->
+
+
+  <!-- <p><button onclick="add()">添加</button></p>
+  <table border="1" cellspacing="0" cellpadding="8" width="500">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>得分</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <script>
+    function add() {
+      var tbody = document.getElementById('tbody');
+
+      var name = prompt('请输入姓名！');
+      var score = prompt('请输入分数！');
+
+      var tr = document.createElement('tr');
+
+      var nameTd = document.createElement('td');
+      nameTd.innerText = name;
+
+      var scoreTd = document.createElement('td');
+      scoreTd.innerText = score;
+
+      var operateTd = document.createElement('td');
+
+      var delBtn = document.createElement('button');
+      delBtn.innerText = '删除';
+      delBtn.onclick = function () {
+        if (confirm('您确定要删除此行吗？')) {
+          var tr = this.parentElement.parentElement;
+          tr.parentElement.removeChild(tr);  //tr.remove();
+        }
+      }
+
+      var editBtn = document.createElement('button');
+      editBtn.innerText = '修改';
+
+      operateTd.appendChild(delBtn);
+      operateTd.appendChild(editBtn);
+
+      tr.appendChild(nameTd);
+      tr.appendChild(scoreTd);
+      tr.appendChild(operateTd);
+
+      tbody.appendChild(tr);
+    }
+  </script> -->
+
+</body>
+</html>

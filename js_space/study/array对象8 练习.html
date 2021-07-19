@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <input type="text" placeholder="请输入关键字" id="keyword">
+  <button id="searchBtn">搜索</button>
+
+  <script>
+    var mycarts = [
+      { id: 1, title: '手机', price: 1500 },
+      { id: 2, title: '手套', price: 30 },
+      { id: 3, title: '帽子', price: 120 }
+    ];
+
+    document.getElementById('keyword').oninput = function(){
+      var word = this.value.trim();
+
+      var result = mycarts.filter(function(item){
+        return item.title.indexOf(word) !== -1 || item.price.toString().indexOf(word) !== -1;
+      })
+      console.log(result);
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // let [foo,[[bar],baz]] = [1,[[2],3]];
+    // console.log(foo);
+    // console.log(bar);
+    // console.log(baz);
+
+    // let [,,third] = ['foo','bar','baz'];
+    // console.log(third);
+
+    // let [x,y] = [1,2,3];
+    // console.log(x);
+    // console.log(y);
+
+    // let [head,...tail] = [1,2,3,4];
+    // console.log(head);
+    // console.log(tail);
+
+    // let [x,y,...z] = ['a'];
+    // console.log(x);
+    // console.log(y);
+    // console.log(z);
+
+    // let {bar,foo} = {foo:'aaa',bar:'bbb'};
+    // console.log(bar,foo);
+
+    // let {foo:yui} = {foo:'aaa',bar:'bbb'};
+    // console.log(yui);
+
+    // var {x=3} = {};
+    // console.log(x);
+
+    // var {x,y=5} = {x:1};
+    // console.log(x);
+    // console.log(y);
+
+
+    var a = {x:1};
+    var b = {y:2};
+    var m = new Map();
+    m.set(a,'吃饭');
+    m.set(b,'下课');
+    console.log(m.get(a),m.get(b));
+  </script>
+
+</body>
+</html>

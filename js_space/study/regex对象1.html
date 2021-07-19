@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // console.log(/cat/.test('111cat sand dogs'));
+    // console.log(/@/g.exec('xi@anweb@qq.com'));
+    // console.log('xian@web@qq.com'.match(/@/g));
+    // console.log('xianweb@qq@.com'.replace(/@/g,'$'));
+    // console.log('hello worLd'.replace(/l/gi,'*'));
+
+    //去除首尾空格
+    // var str = ' aaaaaa ';
+    // console.log(str);
+    // console.log(str.replace(/^\s+|\s+$/g,''));
+    
+
+    // console.log('xianweb@qq.com'.replace(/@/g,'$&-$&'));
+    // console.log('xianweb@qq.com'.replace(/@/g,'$`'));
+    // console.log('xianweb@qq.com'.replace(/@/g,'$\''));
+
+    // console.log('hello-worLd'.replace(/(\w+)(-)(\w+)/,'$3 $2 $1'));
+
+    // var a = '3 and 5'.replace(/[0-9]+/g,function (match){
+    //   return 2 * match;
+    // })
+    // console.log(a);
+
+
+    var a = 'The quick brown fox jumped over the lazy dog.';
+    var pattern = /quick|brown|lazy/ig;
+    var str = a.replace(pattern,function replacer(match){
+      return match.toUpperCase();
+    })
+    console.log(str);
+    
+  </script>
+</body>
+</html>

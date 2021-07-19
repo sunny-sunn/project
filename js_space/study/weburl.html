@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+  <h1>网址导航</h1>
+
+  <p>
+    <button onclick="add('unshift')">往前添加网站</button>
+    <button onclick="add('push')">往后添加网站</button>
+    <!-- <button onclick="add()">添加网站</button> -->
+  </p>
+
+  <table border="1" cellspacing="0" cellpadding="8" width="500">
+    <thead>
+      <tr>
+        <th>网站名称</th>
+        <th>网站链接</th>
+        <th>网站评分</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      <tr>
+        <td>网易</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <script>
+    var sites = [
+      { webname: '网易', weburl: 'www.155.com', webstar: '★★★' },
+      { webname: '新浪', weburl: 'www.159.com', webstar: '★' },
+    ];
+    
+    function list() {
+      var temp = '';
+      for (var i = 0; i < sites.length; i++) {
+        temp += '<tr>\
+        <td>'+ sites[i].webname + '</td>\
+        <td>'+ sites[i].weburl + '</td>\
+        <td>'+ sites[i].webstar + '</td>\
+        </tr>';
+      }
+      document.getElementById('tbody').innerHTML = temp;
+    }
+    list();
+
+    // function add() {
+    //   var webname = prompt('请输入网站名称');
+    //   var weburl = prompt('请输入网站链接');
+    //   var webstar = prompt('请输入网站评分');
+    //   sites.push({
+    //     webname: webname,
+    //     weburl: weburl,
+    //     webstar: webstar,
+    //   });
+    //   list();
+    // }
+
+    function add(type) {
+      sites[type]({
+        webname: prompt('请输入网站名称'),
+        weburl: prompt('请输入网站链接'),
+        webstar: prompt('请输入网站评分'),
+      });
+      list();
+    }
+
+  </script>
+
+</body>
+
+</html>

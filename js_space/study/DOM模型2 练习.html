@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <p><button onclick="add()">添加</button></p>
+  <table border="1" cellspacing="0" cellpadding="8" width="500">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>得分</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <script>
+
+    var store = [];
+    var flag = '';
+
+    function add() {
+      flag = 'add';
+
+      var tbody = document.getElementById('tbody');
+
+      var tr = document.createElement('tr');
+
+      var nameTd = document.createElement('td');
+      nameInput = document.createElement('input');
+      nameTd.appendChild(nameInput);
+      setTimeout(function () { nameInput.focus() }, 0);
+
+      var scoreTd = document.createElement('td');
+      scoreInput = document.createElement('input');
+      scoreTd.appendChild(scoreInput);
+
+      var actionTd = document.createElement('td');
+
+      var cancelBtn = document.createElement('button');
+      cancelBtn.innerText = '取消';
+      cancelBtn.onclick = function () {
+        if (confirm('您确定要执行此操作吗？')) {
+          var tr = this.closest('tr');
+          var index = Array.from(tbody.children).indexOf(tr);
+          store.splice(index,1);
+          tr.remove();
+        }
+      }
+
+      var saveBtn = document.createElement('button');
+      saveBtn.innerText = '保存';
+
+      saveBtn.onclick = function () {
+        if (this.innerText == '保存') {
+
+          var nameInput = nameTd.firstElementChild;
+          var scoreInput = scoreTd.firstElementChild;
+
+          if (nameInput.value == '') {
+            alert('请输入姓名！');
+            nameInput.focus();
+            return false;
+          }
+
+          if (!/\d+/.test(scoreInput.value)) {
+            alert('请输入数字！');
+            scoreInput.focus();
+            return false;
+          }
+
+          var nameVal = nameInput.value.trim();
+          var scoreVal = scoreInput.value.trim();
+
+          nameTd.innerText = nameVal;
+          scoreTd.innerText = scoreVal;
+
+          this.innerText = '修改';
+          cancelBtn.innerHTML = '删除';
+
+          var info = {
+            name: nameVal,
+            score: scoreVal,
+          };
+
+          if (flag == 'add') {
+            store.unshift(info);
+          } else if (flag == 'edit') {
+            var tr = this.closest('tr');
+            var index = Array.from(tbody.children).indexOf(tr);
+            store[index] = info;
+          }
+
+        } else if (this.innerText == '修改') {
+          flag = 'edit';
+          this.innerText = '保存';
+          var nameText = nameTd.innerText;
+          var scoreText = scoreTd.innerText;
+
+          nameTd.innerHTML = '<input value="' + nameText + '">';
+          scoreTd.innerHTML = '<input value="' + scoreText + '">';
+
+          setTimeout(function () {
+            nameTd.firstElementChild.focus();
+          }, 0)
+        }
+      }
+
+      actionTd.appendChild(cancelBtn);
+      actionTd.appendChild(saveBtn);
+
+      tr.appendChild(nameTd);
+      tr.appendChild(scoreTd);
+      tr.appendChild(actionTd);
+
+      tbody.insertBefore(tr, tbody.firstChild);
+    }
+
+    setInterval(function () {
+      console.log(store);
+    }, 1000);
+
+  </script>
+
+</body>
+</html>

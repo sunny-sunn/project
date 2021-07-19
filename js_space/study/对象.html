@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 链式引用
+        // var o1 = {};
+        // var o2 = {bar:'hello'};
+        // o1.foo = o2;
+        // o1.foo.bar
+
+
+        // 
+        // var o1 = {};
+        // var o2 = o1;
+
+        // o1.a = 1;
+        // o2.a;
+        // console.log(o1.a);
+
+        // o2.b = 2;
+        // o1.b;
+        // console.log(o1.b);
+
+
+        // 
+        // console.log('{foo:123}');
+        // console.log(eval('2*2'));
+        // console.log(eval('{foo:123}'));
+        // console.log(eval('({foo:123})'));
+
+
+        // 
+        // var a = {
+        //     name:'zhangsan',
+        //     getAge:function(){
+        //         return 24;
+        //     }
+        // }
+
+        // a.gender='女';
+
+        // console.log(a.name);
+        // console.log(a['gender']);
+        // console.log(a.getAge());
+
+
+        // 
+        // var person = {
+        //     name:'zhangsan',
+        //     age: 20,
+        //     10: 'abc',
+        // }
+
+        // delete person[10];
+        
+        // console.log(Object.keys(person));
+
+
+        // 用js判断是移动端还是PC端
+        // console.log('ontouchend' in document)
+
+
+        // 
+        // var obj = {a: 1,b: 2,c: 3};
+        // for(var key in obj){
+        //     console.log(key,obj[key]);
+        // }
+
+
+        // 对象的浅拷贝
+        var person = {
+            name: 'zhangsan',
+            age: 20,
+        }
+
+        var _person = {};
+        for(var key in person){
+            _person[key] = person[key];
+        }
+
+        delete _person.age;
+
+        console.log(person,_person);
+
+
+        // 
+        // Object.defineProperty(Object.prototype,'free',{
+        //     value:'免费',
+        //     // enumerable:true,  // 可枚举
+        //     configurable:false, 
+        // })
+
+        // var obj = {
+        //     name: 'zhangsan',
+        //     age: 20,
+        // };
+        // for(var key in obj){
+        //     console.log(key);
+        // }
+
+    </script>
+</body>
+</html>

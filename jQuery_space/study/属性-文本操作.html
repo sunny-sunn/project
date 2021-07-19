@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+  <div id="box">
+    <p>段落</p>
+  </div>
+
+  <input id="user" type="text">
+
+  <select id="xueli">
+    <option value="">请选择</option>
+    <option value="1">本科</option>
+    <option value="2">大专</option>
+  </select>
+
+  <input name="gender" type="radio" value="boy"> 男
+  <input name="gender" type="radio" value="girl"> 女
+
+  <script>
+    $(function(){
+      // console.log($('#box').html());
+
+      // $('#box').html('<b>加粗</b>');
+
+      // console.log($('#box').text());
+
+      // $('#box').text('<b>加粗</b>');
+
+      // $('#user').val('张三');
+      // console.log($('#user').val())
+
+      // $('#xueli').val('2');
+
+      $('[name="gender"]').eq(0).prop({checked:true});
+    })
+  </script>
+  
+</body>
+</html>

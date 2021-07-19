@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+  
+    <!-- 错误写法 -->
+    <!-- <div id="{{id}}"></div> -->
+  
+    <!-- 正确写法 -->
+    <div v-bind:id="id"></div>
+  
+    <!-- 静态的类cls -->
+    <div class="cls"></div>
+  
+    <!-- 动态的类名cls -->
+    <div v-bind:class="cls"></div>
+  
+    <!-- 原生style写法，静态的 -->
+    <span style="color: red;">文本1</span>
+  
+    <!-- vue style的写法，动态的 -->
+    <span v-bind:style="textStyle">文本2</span>
+  
+  </div>
+
+  <script src="js/vue.js"></script>
+
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        id:'banner',
+        cls:'red',
+        textStyle:{color:'red'}
+      }
+    });
+  </script>
+  
+</body>
+</html>

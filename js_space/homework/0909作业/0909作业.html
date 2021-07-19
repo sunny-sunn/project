@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="box"></div>
+
+  <script>
+    var box = document.getElementById('box');
+    var span = document.createElement('span');
+    var p = document.createElement('p');
+    box.appendChild(span);
+    document.body.insertBefore(p,document.body.firstChild);
+    p.parentNode.removeChild(p);
+    span.textContent = '123';
+    p.parentNode.replaceChild(span,p);
+    var children = document.querySelector('box').childNodes;
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view>
+  <view class="book">
+    <text class="book-item" wx:for="{{books}}" wx:key="*this">{{item.title}}</text>
+  </view>
+
+  <view class="page">
+    <text wx:for="{{totalpage}}"
+    class="{{(item+1)===page?'active':''}}"
+    bindtap="goPage"
+    data-page="{{item+1}}"
+    wx:key="*this"
+    >{{item+1}}</text>
+  </view>
+
+  <text>当前页 {{page}},每页 {{perpage}} 条，共 {{totalpage}} 页</text>
+</view>
+

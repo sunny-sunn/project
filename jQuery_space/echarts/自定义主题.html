@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/echarts.min.js"></script>
+  <script src="js/macarons.js"></script>
+</head>
+<body>
+
+  <div id="main" style="width: 600px;height:400px;"></div>
+
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'),'macarons');
+
+    var option = {
+      title: {
+        text: 'ECharts 入门示例'
+      },
+      tooltip: {},
+      legend: {
+        data: ['销量1','销量2']
+      },
+      xAxis: {
+        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子","帽子"]
+      },
+      yAxis: {},
+      series: [{
+        name: '销量1',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20,15]
+      },
+      {
+        name: '销量2',
+        type: 'bar',
+        data: [8, 18, 26, 10, 16, 20,18]
+      },
+    ]
+    };
+
+    myChart.setOption(option);
+  </script>
+
+</body>
+</html>

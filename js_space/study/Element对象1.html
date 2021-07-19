@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<!-- <style>
+  .tooltip{
+    display: none;
+    position: absolute;
+    border-radius: 4px;
+    background-color: #666;
+    padding: 5px;
+    color: white;
+  }
+</style> -->
+
+<body>
+
+  <!-- <span title="111">文本1</span>
+  <span title="222">文本2</span>
+  
+  <script>
+    +function(){
+      var titles = document.querySelectorAll('[title]');
+      
+      titles.forEach(function(el){
+        var title = el.title;
+        el.title = '';
+        var span = document.createElement('span');
+        span.className = 'tooltip';
+        span.innerText = title;
+        el.after(span);
+        
+        el.onmouseover = function(ev){
+          span.style.display = 'block';
+          span.style.left = ev.clientX + 'px';
+          span.style.top = ev.clientY + 'px';
+        }
+
+        el.onmouseout = function(){
+          span.style.display = 'none';
+        }
+      })
+    }()
+  </script> -->
+
+
+  <p id="user" name="myuser" class="red"></p>
+
+  <script>
+    var p = document.querySelector('p');
+    var attrs = p.attributes;
+    for(var i=0;i<attrs.length;i++){
+      console.log(attrs[i].nodeName,'=>',attrs[i].nodeValue);
+    }
+  </script>
+  
+</body>
+</html>

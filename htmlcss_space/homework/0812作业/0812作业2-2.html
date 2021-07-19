@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1971511_wim3da47urc.css">
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .box .nav{
+        position: relative;
+        width: 600px;
+        height: 60px;
+        line-height: 60px;
+        color: #fff;
+        background-color: #00A1E9;
+    }
+    .box .nav span.fanhui{
+        position: absolute;
+        left: 10px;
+    }
+    .box .nav span.shouye{
+        position: absolute;
+        left: 50%;
+        margin-left: -15px;
+    }
+    .box .nav .bar{
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 50%;
+        right: 5px;
+        margin-top: -20px;
+        text-align: center;
+    }
+    .box .nav .bar ul{
+        position: absolute;
+        width: 30px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .box .nav .bar ul li{
+        height: 3px;
+        background-color: #fff;
+        margin-bottom: 5px;
+        transition: all .3s ease;
+    }
+    .box .nav .bar ul li.three{
+        margin-bottom: 0;
+    }
+    .box .nav .bar ul.animate li.one{
+        transform: translateY(8px) rotate(45deg);
+    }
+    .box .nav .bar ul.animate li.two{
+        opacity: 0;
+    }
+    .box .nav .bar ul.animate li.three{
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .box .menu{
+        display: none;
+        width: 600px;
+        background-color: #00A1E9;
+        text-align: center;
+        color: #fff;
+    }
+    .box .menu ul li{
+        line-height: 50px;
+        border-bottom: 1px solid #bbb;
+    }
+    .box .menu.active{
+        display: block;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="nav">
+            <span class="fanhui">返回</span>
+            <span class="shouye">首页</span>
+            <div class="bar" id="bar">
+                <ul id="bar-1">
+                    <li class="one"></li>
+                    <li class="two"></li>
+                    <li class="three"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li>首页</li>
+                <li>新闻</li>
+                <li>指南</li>
+                <li>票务</li>
+                <li>魅力昆山</li>
+                <li>赛程</li>
+                <li>图文</li>
+                <li>视频</li>
+                <li>关于我们</li>
+                <li>联系我们</li>
+            </ul>
+        </div>
+    </div>
+<script>
+    document.getElementById('bar-1').onclick=function(){
+        this.classList.toggle('animate');
+    }
+</script>  
+
+<script>
+    document.getElementById('bar').onclick=function(){
+      document.getElementById('menu').classList.toggle('active');
+    }
+    </script>
+</body>
+</html>

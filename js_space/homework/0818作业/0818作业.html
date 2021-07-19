@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 函数求最大值，最小值
+        // var arr = [1,7,2,6,5,4];
+        // var maxnum=arr[0];
+        // var minnum=arr[0];
+        // function num(){
+        //     for(var i=0;i<arr.length;i++){
+        //         if(arr[i] > maxnum){
+        //            maxnum = arr[i];
+        //         }
+        //         if(arr[i] < minnum){
+        //             minnum = arr[i];
+        //         }
+        //     }
+        //     console.log(maxnum);
+        //     console.log(minnum);
+        // }
+        // num();
+
+
+        // // 统计字符重复的次数
+        // var arr = ['h','e','l','l','o','w','o','r','l','d'];
+        // var obj = {};
+        // function count(arr) {
+        //     for (var i=0;i<arr.length;i++) {
+        //         if (obj[arr[i]]) {
+        //             obj[arr[i]] += 1;
+        //         } else {
+        //             obj[arr[i]] = 1;
+        //         }
+        //     }
+        //     return obj;
+        // }
+        // console.log(count(arr));
+
+
+        // 冒泡排序
+        var array = [10,20,9,8,79,65,100];
+        function arr(array){
+            for(var i=0;i<array.length;i++){
+                for(var j=0;j<array.length;j++){
+                    if (array[i]<array[j]){
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+            return array;
+        }
+        console.log(arr(array));
+
+    </script>
+
+</body>
+</html>

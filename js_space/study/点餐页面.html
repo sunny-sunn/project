@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html{
+    font-size: 10px;
+  }
+  body{
+    font-size: 1.4rem;
+    color: #3c3c3c;
+  }
+  html,body{
+    background-color: #c0c0c0;
+  }
+  ul{
+   list-style: none;
+  }
+
+  ::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+    
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, .1);
+    border-radius: 4px;
+  }
+
+  .app{
+    max-width: 430px;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+  }
+  .banner{
+    background-color: rgba(255, 192, 109, 0.938);
+    padding: 20px 15px;
+  }
+  .banner h1{
+    font-size: 18px;
+  }
+  .buycart{
+    padding: 0 15px;
+    line-height: 60px;
+    background-color: #222;
+  }
+  .buycart h2{
+    font-size: 16px;
+    color: white;
+  }
+  .main{
+    position: relative;
+    height: calc( 100vh - 124px);
+    overflow: hidden;
+  }
+  .category{
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    background-color: #e0e0e0;
+  }
+  .category li{
+    padding: 20px 15px;
+    cursor: pointer;
+  }
+  .category li:hover{
+    background-color: #d0d0d0;
+  }
+  .category li.active{
+    background-color: white;
+  }
+  .content{
+    padding-left: 75px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .content h2{
+    padding: 15px 0;
+    font-size: 14px;
+  }
+  .content .item{
+    min-height: 600px;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  </style>
+</head>
+<body>
+  
+  <div class="app">
+
+    <div class="banner">
+      <h1>老龚外卖</h1>
+    </div>
+
+    <div class="main">
+
+      <ul class="category"></ul>
+
+      <div class="content"></div>
+
+    </div>
+
+    <div class="buycart">
+      <h2>购物车</h2>
+    </div>
+
+  </div>
+
+
+  <script>
+  var active = 0;
+  if(localStorage.getItem('active')){
+    active = +localStorage.getItem('active');
+  }
+  
+  var categorys = [
+    {id:1,name:'折扣'},
+    {id:2,name:'套餐'},
+    {id:3,name:'烧烤'},
+    {id:4,name:'饮料'}
+  ];
+
+  var goods = [
+    {id:2, pid:1 ,title:'折扣内容'},
+    {id:5, pid:2 ,title:'套餐内容'},
+    {id:4, pid:3 ,title:'烧烤内容'},
+    {id:7, pid:4 ,title:'饮料内容'},
+  ]
+
+  showCategory( categorys );
+
+  showGoods( goods );
+
+  setTimeout(function(){
+    document.querySelectorAll('.category li')[active].click();
+  },16)
+
+  function showCategory( data ){
+    document.querySelector('.category').innerHTML = data.reduce(function(temp, item, index){
+      return temp + `<li class="${index===active?'active':''}" onclick="switchNav(${index},${item.id})">${item.name}</li>`;
+    },'');
+  }
+
+  function switchNav(index, id){
+    active = index;
+    
+    //刷新
+    showCategory( categorys );
+
+    //记住选中菜单
+    localStorage.setItem('active', index);
+
+    //转到指定的菜单
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+
+  }
+
+  function showGoods( data ){
+    document.querySelector('.content').innerHTML = data.reduce(function(temp, item, index){
+      return temp + `
+      <h2 id="${item.pid}">${getCateName(item.pid)}</h2>
+        <div class="item">
+          <p>${item.title}</p>
+        </div>
+      `;
+    },'');
+  }
+
+  function getCateName( id ){
+    return categorys.find(function(item){
+      return item.id === id;
+    })['name'];
+  }
+
+  document.querySelector('.content').onscroll = function(){
+
+    var top = this.scrollTop;
+
+    document.querySelectorAll('.category li').forEach(function(item){
+      item.className='';
+    })
+    if(top>=0 && top < 650){
+      document.querySelectorAll('.category li')[0].className='active';
+    }else if(top>=650 && top < 1300){
+      document.querySelectorAll('.category li')[1].className='active';
+    }else if(top>=1300 && top < 1950){
+      document.querySelectorAll('.category li')[2].className='active';
+    }else if(top>=1950){
+      document.querySelectorAll('.category li')[3].className='active';
+    }
+  }
+  </script>
+
+</body>
+</html>

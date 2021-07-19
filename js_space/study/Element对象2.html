@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<!-- <style>
+  #box{
+    width: 100px;
+    height: 100px;
+  }
+  #box.red{
+    background-color: red;
+  }
+</style> -->
+
+<style>
+  span {
+    display: block;
+    width: 100px;
+    height: 30px;
+    padding: 10px;
+    border: 10px solid red;
+    overflow: auto;
+  }
+</style>
+
+<body>
+
+  <!-- <div id="box" class="one two three"></div>
+  <br>
+
+  <button onclick="set()">添加</button>
+
+  <button onclick="del()">移除</button>
+  
+  <button onclick="toggle()">切换</button>
+  
+  <button onclick="contain()">包含</button>
+  
+  <button onclick="get()">获取</button>
+
+  <script>
+    var box = document.getElementById('box');
+    function set(){
+      box.classList.add('red');
+    }
+
+    function del(){
+      box.classList.remove('red');
+    }
+
+    function toggle(){
+      box.classList.toggle('red');
+    }
+
+    function contain(){
+      alert(box.classList.contains('red'));
+    }
+
+    function get(){
+      alert(box.classList.toString());
+    }
+  </script> -->
+
+
+  <span>
+    文本<br>
+    文本<br>
+    文本<br>
+  </span>
+  
+  <script>
+    var span = document.querySelector('span');
+
+    console.log(span.clientWidth, span.clientHeight);
+    console.log(span.offsetWidth, span.offsetHeight);
+  </script>
+
+</body>
+</html>

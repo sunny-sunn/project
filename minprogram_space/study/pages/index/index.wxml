@@ -1,0 +1,5 @@
+<!--pages/index/index.wxml-->
+<view style="height:1000px;background-color:#ccc">
+  <text>pages/index/index.wxml</text>
+</view>
+

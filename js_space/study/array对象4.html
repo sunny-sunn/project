@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // 反转
+    // var str = '12345678'.split('').reverse().join('');
+    // console.log(str);
+
+
+    // 分页
+    var fruit = ['苹果', '桔子', '香蕉', '菠萝', '芒果', '甘蔗', '葡萄', '西瓜'];
+    var page = 2;
+    var perpage = 3;
+    var total = Math.ceil(total / perpage);
+    var start = (page - 1) * perpage;
+    var end = start + perpage;
+    var page = fruit.slice(start, end);
+    console.log(page);
+
+  </script>
+</body>
+</html>

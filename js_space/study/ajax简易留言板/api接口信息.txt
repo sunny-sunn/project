@@ -1,0 +1,48 @@
+一、 添加留言接口
+
+请求地址：http://cloud.scnew.com.cn/api/feedback/add
+
+请求方式： POST
+
+请求参数：
+
+{
+    asker: 1,
+    tid: 0,
+    title:   用户输入的参数,
+    content:  用户输入的参数,
+ }
+
+需要登录授权：
+
+SC-Token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk
+
+============================================================================================================================
+
+二、 查询留言接口
+
+请求方式：http://cloud.scnew.com.cn/api/feedback/user?tid=0
+
+请求方式： GET
+
+需要登录授权：
+
+SC-Token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk
+
+============================================================================================================================
+
+三、 删除留言接口
+
+请求方式：http://cloud.scnew.com.cn/api/feedback/user/{id}
+
+http://cloud.scnew.com.cn/api/feedback/user/
+
+请求方式： DELETE
+
+需要登录授权：
+
+SC-Token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk
+
+
+上面的{id} 替换为你要删除的id值。
+

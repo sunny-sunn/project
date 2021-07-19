@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .navs{
+      display: flex;
+      list-style: none;
+    }
+    .navs li{
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <ly-nav :data="navs"></ly-nav>
+
+    <ly-nav :data="navs">
+      <template slot-scope="row">
+        {{row.icon}} {{row.name}}
+      </template>
+    </ly-nav>
+
+    <ly-nav :data="navs">
+      <template v-slot="row">
+        <a :href="row.url">{{row.icon}} {{row.name}}</a>
+      </template>
+    </ly-nav>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-nav', {
+      props:{
+        data:Array
+      },
+      template:`
+      <ul class="navs">
+        <li
+         v-for="item in data"
+         :key="item.id">
+          <slot v-bind="item">{{item.name}}</slot>
+        </li>
+      </ul>
+      `
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        navs: [
+          { id: 1, name: '首页', url: '#home', icon: '❤' },
+          { id: 2, name: '关于', url: '#about', icon: '✪' },
+          { id: 3, name: '联系', url: '#contact', icon: '☎' },
+        ]
+      }
+    })
+
+  </script>
+  
+</body>
+</html>

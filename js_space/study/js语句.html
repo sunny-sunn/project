@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="btn">输入分值</button>
+
+    <script>
+        // var a = 1;
+        // b = 2;
+        // console.log(c);
+        // var c = 1;
+
+        // {
+        //     var b = 2;
+        //     let a = 1;
+        // }
+        // console.log(b);
+        // console.log(a);
+
+        // document.getElementById('btn').onclick=function(){
+        //     var score = window.prompt('请输入分值');
+        //     if(score<60){
+        //         console.log('不及格！');
+        //     }else if(score>=60 && score<70){
+        //         console.log('及格！');
+        //     }else if(score>=70 && score<80){
+        //         console.log('良好！');
+        //     }else if(score>=80 && score<90){
+        //         console.log('优秀！');
+        //     }else{
+        //         console.log('完美！');
+        //     }
+        // }
+
+        // var x = 2;
+        // switch(x){
+        //     case 1:console.log('x=1');
+        //     break;
+        //     case 1+1:console.log('x=2');
+        //     break;
+        // }
+
+        var day = new Date().getDay();
+        switch(day){
+            case 1:console.log('星期一');break;
+            case 2:console.log('星期二');break;
+            case 3:console.log('星期三');break;
+            case 4:console.log('星期四');break;
+            case 5:console.log('星期五');break;
+            case 6:console.log('星期六');break;
+            case 0:console.log('星期日');break;
+            default:console.log('请输入有效值');
+        }
+
+        var arr = ['日','一','二','三','四','五','六'];
+        console.log('星期',arr[day]);
+
+
+        var gender = '女';
+        if(gender==='男'){
+            console.log('先生，您好');
+        }else{
+            console.log('女士，您好');
+        }
+
+        var gender = '男';
+        console.log(gender==='男'?'先生':'女士','您好');
+
+        var gender = '男';
+        var result = (gender==='男'?'先生':'女士');
+        console.log(result,'您好');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  img{
+    margin-bottom: 10px;
+  }
+</style>
+<body>
+  
+  <input type="search" placeholder="请输入标题" oninput="search(this)">
+  <ul id="list"></ul>
+
+  <script>
+
+    list();
+
+    var res = {};
+
+    function list(keyword='') {
+      document.getElementById('list').innerHTML = '<img src="images/loading.gif">';
+      var xhr = new XMLHttpRequest();
+
+      xhr.onload = xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            res = JSON.parse(xhr.responseText);
+            show(res.result);
+          }
+        }
+      }
+
+      xhr.open('GET', 'http://cloud.scnew.com.cn/api/course/book?keyword='+encodeURIComponent(keyword));
+      xhr.send();
+    }
+
+    function show(data){
+      document.getElementById('list').innerHTML = data.reduce(function(temp,item){
+        return temp + '<li><img src="'+item.cover+'" width="50" align="absmiddle">------'+item.title+'------'+item.author+'</li>';
+      },'')
+    }
+
+    var timeout = null;
+    function search(input){
+      clearTimeout(timeout);
+      timeout = setTimeout(function(){
+        var val = input.value.trim();
+        list(val);
+      },1000)
+    }
+
+  </script>
+  
+</body>
+</html>

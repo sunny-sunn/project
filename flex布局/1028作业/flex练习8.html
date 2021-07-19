@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body,html{
+    margin: 0;
+    padding: 0;
+  }
+  .box{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+  }
+  .header{
+    background-color: #00D0A3;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+  }
+  .nav{
+    background-color: #B3C0D1;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+  }
+  .content{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+  }
+  .left{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .main{
+    background-color: #E9EEF3;
+    text-align: center;
+    flex-grow: 1;
+  }
+  .footer{
+    background-color: #B3C0D1;
+    height: 200px;
+    text-align: center;
+    line-height: 100px;
+  }
+  .right{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  .aside1{
+    background-color: #D3DCE6;
+    text-align: center;
+    height: 300px;
+  }
+  .aside2{
+    background-color: #bbb;
+    text-align: center;
+    flex-grow: 1;
+  }
+</style>
+<body>
+  <div class="box">
+
+    <div class="header">header</div>
+    <div class="nav">nav</div>
+
+    <div class="content">
+
+      <div class="left">
+        <div class="main">main</div>
+        <div class="footer">footer</div>
+      </div>
+
+      <div class="right">
+        <div class="aside1">aside1</div>
+        <div class="aside2">aside2</div>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>

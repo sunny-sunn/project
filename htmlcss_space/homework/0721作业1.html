@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开关按钮</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .switch{
+        width:80px;
+        height:35px;
+        position:relative;
+    }
+    .switch:before{
+        content:"ON";
+        width:30px;
+        height:35px;
+        position:absolute;
+        left:0;
+        top:0;
+        z-index:1;
+    }
+    .switch:after{
+        content:"OFF";
+        width:30px;
+        height:35px;
+        position:absolute;
+        right:0;
+        top:0;
+    }
+    input[type=checkbox]{
+        position:absolute;
+        opacity: 0;
+    }
+    input[type=checkbox]:checked+label:before{
+        background:#609CD4;
+    }
+    input[type=checkbox]:checked+label:after{
+        left:30px;
+    }
+    label{
+        width:30px;
+        height:35px;
+        position: relative;
+    }
+    label:before{
+        content:"";
+        width:80px;
+        height:35px;
+        position:absolute;
+        /*left:0;*/ 
+        background:#EC7C68;
+    }
+    label:after{
+        content:"";
+        width:30;
+        height:35px;
+        position:absolute;
+        left:0;
+        background:#b1b1b1;
+        z-index:2;
+        transition:all 0.2s ease;
+    }
+</style>
+<body>      
+    <label class="switch">
+         <input type="checkbox">
+    </label>
+</body>
+</html>

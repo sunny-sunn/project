@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <router-view></router-view>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+  <script>
+    const Home = {
+      template: `
+          <div>
+            <h1>首页页面 - {{id}}</h1>
+            <button @click="$router.push('/home/999')">修改url</button>
+          </div>
+          `,
+      data() {
+        return {
+          id: 0
+        }
+      },
+      created() {
+        this.id = this.$route.params.id;
+      },
+      watch: {
+        $route: {
+          handler(to, from) {
+            this.id = to.params.id;
+          },
+          immediate: true
+        }
+      }
+    }
+
+    const About = {
+      template: `<div>
+            <h1>关于页面</h1>
+          </div>`
+    }
+
+    const NotFound = {
+      template: `
+      <div>
+        <h1>404</h1>
+        <h2>找不到页面</h2>
+      </div>
+      `
+    }
+
+    const router = new VueRouter({
+      linkActiveClass: 'active',
+      routes: [
+        { path: '/', redirect: '/home' },
+        { path: '/home', component: Home },
+        { path: '/home/:id', component: Home },
+        { path: '/about', component: About },
+        { path: '*', component: NotFound },
+      ]
+    })
+
+    const app = new Vue({
+      el: '#app',
+      router,
+    })
+  </script>
+  
+</body>
+</html>

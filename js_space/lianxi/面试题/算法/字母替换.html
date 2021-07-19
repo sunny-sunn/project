@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function maxNumber(str) {
+      str = str.split('');
+      for (var i = 0; i < str.length; i++) {
+        if (isNaN(str[i])) {
+          var arr = str[i].charCodeAt(0).toString().split('');
+          str.splice(i, 1);
+          str = str.concat(arr);
+          i--;
+        }
+      }
+      str.sort(function (a, b) {
+        return -1 * (a - b);
+      });
+      str = str.join('');
+      return str;
+    }
+    console.log(maxNumber(''));
+  </script>
+</body>
+</html>

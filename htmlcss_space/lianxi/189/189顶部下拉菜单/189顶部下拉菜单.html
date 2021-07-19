@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  /* reset css */
+  body{
+    margin: 0;
+    padding: 50px;
+    font-family: \5FAE\8F6F\96C5\9ED1,verdana;
+    font-size: 14px;
+    color: #4b4b4b;
+  }
+  a{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  a img{
+    border: none;
+  }
+  ul{
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  p,h1,h2,h3,h4,h5,h6{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  input,button{
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    outline: none;
+    padding: 0;
+    border: 1px solid transparent;
+  }
+  button{
+    cursor: pointer;
+  }
+
+  /* layout css */
+  .dropdown{
+    float:left;
+    position: relative;
+  }
+  .dropdown > a{
+    position: relative;
+    display: block;
+  }
+  .dropdown > a > i{
+    display: inline-block;
+    vertical-align: middle;
+    background: url(images/189_icons.png) no-repeat;
+  }
+  .dropdown > a > i.person{
+    width: 12px;
+    height: 14px;
+    background-position: -103px -836px;
+    margin-right: 3px;
+  }
+  .dropdown > a > i.arrow{
+    width: 7px;
+    height: 4px;
+    background-position: -282px -839px;
+    margin-left: 2px;
+  }
+  .dropdown > a:hover{
+    text-decoration: underline;
+    color: #FF8200;
+  }
+
+
+  .dropdown .dropanel{
+    display: none;
+    background-color: white;
+    position: absolute;
+    min-width: 100%;
+    padding: 40px 9px 15px;
+    top: -4px;
+    left: -5px;
+    box-shadow: 0 0 3px rgba(0,0,0,.25);
+  }
+
+  .dropdown:hover > a > i.arrow{
+    background-position: -318px -839px;
+  }
+
+  .dropdown:hover > a{
+    z-index: 9999;
+  }
+  .dropdown:hover .dropanel{
+    display: block;
+  }
+  </style>
+</head>
+<body>
+  
+
+  <div class="dropdown">
+
+    <a href="#">
+      <i class="person"></i>我的欢go<i class="arrow"></i>
+    </a>
+
+    <p class="dropanel">
+      <span style="display: inline-block;width: 150px;height: 100px; background-color: orange;"></span>
+    </p>
+
+  </div>
+
+
+
+
+
+</body>
+</html>

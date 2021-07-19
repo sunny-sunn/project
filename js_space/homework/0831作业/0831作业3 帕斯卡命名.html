@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // 1
+    var str = 'gx-checkbox-group';
+    var result = str.replace(/[-](\w)/g, function (match, $1) {
+      return $1.toUpperCase();
+    })
+    console.log(result);
+
+    // 2
+    var str = 'gx-checkbox-group';
+    function PascalCase(str) {
+      var newStr = '';
+      var arr = str.split('-');
+      for (var i = 0; i < arr.length; i++) {
+        var temp = arr[i];
+        newStr += temp.substr(0, 1).toLocaleUpperCase();
+        newStr += temp.substr(1, temp.length - 1);
+      }
+      return newStr;
+    }
+    console.log(PascalCase(str));
+
+  </script>
+</body>
+</html>

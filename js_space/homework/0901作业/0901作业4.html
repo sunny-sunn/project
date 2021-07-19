@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script>
+    var str = '<div class="box" id="J_box" title="标题"></div>';
+    function getAttr(str, key) {
+      var result = {};
+      var newstr = /\w+="\w+|\D+"/g.exec(str.replace(/<\\w+/, '')).join('').trim().split(/\s/);
+      newstr.forEach(function (item) {
+        var temp2 = item.split('=');
+        result[temp2[0]] = temp2[1];
+      })
+      return result;
+    }
+    console.log(getAttr(str));// {'class':'box','id':'J_box','title':'标题'}
+  </script> -->
+  <script>
+    var str = '<div class="box" id="J_box" title="标题"></div>';
+    function getAttr(str) {
+      var obj ={};
+      var s1 = str.replace(/^<div /,'');
+      var s2 = s1.replace(/><\/div>$/,'');
+      var s3 = s2.replace(/=/g,':');
+      var arr = s3.split(',');
+      arr.forEach(function (){
+        obj[arr[0]] = arr[1];
+      })
+      return obj;
+    }
+    console.log(getAttr(str));
+  </script>
+
+</body>
+</html>

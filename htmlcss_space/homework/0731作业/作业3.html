@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: #CE4337;
+    }
+    .box{
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+        border-radius: 50%;
+        border: 3px solid white;
+    }
+    .box p.hour{
+        width: 80px;
+        height: 5px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+    .box p.hour{
+        transform-origin: 2% 50%;
+        transform: rotate(15deg);
+        animation: radio 5s .5s linear infinite;
+    }
+    .box p.minute{
+        width: 90px;
+        height: 5px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+    .box p.minute{
+        transform-origin: 2% 50%;
+        transform: rotate(15deg);
+        animation: radio 2s linear infinite;
+    }
+    @keyframes radio{
+        0% {
+            transform: rotate(0deg);
+            }
+        50% {
+            transform: rotate(180deg);
+            }
+        100% {
+            transform: rotate(360deg);
+            }
+    }
+</style>
+<body>
+    <div class="box">
+        <p class="hour"></p>
+        <p class="minute"></p>
+    </div>
+</body>
+</html>

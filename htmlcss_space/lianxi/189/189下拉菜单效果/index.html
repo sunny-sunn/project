@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<style>
+a{
+  color: inherit;
+  text-decoration: none;
+}
+p{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+body{
+  padding: 20px;
+  font-size: 14px;
+}
+
+
+
+
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+.dropdown a i{
+  display: inline-block;
+  background: url(images/icons.png) no-repeat;
+  vertical-align: middle;
+}
+.dropdown a i.user{
+  width: 12px;
+  height: 14px;
+  background-position: -103px -836px;
+}
+.dropdown a i.arrow{
+  width: 7px;
+  height: 4px;
+  background-position: -282px -839px;
+}
+.dropdown > a{
+  position: relative;
+  display: block;
+}
+.dropdown > p{
+  display: none;
+  position: absolute;
+  width: 80px;
+  padding: 35px 12px 10px;
+  top: -3px;
+  left: -5px;
+  box-shadow: 0 0 2px rgba(0,0,0,.3);
+}
+.dropdown:hover > a{
+  z-index: 10;
+}
+.dropdown:hover > a i.arrow{
+  background-position: -318px -839px;
+}
+.dropdown:hover > p{
+  display: block;
+  z-index: 5;
+}
+
+</style>
+
+<div class="dropdown">
+  <a href="#">
+    <i class="user"></i>
+    我的欢go
+    <i class="arrow"></i>
+  </a>
+  <p>
+    <a href="#">我的订单</a>
+  </p>
+</div>
+
+
+
+</body>
+</html>

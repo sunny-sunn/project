@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/about/about",
+    "pages/case/case",
+    "pages/user/user",
+    "pages/notice/notice"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ff0011",
+    "navigationBarTitleText": "思诚NEW学堂",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default",
+    "backgroundColor": "#ff6600",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#ff0000",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+      "text": "首页",
+      "pagePath": "pages/index/index",
+      "iconPath": "images/icon/home1.png",
+      "selectedIconPath": "images/icon/home2.png"
+    },
+    {
+    "text": "关于",
+    "pagePath": "pages/about/about",
+    "iconPath": "images/icon/find1.png",
+    "selectedIconPath": "images/icon/find2.png"
+  },
+      {
+      "text": "案例",
+      "pagePath": "pages/case/case",
+      "iconPath": "images/icon/good1.png",
+      "selectedIconPath": "images/icon/good2.png"
+    },
+    {
+    "text": "通知",
+    "pagePath": "pages/notice/notice",
+    "iconPath": "images/icon/msg1.png",
+    "selectedIconPath": "images/icon/msg2.png"
+    },
+    {
+    "text": "用户",
+    "pagePath": "pages/user/user",
+    "iconPath": "images/icon/me1.png",
+    "selectedIconPath": "images/icon/me2.png"
+    }
+  ]
+  }
+}

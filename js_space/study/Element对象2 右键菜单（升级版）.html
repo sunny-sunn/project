@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" contextmenu="#global">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  html,body{
+    background-color: #eee;
+  }
+
+  .contextmenu{
+    display: none;
+    position: fixed;
+    list-style: none;
+    min-width: 120px;
+    padding: 5px 0;
+    margin: 0;
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
+  }
+  .contextmenu li{
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #333;
+    cursor: default;
+  }
+  .contextmenu li:hover{
+    background-color: rgb(0, 140, 255);
+    color: white;
+  }
+  .contextmenu li.divider{
+    padding: 0;
+    height: 1px;
+    background-color: #f0f0f0;
+    margin: 5px 0;
+  }
+  </style>
+</head>
+<body>
+
+<!-- 右键菜单定义开始 -->
+<ul id="global" class="contextmenu">
+  <li>系统</li>
+  <li>帮助</li>
+  <li class="divider"></li>
+  <li>关于</li>
+</ul>
+
+<ul id="setting" class="contextmenu">
+  <li>新建</li>
+  <li>修改</li>
+  <li class="divider"></li>
+  <li>删除</li>
+</ul>
+
+<ul id="manage" class="contextmenu">
+  <li>配置</li>
+  <li>主题</li>
+  <li class="divider"></li>
+  <li>系统</li>
+</ul>
+<!-- 右键菜单定义结束 -->
+
+<button contextmenu="#setting">设置</button>
+
+<button contextmenu="#manage">管理</button>
+
+
+
+<script>
+//contextmenu.js
++function(){
+
+    var contextmenus = document.querySelectorAll('[contextmenu]');
+    console.log(contextmenus);
+
+    contextmenus.forEach(function(el){
+
+      var id = el.getAttribute('contextmenu');
+      var ctxMenu = document.querySelector(id);
+
+      el.oncontextmenu = function( ev ){
+
+        ev.preventDefault();//阻止右击菜单
+        
+        ctxMenu.style.display='block';
+
+        var sw = ctxMenu.offsetWidth; //右键菜单的宽度
+        var sh = ctxMenu.offsetHeight; //右键菜单的高度
+
+        var left = ev.clientX;
+        var maxLeft = left-sw;
+        if( maxLeft < 0) {
+          left = 0;
+        }else if( left >= maxLeft ) {
+          left = maxLeft
+        }
+       
+        var top = ev.clientY;
+        var maxTop = top-sh;
+        if(maxTop < 0){
+          top = 0;
+        }else if( top >= maxTop ) {
+          top = maxTop;
+        }
+
+        ctxMenu.style.left = left + 'px';
+        ctxMenu.style.top = top + 'px';
+
+      }
+
+    })
+
+    //单击文档任何区域，隐藏掉右击菜单
+    document.onmousedown = function(){
+      document.querySelectorAll('.contextmenu').forEach(function(el){
+        el.style.display='none';
+      })
+    }
+
+}();
+
+</script>
+
+
+</body>
+</html>

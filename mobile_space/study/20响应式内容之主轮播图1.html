@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/swiper.css">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .swiper-slide{
+      height: 260px;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    @media screen and (min-width: 768px){
+      .swiper-slide{
+        height: 360px;
+      }
+    }
+    @media screen and (min-width: 1200px){
+      .swiper-slide{
+        height: 425px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image: url(images/slide1.jpg);"></div>
+      <div class="swiper-slide" style="background-image: url(images/slide2.jpg);"></div>
+      <div class="swiper-slide" style="background-image: url(images/slide3.jpg);"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <script src="js/swiper.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container',{
+      loop:true,
+      autoplay:true,
+      pagination:{
+        el:'.swiper-pagination',
+        clickable:true,
+      }
+    })
+  </script>
+</body>
+</html>

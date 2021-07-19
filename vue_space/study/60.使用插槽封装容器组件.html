@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+  <div id="app">
+
+    <ly-container>
+      <ly-aside></ly-aside>
+      <ly-container>
+        <ly-header></ly-header>
+        <ly-main></ly-main>
+        <ly-footer></ly-footer>
+      </ly-container>
+    </ly-container>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-container', {
+      props:{
+        direction:String
+      },
+      computed:{
+        isVertical(){
+          if(this.direction === 'vertical'){
+            return true;
+          }else if(this.direction === 'horizontal'){
+            return false;
+          }
+          if(this.$slots && this.$slots.default){
+            return this.$slots.default.some(vnode => {
+              return /(header|footer)/gi.test(vnode.tag);
+            })
+          }else{
+            return false;
+          }
+        }
+      },
+      template:`<div class="container" :class="{'is-vertical':isVertical}"><slot>容器</slot></div>`
+    })
+
+    Vue.component('ly-header', {
+      template:`<div class="header"><slot>头部</slot></div>`
+    })
+
+    Vue.component('ly-main', {
+      template:`<div class="main"><slot>主体</slot></div>`
+    })
+
+    Vue.component('ly-footer', {
+      template:`<div class="footer"><slot>脚部</slot></div>`
+    })   
+
+    Vue.component('ly-aside', {
+      template:`<div class="aside"><slot>侧边栏</slot></div>`
+    })
+
+    var app = new Vue({
+      el:'#app',
+    });
+  </script>
+  
+</body>
+</html>

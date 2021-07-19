@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    // class Animal {
+    //   constructor() {
+    //     this.show();
+    //   }
+    //   show() {
+    //     console.log('父类显示！');
+    //   }
+    // }
+
+    // class Cat extends Animal {
+    //   constructor() {
+    //     super();
+    //   }
+    //   show() {
+    //     console.log('子类显示！');
+    //   }
+    // }
+
+    // var c1 = new Cat();
+
+
+    class Human {
+      age = 20;
+      getAge() {
+        return this.age;
+      }
+      constructor() {
+        console.log(this.age);
+      }
+    }
+
+    class Man extends Human {
+      constructor() {
+        super();
+        console.log(super.getAge())//super作为对象使用，super指向父类
+      }
+      getAge(){}
+    }
+
+    var m = new Man();
+
+  </script>
+  
+</body>
+</html>

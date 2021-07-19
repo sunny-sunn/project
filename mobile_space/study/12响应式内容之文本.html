@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    h1{
+      text-align: center;
+      padding: 1em;
+    }
+    h4{
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p{
+      text-align: center;
+
+      /*文字显示不下它会自动换行，这里需要注意的文字换行后的一些效果，比如：
+      1. 文字不能贴着设备边缘，这样不美观，加padding解决。
+      2. 文化因为显示不下换行后，要考虑行高因素。
+      3. 响应式文字如果不换行请单行省略或者多行省略。 
+      */
+      padding-left: 15px;
+      padding-right: 15px;
+      line-height: 1.5;
+    }
+    .sl{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>文字响应式方案</h1>
+  
+  <h4>换行方案</h4>
+
+  <p>帮助您解决实际问题，顺利、及时地获得签证，是我们存在的根本价值。</p>
+  <br>
+  <br>
+  <h4>不换行方案</h4>
+  <p class="sl">帮助您解决实际问题，顺利、及时地获得签证，是我们存在的根本价值。</p>
+
+</body>
+</html>

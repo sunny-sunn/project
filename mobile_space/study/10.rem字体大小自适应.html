@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自动调节rem字体大小</title>
+  <style>
+  *{
+    margin: 0;
+  }
+
+  .container{
+    background-color: #f0f0f0;
+    max-width: 750px;
+    min-width: 320px;
+    height: 100vh;
+    margin: auto;
+  }
+  h1{
+    font-size: 0.4rem;
+    text-align: center;
+  }
+  .box{
+    height: 1rem;
+    background-color: red;
+  }
+  </style>
+
+  <script>
+  function setHtmlFontSize(){
+    var html = document.documentElement;
+    var vw = html.clientWidth;
+    vw = vw <= 320 ? 320 : vw;
+    vw = vw >= 750 ? 750 : vw;
+    html.style.fontSize = vw/7.5 +'px';
+    /*
+    为什么要除7.5？因为设计稿是750，除以7.5后等于100px，那么字体基准值就是100px。
+    100px这个基准数，非常容易换算rem，比如 40px，按100px基准换算rem，那么就是0.4rem。
+    */
+
+  }
+  //页面载入时 执行
+  document.addEventListener('DOMContentLoaded', setHtmlFontSize);
+
+  //页面更改大小时 执行
+  window.onresize = setHtmlFontSize;
+
+  </script>
+</head>
+<body>
+  
+<div class="container">
+  <h1>标题1字体大小可以自动调整</h1>
+</div>
+
+<div class="box">
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+  <ul>
+    <li>000</li>
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+  </ul>
+
+  <input type="checkbox" checked>
+  
+
+  <h2>树形菜单</h2>
+  <style>
+  .treenav li ul{
+    display: none;
+  }
+  </style>
+  <ul class="treenav">
+    <li>
+      <span>一级导航1</span>
+      <ul>
+        <li><span>二级导航1</span></li>
+        <li><span>二级导航2</span></li>
+      </ul>
+    </li>
+    <li>
+      <span>一级导航2</span>
+      <ul>
+        <li>
+          <span>二级导航1</span>
+          <ul>
+            <li><span>三级导航1</span></li>
+            <li><span>三级导航2</span></li>
+          </ul>
+        </li>
+        <li><span>二级导航2</span></li>
+      </ul>
+    </li>
+    <li><span>一级导航3</span></li>
+  </ul>
+
+
+  <script>
+    $(function(){
+      // $('li:eq(0)').css('color','red');
+
+      // $('li').eq(0).css('color','red');
+
+      // $('li:first').css('color','red');
+      // $('li:last').css('color','green');
+
+      // $('li').first().css('color','red').end().last().css('color','green');
+
+      // $('li:odd').css('color','red');
+      // $('li:odd').last().css('font-size','60px');
+
+      // $('li').filter(':odd').css('color','red').filter(':last').css('font-size','60px').end().end().first().css('color','orange');
+    
+      // console.log($('ul').is(':visible'));
+
+      // console.log($('input').is(':checked'));
+
+      // console.log($('ul').is(_=>Math.random() > 0.5));
+
+      // var arr = [];
+      // $('li').each(function(){
+      //   arr.push(this.innerText);
+      // })
+      // console.log(arr);
+
+      // var arr = $('li').map(function(){
+      //   return this.innerText;
+      // }).get();
+      // console.log(arr);
+
+      $('.treenav li').has('ul').prepend('☒');
+      $('.treenav span').click(function(){
+        $(this).next().slideToggle(300);
+      })
+
+    })
+  </script>
+  
+</body>
+</html>

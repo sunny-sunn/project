@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+  <div id="box">
+    <p>文本</p>
+  </div>
+
+  <script>
+    $('#box').prepend('<p>前面</p>').addClass('red');
+
+    $('#box').prepend('前面');
+
+    $('<p>前面</p>').prependTo('#box').addClass('red');
+
+    $('前面').prependTo('#box');
+
+    $('#box').append('<p>后面</p>');
+
+    $('#box').prependTo('后面');
+
+    $('<p>后面</p>').prependTo('#box');
+
+    $('后面').prependTo('#box');
+  </script>
+  
+</body>
+</html>

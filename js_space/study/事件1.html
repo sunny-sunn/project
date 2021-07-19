@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="div">
+    <p id="p">
+      <span id="span">
+        <button id="btn">按钮</button>
+      </span>
+    </p>
+  </div>
+
+  <script>
+    btn.addEventListener('click',function(ev){
+
+      //w3c标准写法
+      ev.stopProgation();
+      //IE阻止冒泡
+      ev.cancelBubble = true;
+
+      console.log('button被单击了');
+    },false)
+    span.addEventListener('click',function(ev){
+      console.log('span被单击了');
+    },false)
+    p.addEventListener('click',function(ev){
+      console.log('p被单击了');
+    },false)
+    div.addEventListener('click',function(ev){
+      console.log('div被单击了');
+    },false)
+  </script>
+</body>
+</html>

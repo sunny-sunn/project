@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  div{
+    width: 300px;
+    height: 200px;
+    background-color: #E8F9D6;
+    border: 1px solid #D6EAAB;
+    font-size: 30px;
+    text-align: center;
+    line-height: 200px;
+  }
+  button{
+    width: 300px;
+    height: 40px;
+    background-color: #069E3F;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+  }
+</style>
+<body>
+
+  <div id="box">张艺兴</div><br>
+  <button id="btn">开始</button>
+
+  <script>
+    var arr = ['金珉锡', '金俊勉', '张艺兴', '边伯贤', '金钟大', '都暻秀', '朴灿烈', '金钟仁', '吴世勋'];
+    var start = 0;
+    var result;
+    document.getElementById('btn').onclick = function random(a, b) {
+      if (start === 0){
+        clearInterval(result);
+        result = setInterval(function (){
+          var temp = Math.floor(Math.random() * (arr.length-1));
+          document.getElementById('box').innerHTML = arr[temp];
+        },150);
+        document.getElementById('btn').innerHTML = '结束';
+        start = 1;
+      }else{
+        start = 0;
+        clearInterval(result);
+        document.getElementById('btn').innerHTML = '开始';
+      }
+    }
+  </script>
+
+</body>
+</html>

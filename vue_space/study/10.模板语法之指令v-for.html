@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+  
+    <button v-for="p in 10">{{p}}</button>
+    <hr>
+
+    <button v-for="n in total">{{n}}</button>
+    <hr>
+
+    <ul>
+      <li v-for="val in list">{{val}}</li>
+    </ul>
+    <hr>
+
+    <ul>
+      <li v-for="item in news">{{item.title}}------{{item.date}}</li>
+    </ul>
+    <hr>
+
+    <ul>
+      <li v-for="item,index in news">{{index}}---{{item.title}}------{{item.date}}</li>
+    </ul>
+    <hr>
+
+    <ul>
+      <li v-for="item,index in news" v-bind:style="{color:index===1?'red':''}">
+        {{index}}---{{item.title}}------{{item.date}}
+      </li>
+    </ul>
+    <hr>
+
+    <template v-for="n in 5">
+      <h2>标题{{n}}</h2>
+      <p>描述{{n}}</p>
+    </template>
+    <hr>
+
+    <p v-for="(val,key,index) in info">
+      {{index}}--{{key}}--{{val}}
+    </p>
+    <hr>
+
+    <ul>
+      <li v-if="index != 0" v-for="(val,index) in names">{{val}}</li>
+    </ul>
+    <hr>
+
+    <ul>
+      <li v-if="show" v-for="n in 10">{{n}}</li>
+    </ul>
+    <hr>
+
+    <ul>
+      <template v-if="show">
+      <li v-for="n in 10">{{n}}</li>
+      </template>
+    </ul>
+    <hr>
+  
+  </div>
+
+  <script src="js/vue.js"></script>
+
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        show:true,
+        total:5,
+        list:['苹果','桔子'],
+        news:[
+          {title:'新闻标题1',date:'2020-10-25'},
+          {title:'新闻标题2',date:'2020-11-03'},
+        ],
+        info:{
+          name:'张三',
+          age:20,
+          gender:'男'
+        },
+        names:['张三','李四','王五']
+      }
+    });
+  </script>
+  
+</body>
+</html>

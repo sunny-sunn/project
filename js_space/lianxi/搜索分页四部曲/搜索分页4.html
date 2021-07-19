@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button,input{
+      font-family: inherit;
+      padding: 6px 10px;
+      font-size: inherit;
+    }
+    button.active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  
+<p>
+  <button onclick="add()">添加</button>
+  <button onclick="batch()">批量删除</button>
+  <input oninput="search(this)" placeholder="请输入关键字">
+</p>
+
+<table border="1" cellspacing="0" cellpadding="8" width="500">
+  <thead>
+    <tr>
+      <th width="60">编号</th>
+      <th>姓名</th>
+      <th>得分</th>
+      <th width="125">操作</th>
+    </tr>	
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<p id="pager"></p>
+
+<script>
+var cpage = 1; //全局当前页码
+
+var keyword = ''; //搜索关键字
+
+var sites = [
+  {id:1, name:'张三',score:75},
+  {id:2, name:'李四',score:80},
+  {id:3, name:'张飞',score:15},
+  {id:4, name:'张总',score:75},
+  {id:5, name:'张亮',score:75},
+];
+
+//页面一打开的时候就执行
+list(1);
+
+//搜索函数
+function search(input){
+  keyword = input.value.trim();
+
+  //立即刷新列表
+  list(1);
+  
+}
+
+//成绩列表
+function list(page){
+  
+  //根据关键字搜索，默认关键字是空
+  var searchData = sites.filter(function(item){
+    return item.name.indexOf(keyword) !== -1 ||
+           String(item.score).indexOf(keyword) !== -1;
+  })
+
+  //对上面搜索的结果，再进一步分页
+  var perpage = 2;
+  var total = searchData.length;
+  var totalpage = Math.ceil(total/perpage);
+
+  if(page > totalpage) page -= 1;
+
+  //将当前页复制给全局页码，以便其他函数内部调用
+   cpage = page;
+  
+  var start = (page-1) * perpage;
+  var end = start + perpage;
+
+  //按指定的页码切割数组
+  var pageData = searchData.slice(start, end);
+  
+  //列表模板累加
+  var listTemp = '';
+  for(var i=0;i<pageData.length;i++){
+    var id = pageData[i].id;
+    listTemp += '<tr align="center">\
+      <td>'+id+'</td>\
+      <td>'+pageData[i].name+'</td>\
+      <td>'+pageData[i].score+'</td>\
+      <td><button onclick="edit('+id+')">修改</button> <button onclick="del('+id+')">删除</button></td>\
+    </tr>';
+  }
+  if(!searchData.length){
+    listTemp = '<tr><td colspan="4" align="center">没有找到数据！</td></tr>'
+  }
+  document.getElementById('tbody').innerHTML = listTemp;
+
+  //分页模版累加
+  var pageTemp = '';
+
+  //上一页
+  if(page > 1){
+    pageTemp += '<button onclick="list('+(page-1)+')">上页</button>'
+  }
+
+  //页码
+  for(var p=1;p<=totalpage;p++){
+    var activeClass = page==p?'active':'';
+    pageTemp += '<button class="'+activeClass+'" onclick="list('+p+')">'+p+'</button>';
+  }
+
+  //下一页
+  if(page < totalpage){
+    pageTemp += '<button onclick="list('+(page+1)+')">下页</button>'
+  }
+
+  document.getElementById('pager').innerHTML = pageTemp;
+
+}
+
+
+//添加成绩
+function add(){
+  var name = prompt('请输入名称！');
+  var score = Number(prompt('请输入分数！'));
+
+  sites.unshift({
+    id: sites.length+1,
+    name,
+    score
+  });
+
+  list(1);
+
+}
+
+//修改单项成绩
+function edit(id){
+
+  var obj = sites.find(function(item){
+    return item.id === id;
+  })
+
+  var name = prompt('请输入名称！', obj.name);
+  var score = Number(prompt('请输入分数！', obj.score));
+  
+  sites = sites.map(function(item){
+    if(item.id === id){
+      item.name = name;
+      item.score = score;
+    }
+    return item;
+  })
+
+  list(cpage);
+
+}
+
+//删除单项成绩
+function del(id){
+  if(confirm('您确定要删除此项吗？')){
+    sites = sites.filter(function(item){
+      return item.id !== id;
+    })
+
+    list(cpage);
+  }
+}
+
+//批量删除
+function batch(){
+  var ids = prompt('请输入id编号，英文竖线分割');
+  ids = ids.split('|');
+  if(confirm('您确定要删除吗？')){
+    sites = sites.filter(function(item){
+      return ids.indexOf( String(item.id) ) === -1;
+    })
+    list(cpage);
+  }
+
+}
+
+</script>
+
+</body>
+</html>

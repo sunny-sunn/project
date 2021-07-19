@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button,input{
+      font-family: inherit;
+      padding: 6px 10px;
+      font-size: inherit;
+    }
+    button.active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  
+<p>
+  <input oninput="search(this)" placeholder="请输入关键字">
+  <button onclick="batchDel()">批量删除</button>
+  <button onclick="add()">添加成绩</button>
+  <button onclick="sort()">分数排序</button>
+  <button onclick="highe()">最高分</button>
+  <button onclick="low()">最低分</button>
+  <button onclick="avg()">平均分</button>
+  <button onclick="pass()">及格人数</button>
+</p>
+
+<table border="1" cellspacing="0" cellpadding="8" width="500">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>姓名</th>
+      <th>得分</th>
+      <th>操作</th>
+    </tr>	
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<p id="pager"></p>
+
+<script>
+  var keyword = ''; //搜索关键字
+
+  var sites = [
+    { name: '张三', score: 75 },
+    { name: '李四', score: 80 },
+    { name: '张飞', score: 15 },
+    { name: '张总', score: 75 },
+    { name: '张亮', score: 75 },
+  ];
+
+  
+  var cpage = 1;
+  //页面一打开的时候就执行
+  list(cpage);
+
+  //搜索函数
+  function search(input) {
+    keyword = input.value.trim();
+
+    //立即刷新列表
+    list(cpage);
+  }
+
+  // 批量删除
+  function batchDel() {
+    var ids = prompt('请输入名称');
+    ids = ids.split(',');
+    sites = sites.filter(function (item) {
+      return !ids.includes(String(item.name));
+    })
+
+    list(cpage);
+  }
+
+  //成绩列表
+  function list(page) {
+
+    // 根据关键字搜索，默认关键字是空
+    var searchData = sites.filter(function (item) {
+      return item.name.indexOf(keyword) !== -1 ||
+        String(item.name).indexOf(keyword) !== -1
+    })
+
+    // 对上面搜索的结果，再进一步分页
+    var perpage = 2;
+    var total = searchData.length;
+    var totalpage = Math.ceil(total / perpage);
+
+	  if(page > totalpage) page -= 1;
+    cpage = page;//将当前页 复制给 全局变量 
+
+    var start = (page - 1) * perpage;
+    var end = start + perpage;
+
+    // 按指定的页码切割数组
+    var pegeData = searchData.slice(start, end);
+
+    //列表模板累加
+    var listTemp = '';
+    for (var i = 0; i < pegeData.length; i++) {
+      var index = start + i;
+      listTemp += '<tr>\
+      <td>'+ (i + 1) + '</td>\
+      <td>'+ pegeData[i].name + '</td>\
+      <td>'+ pegeData[i].score + '</td>\
+      <td>'+ '<button onclick="del(' + index + ')"">删除</button>' + '</td>\
+    </tr>';
+    }
+    if (!searchData.length) {
+      listTemp = '<tr><td colspan="3" align="center">没有找到数据！</td></tr>'
+    }
+    document.getElementById('tbody').innerHTML = listTemp;
+
+    // 分页模板累加
+    var pageTemp = '';
+
+    // 上一页
+    if (page > 1) {
+      pageTemp += '<button onclick="list(' + (page - 1) + ')">上页</button>'
+    }
+
+    // 页码
+    for (var p = 1; p <= totalpage; p++) {
+      var activeClass = page == p ? 'active' : '';
+      pageTemp += '<button class="' + activeClass + '" onclick="list(' + p + ')">' + p + '</button>'
+    }
+
+    // 下一页
+    if (page < totalpage) {
+      pageTemp += '<button onclick="list(' + (page + 1) + ')">下页</button>'
+    }
+
+    document.getElementById('pager').innerHTML = pageTemp;
+
+  }
+
+  // 添加成绩
+  function add() {
+    var name = prompt('姓名');
+    var score = prompt('分数');
+    sites.unshift({
+      name: name,
+      score: Number(score),
+    });
+    list(cpage);
+  }
+
+  // 分数排序
+  function sort() {
+    for (var i = 0; i < sites.length; i++) {
+      for (var j = 0; j < i + 1; j++) {
+        if (sites[i].score > sites[j].score) {
+          var str = sites[i].score;
+          sites[i].score = sites[j].score;
+          sites[j].score = str;
+          var temp = sites[i].name;
+          sites[i].name = sites[j].name;
+          sites[j].name = temp;
+        }
+      }
+    }
+    list(cpage);
+  }
+
+  // 最高分
+  function highe() {
+    var str = sites[0].score;
+    for (var i = 0; i < sites.length; i++) {
+      if (str < sites[i].score) {
+        str = sites[i].score;
+      }
+    }
+    alert('最高分：' + str);
+  }
+
+  // 最低分
+  function low() {
+    var str = sites[0].score;
+    for (var i = 0; i < sites.length; i++) {
+      if (str > sites[i].score) {
+        str = sites[i].score;
+      }
+    }
+    alert('最低分：' + str);
+  }
+
+  // 平均分
+  function avg() {
+    var sum = 0;
+    for (var i = 0; i < sites.length; i++) {
+      sum = sum + sites[i].score;
+    }
+    var str = sum / sites.length;
+    alert('平均分：' + str.toFixed(1));
+  }
+
+  // 及格人数
+  function pass() {
+    var str = 0;
+    for (var i = 0; i < sites.length; i++) {
+      if (sites[i].score >= 60) {
+        str++;
+      }
+    }
+    alert('及格人数：' + str);
+  }
+
+  // 删除
+  function del(i) {
+    if (confirm('您确定要删除此项吗？')) {
+      sites.splice(i, 1);
+      list(cpage);
+    }
+  }
+
+</script>
+
+</body>
+</html>

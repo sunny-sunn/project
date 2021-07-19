@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="E:\WEB\jQuery_space\study\js\jquery-3.5.1.min.js"></script>
+</head>
+<style>
+  select {
+    margin-right: 10px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+  }
+</style>
+<body>
+
+  <select id="provice">
+    <option>请选择</option>
+  </select>
+  <select id="city">
+    <option>请选择</option>
+  </select>
+  <select id="area">
+    <option>请选择</option>
+  </select>
+
+  <script>
+
+    var provice = [
+      {
+        name: '浙江省',
+        city: [
+          {
+            name: '杭州市',
+            area: ['滨江区', '拱墅区', '西湖区']
+          },
+          {
+            name: '温州市',
+            area: ['鹿城区', '龙湾区', '洞头区']
+          }
+        ],
+      },
+      {
+        name: '江西省',
+        city: [
+          {
+            name: '南昌市',
+            area: ['高新区', '青山湖区', '西湖区']
+          },
+          {
+            name: '九江市',
+            area: ['浔阳区', '庐山区', '柴桑区']
+          },
+          {
+            name: '上饶市',
+            area: ['信江区', '广丰区', '弋阳县']
+          }
+        ],
+      }
+    ];
+
+    $(function () {
+
+      var provinceIndex = 0;
+      var cityIndex = 0;
+
+      (function showProv() {
+        for (let i = 0; i < provice.length; i++) {
+          $('#provice').append('<option ' + 'value = ' + i + '>' + provice[i].name + '</option>');
+        }
+      })();
+
+      $('#provice').change(function () {
+        provinceIndex = $("#provice").find('option:selected').val();
+        $("#city").html('<option>请选择</option>');
+        $('#area').html('<option>请选择</option>');
+        var cityLen = provice[provinceIndex].city.length;
+        for (let i = 0; i < cityLen; i++) {
+          $("#city").append('<option ' + 'value = ' + i + '>' + provice[provinceIndex].city[i].name + '</option>')
+        }
+      })
+
+      $("#city").change(function () {
+        cityIndex = $("#city").find('option:selected').val();
+        $('#area').html('<option>请选择</option>');
+        var areaLen = provice[provinceIndex]["city"][cityIndex].area.length;
+        for (let i = 0; i < areaLen; i++) {
+          $('#area').append('<option ' + 'value = ' + i + '>' + provice[provinceIndex]["city"][cityIndex].area[i] + '</option>')
+        }
+      })
+
+    })
+
+  </script>
+
+</body>
+</html>

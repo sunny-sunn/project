@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button onclick="batchDel()">批量删除</button>
+
+  <script>
+
+    // var arr = ['name', 'age', 'gender'];
+    // var newArr = arr.filter(function (item, index) {
+    //   // return false;
+    //   // return true;
+    //   // return item === 'name';
+    //   return index >= 1;
+    // })
+    // console.log(arr, newArr);
+
+
+    // 
+    var mycarts = [
+      { id: 1, title: '手机', price: 1500, num: 1 },
+      { id: 2, title: '手套', price: 30, num: 2 },
+      { id: 3, title: '帽子', price: 120, num: 2 }
+    ];
+    // var arr = mycarts.filter(function (item) {
+    //   return item.id !== 2;
+    // })
+    // console.log(arr);
+
+    function batchDel() {
+      var ids = prompt('请输入id号');
+      ids = ids.split(',');
+
+      // mycarts = mycarts.filter(function (item) {
+      //   return !ids.includes(String(item.id));
+      // })
+      // console.log(mycarts);
+
+      var arr= [];
+      for(var i=0;i<mycarts.length;i++){
+        var isExist = ids.some(function(val){
+          return val == mycarts[i].id;
+        })
+        if(!isExist) arr.push(mycarts[i]);
+      }
+      console.log(arr);
+    }
+
+  </script>
+</body>
+</html>

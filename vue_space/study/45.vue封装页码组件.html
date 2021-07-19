@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <ly-page :page="page" :totalpage="totalpage"></ly-page>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-page',{
+      props:['page','total','perppage','totalpage'],
+      data(){
+        return {
+          page_:this.page
+        }
+      },
+      computed:{
+        totalpage_(){
+          return this.totalpage || Math.ceil(this.total/this.perpage)
+        }
+      },
+      template:`
+      <div>
+        <button :disabled="page_===1" @click="page_-=1">上页</button>
+        <button
+        v-for="p in totalpage"
+        :class="{active: p===page_}"
+        @click="page_=p"
+        >{{p}}</button>
+        <button :disabled="page_===totalpage_" @click="page_+=1">下页</button>
+      </div>
+      `
+    })
+    var app = new Vue({
+      el:'#app',
+      data:{
+        page:2,
+        totalpage:5
+      }
+    });
+  </script>
+  
+</body>
+</html>

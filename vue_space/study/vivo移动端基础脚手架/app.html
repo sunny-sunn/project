@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ::-webkit-scrollbar{
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background-color: rgba(0, 0, 0, .06);
+      border-radius: 3px;
+    }
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      flex: none;
+    }
+
+    html,body{
+      background-color: #e0e0e0;
+    }
+
+    .app{
+      display: flex;
+      flex-direction: column;
+      max-width: 750px;
+      height: 100vh;
+      background-color: white;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .header{
+      height:44px;
+      background-color: red;
+    }
+
+    .main{
+      height: calc(100vh - 94px);
+      overflow: auto;
+    }
+
+    .tabbar{
+      height: 50px;
+      background-color: green;
+    }
+  </style>
+  <script src="js/flexible.js"></script>
+</head>
+<body>
+  <div class="app">
+
+    <div class="header">头部</div>
+
+    <div class="main">
+      <div style="height: 2000px;">
+        <h2>主体</h2>
+      </div>
+    </div>
+
+    <div class="tabbar">脚部</div>
+
+  </div>
+</body>
+</html>

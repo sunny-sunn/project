@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="file" onchange="upload(this)">
+
+  <script>
+    function upload(file) {
+      var info = file.files[0];
+      var ext = info.name.slice(info.name.lastIndexOf('.') + 1);
+      var size = info.size;
+      var allowExt = ['jpg', 'gif', 'png'];
+      var allowSize = 0.1 * 1024 * 1024;
+
+      if (allowExt.indexOf(ext) === -1) {
+        alert('上传的文件不被允许！');
+        file.value = '';
+        return false;
+      }
+
+      if (size > allowSize) {
+        alert('上传文件过大！');
+        file.value = '';
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

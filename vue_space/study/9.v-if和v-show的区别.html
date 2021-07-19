@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <button v-if="visible">v-if</button>
+    <button v-show="visible">v-show</button>
+    <hr>
+
+    <button @linl="visible = !visible">切换</button>
+    <hr>
+
+    <button style="display:none;" v-show="true">隐藏</button>
+    <hr>
+
+    <table border="1">
+      <tr>
+        <td></td>
+      </tr>
+    </table>
+
+  </div>
+  
+</body>
+</html>

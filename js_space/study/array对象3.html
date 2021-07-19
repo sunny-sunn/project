@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, .2);
+  }
+
+  .box {
+    width: 200px;
+    height: 200px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #ccc;
+    overflow: auto;
+  }
+
+  .box li {
+    padding: 6px 10px;
+    border-bottom: 1px solid #d0d0d0;
+  }
+
+  .box li:last-child {
+    border-bottom: none;
+  }
+</style>
+
+<body>
+
+  <ul class="box">
+  </ul>
+
+  <script>
+    var news = [
+      { id: 1, title: '文章标题1' },
+      { id: 2, title: '文章标题2' },
+      { id: 3, title: '文章标题3' },
+      { id: 4, title: '文章标题4' },
+      { id: 5, title: '文章标题5' },
+      { id: 6, title: '文章标题6' },
+      { id: 7, title: '文章标题7' },
+      { id: 8, title: '文章标题8' },
+    ];
+
+    // 缓存box对象
+    var box = document.querySelector('.box');
+
+    // 刷新读取数据列表
+    list();
+
+    function list() {
+      var temp = '';
+      news.forEach(function (item) {
+        temp += '<li>' + item.title + '</li>';
+      })
+      box.innerHTML = temp;
+    }
+
+    // 滚动加载
+    box.onscroll = function () {
+      var top = this.scrollTop;
+      var height = this.clientHeight;
+      var fullHeight = this.scrollHeight;
+      if (top >= (fullHeight - height)) {
+        var newData = [
+          { id: 10, title: '新加的标题1' },
+          { id: 20, title: '新加的标题2' },
+          { id: 30, title: '新加的标题3' },
+          { id: 40, title: '新加的标题4' }
+        ]
+        news = news.concat(newData);
+        list();
+        console.log('你滚动到底了！');
+      }
+    }
+  </script>
+
+</body>
+</html>

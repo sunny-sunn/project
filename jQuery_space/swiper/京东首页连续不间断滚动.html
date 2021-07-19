@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 500px;
+      height: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 0;
+    }
+
+    #box ul {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    #box li {
+      display: inline-block;
+      width: 100px;
+      margin: 0 5px;
+      line-height: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box">
+    <ul class="one">
+      <li><img src="images/slide3.webp" width="100"></li>
+      <li><img src="images/slide4.webp" width="100"></li>
+      <li><img src="images/slide3.webp" width="100"></li>
+      <li><img src="images/slide4.webp" width="100"></li>
+      <li><img src="images/slide3.webp" width="100"></li>
+    </ul>
+    <ul class="two">
+      <li><img src="images/slide3.webp" width="100"></li>
+      <li><img src="images/slide4.webp" width="100"></li>
+      <li><img src="images/slide3.webp" width="100"></li>
+      <li><img src="images/slide4.webp" width="100"></li>
+      <li><img src="images/slide3.webp" width="100"></li>
+    </ul>
+  </div>
+
+  <script>
+    var int = null;
+    var box = document.getElementById('box');
+
+    play();
+
+    function play() {
+      int = setInterval(function () {
+        var firstEl = box.firstElementChild;
+        if (box.scrollLeft >= firstEl.scrollWidth) {
+          box.appendChild(firstEl);
+          box.scrollLeft = 0;
+        } else {
+          box.scrollLeft += 1;
+        }
+      }, 30)
+    }
+
+    box.onmouseenter = function () {
+      clearInterval(int);
+    }
+
+    box.onmouseleave = function () {
+      play();
+    }
+  </script>
+</body>
+</html>

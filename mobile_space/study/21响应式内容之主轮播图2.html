@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/swiper.css">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html{
+      font-size: calc(100vw / 7.5);
+    }
+    .swiper-slide img{
+      display: block;
+      width: 100%;
+      height: 2.65625rem; /*最大安全宽度 1200/7.5=160 160是基准字体大小 425/160=2.65625*/
+      max-height: 425px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/slide1.jpg"></div>
+      <div class="swiper-slide"><img src="images/slide2.jpg"></div>
+      <div class="swiper-slide"><img src="images/slide3.jpg"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <script src="js/swiper.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container',{
+      loop:true,
+      autoplay:true,
+      pagination:{
+        el:'.swiper-pagination',
+        clickable:true,
+      }
+    })
+  </script>
+</body>
+</html>

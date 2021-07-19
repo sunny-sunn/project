@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <gx-a></gx-a>
+    <gx-b></gx-b>
+    <gx-c></gx-c>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+  var app = new Vue({
+    el: '#app',
+    components: {
+      'GxA': {
+        template: '<h2>局部组件GxA</h2>'
+      },
+      'GxB': {
+        template: '<h2>局部组件GxB</h2>'
+      },
+      'GxC': {
+        template: `<div>
+          <gx-a></gx-a>
+          <gx-b></gx-b>
+        </div>`
+      }
+    }
+  })
+  </script>
+  
+</body>
+</html>

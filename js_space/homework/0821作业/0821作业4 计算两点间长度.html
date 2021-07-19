@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+ 点1 <input type="text" id="x1">&nbsp;<input type="text" id="y1"><br><br>
+ 点2 <input type="text" id="x2">&nbsp;<input type="text" id="y2"><br><br>
+ <button onclick="distance()">计算</button>
+ <input type="text" id="s">
+
+ <script>
+ function distance(){
+     var x1=parseFloat(document.getElementById('x1').value);
+     var y1=parseFloat(document.getElementById('y1').value);
+     var x2=parseFloat(document.getElementById('x2').value);
+     var y2=parseFloat(document.getElementById('y2').value);
+     var s=document.getElementById('s');
+     var result=(x1 -x2)**2 +(y1 -y2)**2;
+     s=Math.sqrt(result);
+     document.getElementById('s').value=s;
+   }
+ </script>
+
+</body>
+</html>

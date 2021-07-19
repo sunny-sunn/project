@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function* gen(){
+      let one = yield 'one';
+      let two = yield one + 'two';
+      let three = yield two + 'three';
+      return three + 'end';
+    }
+
+    var it = gen();
+
+    console.log(it.next());
+    console.log(it.next('aa '));
+    console.log(it.next('bb '));
+    console.log(it.next('cc '));
+
+    // for(var item of gen()){
+    //   console.log(item);
+    // }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
+
+    html{
+      background-color: #ccc;
+    }
+    #app{
+      max-width: 375px;
+      height: 100vh;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: white;
+    }
+
+    .tabbar{
+      position: fixed;
+      display: flex;
+      list-style: none;
+      max-width: 375px;
+      width: 100%;
+      bottom: 0;
+      height: 60px;
+      background-color: #f2f2f2
+    }
+    .tabbar li{
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+
+    }
+    .tabbar li a{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .tabbar li a.active{
+      color: red;
+    }
+
+    .main{
+      padding: 20px;
+    }
+    .main h1{
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .subnav{
+      display: flex;
+      list-style: none;
+      background-color: #f0f0f0;
+    }
+    .subnav a{
+      display: block;
+      padding: 6px 20px;
+    }
+    .subnav a.active{
+      color: red;
+    }
+
+    .content{
+      padding: 20px 10px;
+    }
+    .content h3{
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <router-view></router-view>
+
+    <ul class="tabbar">
+      <li><router-link to="/home">首页</router-link></li>
+      <li><router-link to="/about">关于</router-link></li>
+    </ul>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+  <script>
+    const Home = {
+      template: `
+            <div class="main">
+              <h1>首页页面</h1>
+              <p>首页内容正在建设中...</p>
+            </div>
+            `,
+    }
+
+    const Company = {
+      template: `
+            <div class="content">
+              <h3>公司简介</h3>
+              <p>公司简介内容正在建设中...</p>
+            </div>
+            `,
+    }
+
+    const Culture = {
+      template: `
+            <div class="content">
+              <h3>企业文化</h3>
+              <p>企业文化内容正在建设中...</p>
+            </div>
+            `,
+    }
+
+    const About = {
+      template: `<div class="main">
+              <h1>关于页面</h1>
+              <ul class="subnav">
+                <li><router-link to="company">简介</router-link></li>
+                <li><router-link to="culture">文化</router-link></li>
+              </ul>
+              <router-view></router-view>
+            </div>`
+    }
+
+    const router = new VueRouter({
+      linkExactActiveClass: '',
+      linkActiveClass: 'active',
+      routes: [
+        { path: '/', redirect: '/home' },
+        { path: '/home', component: Home },
+        { path: '/about', component: About, children: [
+            { path: '', redirect: '/about/company'},
+            { path: 'company', component: Company },
+            { path: 'culture', component: Culture }
+          ]
+        },
+      ]
+    })
+
+    const app = new Vue({
+      el: '#app',
+      router,
+    })
+  </script>
+  
+</body>
+</html>

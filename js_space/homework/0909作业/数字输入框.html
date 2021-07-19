@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  .input-number{
+      display: inline-block;
+      border: 1px solid #dcdfe6;
+      border-radius: 4px;
+      user-select: none;
+  }
+  .input-number:hover{
+      border-color: #409eff;
+  }
+  .input-number span{
+      display: inline-block;
+      width: 40px;
+      line-height: 38px;
+      text-align: center;
+      background-color: #f5f7fa;
+      font-size: 24px;
+      vertical-align: top;
+      color: #606266;
+      cursor: pointer;
+  }
+  .input-number span.first{
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      border-right: 1px solid #dcdfe6;
+  }
+  .input-number span.last{
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-left: 1px solid #dcdfe6;
+  }
+  .input-number [type="text"]{
+      padding: 0;
+      width: 96px;
+      text-align: center;
+      line-height: 38px;
+      font-size: inherit;
+      font-family: inherit;
+      border: none;
+      outline: none;
+  }
+  .input-number [type="number"]{
+      display: none;
+  }
+  </style>
+</head>
+<body>
+
+    <input type="number">
+
+    <script>
+        +function () {
+            var numberInput = document.querySelector('[type="number"]');
+            numberInput.min = '1';
+            numberInput.max = '5';
+
+            var div = document.createElement('div');
+            div.className = 'input-number';
+
+            document.body.insertBefore(div, numberInput);
+            div.appendChild(numberInput);
+
+            var span1 = document.createElement('span');
+            span1.className = 'first';
+            span1.textContent = '-';
+
+            var textInput = document.createElement('input');
+            textInput.type = 'text';
+            textInput.min = '1';
+            textInput.max = '5';
+            textInput.value = 1;
+            
+            var span2 = document.createElement('span');
+            span2.className = 'last';
+            span2.textContent = '+';
+
+            numberInput.before(span1, textInput, span2);
+
+            span1.onclick = function(){
+                if(textInput.value>1){
+                   textInput.innerHTML =  textInput.value--;
+                }
+            }
+
+            span2.onclick = function(){
+                if(textInput.value<5){
+                    textInput.innerHTML = textInput.value++;
+                }
+            }
+            
+            textInput.onchange = function(){
+                if(!/^\d$/.test(textInput.value)){
+                    textInput.value = '';
+                }else if(textInput.value<1 ||textInput.value>5){
+                    textInput.value = '';
+                }
+                textInput.focus();
+            }
+        }();
+
+    </script>
+
+</body>
+</html>

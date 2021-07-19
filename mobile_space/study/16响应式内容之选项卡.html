@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ::-webkit-scrollbar{
+      width: 6px;
+      height: 6px;
+      
+    }
+    ::-webkit-scrollbar-thumb{
+      border-radius: 3px;
+      background-color: rgba(0, 0, 0, .2);
+    }
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    h1{
+      text-align: center;
+      padding: 1em;
+    }
+    h4{
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    ul{
+      list-style: none;
+    }
+    html{
+      background-color: #F0F0F0;
+    }
+
+    .tab{
+      background-color: white;
+
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    .tab ul{
+      display: flex;
+      align-items: center;
+    }
+    .tab ul li a{
+      display: block;
+      padding: 0 15px;
+      line-height: 54px;
+      white-space: nowrap;
+    }
+    .tab ul li a.active{
+      border-bottom: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>选项卡响应式方案</h1>
+
+  <div class="tab">
+    <ul>
+      <li><a class="active">Java基础</a></li>
+      <li><a>Java常用工具</a></li>
+      <li><a>Java面向对象</a></li>
+      <li><a>JDBC</a></li>
+      <li><a>JSP</a></li>
+      <li><a>Oracle</a></li>
+    </ul>
+  </div>
+
+
+</body>
+</html>

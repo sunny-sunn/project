@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <input type="text" g-model="name">
+    <h2>我叫 {{name}}</h2>
+
+    <input type="text" g-model="age">
+    <h2>今年 {{age}}</h2>
+
+  </div>
+
+  <script>
+    //数据
+    var info = {
+      name: '张三',
+      age: 22,
+    }
+
+    //根元素
+    var app = document.getElementById('app');
+
+    //获取根元素模板
+    var temp = app.innerHTML;
+
+    //一打开浏览器就开始渲染
+    render();
+
+    //使用代理监测info对象数据读写改变
+    var data = new Proxy(info, {
+      get(info, prop, on) {
+        return Reflect.get(info, prop, on); //返回取到的值
+      },
+      set(info, prop, val, on) {
+        //返回布尔值，true表示写入成功！
+        if (Reflect.set(info, prop, val, on)) {
+          render(); //渲染
+        }
+      }
+    })
+
+    //编译替换模板
+    function compile(temp, data) {
+      return temp.replace(/\{\{([a-zA-Z$_]\w+?)}}/g, function (match, prop) {
+        return data[prop];
+      })
+    }
+
+    //渲染
+    function render() {
+      app.innerHTML = compile(temp, info);
+
+      document.querySelectorAll('[g-model]').forEach(function (input) {
+
+        var prop = input.getAttribute('g-model');
+        input.value = info[prop];
+
+        input.onchange = function () {
+          data[prop] = this.value; //这里触发了set操作
+        }
+
+      })
+
+    }
+
+  </script>
+
+</body>
+</html>

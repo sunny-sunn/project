@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+    var str = '<img src="images/8.jpeg">'
+    console.log(str.match(/\"\w+\/\w+\.(jpg|jpeg|png|webp)"/g));
+  </script> -->
+
+  <!-- <script>
+    if (/\d/.exec('abc123')) {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
+  </script> -->
+
+  <!-- <script>
+    if (/[a-zA-Z]+/.exec('rattler')) {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
+  </script> -->
+
+  <!-- <script>
+    var array = [1,2,4,4,3,3,1,5,3];
+    var arr = array.sort();
+    var temp = [];
+    for (var i=0;i<arr.length-1;i++){
+      for (var j=i+1;j<arr.length;j++){
+        if(arr[i] === arr[j]){
+          temp.push(arr[i]);
+        }
+      }
+    }
+    for(var m=0;m<temp.length;m++){
+      for(var n=m+1;n<temp.length;n++){
+        if(temp[m] === temp[n]){
+          temp.splice(n,1);
+          n--;
+        }
+      }
+    }
+    console.log(temp);
+  </script> -->
+
+  <!-- <script>
+    var arr1 = [1,2,3,4];
+    var arr2 = ['a','b','c',1];
+    function merge(arr1,arr2){
+      var result = [];
+      for(var i=0;i<arr2.length;i++){
+        arr1.push(arr2[i]);
+      }
+      return arr1;
+    }
+    console.log(merge(arr1,arr2));
+  </script> -->
+
+  <!-- <script>
+    var arr = [1,2,3,4];
+    var result = arr.slice(0,arr.length-1);
+    console.log(result)
+  </script> -->
+
+  <!-- <script>
+    var d = new Date('2010-05-02');
+    var w = d.getDay();
+    var week = ['日','一','二','三','四','五','六'];
+    console.log('星期'+week[w]);
+  </script> -->
+
+  <!-- <script>
+    var arr = ['a','b','c','d','e','f','a','b','c'];
+    function fn(arr,item){
+      var result = [];
+      for (var i=0;i<arr.length;i++){
+        if(arr[i] == item){
+          result.push(i);
+        }
+      }
+      return result;
+    }
+    console.log(fn(arr,'a'));
+  </script> -->
+
+  <!-- <script>
+    var color = 'rgb(255,255,255)';
+    function colorRGBtoHex() {
+      var rgb = color.split(',');
+      var r = parseInt(rgb[0].split('(')[1]);
+      var g = parseInt(rgb[1]);
+      var b = parseInt(rgb[2].split(')')[0]);
+      var hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+      return hex;
+    }
+    console.log(colorRGBtoHex(color));
+
+    // String.prototype.colorHex = function () {
+    //   // RGB颜色值的正则
+    //   var reg = /^(rgb|RGB)/;
+    //   var color = this;
+    //   if (reg.test(color)) {
+    //     var strHex = "#";
+    //     // 把RGB的3个数值变成数组
+    //     var colorArr = color.replace(/(?:\(|\)|rgb|RGB)*/g, "").split(",");
+    //     // 转成16进制
+    //     for (var i = 0; i < colorArr.length; i++) {
+    //       var hex = Number(colorArr[i]).toString(16);
+    //       if (hex === "0") {
+    //         hex += hex;
+    //       }
+    //       strHex += hex;
+    //     }
+    //     return strHex;
+    //   } else {
+    //     return String(color);
+    //   }
+    // }
+  </script> -->
+
+  <script>
+    setTimeout(function (){
+      console.log('绿灯');
+    },0)
+    setTimeout(function (){
+      console.log('红灯');
+    },3000)
+    setTimeout(function (){
+      console.log('黄灯');
+    },6000)
+  </script>
+
+  <script>
+    var url = 'http://www.xiyanghui.com/product/list?id=123456&sort=discound#title';
+    function parseUrl(url) {
+      var obj = {};
+      var arr = url.split(/\:\/\/|\?|\#/g)
+      obj.protocol = arr[0];
+      obj.host = arr[1].split('/')[0];
+      obj.path = arr[1].slice(arr[1].indexOf('/'));
+      obj.params = {};
+      var temp = arr[2].split('&');
+      for (var i = 0; i < temp.length; i++) {
+        var s = temp[i].split('=')[0];
+        obj.params[s] = temp[i].split('=')[1];
+      }
+      obj.hash = arr[3];
+      return obj;
+    }
+    console.log(parseUrl(url));
+  </script>
+
+  <!-- <script>
+    function fn() {
+      this.name = 'linghu';
+    }
+    function fns() {
+      fn.call(this)
+    }
+    console.log(new fns())
+  </script> -->
+
+  <!-- <script>
+    function parent() {
+      this.name = 'linghu'
+    }
+    function child() { }
+    child.prototype = new parent();
+    console.log(new child());   
+  </script> -->
+
+</body>
+</html>

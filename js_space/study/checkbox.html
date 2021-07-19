@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>
+      <input type="checkbox"> 一级1
+      <ul>
+        <li><input type="checkbox"> 二级1</li>
+        <li>
+          <input type="checkbox"> 二级2
+          <ul>
+            <li><input type="checkbox"> 三级1</li>
+            <li><input type="checkbox"> 三级2</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <input type="checkbox"> 一级2
+      <ul>
+        <li><input type="checkbox"> 一级1</li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    document.querySelectorAll('[type="checkbox"]').forEach(function(checkbox){
+      checkbox.onchange = function(){
+        var that = this;
+        this.parentElement.querySelectorAll('[type="checkbox"]').forEach(function(input){
+          input.checked = that.checked;
+        })
+      }
+    })
+  </script>
+
+</body>
+</html>

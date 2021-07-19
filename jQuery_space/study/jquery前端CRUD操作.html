@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>在线评论</title>
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    font-size: 14px;
+    color: #333;
+  }
+  html,body{
+    background-color: #eee;
+  }
+  h1{
+    padding: 1em;
+  }
+  button,.search{
+    border: 1px solid #c0c0c0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    padding: 6px 12px;
+    margin: 0 2px;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+  }
+  button[disabled]{
+    opacity: .5;
+    cursor: not-allowed;
+  }
+  button:hover{
+    border-color: #999;
+  }
+  button.active,
+  button.primary{
+    background-color: rgb(47, 90, 230);
+    color: white;
+    border-color: transparent;
+  }
+  button.danger{
+    background-color: rgb(230, 47, 47);
+    color: white;
+    border-color: transparent;
+  }
+
+  .list{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btns{
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  table{
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th,td{
+    border: 1px solid #c0c0c0;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+  }
+  tbody tr:nth-child(odd) td{
+    background-color: #efefef;
+  }
+  #pager button{
+    margin: 0 5px;
+  }
+  </style>
+</head>
+<body>
+
+<h1 align="center">在线评论</h1>
+<div class="btns">
+  <button class="delall-btn">批量删除</button>
+  <input type="search" class="search keyword" placeholder="搜索">
+  <button class="add-btn">新增评论</button>
+</div>
+<div class="list">
+  <table>
+    <thead>
+      <tr>
+        <th width="10%"><input type="checkbox" class="checkall"></th>
+        <th>用户评论</th>
+        <th width="30%">日期</th>
+        <th width="20%">操作</th>
+      </tr>
+    </thead>
+    <tbody id="list"></tbody>
+    <tfoot>
+      <tr>
+        <td id="pager" colspan="4">
+            分页载入中...
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<script>
+$(function(){
+
+  //全局配置
+  var baseURL = 'http://cloud.scnew.com.cn/api/';
+  $.ajaxSetup({
+    headers: {
+      'Content-Type': 'application/json',
+      'SC-Token':  'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDMwNjk5MTYsInJvbGVzIjoiNCIsImV4cCI6MTk2MzA2OTkxNn0.nWYXyFsh3F58-J1AbzRDoxZ0R8th_wQ-4yK5Tou4gto'
+    },
+  });
+
+  //全局页码
+  var cpage = 1;
+
+  //关键字
+  var keyword = '';
+
+  //全局缓存数据
+  var comment  = [];
+
+  //页面启动开始拉取数据库评论数据
+  fetch();
+
+  //读取数据库数据
+  function fetch(){
+    $.get( baseURL + 'feedback/user?tid=0',function(res){
+      comment = res.result;
+      list( cpage );// 读取到数据后，开始执行分页函数
+    })
+  }
+
+  //搜索 使用了防抖函数
+  var timer = null;
+  function search(){
+    clearTimeout(timer);
+    timer = setTimeout( _ =>{
+      keyword = $(this).val().trim();
+      list( 1, keyword );
+    },300)
+  }
+
+  $('.keyword').on('input', search );
+
+  //分页显示
+  function list( page=1 ){
+    
+    var searchData = comment.filter(function(item){
+      return new RegExp(keyword,'gi').test(item.content);
+    });
+
+    var total = searchData.length;
+    var perpage = 6;
+    var totalpage = Math.ceil( total/perpage );
+
+    //解决删除完某页所有数据不能前进一页
+    if(page > totalpage) page -= 1;
+    cpage = page; //全局页码及时同步
+
+    var start = (page-1) * perpage;
+    var end = start + perpage;
+
+    var pageData = searchData.slice(start, end);
+
+    var listTemp = pageData.reduce(function(temp, item){
+        return temp + `
+        <tr>
+          <td><input name="id" type="checkbox" value="${item.id}"></td>
+          <td>${item.content}</td>
+          <td>${item.addtime}</td>
+          <td>
+            <button class="primary editbtn" data-id="${item.id}">修改</button>
+            <button class="danger delbtn" data-id="${item.id}">删除</button>
+          </td>
+        </tr>
+        `;
+    },'') || '<tr><td colspan="4">暂无数据</td></tr>'
+
+    $('#list').html( listTemp );
+
+    //上一页
+    var pageTemp = `<button ${page > 1?'':'disabled'}>上一页</button>`;
+
+    //页码
+    for(var p=1;p<=totalpage;p++){
+      pageTemp += `<button class="${p === page?'active':''}">${p}</button>`;
+    }
+
+    //下一页
+    pageTemp += `<button ${page < totalpage?'':'disabled'}>下一页</button>`;
+
+    $('#pager').html( pageTemp );
+
+  }
+
+  //页码单击事件
+  function pageEvent(){
+    if(this.innerText=='上一页'){
+      list(cpage-1, keyword);
+    }else if(this.innerText=='下一页'){
+      list(cpage+1, keyword);
+    }else{
+      list(+this.innerText, keyword);
+    }
+  }
+
+  //绑定上面页码单击事件，事件代理实现分页
+  $('#pager').on('click', 'button', pageEvent);
+
+  //添加
+  function create(){
+
+    var content = prompt('请输入评论内容');
+    if(!content || content.trim() =='') return;
+
+    $.post( baseURL + 'feedback/add',JSON.stringify({
+      asker: 1,
+      tid: 0,
+      content,
+    }),function(res){
+      if(res.err===0){
+        comment = [res.result].concat(comment);
+        list(1); //刷新新页面
+      }
+    })
+
+  }
+
+  //绑定上面创建函数
+  $('.add-btn').click( create );
+
+  //修改
+  function update(){
+    var id = $(this).data('id');
+    var { content } = comment.find( item =>  item.id === id ); //es6 解构赋值
+     var content = prompt('请输入评论内容');
+    if(!content || content.trim() =='') return;
+    prompt('请输入评论内容', content);
+  }
+
+  //绑定上面修改函数
+  $('#list').on('click','.editbtn', update );
+
+  //全选反选
+  $('.checkall').change(function(){
+    var checked = this.checked;
+    $('#list :checkbox').each(function(){
+      this.checked = checked;
+    })
+  })
+
+  //删除
+  function del( id ){
+
+    if(confirm('您确定要删除信息吗？')){
+      var id = ( typeof id === 'object' ? $(this).data('id') : id );
+      var ids = id.toString().split(',').map(val => +val);
+      $.ajax({
+        type: 'delete',
+        url: baseURL + `feedback/user/${id}`,
+        success: function(res){
+          if(res.err===0){
+            comment = comment.filter(item => ids.indexOf(item.id) === -1 );
+            list( cpage ); //删除完后刷新
+          }
+        }
+      })
+    }
+
+  }
+
+  //绑定上面删除函数
+  $('#list').on('click','.delbtn', del );
+
+  //批量删除
+  $('.delall-btn').click(function(){
+
+    var ids = $('#list :checkbox:checked').map(function(){
+      return this.value;
+    }).get();
+
+    //判断是否选择
+    if(!ids.length){
+      alert('请至少选择一个！');
+      return;
+    }
+
+    //调用上面的删除函数
+    del( ids.join(',') );
+
+    //删除完清除全选复选框
+    $('.checkall').prop({checked:false});
+
+  })
+
+})
+</script>
+
+
+</body>
+</html>

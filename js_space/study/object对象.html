@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 
+        // Object.print = function () {
+        //     console.log('999');
+        // }
+
+        // Object.print();
+        // Object.prototype.print = function () {
+        //     console.log('444');
+        // }
+        // var a = {};
+        // a.print();
+
+
+        // 
+        // // 字面量定义
+        // // var obj = {
+        // //     name: '张三'
+        // // }
+        // // Object.name = '李四';
+        // // console.log(obj);
+
+        // // 原生定义
+        // // var person = {
+        // //     ageage: 20
+        // // }
+
+        // // // 单个
+        // // var obj = Object.defineProperty(person, 'name', {
+        // //     writable: false,
+        // //     value: '张三',
+        // //     configurable: true,
+        // // })
+        // // console.log(obj);
+        // // obj.name = "李四";
+        // // obj.age = 30;
+        // // delete obj.name;
+        // // console.log(obj);
+
+        // // 多个
+        // var person =Object.defineProperties({},{
+        //     name:{value:'张三',writable:false,enumerable:true},
+        //     age:{value:20,configurable:true},
+        //     gender:{value:'女',enumerable:false},
+        // });
+        // console.log(person);
+        // person.name='李四';
+        // delete person.age;
+        // for(var key in person){
+        //     console.log(key);
+        // }
+        // console.log(person)
+
+
+        // 
+        // var value = '';
+        // var person = Object.defineProperty({}, 'name', {
+        //     get: function () {
+        //         console.log('取值');
+        //         return value;
+        //     },
+        //     set: function (val) {
+        //         console.log('设值');
+        //         value = val;
+        //     },
+        //     configurable: false,
+        //     enumerable: true,
+        // })
+
+        // person.name = '张三';
+        // var str = person.name;
+        // console.log(str);
+
+        var value = '';
+        var person = Object.defineProperty({}, 'age', {
+            get: function () {
+                console.log('取值');
+                return value;
+            },
+            set: function (val) {
+                console.log('设值');
+                if(val<1){
+                    value=1;
+                    console.error('年龄不能小于1岁');
+                }else if(val>100){
+                    value=100;
+                    console.error('年龄不能大于100岁');
+                }else{
+                    value = val;
+            
+                }
+            },
+        })
+
+        person.age = 105;
+        var str = person.age;
+        console.log(str);
+
+    </script>
+</body>
+
+</html>

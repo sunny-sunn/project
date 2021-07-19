@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  html,
+  body {
+    background-color: #ccc;
+  }
+  canvas {
+    background-color: white;
+  }
+</style>
+</head>
+<body>
+
+  <canvas id="myword" width="500" height="300"></canvas>
+  <br><br>
+
+  <input type="file" id="upfile">
+
+  <script>
+    document.getElementById('upfile').onchange = function(){
+      var myword = document.getElementById('myword');
+      var ctx = myword.getContext('2d');
+      var file = new FileReader();
+      file.onload = function(){
+        var img = new Image();
+        img.onload = function(){
+          ctx.drawImage(img,0,0,300,300);
+          ctx.font = "30px 华文行楷";
+          ctx.fillStyle = 'rgba(255,0,0,.3)';
+          ctx.fillText('思诚科技',10,50);
+        }
+        img.src = this.result;
+      }
+      file.readAsDataURL(this.files[0]);
+    }
+  </script>
+
+</body>
+</html>

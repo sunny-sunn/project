@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var str = '1111@aaaa';
+    var result = str.replace(/([0-9]+)@([a-z]+)/g,function(match,$1,$2,index,char){
+      console.log(match,$1,$2,index,char);
+    })
+
+
+    // 
+    var str = 'get_element-by-id';
+    var result = str.replace(/[-_](\w)/g,function(match,$1){
+      return $1.toUpperCase();
+    })
+    console.log(result);
+
+  </script>
+</body>
+</html>

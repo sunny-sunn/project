@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <form id="book">
+  
+    <input type="text" id="title" placeholder="请输入标题"> <br><br>
+  
+    <textarea id="content" cols="30" rows="10" placeholder="请输入内容"></textarea> <br><br>
+  
+    <button type="button" onclick="add()">添加</button>
+  
+    <button type="reset">重置</button>
+  </form>
+
+  <script>
+    function add(){
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            var res = JSON.parse(xhr.responseText);
+            if(xhr.err === 0){
+              alert('留言成功！');
+              document.getElementById('book').reset();
+            }else{
+              alert(res.desc);
+            }
+          }
+        }
+      }
+
+      xhr.open('POST','http://cloud.scnew.com.cn/api/feedback/add');
+      xhr.setRequestHeader('Content-Type','application/json');
+      xhr.setRequestHeader('SC-Token','eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk');
+
+      var title = document.getElementById('title');
+      var titleVal = title.value.trim();
+      var content = document.getElementById('content');
+      var contentVal = content.value.trim();
+
+      if(titleVal == ''){
+        alert('请输入标题！');
+        title.focus();
+        return false;
+      }
+
+      if(contentVal == ''){
+        alert('请输入内容！');
+        content.focus();
+        return false;
+      }
+
+      var data = {
+        asker:1,
+        tid:0,
+        title:titleVal,
+        content:contentVal,
+      }
+
+      xhr.send(JSON.stringify(data));
+    }
+  </script>
+
+<script>
+  function add(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+          var res = JSON.parse(xhr.responseText);
+          if(xhr.err === 0){
+            document.getElementById('book').reset();
+          }else{
+            alert(res.desc);
+          }
+        }
+      }
+    }
+
+    xhr.open('POST','http://cloud.scnew.com.cn/api/feedback/add');
+    xhr.setRequestHeader('Content-Type','application/json');
+    xhr.setRequestHeader('SC-Token','eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk');
+
+    var title = document.getElementById('title');
+    var titleVal = title.value.trim();
+    var content = document.getElementById('content');
+    var contentVal = content.value.trim();
+
+    if(titleVal == ''){
+      alert('请输入标题！');
+      title.focus();
+      return false;
+    }
+
+    if(contentVal == ''){
+      alert('请输入内容！');
+      content.focus();
+      return false;
+    }
+
+    var data = {
+      asker:1,
+      tid:0,
+      title:titleVal,
+      content:contentVal,
+    }
+
+    xhr.send(JSON.stringify(data));
+  }
+</script>
+  
+</body>
+</html>

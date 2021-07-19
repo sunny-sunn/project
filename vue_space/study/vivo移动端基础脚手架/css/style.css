@@ -1,0 +1,186 @@
+@import url('./font.css');
+
+@import url('./reset.css');
+
+/* layout css */
+
+html,body{
+  background-color: #c9ccd0;
+}
+
+.header,
+.footnav{
+  position: fixed;
+  width: 430px;
+  max-width: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: white;
+  z-index: 10;
+}
+
+.header{
+  height: 42px;
+  top: 0;
+}
+
+.footnav{
+  height: 50px;
+  bottom: 0;
+}
+
+.main{
+  max-width: 430px;
+  padding-top: 42px;
+  padding-bottom: 50px;
+  background-color: #f0f0f0;
+  margin: auto;
+}
+
+.header{
+  padding: 0 15px;
+  line-height: 42px;
+  font-size: 16px;
+}
+
+.footnav{
+  overflow: hidden;
+}
+
+.footnav a{
+  float: left;
+  width: 33.33333333%;
+  text-align: center;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color .3s;
+  padding-top: 2px;
+}
+.footnav a:active{
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.footnav a i{
+  font-size: 28px;
+  color: #1d1d1d;
+}
+.footnav a span{
+  display: block;
+  color: #909090;
+}
+
+.footnav a.router-link-active i{
+  color: #f2103a;
+}
+.footnav a.router-link-active span{
+  color: #1d1d1d;
+}
+
+.classify{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-color: white;
+}
+
+.classify .leftnav,
+.classify .content{
+  height: 100%;
+  overflow: auto;
+}
+.classify .leftnav::-webkit-scrollbar{
+  display: none;
+}
+
+.classify .leftnav{
+  position: absolute;
+  width: 79px;
+  height: calc(100vh - 92px);
+  border-right: 1px solid #f0f0f0;
+  background-color: white;
+  z-index: 10;
+}
+
+.classify .leftnav li{
+  position: relative;
+  line-height: 55px;
+  text-align: center;
+  font-weight: bold;
+  color: #0b0b0b;
+  cursor: pointer;
+}
+.classify .leftnav li:hover{
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.classify .leftnav li.active{
+  color: #ee0204;
+}
+.classify .leftnav li.active::before{
+  position: absolute;
+  content: " ";
+  width: 2px;
+  height: 16px;
+  background-color: #ee0204;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.classify .content{
+  position: relative;
+  padding-left: 95px;
+  padding-right: 15px;
+}
+
+.classify .product-title{
+  text-align: center;
+}
+
+.classify .product-title img{
+  margin-bottom: 15px;
+}
+
+.classify .product-title h4{
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.classify .product-title h4::before{
+  content: "── ";
+}
+.classify .product-title h4::after{
+  content: " ──";
+}
+
+
+.classify .product-list{
+  overflow: hidden;
+}
+.classify .product-list a{
+  float: left;
+  width: 50%;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  padding: 0 5px;
+}
+.classify .product-list .desc,
+.classify .product-list h4{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.classify .product-list h4{
+  font-size: 13px;
+}
+
+.classify .product-list .desc{
+  color: #b2b2b2;
+}
+
+.classify .product-list .price{
+  font-weight: bold;
+  font-size: 13px;
+}

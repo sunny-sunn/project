@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <ly-list :callback="success"></ly-list>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-list', {
+      props: {
+        callback: Function,
+      },
+      data() {
+        return {
+          msg: '组件内部的值'
+        }
+      },
+      created() {
+        this.callback(this.msg);
+      },
+      template: `<h2>列表组件</h2>`
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        success: function (msg) {
+          console.log(msg);
+        }
+      }
+    });
+  </script>
+  
+</body>
+</html>

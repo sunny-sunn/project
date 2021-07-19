@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    span {
+      display: block;
+      line-height: 50px;
+      text-align: center;
+      background-color: red;
+    }
+
+    .container {
+      padding: 0 15px;
+    }
+
+    .row{
+      display: flex;
+    }
+
+    .row [class *="col-"] {
+      box-sizing: border-box;
+      padding: 0 15px;
+    }
+  
+    .row .col-xs-1 {
+      width: 8.33333333%;
+    }
+    .row .col-xs-2 {
+      width: 16.66666667%;
+    } 
+    .row .col-xs-2dot4 {
+      width: 20%;
+    } 
+    .row .col-xs-3 {
+      width: 25%;
+    }  
+    .row .col-xs-4 {
+      width: 33.33333333%;
+    }  
+    .row .col-xs-5 {
+      width: 41.66666667%;
+    }  
+    .row .col-xs-6 {
+      width: 50%;
+    }  
+    .row .col-xs-7 {
+      width: 58.33333333%;
+    }  
+    .row .col-xs-8 {
+      width: 66.66666667%;
+    } 
+    .row .col-xs-9 {
+      width: 75%;
+    } 
+    .row .col-xs-10 {
+      width: 83.33333333%;
+    } 
+    .row .col-xs-11 {
+      width: 91.66666667%;
+    } 
+    .row .col-xs-12 {
+      width: 100%;
+    }
+
+    @media screen and (min-width: 768px) {
+      .container {
+        width: 750px;
+        margin: auto;
+        padding: 0;
+      }
+    }
+  
+    /* 992-1170 中等屏幕 */
+    @media screen and (min-width: 992px) {
+      .container {
+        width: 970px;
+      }
+    }
+  
+    /* 1200以上 大型屏幕 */
+    @media screen and (min-width: 1200px) {
+      .container {
+        width: 1170px;
+      }
+    }
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+      <div class="col-xs-1"><span>1</span></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-6"><span>6</span></div>
+      <div class="col-xs-6"><span>6</span></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-4"><span>4</span></div>
+      <div class="col-xs-4"><span>4</span></div>
+      <div class="col-xs-4"><span>4</span></div>
+    </div>  <br>
+    <div class="row">
+      <div class="col-xs-3"><span>3</span></div>
+      <div class="col-xs-3"><span>3</span></div>
+      <div class="col-xs-3"><span>3</span></div>
+      <div class="col-xs-3"><span>3</span></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-2dot4"><span>2.4</span></div>
+      <div class="col-xs-2dot4"><span>2.4</span></div>
+      <div class="col-xs-2dot4"><span>2.4</span></div>
+      <div class="col-xs-2dot4"><span>2.4</span></div>
+      <div class="col-xs-2dot4"><span>2.4</span></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-2"><span>2</span></div>
+      <div class="col-xs-2"><span>2</span></div>
+      <div class="col-xs-2"><span>2</span></div>
+      <div class="col-xs-2"><span>2</span></div>
+      <div class="col-xs-2"><span>2</span></div>
+      <div class="col-xs-2"><span>2</span></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><span>3</span></div>
+      <div class="col-xs-6"><span>6</span></div>
+      <div class="col-xs-3"><span>3</span></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-4"><span>4</span></div>
+      <div class="col-xs-8"><span>8</span></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-8"><span>8</span></div>
+      <div class="col-xs-4"><span>4</span></div>
+    </div>
+  </div>
+</body>
+</html>

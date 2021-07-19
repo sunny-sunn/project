@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        padding: 50px;
+    }
+    p{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .dropdown{
+        display: inline-block;
+        position: relative;
+    }
+    .dropdown p{
+        display: none;
+        position: absolute;
+        background-color: red;
+    }
+    .dropdown:hover p{
+        display: block;
+    }
+</style>
+<body>
+    <div class="dropdown">
+        <span>关于我们</span>
+        <p>
+            <a href="#">公司简介</a>
+            <a href="#">公司简介</a>
+            <a href="#">公司简介</a>
+            <a href="#">公司简介</a>
+        </p>
+    </div>
+</body>
+</html>

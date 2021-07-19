@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?swkz91');
+  src:  url('fonts/icomoon.eot?swkz91#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?swkz91') format('truetype'),
+    url('fonts/icomoon.woff?swkz91') format('woff'),
+    url('fonts/icomoon.svg?swkz91#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+.icon{
+    font-family: icomoon;
+    font-size: 18px;
+    font-style: normal;
+}
+.ly_icon::before{
+    font-family: icomoon;
+    font-size: 18px;
+    content: "\e635";
+    font-style: normal;
+}
+</style>
+<body>
+    <i class="icon">&#xe635</i>
+    <i class="ly_icon"></i>
+</body>
+</html>

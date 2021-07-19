@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function findMax(num){
+      var arr =String(num).split('');
+      arr.sort(function(a,b){
+        return b-a;//[5,4,4,2,1]
+      });
+      var str=arr.join('')
+      return Number(str);
+    }
+    console.log(findMax(21445));
+  </script>
+</body>
+</html>

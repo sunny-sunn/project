@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // console.log('key="123"');
+        // console.log("i'm a teacher");
+        // console.log('key=\'123\'');
+        // console.log("key=\"123\"");
+
+
+        // 字符串多行写法
+        // es6模板字符串方案
+        // var trs = `<tr algin="center">
+        //     <th>编号</th>
+        //     <th>姓名</th>
+        //     <th>年龄</th>
+        //     <th>分数</th>
+        // </tr>`;
+
+        // es5 转义符方案
+        // var trs = '<tr algin="center">\
+        //     <th>编号</th>\
+        //     <th>姓名</th>\
+        //     <th>年龄</th>\
+        //     <th>分数</th>\
+        // </tr>';
+
+        // `+`字符串并置方案
+        // var trs = '<tr algin="center">\n'+
+        //     '<th>编号</th>\n'+
+        //     '<th>姓名</th>\n'+
+        //     '<th>年龄</th>\n'+
+        //     '<th>分数</th>\n'+
+        // '</tr>';
+
+        // console.log(trs)
+
+
+        // 
+        // var str = 'hello';
+        // for(var i=str.length-1;i>=0;i--){
+        //     console.log(str[i]);
+        // }
+
+
+        // 
+        // var string = 'hello world!';
+        // console.log(btoa(string));
+        // var base64 = 'aGVsbG8gd29ybGQh';
+        // console.log(atob(base64));
+
+        // 
+        // var str = '你好！';
+        // var url = encodeURIComponent(str);
+        // console.log(btoa(url));
+
+        var base64 = 'JUU0JUJEJUEwJUU1JUE1JUJEJUVGJUJDJTgx';
+        var url = atob(base64);
+        var str = decodeURIComponent(url);
+        console.log(str);
+        
+    </script>
+</body>
+</html>

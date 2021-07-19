@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <h3>留言列表</h3>
+    <ul>
+      <li v-if="loading">加载中...</li>
+      <li v-for="item in list">{{item.content}} -------- {{item.addtime}}</li>
+    </ul>
+
+    <h3>填写留言</h3>
+
+    <p>
+      <input v-model.trim="form.title" type="text" placeholder="输入标题"> 
+    </p>
+
+    <p>
+      <textarea v-model="form.content" cols="30" rows="5" placeholder="输入内容"></textarea>
+    </p>
+
+    <p>
+      <button @click="submit">提交</button>
+    </p>
+
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        list:[],
+        form:{},
+        loading:true
+      },
+      created(){
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+          if(xhr.readyState === 4 && xhr.status === 200){
+            let res = JSON.parse(xhr.responseText);
+            this.list = res.result;
+            this.loading = false;
+          }
+        }
+        xhr.open('GET','http://cloud.scnew.com.cn/api/feedback/user?tid=0');
+        xhr.setRequestHeader('Content-Type','application/json');
+        xhr.setRequestHeader('SC-Token','eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk');
+        xhr.send();
+      },
+      methods:{
+        submit(){
+          let xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+              alert('留言成功！');
+            }
+          }
+          xhr.open('POST','http://cloud.scnew.com.cn/api/feedback/add');
+          xhr.setRequestHeader('Content-Type','application/json');
+          xhr.setRequestHeader('SC-Token','eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk');
+          xhr.send( JSON.stringify({asker:1,tid: 0,...this.form }));
+        }
+      }
+    });
+  </script>
+  
+</body>
+</html>

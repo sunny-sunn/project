@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="box">
+    <li>首页</li>
+    <li>关于</li>
+    <li>联系</li>
+  </ul>
+  <button onclick="xiugai()">修改</button>
+  <script>
+    // function xiugai(){
+    //   var input=document.createElement('input');
+    //   var li=document.getElementsByClassName('li');
+    //   for(var i=0;i<li.length;i++){
+    //     var inpCopy = input.cloneNode();
+
+    //     var txt = li[i].firstChild.parentNode.removeChild(li[i].firstChild).textContent;
+
+    //     inpCopy.setAttribute('value', txt);
+
+    //     li[i].appendChild(inpCopy);
+    //   }
+    // }
+
+    function xiugai(){
+      var box = document.getElementById('box');
+      var lis = box.childNodes;
+      for(var i=0;i<lis.length;i++){
+        var li = lis[i];
+        if(li.nodeType !== 1) continue;
+
+        var input = document.createElement('input');
+        input.value = li.innerText;
+        li.appendChild(input);
+        li.removeChild(li.firstChild);
+      }
+    }
+  </script>
+
+
+
+  <!-- <div id="div">11</div>
+  <script>
+    var p = document.createElement('p');
+    var div = document.getElementById('div');
+    div.appendChild(p);
+    var div = div.cloneNode(true);
+  </script> -->
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <ul>
+    <li>aa</li>
+    <li>bb</li>
+    <li>ccc</li>
+  </ul>
+
+  <script>
+    var arr = [1,2,3,4]; //数组
+    var str = 'abcde'; //字符串
+    var s = new Set(); //set
+    s.add(1);
+    s.add(2);
+    s.add(3);
+
+    var lis = document.querySelectorAll('li');
+    var _lis = document.querySelector('ul').children;
+
+    // for(var li of _lis){
+    //   console.log(li);
+    // }
+
+    // var str2 = {
+    //   0:'a',
+    //   1:'b',
+    //   2:'c',
+    //   length:3,
+    //   [Symbol.iterator]:function(){
+    //     var that = this;
+    //     var index = 0;
+    //     return {
+    //       next:function(){
+    //         let val = that[index++];
+    //         return {value:val,done:!val};
+    //       }
+    //     }
+    //   }
+    // }
+
+    // for(var s of str2){
+    //   console.log(s);
+    // }
+    
+
+    // var str3 = {
+    //   0:'a',
+    //   1:'b',
+    //   2:'c',
+    //   length:3,
+    //   [Symbol.iterator]:Array.prototype[Symbol.iterator]
+    // }
+
+    // for(var s of str3){
+    //   console.log(s);
+    // }
+
+
+    var info = {
+      name:'张三',
+      age:20,
+      gender:'男',
+      [Symbol.iterator](){
+        var that = this;
+        var index = 0;
+        var keys = Object.keys(this);
+        return {
+          next(){
+            let key = keys[index++];
+            let value = that[key];
+            return {key,value,done:!value};
+          }
+        }
+      }
+    }
+
+    for(var val of info){
+      console.log(val);
+    }
+  </script>
+
+</body>
+</html>

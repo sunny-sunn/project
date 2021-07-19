@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body{
+        margin: 0;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+    ul{
+        list-style-type: none;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+    .header{
+        background-color: #777;
+        overflow: hidden;
+    }
+    .header li{
+        float: left;
+    }
+    .header li a{
+        display: block;
+        text-align: center;
+        padding: 10px;
+        color: white;
+    }
+    .header li :hover{
+        background-color: #222;
+    }
+    .header li .active{
+        background-color: #4CAF50;
+    }
+    
+    .main{
+        margin: 15px;
+        overflow: hidden;
+    }
+    .main .nav{
+        float: left; 
+        width: 25%;
+    }
+    .main li{
+        background-color: #ECECEC;
+        color: #666;   
+        margin: 2px;
+    }
+    .main li a{
+        display: block;
+        padding: 5px;
+    }
+    .main li a:hover{
+        background-color: #555;
+        color: white;
+    }
+    .main li a.active{
+        background-color: #008CBA;
+        color: white;
+    }
+    .main .content{
+        box-sizing: border-box;
+        float: right;
+        padding-left: 30px;
+        width: 75%;
+        min-height: 420px;
+    }
+    .main .content .head{
+        background-color: #3380FF;
+        color: white;
+        padding: 5px;
+        text-align: center;
+    }
+    .footer{
+        background-color: #444;
+        padding: 5px;
+    }
+    .footer p{
+        color: white;
+    }
+</style>
+
+<body>
+    
+    <div class="header">
+        <ul>
+            <li><a href="#" class="active">主页</a></li>
+            <li><a href="#">新闻</a></li>
+            <li><a href="#">联系我们</a></li>
+            <li><a href="#">关于我们</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <ul class="nav">
+            <li><a href="#">导航1</a></li>
+            <li><a href="#" class="active">导航2</a></li>
+            <li><a href="#">导航3</a></li>
+            <li><a href="#">导航4</a></li>
+            <li><a href="#">导航5</a></li>
+            <li><a href="#">导航6</a></li>
+            <li><a href="#">导航7</a></li>
+            <li><a href="#">导航8</a></li>
+        </ul>
+        <div class="content">
+            <div class="head">
+                <h1>The City</h1>
+            </div>
+            <h2>chania</h2>
+            <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
+            <p>You will learn more about responsive web pages in a later chapter.</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>底部文本</p>
+    </div>
+
+</body>
+</html>

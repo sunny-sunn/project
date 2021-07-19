@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>上中下结构</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      flex: none; /*相当于 flex: 0 0 auto */
+    }
+    .container{
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    .header,
+    .footer{
+      background-color: #B3C0D1;
+      line-height: 60px;
+      text-align: center;
+    }
+    .main{
+      display: flex;
+      flex-grow: 1;
+      background-color: #E9EEF3;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  
+
+<div class="container">
+
+  <div class="header">
+    头部
+  </div>
+
+  <div class="main">
+    主体
+  </div>
+
+  <div class="footer">
+    脚部
+  </div>
+
+</div>
+
+
+</body>
+</html>

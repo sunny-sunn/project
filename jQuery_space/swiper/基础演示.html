@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/swiper.css">
+</head>
+<style>
+  .swiper-container{
+    width: 520px;
+    height: 280px;
+  }
+  .swiper-square{
+    display: inline-block;
+    width: 20px;
+    height: 5px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, .3);
+    margin: 0 5px;
+  }
+  .swiper-square-active{
+    background-color: rgba(255, 255, 255, .7);
+  }
+</style>
+<body>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="images/img1.jpg" width="520" height="280">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/img2.jpg" width="520" height="280">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/img3.jpg" width="520" height="280">
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <script src="js/swiper.min.js"></script>
+  <script>
+    var mySwiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: true,
+      // autoplay:{
+      //   delay:1000,
+      //   stopOnLastSlide: false,
+      //   disableOnInteraction: false,
+      // }
+      pagination: {
+        el: '.swiper-pagination',
+        bulletClass : 'swiper-square',
+        bulletActiveClass: 'swiper-square-active',
+        clickable:true,
+      },
+    })
+  </script>
+  
+</body>
+</html>

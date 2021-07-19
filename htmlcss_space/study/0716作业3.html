@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .pannel{
+        width: 500px;
+        height: 200px;
+        background-color: #ddd;
+        position: relative;
+    }
+    .nav{
+        width: 400px;
+        height: 150px;
+        background-color: white;
+        position: absolute;left: 50px;top: 25px;
+    }
+    .nav th{
+        border-bottom: 1px solid #F7F8FA;
+        color: #666;
+    }
+    .nav th.active{
+        border-bottom: 3px solid red;
+    }
+    .nav td{
+        color: #666;
+    }
+</style>
+<body>
+    <div class="pannel">
+    <table class="nav">
+        <tr>
+            <th class="active">标签1</th>
+            <th>标签2</th>
+            <th>标签3</th>
+            <th>标签4</th>
+        </tr>
+        <tr>
+            <td>内容1</td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>

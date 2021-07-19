@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        position: fixed;
+        left: 400px;
+        top: 150px;
+        width: 250px;
+        height: 300px;
+        transform: perspective(800px);
+        transform-style: preserve-3d;
+        cursor: pointer;
+    }
+    .box p{
+        position: absolute;
+        width: 100%;
+        height: 300px;
+        line-height: 300px;
+        text-align: center;
+        font-size: 30px;
+        border-radius: 4px;
+        box-shadow: 0 2px 6px rgb(0, 0, 0,.3);
+        transition: transform 1s ease;
+    }
+    .box p.front{
+        background-color: orange;
+    }
+    .box p.back{
+        background-color: skyblue;
+        transform: rotateY(-180deg);
+    }
+    .box.flip p.front{
+        transform: rotateY(-180deg);
+        backface-visibility: hidden;
+    }
+    .box.flip p.back{
+        transform: rotateY(-360deg);
+    }
+</style>
+<body>
+    <div class="box">
+        <p class="back">反面</p>
+        <p class="front">正面</p>
+    </div>
+    <script>
+        document.querySelector('.box').onclick=function(){
+            this.classList.toggle('flip')
+        }
+    </script>
+</body>
+</html>

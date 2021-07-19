@@ -1,0 +1,107 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <button  v-on:click="clickBack">上一页</button>
+
+    <button 
+    v-for="n in total" 
+    v-bind:style="{color: n===page?'red':''}"
+    
+    >{{n}}</button>
+
+    <button  v-on:click="clickNext">下一页</button>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{ 
+        page:1,
+        total:5
+      },
+      methods:{
+        clickBack:function(){
+          this.page = this.page-1;
+        },
+        clickNext:function(){
+          this.page = this.page+1;
+        },
+      }
+    });
+  </script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button{
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+  
+<div id="app">
+
+  <button 
+  v-on:click="page -= 1"
+  v-bind:disabled="page === 1"
+  >上页</button>
+
+  <button 
+  v-for="p in totalpage"
+  v-bind:style="{color: p === page?'red':''}"
+  v-on:click="goPage(p)"
+  >{{p}}</button>
+
+  <!-- 或者使用下面这种，可以避免{{}}闪烁 
+  <button 
+  v-for="p in totalpage"
+  v-bind:style="{color: p === page?'red':''}"
+  v-on:click="goPage(p)"
+  v-text="p"
+  />
+  -->
+
+  <button 
+  v-on:click="page += 1"
+  v-bind:disabled="page === totalpage"
+  >下页</button>
+
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    page: 1,
+    totalpage: 10
+  },
+  methods: {
+    goPage: function( p ){
+      this.page = p;
+    }
+  }
+})
+</Script>
+
+</body>
+</html>

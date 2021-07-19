@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: #EBEBEB;
+}
+
+span{
+  display: block;
+  background-color: #fff;
+}
+
+.header{}
+
+.banner{
+  height: 190px;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+.container{
+  display: flex;
+}
+.nav{
+  height: 53px;
+  border-bottom: 2px solid #E1E1E1;
+}
+.main{
+  margin: 0 15px;
+  margin-top: 35px;
+}
+
+.footer{}

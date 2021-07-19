@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    <button onclick="getInfo()">获取课程信息</button>
+  </p>
+
+  <table border="1" cellspacing="0" cellpaddding="8" width="500">
+    <thead>
+      <tr>
+        <th>封面</th>
+        <th>课程名</th>
+        <th>作者</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <script>
+    function getInfo() {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+          document.getElementById('tbody').innerHTML = data.result.reduce(function (temp, item) {
+            return temp + `
+            <tr>
+              <td><img src="${item.cover}" height="100"></td>
+              <td>${item.title}</td>
+              <td>${item.author}</td>
+            </tr>
+            `;
+          }, '')
+        }
+      }
+      xhr.open('GET', 'http://cloud.scnew.com.cn/api/course/book');
+      xhr.send();
+    }
+  </script>
+</body>
+</html>

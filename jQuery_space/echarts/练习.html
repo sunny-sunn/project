@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/echarts.min.js"></script>
+  <script src="js/chalk.js"></script>
+</head>
+<body>
+
+  <div id="main1" style="width: 600px;height:400px;"></div>
+  <br>
+  <div id="main2" style="width: 600px;height:400px;"></div>
+  <br>
+  <div id="main3" style="width: 600px;height:400px;"></div>
+
+  <script>
+    var myChart = echarts.init(document.getElementById('main1'),'chalk');
+
+    var option = {
+    title: {
+      text: '最近一周新增的用户量',
+      left:'center',
+    },
+      xAxis: {
+        type: 'category',
+        data: ['11-07', '11-08', '11-09', '11-10', '11-11', '11-12', '11-13']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [{
+        data: [200, 300, 400, 610, 150, 270, 380],
+        type: 'line'
+      }]
+    };
+
+    myChart.setOption(option);
+  </script>
+
+<script>
+
+  var myChart = echarts.init(document.getElementById('main2'),'chalk');
+
+  var option = {
+    title: {
+      text: '今日流量趋势',
+      left:'center',
+    },
+    tooltip: {},
+    legend: {
+      data: ['PV', 'UV'],
+      top:30
+    },
+    xAxis: {
+      type: 'category',
+      data: ["06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"]
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [{
+      name: 'PV',
+      type: 'line',
+      smooth: true,
+      areaStyle: {},
+      data: [111,333,555,3333,33333,55555,66666,33333,6666,26666,56666,39999,17777,6555]
+    },
+    {
+      name: 'UV',
+      type: 'line',
+      smooth: true,
+      areaStyle: {},
+      data: [11,33,55,333,5555,12666,33333,666,2666,6666,3999,1777,655]
+    },
+    ]
+  };
+
+  myChart.setOption(option);
+</script>
+
+<script>
+  var myChart = echarts.init(document.getElementById('main3'));
+
+  var option = {
+    title: {
+      text: '访客浏览器分布',
+      left: 'center',
+    },
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)'
+    },
+    legend: {
+      type: 'scroll',
+      orient: 'vertical',
+      left: 10,
+      top: 20,
+      bottom: 20,
+      data: ['chrome', 'firefox', 'IE 8.0', 'safari', '其它浏览器'],
+    },
+    series: [
+      {
+        name: '访问来源',
+        type: 'pie',
+        radius: '55%',
+        center: ['40%', '50%'],
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        },
+        data: [
+          { value: 9052, name: 'chrome' },
+          { value: 1610, name: 'firefox' },
+          { value: 3200, name: 'IE 8.0' },
+          { value: 535, name: 'safari' },
+          { value: 1700, name: '其它浏览器' }
+        ]
+      }
+    ]
+  };
+
+  myChart.setOption(option);
+</script>
+
+</body>
+</html>

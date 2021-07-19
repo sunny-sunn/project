@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <input type="text" :value="name">
+
+    <input type="text" v-model="name">
+
+    <h2>{{name}}</h2>
+
+    <select v-model="xueli">
+      <option value="">选择学历</option>
+      <option value="本科">本科</option>
+      <option value="大专">大专</option>
+    </select>
+    <h4>你选择的学历是：{{xueli}}</h4>
+
+    <select v-model="jineng" multiple>
+      <option value="">选择技能</option>
+      <option value="游泳">游泳</option>
+      <option value="跳舞">跳舞</option>
+      <option value="武术">武术</option>
+      <option value="吹牛">吹牛</option>
+    </select>
+    <h4>你选择的技能是：{{jineng}}</h4>
+
+    <input type="radio" value="男" v-model="gender"> 男
+    <input type="radio" value="女" v-model="gender"> 女
+    <h4>你的性别：{{gender}}</h4>
+
+    <input type="checkbox" value="篮球" v-model="hobby"> 篮球
+    <input type="checkbox" value="排球" v-model="hobby"> 排球
+    <input type="checkbox" value="足球" v-model="hobby"> 足球
+    <h4>你的爱好：{{hobby}}</h4>
+    
+
+    <template v-for="val in hobbys">
+      <input type="checkbox" :value="val" v-model="hobby">{{val}}
+    </template>
+
+    <button>
+      <label><input type="checkbox" v-model="checkall">全选</label>
+    </button>
+
+    <p>
+      <input type="checkbox">审核
+      {{check}}
+    </p>
+
+    <p>
+      <input type="checkbox" v-model="state" true-value="已审核" false-value="未审核">状态
+      {{state}}
+    </p>
+
+    <!-- v-model双向绑定修饰符 -->
+    <p>
+      <input type="text" v-model.lazy="phone" placeholder="电话">
+      {{phone}} - {{typeof age}}
+    </p>
+
+    <p>
+      <input type="text" v-model.number="age" placeholder="年龄">
+      {{age}}
+    </p>
+
+    <p>
+      <input type="text" v-model.trim="title" placeholder="请输入标题">
+      <pre>first{{title}}last</pre>
+    </p>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        name:'张三',
+        xueli:'大专',
+        jineng:['武术'],
+        gender:'男',
+        hobby:['篮球','足球'],
+        checkall:false,
+        hobbys:['篮球','排球','足球'],
+        phone:123456789,
+        age:20,
+        title:'vue'
+      },
+      watch:{
+        checkall(checked){
+          this.hobby = checked?this.hobbys:[]; 
+        }
+      }
+    });
+  </script>
+  
+</body>
+</html>

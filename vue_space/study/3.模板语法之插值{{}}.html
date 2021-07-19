@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <h2>{{1+2*5}}</h2>
+
+    <h2>{{['苹果','桔子'].join('$')}}</h2>
+
+    <h2>我叫{{name}},今年{{age}}岁</h2>
+    <h2>{{'我叫'+name+',今年'+age+'岁'}}</h2>
+
+    <!-- 如果是数据，支持转化为字符串输出（内部应该是使用了JSON.stringify转换） -->
+    <h2>{{jineng}}</h2>
+
+    <!-- 如果是对象，支持转化为字符串输出（内部应该是使用了JSON.stringify转换） -->
+    <h2>{{info}}</h2>
+
+    <!-- 不支持es6语法 -->
+    <h2>我叫${name},今年${age}岁</h2>
+
+    <!-- 特别注意，插值不能放在属性里面，一下写法会报错 -->
+    <div id="{{id}}">横幅</div>
+
+    <!-- 插值不支持直接渲染为html元素 -->
+    {{btn}}
+
+  </div>
+
+  <script src="js/vue.js"></script>
+
+  <script>
+
+    // 插值,也叫大胡子语法，内部支持表达式
+    var app = new Vue({
+
+      el:'#app',
+      data:{
+        name:'张三',
+        age:20,
+        jineng:['游泳','武术'],
+        info:{name:'李四',age:30,hobby:['爬山','听歌']},
+        id:'banner',
+        btn:'<button>按钮</button>'
+      }
+    });
+  </script>
+  
+</body>
+</html>

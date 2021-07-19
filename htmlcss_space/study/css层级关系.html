@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #header{color: red;}
+    #header a{color: green;}
+    #header + p{color: tomato;}
+    #header > p + a{color: orange;}
+
+    .star > span{color: red;}
+    .star > .cur ~ span{color: black;}
+</style>
+
+<body>
+    
+    <div id="header">
+        <p>
+            <b>文本</b>
+            <a href="#">段落</a>
+        </p>
+        <a href="#">链接</a>
+    </div>
+    <p>紧相连下一个同辈元素</p>
+
+    <p class="star">
+        <span>★</span>
+        <span>★</span>
+        <span class="cur">★</span>
+        <span>★</span>
+        <span>★</span>
+    </p>
+
+</body>
+</html>

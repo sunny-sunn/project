@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        width: 200px;
+        position: fixed;
+        right: 0;
+        bottom: 100px;
+        overflow: hidden;
+        transform: translate3d(170px,0,0);
+        transition: all .3s ease;
+    }
+    .box.open{
+        transform: translate3d(0,0,0);
+    }
+    .box h2{
+        float: left;
+        width: 30px;
+        text-align: center;
+        font-size: 18px;
+        background-color: skyblue;
+        padding: 10px 0;
+    }
+    .box p{
+        float: right;
+        width: 170px;
+        min-height: 200px;
+        background-color: silver;
+    }
+</style>
+<body>
+    <div class="box" id="kefu">
+        <h2>在线客服</h2>
+        <p>内容</p>
+    </div>
+    <script>
+        document.getElementById('kefu').onclick=function(){
+            this.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

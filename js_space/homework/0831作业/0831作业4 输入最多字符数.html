@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <textarea id="keyword"  cols="30" rows="8" placeholder="请输入过滤的敏感字" oninput="restr(this)"></textarea>
+  <br>
+  <textarea id="content" cols="30" rows="10" oninput="max(this)" maxlength="10"></textarea>
+  <div id="b"></div>
+  <br>
+  <button onclick="add()">评论</button>
+
+  <ul id="list"></ul>
+
+  <script>
+
+    function restr(input){
+      input.value = input.value.replace(/^\s+/gm,'');
+    }
+
+    function max(input) {
+      var t = document.getElementById('content').value.split('');
+      var n = 0;
+      if(t.length >=0 && t.length <=10){
+        n =t.length;
+      }
+      document.getElementById('b').innerHTML = n + '/'+'10';
+    }
+
+    function add() {
+      var keyword = document.getElementById('keyword');
+      var content = document.getElementById('content');
+      var list = document.getElementById('list');
+      var contentVal = content.value;
+      var keywordVal = keyword.value.trim();
+      keywordVal = keywordVal.replace(/\n/g,'|');
+      if (!contentVal.trim()) {
+        alert('请输入评论内容！');
+        content.focus();
+        return false;
+      }
+      var badWord = new RegExp(keywordVal,'ig');
+      contentVal = contentVal.replace(badWord, '<mark>*</mark>');
+      list.innerHTML += '<li>' + contentVal + '</li>';
+      content.value = '';
+      content.focus();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/swiper.css">
+</head>
+<style>
+  .swiper-container{
+    width: 560px;
+    height: 140px;
+  }
+  .swiper-slide{
+    width: 140px;
+  }
+  .my-button-prev,
+  .my-button-next{
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, .3);
+    color: white;
+    font-size: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .my-button-prev{
+    left: -25px;
+  }
+  .my-button-next{
+    right: -25px;
+  }
+  .my-button-prev span,
+  .my-button-next span{
+    position: absolute;
+    font-weight: bold;
+  }
+  .my-button-prev span{
+    right: 10px;
+  }
+  .my-button-next span{
+    left: 10px;
+  }
+</style>
+<body>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="images/slide1.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide2.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide3.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide4.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide3.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide4.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide1.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide2.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide3.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide4.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide1.webp" width="140" height="140">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/slide2.webp" width="140" height="140">
+      </div>
+    </div>
+    <div class="my-button-prev"><span><</span></div>
+    <div class="my-button-next"><span>></span></div>
+  </div>
+
+  <script src="js/swiper.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      loop: true,
+      slidesPerView: 4,
+      slidesPerGroup: 4,
+    });
+    document.querySelector('.my-button-prev').onclick = function () {
+      swiper.slidePrev();
+    }
+    document.querySelector('.my-button-next').onclick = function () {
+      swiper.slideNext();
+    }
+  </script>
+  
+</body>
+</html>

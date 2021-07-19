@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var person = {
+      info: {
+        name: '张三',
+        age: 20
+      },
+      city: '南昌',
+      phone: '1881235634'
+    }
+
+    Object.copy = function (obj, newObj) {
+      newObj = newObj || {};
+      for (var i in obj) {
+        if (typeof obj[i] === 'Object') {
+          newObj[i] = Array.isArray(obj[i]) ? [] : {};
+          arguments.callee(obj[i], newObj[i]);
+        } else {
+          newObj[i] = obj[i];
+        }
+      }
+      return newObj;
+
+    }
+
+    var newPerson = Object.copy(person);
+    console.log(newPerson)
+
+  </script>
+</body>
+
+</html>

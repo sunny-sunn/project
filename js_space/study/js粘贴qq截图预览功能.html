@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #imgList img {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    vertical-align: top;
+  }
+</style>
+<body>
+  
+  <input id="upfile" type="text">
+  <br><br>
+  <div id="imgList"></div>
+
+  <script>
+    document.getElementById('upfile').onpaste = function(ev){
+      var file = ev.clipboardData.files[0];
+      var img = document.createElement('img');
+      img.src = window.URL.createObjectURL(file);
+      document.getElementById('imgList').append(img);
+    }
+  </script>
+</body>
+</html>

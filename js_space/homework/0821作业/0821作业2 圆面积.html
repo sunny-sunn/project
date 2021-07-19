@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <input type="text" id="a">
+  <button id="btn">计算</button>
+  <input type="text" id="b">
+
+  <script>
+    document.getElementById('btn').onclick = function () {
+      var r = document.getElementById('a');
+      var b = document.getElementById('b');
+      var result = parseFloat(r.value) * parseFloat(r.value) * Math.PI;
+      b.value = result;
+    }
+  </script>
+</body>
+
+</html>

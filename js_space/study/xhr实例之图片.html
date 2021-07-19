@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .upload{
+      display: inline-block;
+      user-select: none;
+      cursor: pointer;
+    }
+    .upload input{
+      display: none;
+    }
+    .upload img{
+      display: block;
+      width: 60px;
+      height: 60px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<label class="upload">
+  <input type="file">
+  <img src="images/avatar.svg">
+</label>
+
+
+<script>
+document.querySelectorAll('.upload').forEach(function(item){
+  var file =  item.querySelector('[type="file"]');
+  var img  = item.querySelector('img');
+  file.onchange = function(){
+
+    var upfile = this.files[0];
+
+    try {
+      img.src = window.URL.createObjectURL(upfile);
+    } catch (error) {
+      console.log(error)
+    }
+  
+    //发送到后台
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState===4){
+        if(xhr.status===200){
+          console.log(xhr.responseText);
+        }
+      }
+    }
+    xhr.open('POST','http://cloud.scnew.com.cn/api/user/upload');
+
+    xhr.setRequestHeader('SC-Token','eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk');
+
+    var form = new FormData();
+    form.append('file', upfile);
+
+    xhr.send( form );
+
+  }
+})
+
+</script>
+
+</body>
+</html>

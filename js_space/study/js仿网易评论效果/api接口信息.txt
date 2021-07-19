@@ -1,0 +1,68 @@
+一、 添加评论接口
+
+请求地址：http://cloud.scnew.com.cn/api/feedback/add
+
+请求方式： POST
+
+请求参数：
+
+{
+    asker: 1,
+    tid: 0,
+    content:  用户输入的参数,
+ }
+
+需要登录授权：
+
+SC-Token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk
+
+============================================================================================================================
+
+二、 查询留言接口
+
+请求方式：http://cloud.scnew.com.cn/api/feedback/user?tid=0
+
+注意：一级评论 tid 等于0 ，二级评论 tid 应该是你回复的（上一级的）id，这里可能要用到递归实现无限级 盖楼的效果
+
+请求方式： GET
+
+需要登录授权：
+
+SC-Token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk
+
+
+
+============================================================================================================================
+
+三、 删除留言接口
+
+请求方式：http://cloud.scnew.com.cn/api/feedback/user/{id}
+
+请求方式： DELETE
+
+需要登录授权：
+
+SC-Token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk
+
+
+上面的{id} 替换为你要删除的id值。
+
+
+四、 回复评论接口
+
+请求地址：http://cloud.scnew.com.cn/api/feedback/add
+
+请求方式： POST
+
+请求参数：
+
+{
+    asker:  1,
+    tid:  用户回复的id,
+    content:   用户输入的参数,
+ }
+
+需要登录授权：
+
+SC-Token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk
+

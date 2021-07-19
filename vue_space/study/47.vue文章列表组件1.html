@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <ly-list :data="news"></ly-list>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-list', {
+      props: ['data'],
+      template: `
+        <ul>
+          <li
+          v-for="item in data"
+          :key="item.id"
+          >{{item.title}}</li>
+        </ul>
+        `
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        news: [
+          { id: 1, title: '标题1' },
+          { id: 2, title: '标题2' },
+          { id: 3, title: '标题3' },
+        ]
+      }
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #box{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+</style>
+<body>
+
+  <div id="box"></div>
+
+  <script>
+    document.getElementById('box').onmousedown = function(ev){
+      var startLeft = ev.clientX;
+      var startTop = ev.clientY;
+
+      var startX = this.offsetLeft;
+      var startY = this.offsetTop;
+
+      var maxLeft = window.innerWidth - this.offsetWidth;
+      var maxTop = window.innerHeight - this.offsetHeight;
+
+      document.onmousemove = function(ev){
+        var moveLeft = ev.clientX;
+        var moveTop = ev.clientY;
+        var disLeft = moveLeft - startLeft;
+        var disTop = moveTop - startTop;
+
+        var left = startX + disLeft;
+        var top = startY + disTop;
+
+        if (left <= 0) left = 0;
+        if (left >= maxLeft) left = maxLeft;
+        if (top <= 0 ) top = 0;
+        if (top >= maxTop) top = maxTop;
+
+        this.style.left = left + 'px';
+        this.style.top = top + 'px';
+      }.bind(this);
+
+      document.onmouseup = function(){
+        document.onmousemove = null;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="E:\WEB\jQuery_space\study\js\jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+  <select name="" id="selectId">
+    <option value="0">友情链接</option>
+    <option value="1">百度</option>
+    <option value="2">网易</option>
+  </select>
+
+  <script>
+    $(function () {
+      $('#selectId').on('change', function () {
+        var selectId = $('#selectId option:selected');
+
+        if (selectId.val() == 1) {
+          window.open('https://baidu.com');
+        } else if (selectId.val() == 2) {
+          window.open('https://163.com');
+        }
+
+      })
+    })
+  </script>
+
+</body>
+</html>

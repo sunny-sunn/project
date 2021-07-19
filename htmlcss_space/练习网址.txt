@@ -1,0 +1,10 @@
+缩写：
+table[border="1"]>(thead>tr>th*3{字段$})+(tbody>tr*2>td*3{数据$})+(tfoot>tr>td*3{数据$})
+
+http://v.scnew.com.cn/cases/baidu/
+
+http://v.scnew.com.cn/cases/taobao/
+
+http://v.scnew.com.cn/cases/login/
+
+http://189.cn/

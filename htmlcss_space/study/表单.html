@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="search" placeholder="请输入关键字">
+
+    <form name="myform" action="" method="POST" enctype="application/x-www-form-urlencoded" disabled><br>
+        <p>
+            <label for="username">用户账号：</label><br>
+            <input id="username" name="a" type="text" size="30" maxlength="5" autocomplete="off" autofocus><br>
+        </p>
+        <p>
+            <label for="pwd">用户密码：</label><br>
+            <input id="pwd" type="password" size="30" maxlength="5" autocomplete="off" autofocus><br>
+        </p>
+            
+
+
+        <input type="email" placeholder="请输入邮箱"><br> 
+
+        <label>
+            <input name="gender" type="radio" value="boy" checked>男
+        </label>
+
+        <label>
+            <input name="gender" type="radio" value="girl" disabled>女
+        </label>
+
+        <p>
+            <label>
+                <input name="hobby" type="checkbox" value="打球" checked>打球
+            </label>
+            <label>
+                <input name="hobby" type="checkbox" value="游泳">游泳
+            </label>
+            <label>
+                <input name="hobby" type="checkbox" value="看书" disabled>看书
+            </label>
+        </p>
+
+        <p>
+            <select required>
+                <option value="">会员类型</option>
+                <optgroup label="A组">
+                    <option value="1">普通会员</option>
+                    <option value="2" checked>高级会员</option>
+                </optgroup>
+                <optgroup label="B组">
+                    <option value="3">砖石会员</option>
+                    <option value="4">贵宾会员</option>
+                </optgroup>
+            </select>
+        </p>
+
+        <p>
+            <textarea cols="30" rows="5" placeholder="请输入内容" maxlength="30">111</textarea>
+        </p>
+
+        <p>
+            <input type="file" accept="image/*" multiple>
+        </p>
+
+        <p>
+            <input type="date" placeholder="请选择日期" value="2020-01-01">
+        </p>
+
+        <p>
+            <input type="color" value="#ff0000">
+        </p>
+
+        <p>
+            <input type="range" min="0" max="1" id="range" step="0.1" value="0">
+        </p>
+        <div id="box" style="width: 100px; height:100px;background-color: red;opacity: 0;"></div>
+        <script>
+            document.querySelector('#range').oninput=function(){
+                console.log(this.value);
+                document.querySelector('#box').style.opacity=this.value;
+            }
+        </script>
+
+        <p>
+            <input type="number" value="10" min="5" max="100" step="5" placeholder="请输入数字"> 
+        </p>
+
+        <p>
+            <input type="text" placeholder="出发城市" list="city">
+            <datalist id="city">
+                <option value="nanchang">南昌</option>
+                <option value="guangzhou">广州</option>
+                <option value="beijing">北京</option>
+            </datalist>
+        </p>
+
+        <p>
+            <input type="url" placeholder="请输入网址" required>
+        </p>
+
+        <button type="button">普通按钮</button>
+        <button type="submit">提交按钮</button>
+        <button type="reset">重置按钮</button>
+        
+    </form>
+</body>
+</html>

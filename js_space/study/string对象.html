@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // var email = 'xianweb@qq.com';
+    // var index = email.indexOf('@')+1;
+    // console.log(email.slice(index));
+
+
+    // var file = 'http://www.baidu.com/images/123.png';
+    // var index = file.lastIndexOf('.')+1;
+    // console.log(file.slice(index));
+    // // console.log(file.slice(-3));
+
+
+    // var str = '张三|李四|王二|';
+    // var index = str.lastIndexOf('|');
+    // console.log(str.slice(0,index));
+
+
+    // var url = 'http://www.baidu.com/prdocut/index.html';
+    // var index1 = url.indexOf('//')+2;
+    // var index2 = url.indexOf('/',index1);
+    // console.log(url.slice(index1,index2));
+
+
+    //
+    var email = 'xianweb@qq.com';
+
+    // console.log(email.slice(4,7));
+    // console.log(email.substring(4,7));
+    // console.log(email.substr(4,3));
+
+    console.log(email.replace('@', '$'));
+
+
+    // 补0方法
+    var num = 8;
+    // 方法1 判断
+    // var str = (num<10?'0':'')+ num;
+
+    // 方法2 截取
+    // var str = ('0'+num).slice(-2);
+
+    // 方法3 es6函数
+    var str = num.toString().padStart(2, '0');
+
+    console.log(str);
+
+
+    var mobile = '360958789652148952';
+    // function fn(mobile){
+    //   var str1 = mobile.slice(0,3);
+    //   var str2 = mobile.slice(-4);
+    //   console.log(str1+'****'+str2);
+    // }
+    // fn(mobile);
+
+    function strMask(str, start = 0, mask = 4, char = '*') {
+      var len = str.length;
+      var one = str.slice(0, start);
+
+      if (mask > len) mask = len - start;
+
+      var two = char.repeat(mask);
+
+      var three = str.slice(start + mask);
+
+      return one + two + three;
+    }
+    console.log(strMask(mobile, 6, 8, '*'));
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function Person(){
+      this.age = 20;
+      return {
+        age:30
+      }
+    }
+    var p1 = new Person();
+    console.log(p1.age);
+
+
+    // 
+    var person = {
+      name:'张三',
+      age: '20',
+    }
+    var person2 = Object.create(person);
+    console.log(person2.name);
+
+
+    // 
+    var o = {
+      a: 10,
+      b: {
+        a: 12,
+        fn: function () {
+          console.log(this.a); //? 12
+          console.log(this); //? {a:12,fn:f}
+        }
+      }
+    }
+    //调用
+    o.b.fn();
+
+    var o = {
+      a: 10,
+      b: {
+        fn: function () {
+          console.log(this.a); // ? undefined
+          console.log(this);  // ? {fn:f}
+        }
+      }
+    }
+    //调用
+    o.b.fn();
+
+
+    // 
+    function someFun(x) {
+      this.x = x;
+    }
+    someFun(5); //?
+    console.log(x); // ? 5
+
+
+    // 
+    var x = 3;
+    var y = 4;
+    var obj = {
+      x: 1,
+      y: 6,
+      getX: function () {
+        var x = 5;
+        return function () {
+          return this.x;
+        }();
+      },
+      getY: function () {
+        var y = 7;
+        return this.y;
+      }
+    }
+    console.log(obj.getX())//3
+    console.log(obj.getY())//6
+
+    var x = 0;
+    function test() {
+      console.log(this.x)
+    }
+    var obj = {}
+    obj.x = 1
+    obj.m = test
+    obj.m.apply() //? 0
+    obj.m.apply(obj); //? 1
+
+
+    // 
+    var name="the window";
+    var object = {
+      name: "My Object",
+      getName: function () {
+        return this.name;
+      }
+    }
+    console.log(object.getName());   //? My Object
+    console.log((object.getName)());   //? My Object
+    console.log((object.getName = object.getName)());  //? the window
+
+
+    // 
+    var a = 10;
+    var obt = {
+      a: 20,
+      fn: function () {
+        var a = 30;
+        console.log(this.a)
+      }
+    }
+    obt.fn();           // ? 20
+    obt.fn.call();      // ? 10 
+    (obt.fn)();         // ? 20 
+    (obt.fn, obt.fn)(); // ? 10 
+    new obt.fn();       // ? undefined
+
+
+    // 
+    var a = 10;
+    var foo = {
+      a: 20,
+      fn: (function () {
+        console.log(this);   //? window
+        console.log(this.a); //? 10
+      })()
+    }
+
+  </script>
+</body>
+</html>

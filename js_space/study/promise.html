@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+    // setTimeout(function(){
+    //   console.log('去买菜');
+    //   setTimeout(function(){
+    //     console.log('开始洗菜');
+    //     setTimeout(function(){
+    //       console.log('开始烧菜');
+    //       setTimeout(function(){
+    //         console.log('开始吃饭');
+    //       },1000)
+    //     },2000)
+    //   },1000)
+    // },3000)
+
+    function task(time, type) {
+      const promise = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          resolve(type);
+        }, time)
+      })
+      return promise;
+    }
+
+    task(3000, '去买菜').then(function (type) {
+      console.log(type);
+      return task(1000, '开始洗菜');
+    }).then(function (type) {
+      console.log(type);
+      return task(2000, '开始烧菜');
+    }).then(function (type) {
+      console.log(type);
+      return task(1000, '开始吃饭');
+    }).then(function (type) {
+      console.log(type);
+    })
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html,body{
+        background-color: skyblue;
+    }
+    .bear{
+        position: fixed;
+        width: 200px;
+        height: 100px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        background: url(images/bear.png) no-repeat;
+        animation: runing .5s steps(8) infinite;
+    }
+
+    @keyframes runing{
+        from{
+            background-position-x: 0;
+        }
+        to{
+            background-position-x: -1600px;
+        }
+    }
+</style>
+<body>
+    <div class="bear"></div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>左右结构</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      flex: none; /*相当于 flex: 0 0 auto */
+    }
+    .container{
+      display: flex;
+      height: 100vh;
+    }
+    .aside{
+      display: flex;
+      width: 200px;
+      background-color: #D3DCE6;
+      justify-content: center;
+      align-items: center;
+    }
+    .main{
+      display: flex;
+      flex-grow: 1;
+      background-color: #E9EEF3;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+
+    <div class="aside">
+      侧边栏
+    </div>
+
+    <div class="main">
+      主体
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+  <div id="box">
+    <p>文本</p>
+  </div>
+
+  <script>
+    $(function(){
+      // $('#box').before('前面');
+      // $('#box').before('<h4>前面</h4>');
+      
+      // $('<h4>前面</h4>').insertBefore('#box');
+      // $('前面').before('#box');
+
+      // $('#box').after('后面');
+      // $('#box').after('<h4>后面</h4>');
+      
+      $('<h4>后面</h4>').insertAfter('#box');
+      $('后面').insertAfter('#box');
+    })
+  </script>
+  
+</body>
+</html>

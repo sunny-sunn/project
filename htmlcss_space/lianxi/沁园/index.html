@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1971511_jhs22bc606.css">
+</head>
+<body>
+    <div>
+        <div class="header">
+            <div class="top-nav">
+                <img src="images/logo.png">
+                <ul class="banner">
+                    <li id="ban-1"><a href="#">首页</a><img src="images/under_line.png"></li>
+                    <li id="ban-2"><a href="#">产品中心</a><img src="images/under_line.png"></li>
+                    <li id="ban-3"><a href="#">新闻资讯</a><img src="images/under_line.png"></li>
+                    <li id="ban-4"><a href="#">关于沁园</a><img src="images/under_line.png"></li>
+                    <li id="ban-5"><a href="#">联系我们</a><img src="images/under_line.png"></li>
+                    <li id="ban-6"><a href="#">网上商城</a><img src="images/under_line.png"></li>
+                </ul>
+                <div class="magnifier" id="search">
+                    <i class="iconfont iconguanbi"></i>
+                    <input type="text" placeholder="请输入产品名称">
+                    <button></button>
+                </div>
+            </div>
+            <div class="scroll">
+                <input id="scroll_one" type="radio">
+                <input id="scroll_two" type="radio">
+                <input id="scroll_three" type="radio">
+                <ul>
+                    <li><img src="images/scroll_1.png"></li>
+                    <li><img src="images/scroll_2.png"></li>
+                    <li><img src="images/scroll_3.png"></li>
+                </ul>
+                <p>
+                    <label for="scroll_one"></label>
+                    <label for="scroll_two"></label>
+                    <label for="scroll_three"></label>
+                </p>
+            </div>
+        </div>
+        <div class="main">
+            <h2>沁园产品</h2>
+            <p>Product Center</p>
+            <ul>
+                <li><a href="#">厨房净饮水</a></li>
+                <li><a href="#">客厅净饮水</a></li>
+                <li><a href="#">全屋净化系列</a></li>
+                <li><a href="#">小型净水器</a></li>
+                <li><a href="#">商用净水器</a></li>
+            </ul>
+
+        </div>
+        <div class="footer"></div>
+
+        <script>
+            document.getElementById('ban-1').onclick=function(){
+            this.classList.toggle('active');
+            }
+            document.getElementById('ban-2').onclick=function(){
+            this.classList.toggle('active');
+            }
+            document.getElementById('ban-3').onclick=function(){
+            this.classList.toggle('active');
+            }
+            document.getElementById('ban-4').onclick=function(){
+            this.classList.toggle('active');
+            }
+            document.getElementById('ban-5').onclick=function(){
+            this.classList.toggle('active');
+            }
+            document.getElementById('ban-6').onclick=function(){
+            this.classList.toggle('active');
+            }
+
+            document.getElementById('search').onclick=function(){
+            this.classList.toggle('mag');
+            }
+        </script>
+    </div>
+</body>
+</html>

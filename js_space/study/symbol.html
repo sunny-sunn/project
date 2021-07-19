@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // var getName = Symbol('getName');
+    // Person[getName] = function(){
+    //   return '李四';
+    // }
+    // console.log(Person);
+    // console.log(Person.getName);
+    // console.log(Person[getName]());
+    // console.log(Symbol('a') == Symbol('a'));
+
+    // let slice = Symbol('slice');
+    // Array.prototype[slice] = function(a,b){
+    //   return a+b;
+    // }
+    // console.log([1,2,3][slice](1,2));
+
+    function sortNum() {
+      var arr = [];
+      for (var i = 0; i < arguments.length; i++) {
+        arr.push(arguments[i]);
+      }
+      arr.sort();
+
+      return Array.prototype.slice.call(arguments).sort();
+      return Array.from(arguments).sort();
+      return [...arguments].sort();
+
+    }
+
+    function sortNum(...arr) {
+      return arr.sort();
+    }
+  </script>
+
+</body>
+</html>

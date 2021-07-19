@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <ly-list :data="news"></ly-list>
+    <ly-page :page="1" :perpage="2" :total="news.length"></ly-page>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    let pageBus = new Vue();
+
+    Vue.component('ly-list', {
+      props: ['data'],
+      data(){
+        return {
+          page:1,
+          perpage:5,
+        }
+      },
+      computed:{
+        pageData(){
+          let start = (this.page-1) * this.perpage;
+          let end = start + this.perpage;
+          return this.data.slice(start,end);
+        }
+      },
+      created(){
+        pageBus.$on('info',(page,perpage)=>{
+          this.page = page;
+          this.perpage = perpage;
+        }).$on('page',p =>{
+          this.page = p;
+        })
+      },
+      template: `
+        <ul>
+          <li
+          v-for="item in pageData"
+          :key="item.id"
+          >{{item.title}}</li>
+        </ul>
+        `
+    })
+
+    Vue.component('ly-page', {
+      props: ['page','perpage','total'],
+      mounted(){
+        pageBus.$emit('info',this.page,this.perpage);
+      },
+      data(){
+        return {
+          page_:this.page
+        }
+      },
+      computed:{
+        totalpage(){
+          return Math.ceil(this.total/this.perpage);
+        }
+      },
+      watch:{
+        page_(val){
+          pageBus.$emit('page',val);
+        }
+      },
+      template: `
+        <div>
+          <button
+          v-for="p in totalpage"
+          :class="{active:p===page_}"
+          @click="page_=p"
+          >{{p}}</button>
+        </div>
+        `
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        news: [
+          { id: 1, title: '标题1' },
+          { id: 2, title: '标题2' },
+          { id: 3, title: '标题3' },
+          { id: 4, title: '标题4' },
+          { id: 5, title: '标题5' },
+          { id: 6, title: '标题6' },
+          { id: 7, title: '标题7' },
+          { id: 8, title: '标题8' },
+          { id: 9, title: '标题9' },
+        ]
+      }
+    });
+  </script>
+  
+</body>
+</html>

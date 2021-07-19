@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h2>商品列表</h2>
+  <table border="1" cellspacing="0" cellpadding="10" width="500">
+    <tr>
+      <th>商品名</th>
+      <th>单价</th>
+      <th>数量</th>
+      <th>操作</th>
+    </tr>
+    <tr>
+      <td>九阳豆浆机</td>
+      <td>300</td>
+      <td><input type="number" value="1"></td>
+      <td><button onclick="addcart()">加入购物车</button></td>
+    </tr>
+    <tr>
+      <td>风扇</td>
+      <td>200</td>
+      <td><input type="number" value="1"></td>
+      <td><button onclick="addcart()">加入购物车</button></td>
+    </tr>
+  </table>
+
+<h2>我的购物车</h2>
+
+<table border="1" cellspacing="0" cellpadding="10" width="500">
+  <thead>
+    <th>编号</th>
+    <th>商品</th>
+    <th>单价</th>
+    <th>数量</th>
+    <th>小计</th>
+    <th>操作</th>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<br>
+
+<table border="1" cellspacing="0" cellpadding="10" width="500">
+  <tr>
+    <th>总数量</th>
+    <td id="total">0</td>
+    <th>订单总额</th>
+    <td id="money">0.00</td>
+    <td><button onclick="delcart()">清空购物车</button></td>
+  </tr>
+</table>
+
+<script>
+
+var mycarts = [
+  { id:1, title:'手机', price: 1500, num: 1 },
+  { id:2, title:'手套', price: 30, num: 2 },
+  { id:3, title:'帽子', price: 120, num: 2 }
+]
+
+list();
+
+function list(){
+  var temp = '';
+  for(var i=0;i<mycarts.length;i++){
+    temp += `
+      <tr>
+        <td>${mycarts[i].id}</td>
+        <td>${mycarts[i].title}</td>
+        <td>${mycarts[i].price}</td>
+        <td>${mycarts[i].num}</td>
+        <td>${mycarts[i].num * mycarts[i].price}</td>
+        <td>
+          <button onclick="editNum(${mycarts[i].id})">修改数量</button>
+          <button onclick="editItem(${i})">移除</button>  
+        </td>
+      </tr>`;
+  }
+  document.getElementById('tbody').innerHTML = temp;
+
+  var total=0;
+  var money=0;
+  for (var i=0;i<mycarts.length;i++){
+    total += mycarts[i].num;
+    money += mycarts[i].num * mycarts[i].price;
+  }
+  
+    document.getElementById('total').innerHTML=total;
+    document.getElementById('money').innerHTML=money.toFixed(2);
+  
+}
+
+function editNum( id ){
+  var num =prompt('请输入数量！');
+
+  var nerNum = mycarts.map(function (item) {
+    if (item.id === id) {
+      if (num > 0) {
+        item.num = parseInt(num);
+      }
+    }
+    return item;
+  })
+
+  list();
+}
+
+function editItem(i){
+  if(confirm('确定删除吗？')){
+    mycarts.splice(i,1);
+  }
+  list();
+}
+
+// 加入购物车
+function addcart(){
+  if (confirm('确定加入购物车吗？')) {
+  }
+  list();
+}
+
+
+// var newMycarts = mycarts.map(function(item){
+//   item.subtotal = item.price * item.num;
+//   return item;
+// })
+
+
+// console.log( newMycarts );
+
+</script>
+
+
+</body>
+</html>

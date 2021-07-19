@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html{
+      background-color: #f0f0f0;
+    }
+    h1{
+      text-align: center;
+      padding: 1em;
+      font-size: 30px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .container{
+      max-width: 750px;
+      min-width: 320px;
+      min-height: 100vh;
+      margin: auto;
+      background-color: white;
+    }
+    .thumb{
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 8px;
+    }
+    .thumb a{
+      width: calc(100% / 3);
+      text-align: center;
+      padding: 0 12px;
+    }
+    .thumb a img{
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .thumb a p{
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>缩略图列表响应式方案</h1>
+    <div class="thumb">
+      <a>
+        <img src="images//question1.png">
+        <p>Spring</p>
+      </a>
+      <a>
+        <img src="images//question2.png">
+        <p>Spring</p>
+      </a>
+      <a>
+        <img src="images//question3.png">
+        <p>Spring</p>
+      </a>
+      <a>
+        <img src="images//question4.png">
+        <p>Spring</p>
+      </a>
+      <a>
+        <img src="images//question5.png">
+        <p>Spring</p>
+      </a>
+      <a>
+        <img src="images//question6.png">
+        <p>Spring</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

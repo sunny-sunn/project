@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  html,body{
+    background-color: #eee;
+  }
+  .contentmenu{
+    display: none;
+    position: fixed;
+    list-style: none;
+    min-width: 120px;
+    padding: 5px 0;
+    margin: 0;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+  }
+  .contentmenu li{
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #333;
+    cursor: default;
+  }
+  .contentmenu li:hover{
+    background-color: rgb(0, 140, 255);
+    color: #fff;
+  }
+  .contentmenu li.divider{
+    padding: 0;
+    height: 1px;
+    background-color: #f0f0f0;
+    margin: 5px 0;
+  }
+</style>
+<body>
+
+  <ul class="contentmenu">
+    <li>新建</li>
+    <li>修改</li>
+    <li class="divider"></li>
+    <li>删除</li>
+  </ul>
+
+  <script>
+    document.oncontextmenu = function (ev) {
+      ev.preventDefault(); //阻止默认动作，这里指的是屏蔽右键菜单
+
+      var contextmenu = document.querySelector('.contentmenu');
+      contextmenu.style.display = 'block';
+
+      var ww = window.innerWidth; //可视宽
+      var wh = window.innerHeight; //可视高
+      var sw = contextmenu.offsetWidth; //右键菜单宽度
+      var sh = contextmenu.offsetHeight; //右键菜单高度
+
+      var left = ev.clientX;
+      var maxLeft = ww-sw;
+      if(left >= maxLeft) left = maxLeft;
+
+      var top = ev.clientY;
+      var maxTop = wh-sh;
+      if(top >= maxTop) top = maxTop;
+
+      contextmenu.style.top = top + 'px';
+      contextmenu.style.left = left + 'px';
+    }
+
+    document.onclick = function () {
+      var contextmenu = document.querySelector('.contentmenu');
+      contextmenu.style.display = 'none';
+    }
+
+  </script>
+
+</body>
+</html>

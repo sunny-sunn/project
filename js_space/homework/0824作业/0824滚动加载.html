@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, .2);
+  }
+
+  .box {
+    width: 200px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #ccc;
+    overflow: auto;
+  }
+
+  .box li {
+    padding: 6px 10px;
+    border-bottom: 1px solid #d0d0d0;
+  }
+
+  .box li:last-child {
+    border-bottom: none;
+  }
+</style>
+<body>
+
+  <ul id="box" class="box"></ul>
+
+  <script>
+    var news = [
+      { id: 1, title: '文章标题1' },
+      { id: 2, title: '文章标题2' },
+      { id: 3, title: '文章标题3' },
+      { id: 4, title: '文章标题4' },
+      { id: 5, title: '文章标题5' },
+      { id: 6, title: '文章标题6' },
+      { id: 7, title: '文章标题7' },
+      { id: 8, title: '文章标题8' },
+      { id: 9, title: '文章标题9' },
+      { id: 10, title: '文章标题10' },
+      { id: 11, title: '文章标题11' },
+      { id: 12, title: '文章标题12' },
+      { id: 13, title: '文章标题13' },
+      { id: 14, title: '文章标题14' },
+      { id: 15, title: '文章标题15' },
+      { id: 16, title: '文章标题16' },
+      { id: 17, title: '文章标题17' },
+      { id: 18, title: '文章标题18' }
+    ];
+
+    var box = document.getElementById('box');
+
+    var page = 1;
+    var perpage = 6;
+    var total = news.length;
+    var totalpage = Math.ceil(total / perpage);
+
+    var data = news.slice(0, perpage);  //默认一刷新的时候，显示第一页数据
+
+    list();
+
+    function list() {
+      var temp = '';
+      data.forEach(function (item) {
+        temp += '<li>' + item.title + '</li>';
+      })
+      box.innerHTML = temp;
+    }
+
+    // 滚动加载
+    box.onscroll = function () {
+      var top = this.scrollTop;
+      var height = this.clientHeight;  //获取box的高度，不含边框
+      var fullHeight = this.scrollHeight;  //获取box内容完整高度
+      if (top >= (fullHeight - height)) {
+
+        page += 1;
+        if (page > totalpage) {
+          page = totalpage;
+          console.log('没有更多信息了');
+        } else {
+
+          // 根据指定的页码切割当前页的数组信息
+          var start = (page - 1) * perpage;
+          var end = start + perpage;
+          var moreData = news.slice(start, end);
+
+          data = data.concat(moreData);
+          console.log('加载了6条信息！');
+          // 刷新
+          list();
+        }
+
+      }
+    }
+  </script>
+</body>
+</html>

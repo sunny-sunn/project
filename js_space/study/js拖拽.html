@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #ball {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+  }
+
+  #box {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    right: 20px;
+    top: 20px;
+  }
+</style>
+<body>
+  
+  <div id="ball" draggable="true"></div>
+  <div id="box"></div>
+
+  <script>
+    document.getElementById('ball').ondragstart = function(){
+      console.log('开始拖拽！');
+    }
+
+    document.getElementById('ball').ondrag = function(){
+      console.log('正在拖拽...');
+    }
+
+    document.getElementById('ball').ondragend = function(){
+      console.log('拖拽结束。');
+    }
+
+    document.getElementById('box').ondragenter = function(){
+      console.log('拖拽元素已进入！');
+    }
+
+    document.getElementById('box').ondragover = function(ev){
+      ev.preventDefault();
+      console.log('拖拽元素在上面！');
+    }
+
+    document.getElementById('box').ondragleave = function(){
+      console.log('拖拽元素离开！');
+    }
+
+    document.getElementById('box').ondrop = function(){
+      console.log('拖拽元素已放置！');
+    }
+  </script>
+  
+</body>
+</html>

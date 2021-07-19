@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button onclick="request()">发送</button>
+  <ul id="list"></ul>
+
+  <script>
+    function request(){
+      document.getElementById('list').innerHTML = '<img src="images/loading.gif">'
+      var xhr = new XMLHttpRequest();
+      // xhr.timeout = 10;
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            var res = JSON.parse(xhr.responseText);
+            document.getElementById('list').innerHTML = res.result.reduce(function(temp,item){
+              return temp + '<li>'+item.title+'</li>';
+            },'')
+          }
+        }
+      }
+
+      // xhr.onerror = function(){
+      //   console.log('发生错误！');
+      // }
+
+      // xhr.ontimeout = function(){
+      //   console.log('连接超时！');
+      // }
+
+      xhr.open('GET','http://cloud.scnew.com.cn/api/course/book');
+      xhr.send();
+    }
+  </script>
+  
+</body>
+</html>

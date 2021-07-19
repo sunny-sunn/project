@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在线留言</title>
+  <style>
+   button,input,textarea{
+      font-family: inherit;
+      font-size: inherit;
+      padding: 2px 6px;
+    }
+    body{
+      font-size: 14px;
+      overflow: hidden;
+      margin: 0;
+      padding: 20px;
+    }
+    h1{
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    #list{
+      float: left;
+      width: 600px;
+    }
+    #write{
+      float: right;
+      width: 600px;
+    }
+    table{
+      border-collapse: collapse;
+      width: 100%;
+      margin: auto;
+    }
+    th,td{
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th{
+      background-color: #f0f0f0;
+    }
+    th.date{
+      text-align: center;
+      width: 180px;
+    }
+    td{
+      padding: 20px;
+    }
+
+    #pager{
+      text-align: center;
+      padding: 20px;
+    }
+    #pager button.active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>在线留言</h1>
+
+  <div id="list">
+    <table>
+      <!-- <tr>
+        <th>今年贵校的中考录取分数线？</th>
+        <th class="date">2020-10-13 <button>删除</button></th>
+      </tr>
+      <td colspan="2">请问今年贵校的中考录取分数线是多少？</td>
+      <tr>
+        <th>今年贵校的中考录取分数线？</th>
+        <th class="date">2020-10-13 <button>删除</button></th>
+      </tr>
+      <td colspan="2">请问今年贵校的中考录取分数线是多少？</td> 
+      <tr>
+        <th>今年贵校的中考录取分数线？</th>
+        <th class="date">2020-10-13 <button>删除</button></th>
+      </tr>
+      <td colspan="2">请问今年贵校的中考录取分数线是多少？</td> -->
+    </table>
+
+    <div id="pager">
+      <!-- <button>上页</button>
+      <button class="active">1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>下页</button> -->
+    </div>
+
+  </div>
+
+
+  <form id="write">
+    <table>
+      <tr>
+        <th>留言标题</th>
+        <td><input type="text" placeholder="请输入标题"></td>
+      </tr>
+      <tr>
+        <th>留言内容</th>
+        <td><textarea cols="50" rows="5" placeholder="请输入留言内容"></textarea></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td>
+          <button type="button" onclick="add()">提交</button>
+          <button type="reset">重置</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <script>
+    // 添加
+    function add() {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            var res = JSON.parse(xhr.responseText);
+            if (xhr.err === 0) {
+              alert('留言成功！');
+              document.getElementById('write').reset();
+            } else {
+              alert(res.desc);
+            }
+          }
+        }
+      }
+
+      xhr.open('POST', 'http://cloud.scnew.com.cn/api/feedback/add');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.setRequestHeader('SC-Token', 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk');
+
+      var title = document.querySelector('input');
+      var titleVal = title.value.trim();
+      var content = document.querySelector('textarea');
+      var contentVal = content.value.trim();
+
+      if (titleVal == '') {
+        alert('请输入标题！');
+        title.focus();
+        return false;
+      }
+
+      if (contentVal == '') {
+        alert('请输入内容！');
+        content.focus();
+        return false;
+      }
+
+      var data = {
+        asker: 1,
+        tid: 0,
+        title: titleVal,
+        content: contentVal,
+      }
+
+      xhr.send(JSON.stringify(data));
+    }
+
+    // 查询
+    list();
+    var res = {};
+
+    function list() {
+      var xhr = new XMLHttpRequest();
+      xhr.onload = xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            res = JSON.parse(xhr.responseText);
+            show(res.result);
+          }
+        }
+      }
+
+      xhr.open('GET', 'http://cloud.scnew.com.cn/api/feedback/user?tid=0');
+      xhr.setRequestHeader('SC-Token', 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk');
+      xhr.send();
+    }
+
+    function show(data, page = 1) {
+      var total = data.length;
+      var perpage = 5;
+      var totalpage = Math.ceil(total / perpage);
+
+      var start = (page - 1) * perpage;
+      var end = start + perpage;
+
+      var pageData = data.slice(start, end);
+
+      //列表
+      document.querySelector('#list table').innerHTML = pageData.reduce(function (temp, item) {
+        return temp += '<tr>\
+                    <th>'+ item.title + '</th>\
+                    <th class="date">'+ item.addtime + '<button onclick="del(' + item.id + ')">删除</button></th>\
+                  </tr>\
+                  <td colspan="2">'+ item.content + '</td>';
+      }, '') || '<li>没有数据</li>';
+
+
+      //页码
+      var pageTemp = '';
+      if (page > 1) pageTemp = '<button>上页</button>';
+      for (var p = 1; p <= totalpage; p++) {
+        pageTemp += '<button class="' + (p === page ? 'active' : '') + '">' + p + '</button>';
+      }
+      if (page < totalpage) pageTemp += '<button>下页</button>';
+
+      document.querySelector('#list #pager').innerHTML = pageTemp;
+
+      //事件代理
+      document.querySelector('#list #pager').onclick = function (ev) {
+        var btn = ev.target;
+        if (btn.tagName.toLowerCase() !== 'button') return;
+
+        if (btn.innerText == '上页') {
+          show(data, page - 1);
+        } else if (btn.innerText == '下页') {
+          show(data, page + 1);
+        } else {
+          show(data, +btn.innerText);
+        }
+
+      }
+
+    }
+
+    // 删除
+    function del(id) {
+      var xhr = new XMLHttpRequest();
+      xhr.onload = xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            res = JSON.parse(xhr.responseText);
+            console.log('删除成功！')
+          }
+        }
+      }
+
+      xhr.open('DELETE', 'http://cloud.scnew.com.cn/api/feedback/user/' + id);
+      xhr.setRequestHeader('SC-Token', 'Token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOSIsImF1ZCI6InRlc3QiLCJpYXQiOjE2MDAxNDEwNjQsInJvbGVzIjoiNCIsImV4cCI6MTk2MDE0MTA2NH0.g4_mSdEy6HhKmK8khunqaBxZmipFoaPdip6ur8H72Jk');
+      xhr.send();
+    }
+  </script>
+
+
+</body>
+</html>

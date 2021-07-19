@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  div{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    width: 150px;
+    height: 50px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+  }
+  button{
+    position: absolute;
+    right: 200px;
+    bottom: 200px;
+  }
+</style>
+
+<body>
+
+  <div id="box"></div>
+  <button onclick="fn()">开始考试</button>
+
+  <!-- <script>
+    function countDown(){
+      var nowTime = Date.now();
+      var endTime = Date.parse('2020-08-28T22:00:00');
+
+      var count = endTime - nowTime;
+
+      var result1 = Math.floor(count/1000%60); 
+      var result2 = Math.floor((count-result1)/1000/60);
+
+      document.getElementById('box').innerHTML=`${result2}分 ${result1}秒`;
+
+    }
+    countDown();
+
+    function fn(){
+      countDown = setInterval(countDown, 1000);
+    }
+  </script> -->
+
+  <script>
+    var count = 90 * 60;
+    function countDown() {
+      if (count >= 0) {
+        var ms = count % 60;//余数 89%60==29秒
+        var mis = Math.floor(count / 60);//分钟
+        document.getElementById('box').innerHTML = `${mis}分 ${ms}秒`;
+        count--;
+      }
+    }
+    countDown();
+
+    function fn() {
+      countDown = setInterval(countDown, 1000);
+    }
+  </script>
+</body>
+</html>

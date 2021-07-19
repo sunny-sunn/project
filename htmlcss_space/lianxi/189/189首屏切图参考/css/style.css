@@ -1,0 +1,634 @@
+  /* reset css */
+  body {
+    margin: 0;
+    font-family: \5FAE\8F6F\96C5\9ED1, verdana;
+    font-size: 14px;
+    color: #4b4b4b;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  a img {
+    border: none;
+  }
+
+  ul {
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  input,
+  button {
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    outline: none;
+    padding: 0;
+    border: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  dl {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  dd {
+    margin-left: 0;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+
+
+  /* utils css */
+  .clearfix::before,
+  .clearfix::after {
+    display: table;
+    content: "";
+  }
+  .clearfix::after {
+    clear: both;
+  }
+  .block-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .pull-left {
+    float: left;
+  }
+  .pull-right {
+    float: right;
+  }
+
+
+  /* layout css */
+  .inner {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .inner::after {
+    display: block;
+    content: "";
+    clear: both;
+    font-size: 0;
+    visibility: hidden;
+  }
+
+  .topbar {
+    background-color: #FAFAFA;
+    line-height: 30px;
+    border-bottom: 1px solid #E4E4E4;
+    font-size: 12px;
+  }
+
+  .topbar .welcome {
+    float: left;
+    line-height: 30px;
+  }
+
+  .topbar .spline{
+    float: left;
+    width: 20px;
+    color: #999;
+    text-align: center;
+  }
+  .topbar .welcome a,
+  .topbar .welcome span {
+    float: left;
+    margin-right: 22px;
+  }
+
+  .topbar .welcome a i.star{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url(../images/189_icons.png) no-repeat -231px -226px;
+    vertical-align: middle;
+    margin-top: -3px;
+  }
+
+  .topbar .welcome a:hover{
+    color: #ff8200;
+  }
+
+  .topbar .toplink {
+    float: right;
+    line-height: 30px;
+    text-align: center;
+  }
+
+  /*我的欢乐go下拉菜单开始*/
+  .topbar .toplink .dropdown,
+  .topbar .toplink .menuitem{
+    float: left;
+    position: relative;
+  }
+  .topbar .toplink .dropdown > a{
+    position: relative;
+  }
+  .topbar .toplink .dropdown > a > i,
+  .topbar .toplink .menuitem > i{
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/189_icons.png) no-repeat;
+  }
+
+  .topbar .toplink .dropdown>a>i.arrow {
+    width: 7px;
+    height: 4px;
+    background-position: -282px -839px;
+    margin-right: 3px;
+    margin-top: -1px;
+  }
+
+  .topbar .toplink .dropdown>a>i.person {
+    width: 12px;
+    height: 14px;
+    background-position: -103px -836px;
+    margin-top: -3px;
+  }
+
+  .topbar .toplink .dropdown > a > i.mobile {
+    width: 8px;
+    height: 14px;
+    background-position: -139px -837px;
+    margin-top: -3px;
+  }
+
+  .topbar .toplink .menuitem > i.email {
+    width: 15px;
+    height: 14px;
+    background-position: -175px -837px;
+    margin-top: -3px;
+  }
+
+  .topbar .toplink .dropdown>a>i.kefu {
+    width: 14px;
+    height: 14px;
+    background-position: -246px -836px;
+    margin-top: -3px;
+  }
+
+  .topbar .toplink .dropdown>a:hover {
+    text-decoration: underline;
+    color: #FF8200;
+  }
+
+  .topbar .toplink .dropdown .dropanel {
+    display: none;
+    background-color: white;
+    position: absolute;
+    min-width: 100%;
+    padding: 35px 5px 5px;
+    top: -4px;
+    left: -5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .25);
+  }
+
+  .topbar .toplink .dropdown .dropanel.app189{
+    top: auto;
+    padding-top: 10px;
+  }
+
+  .topbar .toplink .dropdown:hover>a>i.arrow {
+    background-position: -318px -839px;
+  }
+
+  .topbar .toplink .dropdown:hover>a {
+    z-index: 9999;
+  }
+
+  .topbar .toplink .dropdown:hover .dropanel {
+    display: block;
+  }
+
+  .topbar .toplink .menuitem > i.agent {
+    width: 15px;
+    height: 14px;
+    background: url(../images/agent.jpg) no-repeat;
+    margin-top: -3px;
+  }
+  /*我的欢乐go下拉菜单结束*/
+
+
+  /*刊头(logo 城市 搜索 广告) 开始*/
+  .masthead {
+    width: 1200px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .masthead::after {
+    display: block;
+    content: "";
+    clear: both;
+    font-size: 0;
+    visibility: hidden;
+  }
+
+  .masthead .logo,
+  .masthead .city,
+  .masthead .search{
+    float: left;
+  }
+
+  /*刊头 logo 开始*/
+  .masthead .logo {
+    margin-top: 20px;
+    margin-right: 25px;
+  }
+  /*刊头 logo 结束*/
+
+
+  /*刊头 城市 开始*/
+  .masthead .city {
+    position: relative;
+    width: 81px;
+    height: 29px;
+    background-color: white;
+    margin-top: 50px;
+    margin-right: 33px;
+    z-index: 999;
+    font-size: 12px;
+    color: #777;
+  }
+
+  .masthead .city > span {
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    padding-left: 12px;
+    width: 81px;
+    line-height: 28px;
+    border: 1px solid #e4e4e4;
+    cursor: pointer;
+  }
+
+  .masthead .city > span i.arrow {
+    position: absolute;
+    width: 11px;
+    height: 6px;
+    background: url(../images/189_icons.png) no-repeat -289px -33px;
+    right: 10px;
+    top: 50%;
+    margin-top: -3px;
+  }
+
+  .masthead .city .options {
+    display: none;
+    width: 420px;
+    padding: 5px;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #e4e4e4;
+    margin-top: -1px;
+  }
+
+  .masthead .city .options ul {
+    overflow: hidden;
+  }
+
+  .masthead .city .options ul span,
+  .masthead .city .options ul li {
+    line-height: 26px;
+    float: left;
+  }
+
+  .masthead .city .options ul span {
+    padding-left: 15px;
+    width: 30px;
+    color: #FF8200;
+  }
+
+  .masthead .city .options ul li {
+    margin-right: 12px;
+  }
+
+  .masthead .city .options ul li a:hover {
+    color: #FF8200;
+  }
+
+  .masthead .city:hover .options {
+    display: block;
+  }
+  /*刊头 城市 结束*/
+
+  .masthead .search{
+    width: 504px;
+    height: 68px;
+    margin-top: 15px;
+  }
+
+  .masthead .search h5{
+    width: 81px;
+    line-height: 32px;
+    font-size: 12px;
+    font-weight: normal;
+    color:white;
+    text-align: center;
+    background-color: #FF8200;
+  }
+  .masthead .search form{
+    overflow: hidden;
+  }
+  .masthead .search input,
+  .masthead .search button{
+    float: left;
+    height: 36px;
+    border: 2px solid #FF8200;
+  }
+  .masthead .search input{
+    padding-left: 32px;
+    width: 414px;
+    background: url(../images/zoom.png) no-repeat 8px 50%;
+  }
+  .masthead .search button{
+    width: 90px;
+    background-color: #ff8200;
+    color: white;
+    font-size: 16px;
+  }
+  .masthead .search p{
+    padding-top: 6px;
+    padding-left: 8px;
+    font-size: 12px;
+    color: #777;
+  }
+  .masthead .search b.time{
+    color: blue;
+  }
+  .masthead .search b.hot{
+    color: red;
+  }
+
+  .masthead .ads {
+    float: right;
+    width: 253px;
+    height: 76px;
+    background-color: #22215d;
+    color: white;
+    margin-top: 15px;
+  }
+
+  /*刊头(logo 城市 搜索 广告) 结束*/
+
+
+  /*网站主导航 开始*/
+  .mainbar {
+    background-color: #FF8200;
+    line-height: 45px;
+  }
+
+  .mainbar .title {
+    float: left;
+    margin: 0;
+    width: 190px;
+    height: 45px;
+    background: url(../images/189_icons.png) no-repeat -223px -716px;
+  }
+
+  .mainbar .navbar {
+    float: left;
+    margin-left: 40px;
+  }
+
+  .mainbar .navbar li {
+    float: left;
+  }
+
+  .mainbar .navbar li a {
+    position: relative;
+    padding-left: 10px;
+    display: block;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    width: 110px;
+
+  }
+
+  .mainbar .navbar li a::before {
+    position: absolute;
+    content: "";
+    width: 4px;
+    height: 14px;
+    background-color: transparent;
+    top: 50%;
+    margin-top: -7px;
+    left: 0;
+  }
+
+  .mainbar .navbar li a:hover::before,
+  .mainbar .navbar li a.active::before {
+    background-color: white;
+  }
+
+  .mainbar .login {
+    float: right;
+    font-size: 13.6px;
+    color: white;
+  }
+
+  .mainbar .login i.user {
+    display: inline-block;
+    width: 16px;
+    height: 14px;
+    background: url(../images/189_icons.png) no-repeat -231px -189px;
+    vertical-align: middle;
+    margin-top: -3px;
+  }
+
+  .mainbar .login:hover {
+    text-decoration: underline;
+  }
+  /*网站主导航 结束*/
+
+  .banner {
+    position: relative;
+    height: 420px;
+    background-color: #3B7CBB;
+  }
+
+  .leftmenu,
+  .payarea {
+    position: absolute;
+    background-color: white;
+  }
+
+  .leftmenu {
+    position: relative;
+    width: 190px;
+    height: 420px;
+    top: 0;
+    left: 50%;
+    margin-left: -600px;
+    background-color: white;
+  }
+
+  .leftmenu li {
+    line-height: 60px;
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #E8E8E8;
+    border-right: 1px solid #E8E8E8;
+    font-size: 0;
+    background: url(../images/arrow_right.png) no-repeat 93% 50%;
+  }
+
+  .leftmenu li .icon {
+    display: inline-block;
+    width: 41px;
+    height: 41px;
+    background: url(../images/189_icons.png) no-repeat;
+    vertical-align: middle;
+    margin: -8px 9px 0 7px;
+  }
+
+  .leftmenu li .arrow {
+    position: absolute;
+    width: 6px;
+    height: 10px;
+    background: url(../images/189_icons.png) no-repeat -175px -64px;
+    top: 50%;
+    margin-top: -5px;
+    right: 14px;
+  }
+
+  .leftmenu li .icon.buy {
+    background-position: -10px -104px;
+  }
+
+  .leftmenu li .icon.select {
+    background-position: -10px -159px;
+  }
+
+  .leftmenu li .title {
+    font-size: 14px;
+    color: #777;
+  }
+
+  .leftmenu li .submenu {
+    display: none;
+    position: absolute;
+    border: 1px solid #E8E8E8;
+    background-color: white;
+    z-index: 999;
+    left: 189px;
+    width: 630px;
+    top: 0;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .leftmenu li .submenu .black {
+    color: black;
+  }
+
+  .leftmenu li .submenu .red {
+    color: red;
+  }
+
+  .leftmenu li .submenu .purple {
+    color: purple;
+  }
+
+  .leftmenu li .submenu .blue {
+    color: blue;
+  }
+
+  .leftmenu li .submenu .orange {
+    color: orange;
+  }
+
+  .leftmenu li .submenu .green {
+    color: green;
+  }
+
+  .leftmenu li .submenu .bold {
+    font-weight: bold;
+  }
+
+  .leftmenu li .submenu .line {
+    margin-left: 4px;
+    margin-right: 4px;
+    color: #ccc;
+    font-style: normal;
+  }
+
+  .leftmenu li .submenu dl {
+    overflow: hidden;
+  }
+
+  .leftmenu li .submenu dl {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .leftmenu li .submenu dl.noborder {
+    border-bottom: none;
+  }
+
+  .leftmenu li .submenu dt,
+  .leftmenu li .submenu dd {
+    float: left;
+    padding: 14px 0;
+  }
+
+  .leftmenu li .submenu dt {
+    width: 80px;
+    font-weight: bold;
+  }
+
+  .leftmenu li .submenu .meal {
+    line-height: 2.4;
+  }
+
+
+  .leftmenu li:hover {
+    background-color: white;
+    background-image: none;
+  }
+
+  .leftmenu li:hover .submenu {
+    display: block;
+
+  }
+
+  .payarea {
+    top: 5px;
+    width: 222px;
+    left: 50%;
+    line-height: 408px;
+    text-align: center;
+    margin-left: 378px;
+  }

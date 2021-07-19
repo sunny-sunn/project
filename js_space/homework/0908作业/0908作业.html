@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <p>
+    <button onclick="add()">添加</button>
+  </p>
+
+  <table border="1" cellspacing="0" cellpadding="8" width="500">
+    <thead>
+      <tr>
+        <th>网站名称</th>
+        <th>网站网址</th>
+        <th width="100">操作</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <script>
+    var flag = '';
+    var localStore = localStorage.getItem('store');
+    if (localStore == null) {
+      store = [];
+    } else {
+      store = JSON.parse(localStore);
+    }
+
+    list()
+
+    function list() {
+      var temp = '';
+      store.forEach(function (item) {
+        temp += `
+        <tr>
+          <td>${item.name}</td>
+          <td>${item.url}</td>  
+          <td>
+            <button onclick="del(this)">删除</button>
+            <button onclick="save(this)">修改</button>
+          </td>  
+        </tr>
+        `;
+        document.getElementById('tbody').innerHTML = temp;
+      })
+    }
+
+    function add() {
+      flag = 'add';
+
+      var tbody = document.getElementById('tbody');
+
+      var tr = document.createElement('tr');
+
+      var nameTd = document.createElement('td');
+      nameTd.innerHTML = '<input>';
+      setTimeout(function () {
+        nameTd.firstElementChild.focus();
+      }, 0);
+
+      var urlTd = document.createElement('td');
+      urlTd.innerHTML = '<input>';
+
+      var actionTd = document.createElement('td');
+      var btn1 = document.createElement('button');
+      btn1.innerText = '取消';
+      btn1.onclick = del.bind(this, btn1);
+
+      var btn2 = document.createElement('button');
+      btn2.innerText = '保存';
+      actionTd.appendChild(btn1);
+      actionTd.appendChild(btn2);
+
+      btn2.onclick = save.bind(this, btn2);
+
+      tr.appendChild(nameTd);
+      tr.appendChild(urlTd);
+      tr.appendChild(actionTd);
+
+      tbody.insertBefore(tr, tbody.firstChild);
+    }
+
+    function del(btn) {
+      if (confirm('你确定要执行此操作吗？')) {
+        var tr = btn.closest('tr');
+        var index = Array.from(tbody.children).indexOf(tr);
+        store.splice(index, 1);
+
+        saveData();
+
+        tr.remove();
+      }
+    }
+
+    function save(btn) {
+      var tbody = document.getElementById('tbody');
+      var nameTd = btn.closest('tr').children[0];
+      var urlTd = btn.closest('tr').children[1];
+      var btn1 = btn.previousElementSibling;
+
+      if (btn.innerText == '保存') {
+        var nameInput = nameTd.firstElementChild;
+        var urlInput = urlTd.firstElementChild;
+
+        var nameVal = nameInput.value.trim();
+        var urlVal = urlInput.value.trim();
+
+        if (nameVal == '') {
+          alert('请输入网站名称！');
+          nameInput.focus();
+          return false;
+        }
+
+        if (!/^https?:\/\/\w+\.\w+\.\w+$/.test(urlVal)) {
+          alert('请输入网站网址！');
+          urlInput.focus();
+          return false;
+        }
+
+        nameTd.innerText = nameVal;
+        urlTd.innerText = urlVal;
+
+        btn.innerText = '修改';
+        btn1.innerText = '删除';
+
+        var info = {
+          name: nameVal,
+          url: urlVal,
+        };
+
+        if (flag == 'add') {
+          store.unshift(info);
+
+        } else if (flag == 'edit') {
+          var tr = btn.closest('tr');
+          var index = Array.from(tbody.children).indexOf(tr);
+          store[index] = info;
+        }
+
+        saveData();
+
+      } else if (btn.innerText == '修改') {
+        flag = 'edit';
+        btn.innerText = '保存';
+        var nameText = nameTd.innerText;
+        var urlText = urlTd.innerText;
+
+        nameTd.innerHTML = '<input value="' + nameText + '">';
+        urlTd.innerHTML = '<input value="' + urlText + '">';
+
+        setTimeout(function () {
+          nameTd.firstElementChild.focus();
+        }, 0)
+      }
+    }
+
+    function saveData() {
+      localStorage.setItem('store', JSON.stringify(store));
+    }
+  </script>
+
+</body>
+</html>

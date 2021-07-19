@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        box-sizing: border-box;
+    }
+    a{
+        text-decoration: none;
+        color: cornflowerblue;
+    }
+    .tabs{
+        border-bottom: 1px solid #ccc;
+        margin: 10px 0 0 10px;
+    }
+    .tabs .tabs-nav{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        margin-bottom: -1px;
+    }
+    .tabs .tabs-nav li{
+        float: left;
+        padding: 10px 15px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+    .tabs .tabs-nav li:hover{
+        background-color: #eee;
+    }
+    .tabs .tabs-nav li.active{
+        border: 1px solid #ccc;
+        border-bottom: 1px solid #fff;
+        background-color: #fff;
+        cursor: default;
+    }    
+</style>
+<body>
+    <!-- <div class="search">
+        <span class="search__icon-camera"></span>
+        <input class="search__input" type="text" placeholder="搜索">
+        <button class="search__button">
+            <i class="search__icon-zoom"></i>
+        </button>
+    </div> -->
+
+    <div class="tabs">
+        <ul class="tabs-nav">
+            <li class="active">首页</li>
+            <li><a href="#">关于</a></li>
+            <li><a href="#">联系</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- <script>
+    function isEmptyObject(obj){
+      var i = Object.keys(obj);
+      if(i.length === 0){
+        return true;
+      }
+    }
+    console.log(isEmptyObject({}));
+  </script> -->
+
+  <!-- <script>
+    function sayHi() {
+      console.log(name);
+      console.log(age);
+      var name = "Lydia";
+      let age = 21;
+    }
+    sayHi();
+  </script> -->
+
+  <!-- <script>
+    var a = 100;
+    function test() {
+      alert(a);
+      a = 10;
+    }
+    test();
+    alert(a);
+  </script> -->
+
+  <div id="box"></div>
+  <script>
+    setInterval(function () {
+      var today = new Date();
+      var y = today.getFullYear();
+      var endTime = new Date(y, 12, 1);
+      var time = (Date.parse(endTime) - Date.parse(today));
+      var days = Math.floor(time / 1000 / 60 / 60 / 24);
+      var h = Math.floor((time - days * 24 * 60 * 60 * 1000) / 1000 / 60 / 60);
+      var i = Math.floor((time - days * 24 * 60 * 60 * 1000 - h * 60 * 60 * 1000) / 1000 / 60);
+      var s = Math.floor((time - days * 24 * 60 * 60 * 1000 - h * 60 * 60 * 1000 - i * 60 * 1000) / 1000);
+      document.getElementById('box').innerHTML = `${y}年还剩${days}天${h}时${i}分${s}秒`;
+    },1000)
+  </script>
+
+  <!-- <script>
+    var arr = [[1, 2], [3, 4]];
+    function flat(arr) {
+      return arr.toString().split(',').map(function(val){
+        return +val;
+      });
+    }
+    console.log(flat(arr));
+  </script> -->
+
+  <!-- <script>
+    var str = '22两是';
+    function getStrLeng(str) {
+      var temp = 0;
+      for (var i = 0; i < str.length; i++) {
+        var charCode = str.charCodeAt(i);
+        if (charCode >= 0 && charCode <= 225) {
+          temp += 1;
+        } else {
+          temp += 2;
+        }
+      }
+      return temp;
+    }
+    console.log(getStrLeng(str));
+  </script> -->
+
+  <!-- <script>
+    var obj = {
+      apple: 0,
+      banana: { weight: 52, price: 100 },
+      cherry: 97
+    };
+    function deepCopy(obj) {
+      var newObj = obj.constructor === Array ? [] : {};
+      if (typeof obj !== 'object') {
+        return obj;
+      } else {
+        for (var i in obj) {
+          if (typeof obj[i] === 'object') {
+            newObj[i] = deepCopy(obj[i]);
+          } else {
+            newObj[i] = obj[i];
+          }
+        }
+      }
+      return newObj;
+    }
+    console.log(deepCopy(obj));
+  </script> -->
+  
+  <!-- <script>
+    // 方法1
+    function isString(obj) {
+      return typeof (obj) === "string" ? true : false;
+    }
+    console.log(isString('a'));
+
+    // 方法2
+    function isString(obj) {
+      return obj.constructor === String ? true : false;
+    }
+    console.log(isString('a'));
+  </script> -->
+
+</body>
+</html>

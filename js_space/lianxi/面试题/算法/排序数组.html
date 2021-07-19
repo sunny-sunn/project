@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // sort()方法
+    var arr = [1, 4, -8, -3, 6, 12, 9, 8];
+    function compare(a, b) {
+      return (a - b) * 1;
+    }
+    arr.sort(compare);
+    console.log(arr);
+
+    // 冒泡排序
+    var arr = [1, 4, -8, -3, 6, 12, 9, 8];
+    function sort(arr) {
+      for (var i = 0; i < arr.length - 1; i++) {
+        for (var j = i + 1; j < arr.length; j++) {
+          if (arr[i] > arr[j]) {
+            var temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+          }
+        }
+      }
+      return arr;
+    }
+    console.log(sort(arr));
+
+    // 快速排序
+    var arr = [1, 4, -8, -3, 6, 12, 9, 8];
+    function sort(arr) {
+      if (arr.length <= 1) {
+        return arr;
+      }
+      var temp = Math.floor(arr.length / 2);
+      var index = arr.splice(temp, 1)[0]; //找基准，并把基准从原数组删除
+      var left = [];
+      var right = [];
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] <= index) {
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
+        }
+      }
+      return sort(left).concat([index], sort(right));
+    }
+    console.log(sort(arr));
+
+    // 插入排序
+    var arr = [1, 4, -8, -3, 6, 12, 9, 8];
+    function sort(arr) {
+      for (var i = 1; i < arr.length; i++) {
+        if (arr[i] < arr[i - 1]) {
+          var temp = arr[i];
+          var j = i - 1;
+          arr[i] = arr[j];
+          while (j >= 0 && temp < arr[j]) {
+            arr[j + 1] = arr[j];
+            j--;
+          }
+          arr[j + 1] = temp;
+        }
+      }
+      return arr;
+    }
+    console.log(sort(arr));
+
+    // 选择排序
+    var arr = [1, 4, -8, -3, 6, 12, 9, 8];
+    function sort(arr) {
+      for (var i = 0; i < arr.length; i++) {
+        var min = arr[i];
+        var minIndex = i;
+        for (var j = i + 1; j < arr.length; j++) {
+          if (min > arr[j]) {
+            min = arr[j];
+            minIndex = j;
+          }
+        }
+        arr.splice(i, 0, min);
+        arr.splice(minIndex + 1, 1);
+      }
+      return arr;
+    }
+    console.log(sort(arr));
+
+    //二分查找
+    function search(arr, low, high, key) {
+      if (low > high) {
+        return -1;
+      }
+      var mid = parseInt((high + low) / 2);
+      if (arr[mid] == key) {
+        return mid;
+      } else if (arr[mid] > key) {
+        high = mid - 1;
+        return search(arr, low, high, key);
+      } else if (arr[mid] < key) {
+        low = mid + 1;
+        return search(arr, low, high, key);
+      }
+    }
+    console.log(search([1, 2, 3, 4, 6, 7, 8], 0, 6, 6));
+
+  </script>
+</body>
+</html>

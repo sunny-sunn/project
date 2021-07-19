@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button onclick="document.documentElement.requestFullscreen()">开始全屏</button>
+  <button onclick="document.exitFullscreen()">退出全屏</button><hr>
+
+  <button onclick="fullScreen(this)">开始全屏</button>
+
+  <script>
+    function fullScreen(btn){
+      if(btn.innerText=='开始全屏'){
+        btn.innerText = '退出全屏';
+        document.documentElement.requestFullscreen();
+      }else{
+        btn.innerText = '开始全屏';
+        document.exitFullscreen();
+      }
+    }
+
+    window.addEventListener('fullscreenchange',function(){
+      console.log('全屏改变')
+    })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button onclick="sortBy(this)">排序</button>
+  <ul id="list"></ul>
+
+  <script>
+
+    // // sort()方法
+    // // var arr = ['b', 'd', 'c', 11, 5, 4, 2];
+
+    // // var arr = [9, 2, 1, 11, 23, 5, 45];
+    // // arr.sort(function (a, b) {
+    // //   return (a - b) * -1;
+    // // })
+
+    // var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    // arr.sort(function (a, b) {
+    //   return (Math.random() - 0.5);
+    // })
+
+    // console.log(arr);
+
+
+    //练习
+
+    // 数字排序
+    // var arr = [9,6,5,10,15,1,3,21];
+    // var _arr = [].concat(arr);
+
+    // list();
+
+    // function list() {
+    //   var temp = '';
+    //   for (var i = 0; i < arr.length; i++) {
+    //     temp += '<li>' + arr[i] + '</li>';
+    //   }
+    //   document.getElementById('list').innerHTML = temp;
+    // }
+
+    // function sortBy(btn) {
+    //   if(btn.innerText=='排序'){
+    //     btn.innerText='升序';
+    //     arr.sort(function (a, b) {
+    //     return a - b;
+    //     })
+    //   }else if(btn.innerText=='升序'){
+    //     btn.innerText='降序';
+    //     arr.sort(function (a, b) {
+    //     return b-a;
+    //     })
+    //   }else{
+    //     btn.innerText='排序';
+    //     arr=[].concat(_arr);
+    //   }
+    //   list();
+
+    // 字符串排序
+    // var arr = ['a','A','c','b','f','d','h'];
+    // var _arr = [].concat(arr);
+
+    // list();
+
+    // function list() {
+    //   var temp = '';
+    //   for (var i = 0; i < arr.length; i++) {
+    //     temp += '<li>' + arr[i] + '</li>';
+    //   }
+    //   document.getElementById('list').innerHTML = temp;
+    // }
+
+    // function sortBy(btn) {
+    //   if(btn.innerText=='排序'){
+    //     btn.innerText='升序';
+    //     arr.sort(function (a, b) {
+    //     return a.localeCompare(b);
+    //     })
+    //   }else if(btn.innerText=='升序'){
+    //     btn.innerText='降序';
+    //     arr.sort(function (a, b) {
+    //     return b.localeCompare(a);
+    //     })
+    //   }else{
+    //     btn.innerText='排序';
+    //     arr=[].concat(_arr);
+    //   }
+    //   list();
+    // }
+
+    // 数字、字符串、中文 排序
+    // var arr = ['a','A','c','b','f','d','h'];
+    // var arr = [9,6,5,10,15,1,3,21];
+    var arr = ['不','阿','峰','吃','饿'];
+    var _arr = [].concat(arr);
+
+    list();
+
+    function list() {
+      var temp = '';
+      for (var i = 0; i < arr.length; i++) {
+        temp += '<li>' + arr[i] + '</li>';
+      }
+      document.getElementById('list').innerHTML = temp;
+    }
+
+    function sortBy(btn) {
+      if(btn.innerText=='排序'){
+        btn.innerText='升序';
+        orderBy(arr, 'chinese', 'asc');
+      }else if(btn.innerText=='升序'){
+        btn.innerText='降序';
+        orderBy(arr, 'chinese', 'desc');
+      }else{
+        btn.innerText='排序';
+        arr=[].concat(_arr);
+      }
+      list();
+    }
+
+    function orderBy(arr, type, flag) {
+
+      flag = (flag === 'asc' ? 1 : -1);
+      arr.sort(function (a, b) {
+        if (type === 'string') {
+          return a.localeCompare(b) * flag;
+        } else if (type === 'number') {
+          return (a - b) * flag;
+        }else if(type === 'chinese'){
+          return a.localeCompare(b,'zh') * flag;
+        }
+      })
+      return arr;
+    }
+
+  </script>
+</body>
+</html>

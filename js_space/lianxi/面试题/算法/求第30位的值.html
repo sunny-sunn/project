@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function fibonaci(num){
+      if(num<0) return -1;
+      if(num<=2 && num >0) return 1;
+      else {
+        return fibonaci(num-1)+fibonaci(num-2);
+      }
+    }
+    console.log(fibonaci(30));
+  </script>
+</body>
+</html>

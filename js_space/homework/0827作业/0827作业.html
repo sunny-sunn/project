@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // 作业1
+    // function mul(x) {
+    //   var sum = x;
+    //   var result = function (y) {
+    //     sum = sum * y;
+    //     return result;
+    //   }
+    //   result.toString = function () {
+    //     return sum;
+    //   }
+    //   return result;
+    // }
+    // console.log(mul(2)(3)(4));
+
+
+    // 作业2
+    // console.log(["1","2","3"].map(parseInt));
+
+
+    // 作业3
+    // var url = 'http:www.baidu.com/index.html?name=zhangsan&age=20';
+    // function queryString(url) {
+    //   var str = url.split("?")[1];
+    //   if (str) {
+    //     var item = str.split('&');
+    //     var arr, result = {};
+    //     for (var i = 0; i < item.length; i++) {
+    //       arr = item[i].split('=');
+    //       result[arr[0]] = arr[1];
+    //     }
+    //   }
+    //   return result;
+    // }
+    // console.log(queryString(url));
+
+
+    // 作业4
+    // var str = "get-element-by-id";
+    // function camelcase(str) {
+    //   var newStr = '';
+    //   var arr = str.split('-');
+    //   for (var i = 0; i < arr.length; i++) {
+    //     var temp = arr[i];
+    //     if (i === 0) {
+    //       newStr += temp;
+    //     } else {
+    //       newStr += temp.substr(0, 1).toLocaleUpperCase();
+    //       newStr += temp.substr(1, temp.length - 1);
+    //     }
+    //   }
+    //   return newStr;
+    // }
+    // console.log(camelcase(str));
+
+
+    // 作业5
+    // let str = "abcabcabcbbccccc";
+    // function maxCount() {
+    //   var obj = {};
+    //   var temp = 0;
+    //   var result = null;
+    //   for (var i = 0; i < str.length; i++) {
+    //     var a = str[i];
+    //     if (!obj[a]) {
+    //       obj[a] = [];
+    //     }
+    //     obj[a].push(a);
+    //   }
+    //   for (var j in obj) {
+    //     if (temp < obj[j].length) {
+    //       temp = obj[j].length;
+    //       result = obj[j][0];
+    //     }
+    //   }
+    //   console.log('字符最多的是：'+result+' ，出现了'+temp+'次');
+    // }
+    // maxCount(str);
+
+
+
+    let str = "abcabcabcbbccccc";
+    function maxCount(str) {
+      var arr = str.split('').sort();
+      var index1 = arr.lastIndexOf('a')+1;
+      var index2 = arr.indexOf('b')
+      var index3 = arr.lastIndexOf('b')+1;
+      var arr1 = arr.slice(0,index1);
+      var arr2 = arr.slice(index2,index3);
+      var arr3 = arr.slice(index3);
+      var temp = [];
+      if(arr1.length>arr2.length){
+        temp = arr1;
+      }else{
+        temp = arr2;
+      }
+      if(arr3.length>temp.length){
+        temp = arr3;
+      }
+      var num = temp[0];
+      result = temp.length
+
+      console.log('字符最多的是：'+num+' ，出现了'+result+'次');
+    }
+    maxCount(str);
+    
+  </script>
+</body>
+</html>

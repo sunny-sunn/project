@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <h2>{{tips.split('').reverse().join('')}}</h2>
+
+    <h2>{{reverseText}}</h2>
+
+    <h2>计算属性读取时间（缓存）</h2>
+    <h4>{{nowTime}}</h4>
+
+    <h2>方法读取时间</h2>
+    <h4>{{curTime()}}</h4>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        tips: 'today is sunny!'
+      },
+      computed: {
+        reverseText() {
+          return this.tips.split('').reverse().join('')
+        },
+        nowTime() {
+          return new Date();
+        },
+      },
+      methods: {
+        curTime() {
+          return new Date();
+        }
+      }
+    });
+  </script>
+  
+</body>
+</html>
+
+<!-- 
+  计算属性和方法的区别
+  1.计算属性调用的时候不需要括号，方法需要
+  2.计算属性会缓存第一次的结果，方法不会
+  3.方法可以传参，计算属性不会
+  4.计算属性一定要返回值，方法不一定
+ -->

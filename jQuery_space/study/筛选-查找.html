@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+    
+  <ul id="box">
+    <li>000
+      <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc <button id="btn">删除</button></li>
+      </ul>
+    </li>
+    <li>111</li>
+    <li>222</li>
+  </ul>
+
+  <ul>
+    <li>A</li>
+    <li>B</li>
+  </ul>
+
+
+  <script>
+    $(function(){
+      // $('ul').filter(':last').css('border-bottom','1px solid red');
+      // // $('#box').find('li').css('border-bottom','1px solid red');
+      // // $('#box').children('li').css('border-bottom','1px solid red');
+
+      // $('#btn').click(function(){
+      //   // $(this).closest('ul').remove();
+      //   $(this).parents('ul').last().remove();
+      // })
+
+      // $(this).parent().remove();
+
+      // $(this).parent().prev().remove();
+
+      // $(this).parent().siblings().remove();
+
+      $('button').add('p').css('color','red');
+
+    })
+  </script>
+  
+</body>
+</html>

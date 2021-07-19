@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <ul>
+    <li>首页</li>
+    <li id="product">产品</li>
+    <li>联系</li>
+    <li>关于</li>
+  </ul>
+
+  <script>
+    function nextAll(el) {
+      var result = [];
+      // result.push(el.nextElementSibling);
+      // el.nextElementSibling.remove();
+      // result.push(el.nextElementSibling);
+
+      var next = el.nextElementSibling;
+      while(next != null){
+        result.push(next);
+        next = next.nextElementSibling;
+      }
+      return result;
+    }
+    console.log(nextAll(document.getElementById('product')));
+  </script>
+
+
+  <ul>
+    <li>首页</li>
+    <li>产品</li>
+    <li id="contact">联系</li>
+    <li>关于</li>
+  </ul>
+
+  <script>
+    function nextAll(el) {
+      var result = [];
+      // result.push(el.previousElementSibling);
+      // el.previousElementSibling.remove();
+      // result.push(el.previousElementSibling);
+      var next = el.previousElementSibling;
+      while(next != null){
+        result.push(next);
+        next = next.previousElementSibling;
+      }
+      return result;
+    }
+    console.log(nextAll(document.getElementById('contact')));
+  </script>
+
+
+  <ul>
+    <li>首页</li>
+    <li>产品</li>
+    <li id="contact">联系</li>
+    <li>关于</li>
+  </ul>
+
+  <script>
+    function nextAll(el) {
+      var result = [];
+      result.push(el.nextElementSibling);
+      result.push(el.previousElementSibling);
+      el.previousElementSibling.remove();
+      result.push(el.previousElementSibling);
+      return result;
+    }
+    console.log(nextAll(document.getElementById('contact')));
+  </script>
+
+
+  <div>
+    <a href="#">链接</a>
+    <ul>
+      <li>
+        <a href="#">
+          <b id="b">导航</b>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    function parents(el) {
+      var result = [];
+      var temp = el.parentNode;
+      result.push(temp);
+      return result;
+    }
+
+    console.log(parents(document.getElementById('b')));
+  </script>
+
+
+  <!-- <script>
+    // for (var i = 0; i < 5; i++) {
+    //   setTimeout(function () {
+    //     console.log(i);
+    //   }, 1000);
+    // }
+
+    for (var i = 0; i < 5; i++) {
+      (function (i) {
+        setTimeout(function () {
+          console.log(i);
+        }, 1000);
+      })(i);
+    }
+  </script> -->
+
+</body>
+</html>

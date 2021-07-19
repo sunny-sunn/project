@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  img{
+    display: block;
+    width: 500px;
+    margin-top: 20px;
+  }
+</style>
+<body>
+  <div>
+    <img src="1.jpeg">
+    <img src="1.jpeg">
+    <img src="1.jpeg">
+    <img src="1.jpeg">
+    <img src="1.jpeg">
+    <img src="1.jpeg">
+    <img src="1.jpeg">
+    <img src="1.jpeg">
+    <img src="1.jpeg">
+    <img src="1.jpeg">
+  </div>
+
+  <script>
+    function getPos(){
+      var l = 0;
+      var t = 0;
+      while (obj) {
+        l += obj.offsetLeft;
+        t += obj.offsetTop;
+        obj = obj.offsetParent;
+      }
+      return {left:l,top:t};
+    }
+
+    window.onload = window.onscroll = function(){
+      var img = document.getElementsByTagName('img');
+      var onscrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      var clientH = document.documentElement.clientHeight;
+      for(var i=0;i<img.length;i++){
+        var imgTop = getPos(img[i]).top;
+        if(onscrollTop + clientH >= imgTop){
+          img[i].src = img[i].getAttribute('_src');
+        }
+      }
+    }
+  </script>
+</body>
+</html>

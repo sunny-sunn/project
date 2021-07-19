@@ -1,0 +1,2680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>189</title>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    p{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+    ul{
+        list-style-type: none;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+    input,button{
+        box-sizing: border-box;
+        font-family: inherit;
+        outline: none;
+        padding: 0;
+    }
+    i{
+        font-style: normal;
+    }
+    dl{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    dd{
+        margin-left: 0;
+    }
+
+    .box > a img{
+        position: fixed;
+        right: 5px;
+        bottom: 5px;
+    }
+
+
+    .header{
+        height: 617px;
+    }
+    .header .top{
+        height: 30px;
+        background-color: #FAFAFA;
+        font-size: 0.75em;
+        color: #777;
+        border-bottom: 1px solid #E4E4E4;
+    }
+    .header .top .ban1{
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 30px;
+    }
+    .header .top .ban1 p > a:hover{
+        color: #ff8201;
+    }
+    .header .top .ban1 p a i{
+        display: inline-block;
+        background: url(images/189-index.png) no-repeat;
+        vertical-align: middle;
+    }
+    .header .top .ban1 p a i.user{
+        width: 16px;
+        height: 15px;
+        background-position: -68px -837px;
+    }
+    .header .top .ban1 p span{
+        margin-left: 20px;
+    }
+    .header .top .ban1 p{
+        display: inline-block;
+    }
+    .header .top .ban1 > span ul li{
+        float: left;
+        position: relative;
+    }
+    .header .top .ban1 > span::after{
+        display: block;
+        content: "";
+        clear: both;
+    }
+    .header .top .ban1 > span{
+        float: right;
+    }
+    .header .top .ban1{
+        display: block;
+        content: "";
+        clear: both;
+    }
+    .header .top .ban1 span ul li span{
+        color: #CCD5E1;
+    }
+    .header .top .ban1 span ul li i{
+        display: inline-block;
+        background: url(images/189-index.png) no-repeat;
+        vertical-align: middle;
+    }
+    .header .top .ban1 span ul li i.my{
+        width: 13px;
+        height: 16px;
+        background-position: -104px -836px;
+        margin-right: 5px;
+    }
+    .header .top .ban1 span ul li i.me{
+        width: 13px;
+        height: 16px;
+        background-position: -282px -833px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .header .top .ban1 span ul li i.customer{
+        display: inline-block;
+        background: url(images/189-index.png) no-repeat -140px -836px;
+        vertical-align: middle;
+        width: 9px;
+        height: 16px;
+        margin-left: 8px;
+        margin-right: 5px;
+    }
+    .header .top .ban1 span ul li i.email{
+        display: inline-block;
+        background: url(images/189-index.png) no-repeat -175px -836px;
+        vertical-align: middle;
+        width: 16px;
+        height: 15px;
+        margin-left: 8px;
+        margin-right: 3px;
+    }
+    .header .top .ban1 span ul li i.helper{
+        display: inline-block;
+        background: url(images/189-index.png) no-repeat -247px -836px;
+        vertical-align: middle;
+        width: 16px;
+        height: 16px;
+        margin-left: 8px;
+        margin-right: 3px;
+    }
+    .header .top .ban1 span ul li i.agent{
+        display: inline-block;
+        background: url(images/189-index.png) no-repeat -208px -836px;
+        vertical-align: middle;
+        width: 11px;
+        height: 16px;
+        margin-left: 8px;
+        margin-right: 5px;
+    }
+    .header .top .ban1 span ul li a:hover{
+        text-decoration: underline;
+        color: #ff8200;
+    }
+    .header .top .ban1 span ul .none a:hover{
+        text-decoration: none;
+    }
+    .header .top .ban1 span ul li a{
+        position: relative;
+        display: block;
+    }
+    .header .top .ban1 span ul li p.order{
+        display: none;
+        background-color: white;
+        position: absolute;
+        width: 55px;
+        padding: 35px 22px 10px;
+        top: -3px;
+        left: -5px;
+        box-shadow: 0 0 3px rgba(0,0,0,.3);
+    }
+    .header .top .ban1 span ul li:hover > a{
+        z-index: 10;
+    }
+    .header .top .ban1 span ul li:hover > a i.me{
+        background: url(images/189-index.png) no-repeat -315px -833px;
+    }
+    .header .top .ban1 span ul li:hover > p.order{
+        display: block;
+        z-index: 5;
+    }
+    .header .top .ban1 span ul li p.app189{
+        display: none;
+        background-color: white;
+        position: absolute;
+        padding: 10px 15px 5px;
+        top: 30px;
+        left: -5px;
+        box-shadow: 0 0 3px rgba(0,0,0,.3);
+    }
+    .header .top .ban1 span ul li:hover > p.app189{
+        display: block;
+        z-index: 5;
+    }
+    .header .top .ban1 span ul li p.zx{
+        display: none;
+        background-color: white;
+        position: absolute;
+        width: 78px;
+        padding: 35px 18px 1px;
+        top: -1px;
+        left: 4px;
+        box-shadow: 0 0 3px rgba(0,0,0,.3);
+    }
+    .header .top .ban1 span ul li:hover > p.zx{
+        display: block;
+        z-index: 5;
+    }
+
+
+    .header .middle{
+        height: 120px;
+    }
+    .header .middle .ban2{
+        width: 1200px;
+        height: 120px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+    .header .middle .ban2 .logo{
+        display: inline-block;
+        padding-top: 20px;
+    }
+    .header .middle .ban2 .address{
+        display: inline-block;
+        background: url(images/189-index.png) no-repeat -230px -19px;
+        vertical-align: middle;
+        width: 81px;
+        height: 30px;
+        margin-left: 20px;
+        margin-bottom: 55px;
+    }
+    .header .middle .ban2 .address{
+        font-size: 0.75em;
+        color: #777;
+        padding-left: 15px;
+        padding-top: 6px;
+        position: relative;
+    }
+    .header .middle .ban2 .address ul li span{
+        color: #ff8201;
+    }
+    .header .middle .ban2 .address ul{
+        display: none;
+        background-color: white;
+        border: 1px solid #E7E3E1;
+        position: absolute;
+        top: 28px;
+        left: -0.5px;
+        width: 370px;
+        line-height: 30px;
+        padding: 10px 15px 10px 20px;
+    }
+    .header .middle .ban2 .address ul li a{
+        margin-left: 10px;
+    }
+    .header .middle .ban2 .address:hover ul{
+        display: block;
+        z-index: 5;
+    }
+    .header .middle .ban2 .search{
+        display: inline-block;
+        position: absolute;
+        bottom: 12px;
+        margin-left: 20px;
+    }
+    .header .middle .ban2 .search input{
+        width: 420px;
+        height: 36px;
+        border: 2px solid #FF8200;
+        background: url(images/ioc_01.gif) no-repeat 0 50%;
+        padding-left: 30px;
+        font-size: 0.75em;
+        color: black;
+        z-index: 10;
+    }
+    .header .middle .ban2 .search .product{
+        width: 80px;
+        height: 32px;
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        line-height: 32px;
+        background-color: #FF8201;
+    }
+    .header .middle .ban2 .search button{
+        width: 90px;
+        height: 36px;
+        line-height: 32px;
+        font-size: 16px;
+        color: white;
+        vertical-align: top;
+        text-align: center;
+        border: 2px solid #FF8200;
+        background-color: #FF8200;
+        cursor: pointer;
+    }
+    .header .middle .ban2 .search .hot{
+        font-size: 0.75em;
+        color: #9b9b9b;
+        margin-top: 5px;
+        padding: 2px 2px 0 2px;
+    }
+    .header .middle .ban2 .search .hot > a{
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .header .middle .ban2 .search .hot .hot_blue{
+        color: blue;
+        font-weight: bold;
+    }
+    .header .middle .ban2 .search .hot .hot_red{
+        color: red;
+        font-weight: bold;
+    }
+    .header .middle .ban2 .star{
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 20px;
+    }
+
+
+    .header .under{
+        height: 45px;
+        background-color: #FF8200;
+    }
+    .header .under .ban3{
+        width: 1200px;
+        height: 45px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .header .under .ban3 .service a{
+        display: inline-block;
+        background: url(images/189-index.png) no-repeat -224px -716px;
+        vertical-align: middle;
+        width: 190px;
+        height: 45px;
+    }
+    .header .under .ban3 .service{
+        float: left;
+    }
+    .header .under .ban3 .service,
+    .header .under .ban3 .bar{
+        display: inline-block;
+    }
+    .header .under .ban3 .bar{
+        overflow: hidden;
+        margin-left: 30px;
+    }
+    .header .under .ban3 .bar ul li{
+        float: left;
+        font-size: 16px;
+        color: white;
+        font-weight: bold;
+        width: 120px;
+        line-height: 45px;
+    }
+    .header .under .ban3 .bar ul li a i{
+        display: inline-block;
+        width: 8px;
+        height: 18px;
+        vertical-align: middle;
+        background: url(images/189-index.png) no-repeat -238px -537px;
+        display: none;
+    }
+    .header .under .ban3 .bar ul li a.active i,
+    .header .under .ban3 .bar ul li a:hover i{
+        display: inline-block;
+    }
+    .header .under .ban3 > a{
+        height: 45px;
+        line-height: 45px;
+        float: right;
+        font-size: 13.6px;
+        color: white;
+    }
+    .header .under .ban3 > a:hover{
+        text-decoration: underline;
+    }
+    .header .under .ban3 > a i{
+        display: inline-block;
+        width: 20px;
+        height: 18px;
+        vertical-align: middle;
+        background: url(images/189-index.png) no-repeat -230px -188px;
+        padding-right: 4px;
+    }
+
+
+    .header .rotation{
+        width: 100%;
+        height: 421px;
+        background-image: url(images/scro1.jpg);
+    }
+    .header .rotation .rota{
+        position: relative;
+        width: 1200px;
+        height: 421px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .header .rotation .rota .menu{
+        width: 190px;
+        height: 420px;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .header .rotation .rota .menu ul li{
+        width: 188px;
+        height: 59px;
+        line-height: 59px;
+        font-size: 14px;
+        color: #777777;
+        background-color: #FAFAFA;
+        border-bottom: 1px solid #e8e8e8;
+        border-left: 1px solid #e8e8e8;
+        border-right: 1px solid #e8e8e8;
+    }
+    .header .rotation .rota .menu ul li i{
+        display: inline-block;
+        background: url(images/189-index.png) no-repeat;
+        vertical-align: middle;
+    }
+    .header .rotation .rota .menu ul li i.buy{
+        width: 40px;
+        height: 41px;
+        background-position: -15px -49px;
+        margin-left: 10px;
+        padding-right: 15px;
+    }
+    .header .rotation .rota .menu ul li i.choose{
+        width: 40px;
+        height: 41px;
+        background-position: -10px -159px;
+        margin-left: 10px;
+        padding-right: 15px;
+    }
+    .header .rotation .rota .menu ul li i.pretend{
+        width: 40px;
+        height: 41px;
+        background-position: -10px -271px;
+        margin-left: 10px;
+        padding-right: 15px;
+    }
+    .header .rotation .rota .menu ul li i.enjoy{
+        width: 40px;
+        height: 41px;
+        background-position: -10px -382px;
+        margin-left: 10px;
+        padding-right: 15px;
+    }
+    .header .rotation .rota .menu ul li i.charge{
+        width: 40px;
+        height: 41px;
+        background-position: -10px -493px;
+        margin-left: 10px;
+        padding-right: 15px;
+    }
+    .header .rotation .rota .menu ul li i.check{
+        width: 40px;
+        height: 41px;
+        background-position: -10px -603px;
+        margin-left: 10px;
+        padding-right: 15px;
+    }
+    .header .rotation .rota .menu ul li i.rightpull1{
+        width: 10px;
+        height: 15px;
+        background-position: -177px -65px;
+        margin-left: 43px;
+    }
+    .header .rotation .rota .menu ul li i.rightpull2{
+        width: 10px;
+        height: 15px;
+        background-position: -177px -65px;
+        margin-left: 76px;
+    }
+    .header .rotation .rota .menu ul li{
+        position: relative;
+    }
+    .header .rotation .rota .menu ul li .submenu1{
+        display: none;
+        width: 600px;
+        height: 481px;
+        border: 1px solid #dbdbdb;
+        background-color: white;
+        box-shadow: #ccc 4px 2px 3px;
+        z-index: 999;
+        position: absolute;
+        left: 188px;
+        top: 0;
+        padding-left: 20px;
+        padding-bottom: 17px;
+        font-size: 12px;
+        color: #777;
+    }
+    .header .rotation .rota .menu ul li:hover{
+        background-color: white;
+    }
+    .header .rotation .rota .menu ul li:hover i.rightpull1{
+        display: none;
+    }
+    .header .rotation .rota .menu ul li:hover i.rightpull2{
+        display: none;
+    }
+    .header .rotation .rota .menu ul li:hover .submenu1{
+        display: block;
+    }
+    .header .rotation .rota .menu ul li .submenu1 .red{
+        color: red;
+    }
+    .header .rotation .rota .menu ul li .submenu1 .purple{
+        color: purple;
+    }
+    .header .rotation .rota .menu ul li .submenu1 .green{
+        color: green;
+    }
+    .header .rotation .rota .menu ul li .submenu1 .blue{
+        color: blue;
+    }
+    .header .rotation .rota .menu ul li .submenu1 .orange{
+        color: orange;
+    }
+    .header .rotation .rota .menu ul li .submenu1 .black{
+        color: black;
+    }
+    .header .rotation .rota .menu ul li .submenu1 .blod{
+        font-weight: bold;
+    }
+    .header .rotation .rota .menu ul li .submenu1 .line{
+        margin-left: 4px;
+        margin-right: 4px;
+        color: #D2D2D2;
+    }
+    .header .rotation .rota .menu ul li .submenu1 dl{
+        border-bottom: 1px solid #F3F3F3;
+        overflow: hidden;
+    }
+    .header .rotation .rota .menu ul li .submenu1 dl.noborder{
+        border-bottom: none;
+    }
+    .header .rotation .rota .menu ul li .submenu1 dt,
+    .header .rotation .rota .menu ul li .submenu1 dd{
+        line-height: 2.4;
+        float: left;
+        padding: 8px 0;
+    }
+    .header .rotation .rota .menu ul li .submenu1 dt{
+        width: 80px;
+        font-weight: bold;
+    }
+    .header .rotation .rota .menu ul li .submenu1 .meal{
+        line-height: 2.4;
+    }
+    .header .rotation .rota .menu ul li .submenu1 a:hover .change,
+    .header .rotation .rota .menu ul li .submenu1 .meal a:hover .change{
+        color: orange;
+    }
+    .header .rotation .rota .menu ul li .submenu1 .police{
+        padding-top: 8px;
+    }
+    .header .rotation .rota .menu ul li .submenu2{
+        display: none;
+        width: 600px;
+        height: 563px;
+        border: 1px solid #dbdbdb;
+        background-color: white;
+        box-shadow: #ccc 4px 2px 3px;
+        z-index: 999;
+        position: absolute;
+        left: 188px;
+        top: -60px;
+        padding-left: 20px;
+        padding-bottom: 17px;
+        font-size: 12px;
+        color: #777;
+        font-weight: bold;
+    }
+    .header .rotation .rota .menu ul li:hover .submenu2{
+        display: block;
+    }
+    .header .rotation .rota .menu ul li .submenu2 .red{
+        color: red;
+    }
+    .header .rotation .rota .menu ul li .submenu2 .green{
+        color: green;
+    }
+    .header .rotation .rota .menu ul li .submenu2 .black{
+        color: black;
+    }
+    .header .rotation .rota .menu ul li .submenu2 .line{
+        margin-left: 10px;
+        margin-right: 10px;
+        color: #D2D2D2;
+    }
+    .header .rotation .rota .menu ul li .submenu2 .line_more{
+        margin-left: 200px;
+        margin-right: 10px;
+        color: #D2D2D2;
+
+    }
+    .header .rotation .rota .menu ul li .submenu2 dl{
+        border-bottom: 1px solid #F3F3F3;
+        overflow: hidden;
+    }
+    .header .rotation .rota .menu ul li .submenu2 dl.noborder{
+        border-bottom: none;
+    }
+    .header .rotation .rota .menu ul li .submenu2 dt,
+    .header .rotation .rota .menu ul li .submenu2 dd{
+        line-height: 2.4;
+        float: left;
+        padding: 8px 0;
+    }
+    .header .rotation .rota .menu ul li .submenu2 dt{
+        width: 80px;
+    }
+    .header .rotation .rota .menu ul li .submenu2 a:hover .change{
+        color: orange;
+    }
+    .header .rotation .rota .menu ul li .submenu3{
+        display: none;
+        width: 600px;
+        height: 401px;
+        border: 1px solid #dbdbdb;
+        background-color: white;
+        box-shadow: #ccc 4px 2px 3px;
+        z-index: 999;
+        position: absolute;
+        left: 188px;
+        top: -120px;
+        padding-left: 20px;
+        padding-bottom: 17px;
+        font-size: 12px;
+        color: #777;
+        font-weight: bold;
+    }
+    .header .rotation .rota .menu ul li:hover .submenu3{
+        display: block;
+    }
+    .header .rotation .rota .menu ul li .submenu3 dl{
+        border-bottom: 1px solid #F3F3F3;
+        overflow: hidden;
+    }
+    .header .rotation .rota .menu ul li .submenu3 dl.noborder{
+        border-bottom: none;
+    }
+    .header .rotation .rota .menu ul li .submenu4{
+        display: none;
+        width: 600px;
+        height: 401px;
+        border: 1px solid #dbdbdb;
+        background-color: white;
+        box-shadow: #ccc 4px 2px 3px;
+        z-index: 999;
+        position: absolute;
+        left: 188px;
+        top: -180px;
+        padding-left: 20px;
+        padding-bottom: 17px;
+        font-size: 12px;
+        color: #777;
+        font-weight: bold;
+    }
+    .header .rotation .rota .menu ul li:hover .submenu4{
+        display: block;
+    }
+    .header .rotation .rota .menu ul li .submenu4 .red{
+        color: red;
+    }
+    .header .rotation .rota .menu ul li .submenu4 .line{
+        margin-left: 10px;
+        margin-right: 10px;
+        color: #D2D2D2;
+    }
+    .header .rotation .rota .menu ul li .submenu4 dt{
+        width: 80px;
+    }
+    .header .rotation .rota .menu ul li .submenu4 dt,
+    .header .rotation .rota .menu ul li .submenu4 dd{
+        line-height: 2.4;
+        float: left;
+        padding: 8px 0;
+    }
+    .header .rotation .rota .menu ul li .submenu4 a:hover .change{
+        color: orange;
+    }
+    .header .rotation .rota .menu ul li .submenu4 dl{
+        border-bottom: 1px solid #F3F3F3;
+        overflow: hidden;
+    }
+    .header .rotation .rota .menu ul li .submenu4 dl.noborder{
+        border-bottom: none;
+    }
+    .header .rotation .rota .menu ul li .submenu5{
+        display: none;
+        width: 600px;
+        height: 401px;
+        border: 1px solid #dbdbdb;
+        background-color: white;
+        box-shadow: #ccc 4px 2px 3px;
+        z-index: 999;
+        position: absolute;
+        left: 188px;
+        top: -240px;
+        padding-left: 20px;
+        padding-bottom: 17px;
+        font-size: 12px;
+        color: #777;
+        font-weight: bold;
+    }
+    .header .rotation .rota .menu ul li:hover .submenu5{
+        display: block;
+    }
+    .header .rotation .rota .menu ul li .submenu5 .red{
+        color: red;
+    }
+    .header .rotation .rota .menu ul li .submenu5 .blue{
+        color: blue;
+    }
+    .header .rotation .rota .menu ul li .submenu5 .green{
+        color: green;
+    }
+    .header .rotation .rota .menu ul li .submenu5 .line{
+        margin-left: 10px;
+        margin-right: 10px;
+        color: #D2D2D2;
+    }
+    .header .rotation .rota .menu ul li .submenu5 dt{
+        width: 80px;
+    }
+    .header .rotation .rota .menu ul li .submenu5 dt,
+    .header .rotation .rota .menu ul li .submenu5 dd{
+        line-height: 2.4;
+        float: left;
+        padding: 8px 0;
+    }
+    .header .rotation .rota .menu ul li .submenu5 a:hover .change{
+        color: orange;
+    }
+    .header .rotation .rota .menu ul li .submenu5 dl{
+        border-bottom: 1px solid #F3F3F3;
+        overflow: hidden;
+    }
+    .header .rotation .rota .menu ul li .submenu5 dl.noborder{
+        border-bottom: none;
+    }
+    .header .rotation .rota .menu ul li .submenu6{
+        display: none;
+        width: 600px;
+        height: 612px;
+        border: 1px solid #dbdbdb;
+        background-color: white;
+        box-shadow: #ccc 4px 2px 3px;
+        z-index: 999;
+        position: absolute;
+        left: 188px;
+        top: -300px;
+        padding-left: 20px;
+        padding-bottom: 17px;
+        font-size: 12px;
+        color: #777;
+        font-weight: bold;
+    }
+    .header .rotation .rota .menu ul li:hover .submenu6{
+        display: block;
+    }
+    .header .rotation .rota .menu ul li .submenu6 .red{
+        color: red;
+    }
+    .header .rotation .rota .menu ul li .submenu6 .black{
+        color: black;
+    }
+    .header .rotation .rota .menu ul li .submenu6 .green{
+        color: green;
+    }
+    .header .rotation .rota .menu ul li .submenu6 .line{
+        margin-left: 10px;
+        margin-right: 10px;
+        color: #D2D2D2;
+    }
+    .header .rotation .rota .menu ul li .submenu6 dt{
+        width: 80px;
+    }
+    .header .rotation .rota .menu ul li .submenu6 dt,
+    .header .rotation .rota .menu ul li .submenu6 dd{
+        line-height: 2.4;
+        float: left;
+        padding: 8px 0;
+    }
+    .header .rotation .rota .menu ul li .submenu6 a:hover .change{
+        color: orange;
+    }
+    .header .rotation .rota .menu ul li .submenu6 dl{
+        border-bottom: 1px solid #F3F3F3;
+        overflow: hidden;
+    }
+    .header .rotation .rota .menu ul li .submenu6 dl.noborder{
+        border-bottom: none;
+    }
+
+    .header .rotation .rota .intro{
+        width: 224px;
+        height: 409px;
+        background-color: white;
+        position: absolute;
+        top: 5px;
+        right: 0;
+        font-size: 12px;
+        color: #777;
+        font-weight: bold;
+    }
+    .header .rotation .rota .intro .intro_1{
+        width: 224px;
+        height: 194px;
+    }
+    .header .rotation .rota .intro .intro_1 .intro_top{
+        width: 224px;
+        height: 29px;
+        background-color: #F4F4F4;
+        text-align: center;
+        font-size: 14px;
+        font-weight: normal;
+    }
+    .header .rotation .rota .intro .intro_1 ul li{
+        float: left;
+        padding-left: 10px;
+        padding-top: 5px;
+    }
+    .header .rotation .rota .intro .intro_1 .intro_top .orange{
+        color: #ff8201;
+    }
+    .header .rotation .rota .intro .intro_1 .intro_top i.icon1{
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        background: url(images/189-index.png) no-repeat -232px -227px;
+    }
+    .header .rotation .rota .intro .intro_1 .intro_top i.icon2{
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        background: url(images/189-index.png) no-repeat -229px -299px;        
+    }
+    .header .rotation .rota .intro .intro_1 .intro_top li > i{
+        padding-left: 20px;
+        padding-right: 10px;
+    }
+    .header .rotation .rota .intro .intro_1 .intro_bottom{
+        padding-top: 20px;
+    }
+    .header .rotation .rota .intro .intro_1 ul.intro_bottom li{
+        padding-left: 20px;
+    }
+    .header .rotation .rota .intro .intro_2{
+        width: 224px;
+        height: 2px;
+        padding-left: 22px;
+    }
+    .header .rotation .rota .intro .intro_2 > div{
+        width: 180px;
+        height: 2px;
+        background-color: #CDCDCD;
+    }
+    .header .rotation .rota .intro .intro_3{
+        width: 224px;
+        height: auto;
+        margin-top: 10px;
+    }
+    .header .rotation .rota .intro .intro_3 > ul li{
+        padding-left: 15px;
+        float: left;
+    }
+    .header .rotation .rota .intro .intro_3 ul li .orange{
+        color: #ff8201;
+    }
+    .header .rotation .rota .intro .intro_3 ul li i{
+        color: #E4E4E4;
+    }
+    .header .rotation .rota .intro .intro_3 .orange{
+        color: #ff8201;
+    }
+    .header .rotation .rota .intro .intro_3 p{
+        padding-left: 20px;
+    }
+    .header .rotation .rota .intro .intro_3 p.form1{
+        padding: 10px 0 10px 5px;
+    }
+    .header .rotation .rota .intro .intro_3 p.form2 .right{
+        padding-right: 20px;
+    }
+    .header .rotation .rota .intro .intro_3 p.form3{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .header .rotation .rota .intro .intro_3 p.form3 .right{
+        padding-right: 18px;
+    }
+    .header .rotation .rota .intro .intro_3 p.form3 .money{
+        display: inline-block;
+        width: 64px;
+        height: 21px;
+        border: 1px solid #e4e4e4;
+    }
+    .header .rotation .rota .intro .intro_3 p.form4{
+        padding-left: 10px;
+        padding-bottom: 10px;
+        position: relative;
+    }
+    .header .rotation .rota .intro .intro_3 p.form4 .right{
+        padding-right: 18px;
+    }
+    .header .rotation .rota .intro .intro_3 [name="haoma"]{
+        width: 103px;
+        height: 19px;
+        border: 1px solid #e4e4e4;
+        padding-left: 10px;
+    }
+    .header .rotation .rota .intro .intro_3 [name="yanzhengma"]{
+        width: 42px;
+        height: 19px;
+        border: 1px solid #e4e4e4;
+        padding-left: 10px;
+    }
+    .header .rotation .rota .intro .intro_3 img{
+        width: 76px;
+        height: 21px;
+        border: 1px solid #e4e4e4;
+        position: absolute;
+        top: -1px;
+    }
+    .header .rotation .rota .intro .intro_3 button{
+        width: 126px;
+        height: 25px;
+        padding: 5px 26px;
+        border: none;
+        background-color: #FF8201;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .header .rotation .rota .intro .intro_3 button:active{
+        color: red;
+    }
+    .header .rotation .rota .intro .intro_4{
+        width: 224px;
+        height: 2px;
+        padding-left: 22px;
+        margin-top: 7px;
+    }
+    .header .rotation .rota .intro .intro_4 > div{
+        width: 180px;
+        height: 2px;
+        background-color: #CDCDCD;
+    }
+    .header .rotation .rota .intro .intro_5{
+        padding-left: 10px;
+        position: relative;
+    }
+    .header .rotation .rota .intro .intro_5 span i{
+        display: inline-block;
+        width: 13px;
+        height: 14px;
+        vertical-align: middle;
+        background: url(images/189-index.png) no-repeat -284px -641px;
+    }
+    .header .rotation .rota .intro .intro_5 marquee{
+        width: 150px;
+        position: absolute;
+        right: 10px;
+    }
+
+    .main{
+        width: 100%;
+        height: auto;
+    }
+    .main .content{
+        width: 1200px;
+        height: auto;
+        margin-left: 351.5px;
+        margin-right: 351.5px;
+        margin-top: 30px;
+    }
+    .main .content .card ul{
+        float: right;
+    }
+    .main .content .card{
+        overflow: hidden;
+    }
+    .main .content .card ul li div{
+        width: 1010px;
+        height: 110px;
+    }
+    .main .content .card ul li .img1{
+        margin-bottom: 2px;
+    }
+    .main .content .card ul li a{
+        margin-left: 2px;
+    }
+    .main .content .card ul li a.first{
+        margin-left: 0;
+    }
+
+    .main .content .title_1{
+        width: 1200px;
+        height: 50px;
+        margin-top: 30px;
+        vertical-align: top;
+        position: relative;
+    }
+    .main .content .title_1 > span{
+        font-size: 0.85em;
+        color: #777;
+        font-weight: bold;
+        position: absolute;
+        top: 20px;
+        left: 250px;
+    }
+    .main .content .geek{
+        width: 1200px;
+        height: 420px;
+        overflow: hidden;
+        font-size: 0.75em;
+        color: #4b4b4b;  
+        font-weight: bold;  
+    }
+    .main .content .geek ul li{
+        float: left;
+    }
+    .main .content .geek .leftbox{
+        width: 190px;
+        height: 420px;
+    }
+    .main .content .geek .leftbox .topbox{
+        width: 190px;
+        height: 100px;
+        background-color: #FFBA24;
+        font-size: 0.75em;
+        color: white;
+        text-align: center;
+    }
+    .main .content .geek .leftbox .topbox p.small{
+        display: inline-block;
+        width: 90px;
+        height: 80px;
+        padding-top: 20px;
+    }
+    .main .content .geek .leftbox .footbox{
+        width: 190px;
+        height: 320px;
+        background-color: #FEDA60;
+    }
+    .main .content .geek .leftbox .footbox > P{
+        font-size: 0.75em;
+        color: white;
+        font-weight: bold;
+        padding-left: 20px;
+        padding-top: 40px;
+    }
+    .main .content .geek .middlebox{
+        width: 403px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    .main .content .geek .rightbox{
+        width: 606px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    .main .content .geek .rightbox ul.topl li{
+        width: 201px;
+        height: 253px;
+        text-align: center;
+        border-right: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    .main .content .geek .rightbox ul.topl li .app{
+        margin-top: 30px;
+    }
+    .main .content .geek .rightbox ul.underl li{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .geek .rightbox ul.underl li .gb{
+        margin-top: 15px;
+    }
+    .main .content .title_2{
+        width: 1200px;
+        height: 50px;
+        margin-top: 30px;
+        vertical-align: top;
+        position: relative;
+    }
+    .main .content .title_2 > span{
+        font-size: 0.85em;
+        color: #777;
+        font-weight: bold;
+        position: absolute;
+        top: 20px;
+        left: 290px;
+    }
+    .main .content .happy{
+        width: 1200px;
+        height: 420px;
+        overflow: hidden;
+        font-size: 0.75em;
+        color: #4b4b4b;  
+        font-weight: bold; 
+    }
+    .main .content .happy ul li{
+        float: left;
+    }
+    .main .content .happy .happy1{
+        width: 190px;
+        height: 420px;
+    }
+    .main .content .happy .happy1 .topbox{
+        width: 190px;
+        height: 100px;
+        background-color: #FF5C2B;
+        font-size: 0.75em;
+        color: white;
+        text-align: center;
+    }
+    .main .content .happy .happy1 .topbox p.small{
+        display: inline-block;
+        width: 90px;
+        height: 80px;
+        padding-top: 20px;
+    }
+    .main .content .happy .happy1 .footbox{
+        width: 190px;
+        height: 320px;
+        background-color: #FF9767;
+        text-align: center;
+        padding-top: 30px;
+    }
+    .main .content .happy .happy2{
+        width: 403px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .happy .happy3{
+        width: 201px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    .main .content .happy .happy3 p.h3_top{
+        width: 201px;
+        height: 254px;
+        text-align: center;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+        padding-top: 30px;
+    }
+    .main .content .happy .happy3 p.h3_bottom{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        border-right: 1px solid #e4e4e4;
+        padding-top: 10px;
+    }
+    .main .content .happy .happy4{
+        width: 201px;
+        height: 418px;
+        background-color: #F5F5F7;
+        text-align: center;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .happy .happy4 > p{
+        padding-top: 80px;
+    }
+    .main .content .happy .happy5{
+        width: 201px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .happy .happy5 p.h5_top{
+        width: 201px;
+        height: 254px;
+        text-align: center;
+        border-bottom: 1px solid #e4e4e4;
+        padding-top: 30px;
+    }
+    .main .content .happy .happy5 p.h5_bottom{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        padding-top: 10px;
+    }
+    .main .content .title_3{
+        width: 1200px;
+        height: 50px;
+        margin-top: 30px;
+        vertical-align: top;
+        position: relative;
+    }
+    .main .content .title_3 > span{
+        font-size: 0.85em;
+        color: #777;
+        font-weight: bold;
+        position: absolute;
+        top: 20px;
+        left: 320px;
+    }
+    .main .content .business{
+        width: 1200px;
+        height: 420px;
+        overflow: hidden;
+        font-size: 0.75em;
+        color: #4b4b4b;  
+        font-weight: bold; 
+    }
+    .main .content .business ul li{
+        float: left;
+    }
+    .main .content .business .bus1{
+        width: 190px;
+        height: 420px;
+    }
+    .main .content .business .bus1 .topbox{
+        width: 190px;
+        height: 100px;
+        background-color: #62C751;
+        font-size: 0.75em;
+        color: white;
+        text-align: center;
+    }
+    .main .content .business .bus1 .topbox p.small{
+        display: inline-block;
+        width: 90px;
+        height: 80px;
+        padding-top: 20px;
+    }
+    .main .content .business .bus1 .footbox{
+        width: 190px;
+        height: 320px;
+        background-color: #9DE090;
+        text-align: center;
+        padding-top: 30px;
+    }
+    .main .content .business .bus2{
+        width: 403px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .business .bus3{
+        width: 201px;
+        height: 418px;
+        text-align: center;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .business .bus3 > p{
+        padding-top: 80px;
+    }
+    .main .content .business .bus4{
+        width: 201px;
+        height: 418px;
+        text-align: center;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .business .bus4 > p{
+        padding-top: 80px;
+    }
+    .main .content .business .bus5{
+        width: 201px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .business .bus5 p.b5_top{
+        width: 201px;
+        height: 254px;
+        text-align: center;
+        border-bottom: 1px solid #e4e4e4;
+        padding-top: 30px;
+    }
+    .main .content .business .bus5 p.b5_bottom{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        padding-top: 10px;
+    }
+    .main .content .title_4{
+        width: 1200px;
+        height: 50px;
+        margin-top: 30px;
+        vertical-align: top;
+        position: relative;
+    }
+    .main .content .title_4 > span{
+        font-size: 0.85em;
+        color: #777;
+        font-weight: bold;
+        position: absolute;
+        top: 20px;
+        left: 290px;
+    }
+    .main .content .xinyi{
+        width: 1200px;
+        height: 420px;
+        overflow: hidden;
+        font-size: 0.75em;
+        color: #4b4b4b;  
+        font-weight: bold; 
+    }
+    .main .content .xinyi ul li{
+        float: left;
+    }
+    .main .content .xinyi .xinyi1{
+        width: 190px;
+        height: 420px;
+    }
+    .main .content .xinyi .xinyi1 .topbox{
+        width: 190px;
+        height: 100px;
+        background-color: #1BA5E4;
+        font-size: 0.75em;
+        color: white;
+        text-align: center;
+    }
+    .main .content .xinyi .xinyi1 .topbox p.small{
+        display: inline-block;
+        width: 90px;
+        height: 80px;
+        padding-top: 20px;
+    }
+    .main .content .xinyi .xinyi1 .footbox{
+        width: 190px;
+        height: 320px;
+        background-color: #55CDF0;
+        text-align: center;
+        padding-top: 30px;
+    }
+    .main .content .xinyi .xinyi2{
+        width: 403px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .xinyi .xinyi3{
+        width: 201px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    .main .content .xinyi .xinyi3 p.x3_top{
+        width: 201px;
+        height: 254px;
+        text-align: center;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+        padding-top: 30px;
+    }
+    .main .content .xinyi .xinyi3 p.x3_bottom{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        border-right: 1px solid #e4e4e4;
+        padding-top: 10px;
+    }
+    .main .content .xinyi .xinyi4{
+        width: 201px;
+        height: 418px;
+        background-color: #F5F5F7;
+        text-align: center;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .xinyi .xinyi4 > p{
+        padding-top: 80px;
+    }
+    .main .content .xinyi .xinyi5{
+        width: 201px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .xinyi .xinyi5 p.x5_top{
+        width: 201px;
+        height: 254px;
+        text-align: center;
+        border-bottom: 1px solid #e4e4e4;
+        padding-top: 30px;
+    }
+    .main .content .xinyi .xinyi5 p.x5_bottom{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        padding-top: 10px;
+    }
+    .main .content .title_5{
+        width: 1200px;
+        height: 50px;
+        margin-top: 30px;
+        vertical-align: top;
+        position: relative;
+    }
+    .main .content .title_5 > span{
+        font-size: 0.85em;
+        color: #777;
+        font-weight: bold;
+        position: absolute;
+        top: 20px;
+        left: 290px;
+    }
+    .main .content .busy{
+        width: 1200px;
+        height: 420px;
+        overflow: hidden;
+        font-size: 0.75em;
+        color: #4b4b4b;  
+        font-weight: bold; 
+    }
+    .main .content .busy ul li{
+        float: left;
+    }
+    .main .content .busy .busy1{
+        width: 190px;
+        height: 420px;
+    }
+    .main .content .busy .busy1 .topbox{
+        width: 190px;
+        height: 100px;
+        background-color: #ABD738;
+        font-size: 0.75em;
+        color: white;
+        text-align: center;
+    }
+    .main .content .busy .busy1 .topbox p.small{
+        display: inline-block;
+        width: 90px;
+        height: 80px;
+        padding-top: 20px;
+    }
+    .main .content .busy .busy1 .footbox{
+        width: 190px;
+        height: 320px;
+        background-color: #D2EA78;
+        text-align: center;
+        padding-top: 30px;
+    }
+    .main .content .busy .busy2{
+        width: 403px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .busy .busy3{
+        width: 201px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    .main .content .busy .busy3 p.b3_top{
+        width: 201px;
+        height: 254px;
+        text-align: center;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+        padding-top: 30px;
+    }
+    .main .content .busy .busy3 p.b3_bottom{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        border-right: 1px solid #e4e4e4;
+        padding-top: 10px;
+    }
+    .main .content .busy .busy4{
+        width: 201px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    .main .content .busy .busy4 p.b4_top{
+        width: 201px;
+        height: 254px;
+        text-align: center;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+        padding-top: 30px;
+    }
+    .main .content .busy .busy4 p.b4_bottom{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        border-right: 1px solid #e4e4e4;
+        padding-top: 10px;
+    }
+    .main .content .busy .busy5{
+        width: 201px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .busy .busy5 p.b5_top{
+        width: 201px;
+        height: 254px;
+        text-align: center;
+        border-bottom: 1px solid #e4e4e4;
+        padding-top: 30px;
+    }
+    .main .content .busy .busy5 p.b5_bottom{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        padding-top: 10px;
+    }
+    .main .content .title_6{
+        width: 1200px;
+        height: 50px;
+        margin-top: 30px;
+        vertical-align: top;
+        position: relative;
+    }
+    .main .content .title_6 > span{
+        font-size: 0.85em;
+        color: #777;
+        font-weight: bold;
+        position: absolute;
+        top: 20px;
+        left: 290px;
+    }
+    .main .content .walk{
+        width: 1200px;
+        height: 420px;
+        overflow: hidden;
+        font-size: 0.75em;
+        color: #4b4b4b;  
+        font-weight: bold; 
+    }
+    .main .content .walk ul li{
+        float: left;
+    }
+    .main .content .walk .walk1{
+        width: 190px;
+        height: 420px;
+    }
+    .main .content .walk .walk1 .topbox{
+        width: 190px;
+        height: 100px;
+        background-color: #1BA5E4;
+        font-size: 0.75em;
+        color: white;
+        text-align: center;
+    }
+    .main .content .walk .walk1 .topbox p.small{
+        display: inline-block;
+        width: 90px;
+        height: 80px;
+        padding-top: 20px;
+    }
+    .main .content .walk .walk1 .footbox{
+        width: 190px;
+        height: 320px;
+        background-color: #55CDF0;
+        text-align: center;
+        padding-top: 30px;
+    }
+    .main .content .walk .walk2{
+        width: 403px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .walk .walk3{
+        width: 201px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    .main .content .walk .walk3 p.w3_top{
+        width: 201px;
+        height: 254px;
+        text-align: center;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+        padding-top: 30px;
+    }
+    .main .content .walk .walk3 p.w3_bottom{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        border-right: 1px solid #e4e4e4;
+        padding-top: 10px;
+    }
+    .main .content .walk .walk4{
+        width: 201px;
+        height: 418px;
+        background-color: #F5F5F7;
+        text-align: center;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .walk .walk4 > p{
+        padding-top: 80px;
+    }
+    .main .content .walk .walk5{
+        width: 201px;
+        height: 418px;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+    .main .content .walk .walk5 p.w5_top{
+        width: 201px;
+        height: 254px;
+        text-align: center;
+        border-bottom: 1px solid #e4e4e4;
+        padding-top: 30px;
+    }
+    .main .content .walk .walk5 p.w5_bottom{
+        width: 201px;
+        height: 164px;
+        text-align: center;
+        padding-top: 10px;
+    }
+
+
+    .footer{
+        width: 100%;
+        height: auto;
+    }
+    .footer .content{
+        width: 1200px;
+        height: 618px;
+        margin-left: 351.5px;
+        margin-right: 351.5px;
+        padding-top: 40px;
+    }
+    .footer .content .toper{
+        width: 1100px;
+        height: 55px;
+        padding-left: 100px;
+        overflow: hidden;
+    }
+    .footer .content .toper ul li{
+        width: 210px;
+        height: 55px;
+        float: left;
+        overflow: hidden;
+    }
+    .footer .content .toper ul li span{
+        float: left;
+    }
+    .footer .content .toper ul li span.text{
+        margin-left: 15px;
+        margin-top: 4px;
+    }
+    .footer .content .toper ul li .big{
+        font-size: 1.25em;
+        color: #777;
+        font-weight: bold;
+    }
+    .footer .content .toper ul li .small{
+        font-size: 16px;
+        color: #777;
+        font-weight: bold;
+    }
+    .footer .content .middle{
+        width: 1200px;
+        height: 192px;
+        margin-top: 30px;
+        padding: 30px 0;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        overflow: hidden;
+    }
+    .footer .content .middle > span{
+        float: left;
+    }
+    .footer .content .middle .m1{
+        width: 190px;
+        height: 124px;
+    }
+    .footer .content .middle .m2{
+        width: 705px;
+        height: 192px;
+        overflow: hidden;
+    }
+    .footer .content .middle .m2 ul li{
+        width: 127px;
+        height: 192px;
+        float: left;
+    }
+    .footer .content .middle .m2 ul li.m2_1{
+        margin-left: 70px;
+    }
+    .footer .content .middle .m2 ul li p{
+        line-height: 24px;
+        font-size: 12px;
+        color: #777;
+        font-weight: bold;
+    }
+    .footer .content .middle .m2 ul li .title{
+        font-size: 14px;
+        color: #777;
+        font-weight: bold;
+    }
+    .footer .content .middle .m2 ul li p a:hover{
+        color: #ff8201;
+    }
+    .footer .content .middle .m3{
+        width: 305px;
+        height: 137px;
+        overflow: hidden;
+    }
+    .footer .content .middle .m3 > span{
+        float: left;
+    }
+    .footer .content .middle .m3 .left{
+        margin-right: 50px;
+    }
+    .footer .content .middle .m3 .right{
+        width: 140px;
+        height: 129px;
+    }
+    .footer .content .middle .m3 .right ul li{
+        font-size: 12px;
+        color: #777;
+        font-weight: bold;
+        float: left;
+    }
+    .footer .content .middle .m3 .right ul li p{
+        width: 70px;
+        height: 60px;
+    }
+    .footer .content .bellow{
+        width: 1200px;
+        height: 89px;
+        font-size: 12px;
+        color: #777;
+        font-weight: bold;
+        padding-top: 10px;
+        overflow: hidden;
+    }
+    .footer .content .bellow div .size{
+        font-size: 14px;
+    }
+    .footer .content .bellow div .size .nobold{
+        font-weight: normal;
+    }
+    .footer .content .bellow div .size .nobold > i{
+        margin: 0 20px;
+    }
+    .footer .content .bellow ul li{
+        float: left;
+     }
+     .footer .content .bellow .be_1{
+         width: 1200px;
+         height: 19px;
+     }
+    .footer .content .bellow .be_2{
+        width: 1200px;
+        height: 35px;
+        line-height: 35px;
+    }
+    .footer .content .bellow .be_2 ul li a:hover,
+    .footer .content .bellow .be_3 ul li a:hover{
+        color: #ff8201;
+        text-decoration: underline;
+    }
+    .footer .content .bellow .be_2 ul li i,
+    .footer .content .bellow .be_3 ul li i{
+        padding: 0 5px;
+    }
+    .footer .content .bellow .be_3{
+        width: 1200px;
+        height: 35px;
+    }
+    .footer .content .foot{
+        width: 1200px;
+        height: 150px;
+        padding-top: 30px;
+        font-size: 12px;
+        color: #777;
+        font-weight: bold;
+        text-align: center;
+    }
+    .footer .content .foot .foot_1{
+        width: 1200px;
+        height: 16px;
+    }
+    .footer .content .foot .foot_1 a:hover{
+        color: #ff8201;
+    }
+    .footer .content .foot .foot_1 > i{
+        margin: 0 18px;
+    }
+    .footer .content .foot .foot_2{
+        width: 1200px;
+        height: 16px;
+        margin-top: 10px;
+    }
+    .footer .content .foot .foot_3{
+        width: 1200px;
+        height: 38px;
+        margin-top: 30px;
+        padding-bottom: 40px;
+    }
+    .footer .content .foot .foot_3 img{
+        height: 34px;
+        width: auto;
+    }
+
+</style>
+<body>
+    <div class="box"><a href="#"><img src="images/foot.png"></a>
+    <div class="header">
+        <div class="top">
+            <div class="ban1">
+                <p>
+                    <a href="#">
+                        <i class="user"></i>
+                        收藏欢go网
+                    </a>                  
+                    <span>欢迎来到欢go网站</span>
+                    <span class="login"><a href="#">登录</a></span>    
+                </p>
+                <span>
+                    <ul>
+                        <li>
+                            <a href="#"><i class="my"></i>我的欢go<i class="me"></i></a>
+                            <p class="order"><a href="#">我的订单</a></p>
+                        </li>
+                        <li><span>|</span></li>
+                        <li class="none">
+                            <a href="#"><i class="customer"></i>欢go客户端</a>
+                            <p class="app189"><img src="images/app189.jpg"></p>
+                        </li>
+                        <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>
+                        <li class="none">
+                            <a href="#"><i class="email"></i>189邮箱</a>
+                        </li>
+                        <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>
+                        <li>
+                            <a href="#"><i class="helper"></i>消费者帮助中心</a>
+                            <p class="zx"><img src="images/zx.jpg"></p>
+                        </li>
+                        <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>
+                        <li class="none">
+                            <a href="#"><i class="agent"></i>代理商专区</a>
+                        </li>
+                    </ul> 
+                </span>
+            </div>    
+        </div>
+        <div class="middle">
+            <div class="ban2">
+                <p class="logo"><a href="#"><img src="images/logo.png"></a></p>
+                <span class="address">
+                    <p>江西</p>
+                    <ul>
+                        <li>
+                            <span>A-G </span>
+                            <a href="#">北京</a>
+                            <a href="#">安徽</a>
+                            <a href="#">重庆</a>
+                            <a href="#">福建</a>
+                            <a href="#">广东</a>
+                            <a href="#">甘肃</a>
+                            <a href="#">广西</a>
+                            <a href="#">贵州</a>
+                        </li>    
+                        <li>
+                            <span>H-J </span>
+                            <a href="#">湖北</a>
+                            <a href="#">湖南</a>
+                            <a href="#">河北</a>
+                            <a href="#">河南</a>
+                            <a href="#">海南</a>
+                            <a href="#">黑龙江</a>
+                            <a href="#">江苏</a>
+                            <a href="#">吉林</a>
+                            <a href="#">江西</a>
+                        </li>
+                        <li>
+                            <span>L-S</span>
+                            <a href="#">辽宁</a>
+                            <a href="#">内蒙古</a>
+                            <a href="#">宁夏</a>
+                            <a href="#">青海</a>
+                            <a href="#">山东</a>
+                            <a href="#">上海</a>
+                            <a href="#">山西</a>
+                            <a href="#">陕西</a>
+                            <a href="#">四川</a>
+                        </li>
+                        <li>
+                            <span>T-Z</span>
+                            <a href="#">天津</a>
+                            <a href="#">新疆</a>
+                            <a href="#">西藏</a>
+                            <a href="#">云南</a>
+                            <a href="#">浙江</a>
+                        </li>
+                    </ul>
+                </span>
+                <form class="search">
+                    <div class="product">搜产品</div>
+                    <input type="text" placeholder="加副卡"><button>搜索</button>
+                    <div class="hot">
+                        <a href="#"><span class="hot_blue">【限时！】</span>200GB定向免流</a>
+                        <a href="#"><span class="hot_red">【hot】</span>天翼副卡、有福全家享</a>
+                    </div>
+                </form>
+                <p class="star"><a href="#"><img src="images/star.jpg"></a></p>
+            </div>
+        </div>
+        <div class="under">
+            <div class="ban3">
+                <div class="service">
+                    <a href="#"></a>
+                </div>
+                <div class="bar">
+                    <ul>
+                        <li><a href="#" class="active"><i class="cursor"></i>首页</a></li>
+                        <li><a href="#"><i class="cursor"></i>流量</a></li>
+                        <li><a href="#"><i class="cursor"></i>宽度光纤</a></li>
+                        <li><a href="#"><i class="cursor"></i>老用户</a></li>
+                        <li><a href="#"><i class="cursor"></i>自助服务</a></li>
+                        <li><a href="#"><i class="cursor"></i>资费专区</a></li>
+                        <li><a href="#"><i class="cursor"></i>服务监督</a></li>
+                    </ul>
+                </div>
+                <a href="#"><i></i>登录</a>
+            </div>
+        </div>
+        <div class="rotation">
+            <div class="rota">
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <i class="buy"></i><a>套餐</a>/<a>靓号</a><i class="rightpull1"></i>
+                            <div class="submenu1">
+                                <dl>
+                                    <dt>号码</dt>
+                                    <dd>
+                                        <p>
+                                            <a href="#" class="red">191<i class="line">|</i></a>
+                                            <a href="#" class="red">199<i class="line">|</i></a>
+                                            <a href="#"><span class="change">173</span><i class="line">|</i></a>
+                                            <a href="#"><span class="change">189</span><i class="line">|</i></a>
+                                            <a href="#"><span class="change">177</span><i class="line">|</i></a>
+                                            <a href="#"><span class="change">181</span><i class="line">|</i></a>
+                                            <a href="#"><span class="change">180</span><i class="line">|</i></a>
+                                            <a href="#"><span class="change">133</span><i class="line">|</i></a>
+                                            <a href="#"><span class="change">153</span><i class="line">|</i></a>
+                                            
+                                        </p>
+                                    </dd> 
+                                </dl>
+                                <dl>
+                                    <dt>套餐</dt>
+                                    <dd class="meal">
+                                        <p><a href="#"><span class="purple blod">【传递爱心</sapn><span class="red">❤</span><sapn>电信先行】</span><span class="change">扶贫专属套餐</span></a><i class="line">|</i><a href="#"><span class="change">助残优惠套餐</span><span class="red">new~</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><span class="red blod">【全能副卡】</span><span class="change">一个套餐全家享，与家人共享语音流量</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><span class="green blod">【星卡畅游版】</span><span class="change">200GB定向免流+1元/GB/天</span><span class="red">首月体验~</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><span class="orange blod">【亲情卡】</span><span class="change">GB流量+100分钟语音+亲情互打免费</span><span class="red">new~</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><span class="black blod">【5G畅享套餐】</span><span class="change">169元/月 40GB流量+800分钟语音+300Mbps宽带+超清ITV</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><span class="black blod">【5G畅享套餐】</span><span class="change">199元/月 60GB流量+1000分钟语音+300Mbps宽带+超清ITV</span></a><i class="line">|</i></p>
+                                    </dd>   
+                                </dl>
+                                <dl class="noborder">
+                                    <dt>号码类型</dt>
+                                    <dd>
+                                        <p>
+                                            <a href="#" class="red">0元靓号</a>
+                                            <i class="line">|</i>
+                                            <a href="#" class="red">事业靓号</a>
+                                            <i class="line">|</i>
+                                            <a href="#" class="red">爱情靓号</a>
+                                            <i class="line">|</i>
+                                            <a href="#" class="red">精选靓号</a>
+                                            <i class="line">|</i>
+                                            <a href="#" class="blue">199靓号</a>
+                                            <i class="line">|</i>
+                                            <a href="#" class="blue">177靓号</a>
+                                            <i class="line">|</i>
+                                        </p>
+                                    </dd>
+                                </dl>
+                                <div class="police"><a href="#"><img src="images/police.jpg"></a></div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="choose"></i><a>宽带<i class="rightpull2"></i></a>
+                            <div class="submenu2">
+                                <dl>
+                                    <dt>宽带爆款</dt>
+                                    <dd>
+                                        <p><a href="#"><span class="green">【50Mbps包年】</span><span class="change">499元/年随选宽带</span></a><i class="line_more">|</i></p>
+                                        <p><a href="#"><span class="red">【100Mbps包年】</span><span class="change">699元/年随选宽带</span></a></p>
+                                        <p><a href="#"><span class="black">【5G畅享套餐】</span><span class="change">169元/月 40GB流量+800分钟语音+300Mbps宽带+超清ITV</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><span class="black">【5G畅享套餐】</span><span class="change">199元/月 60GB流量+1000分钟语音+300Mbps宽带+超清ITV</span></a><i class="line">|</i></p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>宽带新装</dt>
+                                    <dd>
+                                        <p><a href="#"><span class="red">50Mbps宽带</span><i class="line">|</i><span class="red">100Mbps宽带</span><i class="line">|</i><span class="red">300Mbps宽带（5G套餐）</span><i class="line">|</i></a></p>
+                                        <p><a href="#"><span class="green">【装宽带】</span><span class="change">足不出户轻松预约，专属客户经理即刻与您联系！</span><i class="line">|</i></a></p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>宽带老用户</dt>
+                                    <dd>
+                                        <p><a href="#"><span class="change">天翼看家</span><i class="line">|</i></a><a href="#"><span class="change">全屋WIFI</span><i class="line">|</i></a><a href="#"><span class="red">宽带续约</span><i class="line">|</i></a><a href="#"><span class="change">宽带缴费</span><i class="line">|</i></a><a href="#"><span class="change">宽带提速</span><i class="line">|</i></a></p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>电视老用户</dt>
+                                </dl>
+                                <dl class="noborder">
+                                    <dt>宽带专区</dt>
+                                    <dd>
+                                        <p><a href="#"><span class="change">宽带订单查询</span><i class="line">|</i></a><a href="#"><span class="change">宽带账户查询</span><i class="line">|</i></a><a href="#"><span class="change">装移修进度查询</span><i class="line">|</i></a><a href="#"><span class="change">宽带资源查询</span><i class="line">|</i></a><a href="#"><span class="change">宽带新装</span><i class="line">|</i></a></p>
+                                        <p><a href="#"><span class="change">宽带续约</span><i class="line">|</i></a><a href="#"><span class="change">宽带提速</span><i class="line">|</i></a><a href="#"><span class="change">宽带报障</span><i class="line">|</i></a><a href="#"><span class="change">宽带充值</span><i class="line">|</i></a><a href="#"><span class="red">密码服务</span><i class="line">|</i></a></p>
+                                    </dd>
+                                </dl>
+                                <div>
+                                    <span><a href="#"><img src="images/a1.jpg"></a></span>
+                                    &nbsp;
+                                    <span><a href="#"><img src="images/a2.jpg"></a></span>
+                                </div>
+
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <i class="pretend"></i><a>智能<i class="rightpull2"></i></a>
+                            <div class="submenu3">
+                                <dl>
+                                    <dt>手机配件</dt>
+                                </dl>
+                                <dl class="noborder">
+                                    <dt>智能设备</dt>
+                                </dl>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="enjoy"></i><a>话费<i class="rightpull2"></i></a>
+                            <div class="submenu4">
+                                <dl>
+                                    <dt>充值卡充值</dt>
+                                    <dd><a href="#"><span class="change">充值卡充值</span><i class="line">|</i></a></dd>
+                                </dl>
+                                <dl>
+                                    <dt>银行卡充值</dt>
+                                    <dd><a href="#"><span class="red">支付宝支付</span><i class="line">|</i></a><a href="#"><span class="red">微信支付</span><i class="line">|</i></a><a href="#"><span class="red">百度钱包</span><i class="line">|</i></a><a href="#"><span class="change">银行卡充值</span><i class="line">|</i></a></dd>
+                                </dl>
+                                <dl class="noborder">
+                                    <dt>翼支付</dt>
+                                    <dd><a href="#"><span class="change">翼支付充值</span><i class="line">|</i></a></dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="charge"></i><a>费用<i class="rightpull2"></i></a>
+                            <div class="submenu5">
+                                <dl>
+                                    <dt>我的话费</dt>
+                                    <dd>
+                                        <p><a href="#"><span class="green">余额查询</span></a><i class="line">|</i><a href="#"><span class="change">实时话费查询</span></a><i class="line">|</i><a href="#"><span class="red">账单查询</span></a><i class="line">|</i><a href="#"><span class="change">充值记录查询</span></a><i class="line">|</i><a href="#"><span class="change">余额变动明细</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><span class="change">话费返还查询</span></a><i class="line">|</i><a href="#"><span class="blue">欠费查询</span></a><i class="line">|</i></p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>我的业务</dt>
+                                    <dd>
+                                        <p><a href="#"><span class="change">电信合伙人</span></a><i class="line">|</i><a href="#"><span class="change">我的欢Go</span></a><i class="line">|</i><a href="#"><span class="red">我的流量</span></a><i class="line">|</i><a href="#"><span class="blue">套餐使用情况</span></a><i class="line">|</i><a href="#"><span class="change">星级服务</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><span class="change">积分兑换</span></a><i class="line">|</i><a href="#"><span class="red">电子发票</span></a><i class="line">|</i></p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>账单查询</dt>
+                                    <dd><p><a href="#"><span class="change">我的话费账单</span></a><i class="line">|</i></p></dd>
+                                </dl>
+                                <dl class="noborder">
+                                    <dt>详细查询</dt>
+                                    <dd><a href="#"><span class="green">上网详单</span></a><i class="line">|</i><a href="#"><span class="green">语音详单</span></a><i class="line">|</i><a href="#"><span class="green">短信详单</span></a><i class="line">|</i></p></dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="check"></i><a>业务<i class="rightpull2"></i></a>
+                            <div class="submenu6">
+                                <dl>
+                                    <dt>畅享专区</dt>
+                                    <dd>
+                                        <p><a href="#"><span class="black">【5G畅享套餐】</span></a><a href="#"><span class="change">169元/月 40GB流量+800分钟语音+300Mbps宽带+超清ITV</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><span class="black">【5G畅享套餐】</span></a><a href="#"><span class="change">199元/月 60GB流量+1000分钟语音+300Mbps宽带+超清ITV</span></a><i class="line">|</i></p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>流量包专区</dt>
+                                    <dd>
+                                        <p><a href="#"><span class="red">5G升级流量包60GB（主副卡共享）</span></a><a href="#"><span class="change">69元/月</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><span class="green">5G升级流量包20GB（主副卡共享）</span></a><a href="#"><span class="change">29元/月</span></a><i class="line">|</i></p>
+                                        <p><a href="#"><9元 class="change">5G升级流量包10GB（单卡使用）9元/月</span></a><i class="line">|</i></p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>宽带特权</dt>
+                                    <dd><a href="#"><span class="green">宽带快速预约</span></a><i class="line">|</i><a href="#"><span class="red">宽带续约</span></a><i class="line">|</i><a href="#"><span class="change">宽带提速</span></a><i class="line">|</i></dd>
+                                </dl>
+                                <dl>
+                                    <dt>老用户专区</dt>
+                                    <dd><a href="#"><span class="green">加副卡 共享套餐</span></a><i class="line">|</i><a href="#"><span class="red">我的积分</span></a><i class="line">|</i><a href="#"><span class="change">积分商城</span></a><i class="line">|</i></dd>
+                                </dl>
+                                <dl>
+                                    <dt>热门业务</dt>
+                                    <dd><a href="#"><span class="red">服务密码重置</span></a><i class="line">|</i><a href="#"><span class="change">国际/港澳台漫游</span></a><i class="line">|</i><a href="#"><span class="change">189邮箱</span></a><i class="line">|</i><a href="#"><span class="change">添益宝</span></a><i class="line">|</i></dd>
+                                </dl>
+                                <dl>
+                                    <dd>电视特权</dd>
+                                </dl>
+                                <dl class="noborder">
+                                    <dt>行业应用</dt>
+                                    <dd><a href="#"><span class="change">外勤助手</span><i class="line">|</i></a><a href="#"><span class="change">VoLTE高清通话</span><i class="line">|</i></a></dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="intro">
+                    <div class="intro_1">
+                        <ul class="intro_top">
+                            <li><a href="#"><i class="icon1"></i><span class="orange">欢享服务</span></a></li>
+                            <li><i>|</i></li>
+                            <li class="active"><a href="#"><i class="icon2"></i><span>超值购</span></a></li>
+                        </ul>
+                        <ul class="intro_bottom">
+                            <li>
+                                <p><a href="#"><img src="images/intro_1.png"><br>星级服务</a></p>&nbsp;
+                                <p><a href="#"><img src="images/intro_4.png"><br>电子发票</a></p>
+                            </li>
+                            <li>
+                                <p><a href="#"><img src="images/intro_2.png"><br>积分商城</a></p>&nbsp;
+                                <p><a href="#"><img src="images/intro_5.png"><br>办副卡</a></p>
+                            </li>
+                            <li>
+                                <p><a href="#"><img src="images/intro_3.png"><br>5G套餐</a></p>&nbsp;
+                                <p><a href="#"><img src="images/intro_6.png"><br>漫游服务</a></p>
+                            </li>
+                        <!-- </ul>
+                        <ul class="intro_right">
+                            <li><a href="#"><img src="images/intro_7.png"></a><br>流量超市</li>
+                            <li><a href="#"><img src="images/intro_8.png"></a><br>福卡乐园</li>
+                            <li><a href="#"><img src="images/intro_9.png"></a><br>靓号专区</li>
+                        </ul> -->
+                    </div>
+                    <div class="intro_2">
+                        <div></div>
+                    </div>
+                    <div class="intro_3">
+                        <ul>
+                            <li><span class="orange">手机</span></li>
+                            <li><i>|</i></li>
+                            <li>宽带</li>
+                            <li><i>|</i></li>
+                            <li>固话</li>
+                            <li><i>|</i></li>
+                        </ul>
+                        <br>
+                        <p class="form1">
+                            
+                            <label><input type="radio" value="银行卡充值" checked><span class="orange">银行卡充值</span></label>
+                            <label><input type="radio" value="卡密充值">卡密充值</label>
+                        </p>
+                        <p class="form2"><span class="right">号码</span><input name="haoma" type="text"></p>
+                        <p class="form3">
+                            <span class="right">金额</span>
+                            <span class="money">10元</span>
+                            <span>9.95折</span>
+                                <!-- <div class="jin">
+                                    <ul>
+                                        <li>100元&nbsp;10元</li>
+                                        <li>200元&nbsp;20元</li>
+                                        <li>300元&nbsp;30元</li>
+                                        <li>500元&nbsp;50元</li>
+                                    </ul>
+                                </div> -->
+                            </span>
+                        </p>
+                        <p class="form4"><span class="right">验证码</span><input name="yanzhengma" type="text">&nbsp;<img src="images/aircz.png"></p>
+                        <p class="form5"><button>立即充值</button></p>
+                    </div>
+                    <div class="intro_4">
+                        <div></div>
+                    </div>
+                    <div class="intro_5">
+                        <span><i></i>&nbsp;公告:</span>
+                        <marquee direction="left" onmousemove="this.stop()" onmouseout="this.start()">2014、2015年一期LTE基站验收项目公示（新余）</marquee></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="content">
+            <div class="card">
+                <span>
+                    <img src="images/huawei.jpg">
+                </span>
+                <ul>
+                    <li>
+                        <div class="img1">
+                            <a href="#" class="first"><img src="images/star1.jpg"></a><a href="#"><img src="images/star2.jpg"></a><a href="#"><img src="images/star3.jpg"></a><a href="#"><img src="images/star4.jpg"></a>
+                        </div>
+                        <div class="img2">
+                            <a href="#" class="first"><img src="images/star5.jpg"></a><a href="#"><img src="images/star6.jpg"></a><a href="#"><img src="images/star7.jpg"></a><a href="#"><img src="images/star8.jpg"></a>
+                        </div>
+                    </li>    
+                </ul>
+            </div>
+            <div class="title_1">
+                <img src="images/title_01.png">
+                <span>好宝贝，够任性，就是要炫耀！</span>
+            </div>
+            <div class="geek">
+                <ul>
+                    <li>
+                        <div class="leftbox">
+                            <div class="topbox">
+                                <p class="small"><a href="#"><img src="images/5g.png"></a><a href="#"><br><span>5G套餐</span></a></p>
+                                <p class="small"><a href="#"><img src="images/tehui.png"><a href="#"><br><span>特惠宽带</span></a></a></p>
+                            </div>
+                            <div class="footbox">
+                                <p>五一出游季</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="middlebox">
+                            <a href="#"><img src="images/rizu.jpg"></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="rightbox">
+                            <ul class="topl">
+                                <li>
+                                    <p class="app"><a href="#">200GB主流APP免流</a></p>
+                                    <p><a href="#"><img src="images/jk1.png"></a></p>
+                                </li>
+                                <li>
+                                    <p class="app"><a href="#">任性畅游互联网</a></p>
+                                    <p><a href="#"><img src="images/jk2.png"></a></p>
+                                </li>
+                                <li>
+                                    <p class="app"><a href="#">国内通话0.1元/分钟</a></p>
+                                    <p><a href="#"><img src="images/jk3.png"></a></p>
+                                </li>
+                            </ul>
+                            <ul class="underl">
+                                <li>
+                                    <p class="gb"><a href="#">流量省心自动续订</a></p>
+                                    <p><a href="#"><img src="images/jk4.png"></a></p>
+                                </li>
+                                <li>
+                                    <p class="gb"><a href="#">享首月体验金</a></p>
+                                    <p><a href="#"><img src="images/jk5.png"></a></p>
+                                </li>
+                                <li>
+                                    <p class="gb"><a href="#">国内流量1元/GB/天</a></p>
+                                    <p><a href="#"><img src="images/jk6.png"></a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="title_2">
+                <img src="images/title_02.png">
+                <span>爱自己，爱家庭，爱生活！</span>
+            </div>
+            <div class="happy">
+                <ul>
+                    <li>
+                        <div class="happy1">
+                            <div class="topbox">
+                                <p class="small"><a href="#"><img src="images/b1.png"><br><span>500Mbps宽带</span></a></p>
+                                <i></i>
+                                <p class="small"><a href="#"><img src="images/b2.png"><br><span>100Mbps宽带</span></a></p>
+                            </div>
+                            <div class="footbox">
+                                <p><img src="images/b3.png"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="happy2">
+                            <a href="#"><img src="images/b4.png"></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="happy3">
+                            <p class="h3_top"><a href="#">宽带新装</a><br><a href="#"><img src="images/happy1.jpg"></a></p>
+                            <p class="h3_bottom"><a href="#">宽带提速</a><br><a href="#"><img src="images/happy2.jpg"></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="happy4">
+                            <p><a href="#">宽带新装</a><br><br><br><a href="#"><img src="images/happy3.png"></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="happy5">   
+                            <p class="h5_top"><a href="#">智能组网</a><br><a href="#"><img src="images/happy4.jpg"></a></p>
+                            <p class="h5_bottom"><a href="#">密码服务</a><br><a href="#"><img src="images/happy5.jpg"></a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="title_3">
+                <img src="images/title_03.png">
+                <span>商务工作，由我自由驰骋！</span>
+            </div>
+            <div class="business">
+                <ul>
+                    <li>
+                        <div class="bus1">
+                            <div class="topbox">
+                                <p class="small"><a href="#"><img src="images/c1.png"><br><span>4G流量包</span></a></p>
+                                <i></i>
+                                <p class="small"><a href="#"><img src="images/c2.png"><br><span>189邮箱</span></a></p>
+                            </div>
+                            <div class="footbox">
+                                <p><img src="images/c3.png"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bus2">
+                            <a href="#"><img src="images/c4.png"></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bus3">
+                            <p><a href="#">【活动一】</a><br><a href="#"><img src="images/business1.png"></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bus4">
+                            <p><a href="#">【活动二】</a><br><br><br><a href="#"><img src="images/business2.png"></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bus5">   
+                            <p class="b5_top"><a href="#">【活动三】</a><br><a href="#"><img src="images/business3.png"></a></p>
+                            <p class="b5_bottom"><a href="#">【活动四】</a><br><a href="#"><img src="images/business4.png"></a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="title_4">
+                <img src="images/title_04.png">
+                <span>爸爸，老公，小外甥，都要心意满足！</span>
+            </div>
+            <div class="xinyi">
+                <ul>
+                    <li>
+                        <div class="xinyi1">
+                            <div class="topbox">
+                                <p class="small"><a href="#"><img src="images/d1.png"><br><span>积分商城</span></a></p>
+                                <i></i>
+                                <p class="small"><a href="#"><img src="images/d2.png"><br><span>套餐使用查询</span></a></p>
+                            </div>
+                            <div class="footbox">
+                                <p><img src="images/d3.png"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="xinyi2">
+                            <a href="#"><img src="images/d4.jpg"></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="xinyi3">
+                            <p class="x3_top"><a href="#">加装第二条宽带</a><br><a href="#"><img src="images/xinyi1.png"></a></p>
+                            <p class="x3_bottom"><a href="#">宽带提速</a><br><a href="#"><img src="images/xinyi2.png"></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="xinyi4">
+                            <p><a href="#">宽带新装</a><br><br><br><a href="#"><img src="images/xinyi3.png"></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="xinyi5">   
+                            <p class="x5_top"><a href="#">智能组网</a><br><a href="#"><img src="images/xinyi4.png"></a></p>
+                            <p class="x5_bottom"><a href="#">密码服务</a><br><a href="#"><img src="images/xinyi5.jpg"></a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="title_5">
+                <img src="images/title_05.png">
+                <span>职场生活，忙碌并快乐着！</span>
+            </div>
+            <div class="busy">
+                <ul>
+                    <li>
+                        <div class="busy1">
+                            <div class="topbox">
+                                <p class="small"><a href="#"><img src="images/busy1.png"><br><span>宽带提速</span></a></p>
+                                <i></i>
+                                <p class="small"><a href="#"><img src="images/busy2.png"><br><span>国际漫游</span></a></p>
+                            </div>
+                            <div class="footbox">
+                                <p><img src="images/busy3.jpg"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="busy2">
+                            <a href="#"><img src="images/busy4.png"></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="busy3">
+                            <p class="b3_top"><a href="#">查清单</a><br><a href="#"><img src="images/busy5.jpg"></a></p>
+                            <p class="b3_bottom"><a href="#">密码重置</a><br><a href="#"><img src="images/busy9.jpg"></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="busy4">
+                            <p class="b4_top"><a href="#">查账单</a><br><a href="#"><img src="images/busy6.png"></a></p>
+                            <p class="b4_bottom"><a href="#">电子发票</a><br><a href="#"><img src="images/busy8.jpg"></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="busy5">   
+                            <p class="b5_top"><a href="#">查余额</a><br><a href="#"><img src="images/busy7.jpg"></a></p>
+                            <p class="b5_bottom"><a href="#">套餐用量</a><br><a href="#"><img src="images/busy10.png"></a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="title_6">
+                <img src="images/title_06.png">
+                <span>旅行，户外，健身，一个都不能少！</span>
+            </div>
+            <div class="walk">
+                <ul>
+                    <li>
+                        <div class="walk1">
+                            <div class="topbox">
+                                <p class="small"><a href="#"><img src="images/walk1.jpg"><br><span>智能看家</span></a></p>
+                                <i></i>
+                                <p class="small"><a href="#"><img src="images/walk2.png"><br><span>全屋WIFI</span></a></p>
+                            </div>
+                            <div class="footbox">
+                                <p><img src="images/walk3.png"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="walk2">
+                            <a href="#"><img src="images/walk4.png"></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="walk3">
+                            <p class="w3_top"><a href="#">设备维修服务</a><br><a href="#"><img src="images/walk5.jpg"></a></p>
+                            <p class="w3_bottom"><a href="#">组网定制服务</a><br><a href="#"><img src="images/walk6.jpg"></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="walk4">
+                            <p><a href="#">在线专家服务</a><br><br><br><a href="#"><img src="images/walk7.jpg"></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="walk5">   
+                            <p class="w5_top"><a href="#">网络报告服务</a><br><a href="#"><img src="images/walk8.jpg"></a></p>
+                            <p class="w5_bottom"><a href="#">自助网络管理</a><br><a href="#"><img src="images/walk9.jpg"></a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="content">
+            <div class="toper">
+                <ul>
+                    <li>
+                        <span><img src="images/dianxin.png"></span>
+                        <span class="text"><p class="big">中国电信</p><p class="small">官方认证渠道</p></span>
+                    </li>
+                    <li>
+                        <span><img src="images/zheng.png"></span>
+                        <span class="text"><p class="big">正品保障</p><p class="small">正规发票</p></span>
+                    </li>
+                    <li>
+                        <span><img src="images/pingpai.png"></span>
+                        <span class="text"><p class="big">品牌厂家</p><p class="small">优势品牌</p></span>
+                    </li>
+                    <li>
+                        <span><img src="images/new.png"></span>
+                        <span class="text"><p class="big">新品上市</p><p class="small">同步上市</p></span>
+                    </li>
+                    <li>
+                        <span><img src="images/quanchang.png" alt=""></span>
+                        <span class="text"><p class="big">全场商品</p><p class="small">无忧退换货</p></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="middle">
+                <span class="m1"><img src="images/foot_down_12.png"></span>
+                <span class="m2">
+                    <ul>
+                        <li class="m2_1">
+                            <p class="title"><a href="#">购物指南</a></p>
+                            <p><a href="#">实名制</a></p>
+                            <p><a href="#">网络制式</a></p>
+                            <p><a href="#">订单查询</a></p>
+                            <p><a href="#">购物流程</a></p>
+                            <p><a href="#">卖场须知</a></p>
+                            <p><a href="#">用户隐私政策</a></p>
+                            <p><a href="#">用户服务协议</a></p>
+                        </li>
+                        <li>
+                            <p class="title"><a href="#">物流配送</a></p>
+                            <p><a href="#">收货须知</a></p>
+                            <p><a href="#">配送说明</a></p>
+                        </li>  
+                        <li>
+                            <p class="title"><a href="#">支付方式</a></p>
+                            <p><a href="#">赠费缴费说明</a></p>
+                        </li>
+                        <li>
+                            <p class="title"><a href="#">售后服务</a></p>
+                            <p><a href="#">服务承诺</a></p>
+                            <p><a href="#">退款说明</a></p>
+                            <p><a href="#">退换流程</a></p>
+                            <p><a href="#">关于发票制度的说明</a></p>
+                        </li>
+                        <li>
+                            <p class="title"><a href="#">便民服务</a></p>
+                            <p><a href="#">代理专区</a></p>
+                            <p><a href="#">常见问题解答</a></p>
+                            <p><a href="#">归属地查询</a></p>
+                            <p><a href="#">wifi热点查询</a></p>
+                            <p><a href="#">10000知道</a></p>
+                            <p><a href="#">“扫黄打非”举报专区</a></p>
+                            <p><a href="#">诈骗电话举报</a></p>
+                        </li>
+                    </ul>
+                </span>
+                <span class="m3">
+                    <span class="left"><img src="images/ma.jpg"></span>
+                    <span class="right">
+                        <ul>
+                            <li>
+                                <p><a href="#"><img src="images/zaixian.png"><br>在线客服</a></p>
+                                &nbsp;
+                                <p><a href="#"><img src="images/zhidao.png"><br>10000知道</a></p>
+                            </li>
+                            <li>
+                                <p><a href="#"><img src="images/weibo.png"><br>微博客服</a></p>
+                                &nbsp;
+                                <p><a href="#"><img src="images/zifei.png"><br>资费专区</a></p>
+                            </li>
+                        </ul>
+                    </span>
+                </span>
+            </div>
+            <div class="bellow">
+                <div class="be_1">
+                    <ul class="size">
+                        <li><a href="#">电信欢go网</a></li>
+                        <li class="nobold"><i>|</i><a href="#">合作伙伴</a></li>
+                    </ul>
+                </div>
+                <div class="be_2">
+                    <ul>
+                        <li><a href="#">北京欢go网</a><i>|</i></li>
+                        <li><a href="#">安徽欢go网</a><i>|</i></li>
+                        <li><a href="#">重庆欢go网</a><i>|</i></li>
+                        <li><a href="#">福建欢go网</a><i>|</i></li>
+                        <li><a href="#">广东欢go网</a><i>|</i></li>
+                        <li><a href="#">甘肃欢go网</a><i>|</i></li>
+                        <li><a href="#">广西欢go网</a><i>|</i></li>
+                        <li><a href="#">贵州欢go网</a><i>|</i></li>
+                        <li><a href="#">湖北欢go网</a><i>|</i></li>
+                        <li><a href="#">湖南欢go网</a><i>|</i></li>
+                        <li><a href="#">河北欢go网</a><i>|</i></li>
+                        <li><a href="#">河南欢go网</a><i>|</i></li>
+                        <li><a href="#">海南欢go网</a><i>|</i></li>
+                        <li><a href="#">黑龙江欢go网</a><i>|</i></li>
+                    </ul>
+                </div>
+                <div class="be_3">
+                    <ul>
+                        <li><a href="#">江苏欢go网</a><i>|</i></li>
+                        <li><a href="#">吉林欢go网</a><i>|</i></li>
+                        <li><a href="#">江西欢go网</a><i>|</i></li>
+                        <li><a href="#">辽宁欢go网</a><i>|</i></li>
+                        <li><a href="#">内蒙古欢go网</a><i>|</i></li>
+                        <li><a href="#">宁夏欢go网</a><i>|</i></li>
+                        <li><a href="#">青海欢go网</a><i>|</i></li>
+                        <li><a href="#">山东欢go网</a><i>|</i></li>
+                        <li><a href="#">上海欢go网</a><i>|</i></li>
+                        <li><a href="#">山西欢go网</a><i>|</i></li>
+                        <li><a href="#">陕西欢go网</a><i>|</i></li>
+                        <li><a href="#">四川欢go网</a><i>|</i></li>
+                        <li><a href="#">天津欢go网</a><i>|</i></li>
+                        <li><a href="#">新疆欢go网</a><i>|</i></li>
+                    </ul>
+                </div>       
+            </div>                       
+            <div class="foot">
+                <div class="foot_1">
+                    <a href="#">电信营业执照</a><i>|</i><a href="#">合作方营业执照</a>
+                </div>
+                <div class="foot_2">
+                    <span>版权所有&copy;2012 中国电信集团有限公司 [ 增值电信业务经营许可证 A2.B1.B2-20090001 ] ICP证号:京ICP备12007914号</span>
+                </div>
+                <div class="foot_3">
+                    <img src="images/footerPic7_01.jpg">
+                    <a href="#"><img src="images/cnnic.png"></a>
+                    <a href="#"><img src="images/sf.png"></a>
+                    <a href="#"><img src="images/footerPic7_04 (1).png"></a>
+                    <a href="#"><img src="images/brand_bottom_large.jpg"></a>
+                    <a href="#"><img src="images/footerPic7_06.jpg"></a>
+                    <a href="#"><img src="images/footerPic7_07.jpg"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

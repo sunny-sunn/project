@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/swiper.css">
+</head>
+<style>
+  .swiper-container{
+    width: 520px;
+    height: 280px;
+  }
+</style>
+<body>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="images/img1.jpg" width="520" height="280">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/img2.jpg" width="520" height="280">
+      </div>
+      <div class="swiper-slide">
+        <img src="images/img3.jpg" width="520" height="280">
+      </div>
+    </div>
+  </div>
+
+  <script src="js/swiper.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: true,
+      // slidesPerView : 'auto',
+      effect:'cube',
+    });
+  </script>
+  
+</body>
+</html>

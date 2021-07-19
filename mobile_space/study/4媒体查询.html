@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+      属性
+      screen  彩色屏幕
+      print 打印
+  
+      语法
+      @media screen and 属性(min-width、max-width、min-height、max-height)
+      
+      @media screen and (min-width: 400px) {
+        .box {
+          color：red;
+        }
+      }
+    */
+
+    /* 默认 */
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+
+    /* 大于或等于400px */
+    @media screen and (min-width: 400px) {
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+      }
+    }
+
+    /* 大于或等于400px 小于700px */
+    @media screen and (min-width: 700px) {
+      .box {
+        width: 300px;
+        height: 300px;
+        background-color: blue;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>

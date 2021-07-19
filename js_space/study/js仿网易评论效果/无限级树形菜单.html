@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #list{
+      width: 600px;
+    }
+    #list img{
+      max-width: 100px;
+      height: auto;
+      vertical-align: middle;
+    }
+    #list .item{
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+      background-color: antiquewhite;
+    }
+    #list .item .item{
+      background-color: white;
+      margin-left: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>用户评论</h2>
+
+<div id="list"></div>
+
+<script>
+var treeData = [
+  {
+    id:1, 
+    pid: 0, 
+    content: '龚贤：中午吃什么？',
+    children: [
+      { 
+        id:11, 
+        content: '业辉：盖浇饭', 
+        children: [
+          { id:111, content: '刘金：吃炒菜？'}
+        ]
+      },
+      { id:12, content: '刘莎：面条'}
+    ],
+  },
+  {
+    id: 2,
+    pid: 0,
+    content: '海成：周末要去看电影不？',
+    children: [
+      {id:22, content: '龚贤：去看我和我的家乡'}
+    ]
+  }
+];
+
+function renderTree( data ){
+
+  var temp = '';
+
+  data.forEach(function(item){
+
+    temp += `<div class="item">`;
+    temp += item.content;
+    if(item.children && item.children.length){
+      temp += renderTree( item.children );
+    }
+    temp += `</div>`;
+
+  });
+
+  return temp;
+
+}
+
+document.getElementById('list').innerHTML = renderTree( treeData );
+
+
+</script>
+
+</body>
+</html>

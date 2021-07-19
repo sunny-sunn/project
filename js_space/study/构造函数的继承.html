@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // function animal() {
+    //   this.type = '猫科动物';
+    //   this.running = function () {
+    //     return '正在跑';
+    //   }
+    // }
+
+    // function cat() {
+    //   animal.call(this);
+    //   this.name = '大毛';
+    // }
+
+    // var c1 = new cat();
+    // console.log(c1.type);
+    // console.log(c1.running());
+    // console.log(c1.name);
+
+    // var a1 = new animal();
+    // console.log(a1.type);
+
+
+    // 
+    function animal() {
+      this.type = '猫科动物';
+      this.running = function () {
+        return '正在跑';
+      }
+    }
+    animal.prototype.color = '白色';
+
+    function cat() {
+      this.name = '大毛';
+    }
+
+    cat.prototype = new animal();
+    cat.prototype.constructor = cat;
+
+    var c1 = new cat();
+    console.log(c1.type);
+    console.log(c1.running());
+    console.log(c1.color);
+
+  </script>
+</body>
+</html>

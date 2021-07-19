@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active{
+      color: red;
+    }
+    .green{
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+
+    <!-- 静态的类 -->
+    <div class="active">文本</div>
+
+    <!-- 动态类1 -->
+    <div :class="activeCls">文本</div>
+
+    <!-- 动态类2  
+    下面的active表示类名(也可以加引号)，冒号的右边是一个表达式，这个表达式返回布尔值
+    右边的表达式返回假，则不加上active这个类，反之亦然。
+    -->
+    <div :class="{active: false}">文本</div>
+
+    <!-- 动态类3 
+      和for循环结合
+    -->
+
+    <button 
+    v-for="p in5"
+    :class="{active: p===page}"
+    >{{p}}</button> 
+
+    <!-- 动态类4 -->
+    <div :class="{iconfont: true, active: Math.random() > 0.5 }">文本</div>
+    
+    <!-- 以上写法使得模板过于沉重，我们可以抽取到data中 或者 计算属性中 -->
+    <div :class="divStyle">文本</div>
+
+    <!-- 动态类5 数组 -->
+    <div :class="[active, error]">文本</div>
+
+    <!-- 动态类6 数组 -->
+    <div :class="[{active: true}, {error: false}]">文本</div>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      page: 2,
+      active: 'text-active',
+      error: 'text-error',
+      activeCls: 'green'
+    },
+    computed: {
+      divStyle(){
+        return {iconfont: true, active: Math.random() > 0.5 };
+      }
+    }
+  })
+  </script>
+
+</body>
+</html>

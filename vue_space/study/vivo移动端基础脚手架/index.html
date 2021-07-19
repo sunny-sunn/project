@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vivo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="app">
+
+    <div class="header">
+      {{$route.meta.title}}
+    </div>
+
+    <router-view></router-view>
+
+    <footnav :data="navs"></footnav>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script src="js/lyui.js"></script>
+  <script src="js/vue-router.js"></script>
+
+  <script src="views/home.js"></script>
+  <script src="views/classify.js"></script>
+  <script src="views/user.js"></script>
+
+  <script>
+    const router = new VueRouter({
+      // linkActiveClass:'active',
+      routes: [
+        { path: '/', redirect: '/home' },
+        { path: '/home', component: home, meta: { title: 'vivo官方商城' } },
+        { path: '/classify', component: classify, meta: { title: '全部分类' } },
+        { path: '/user', component: user, meta: { title: '个人中心' } },
+      ]
+    });
+
+    const app = new Vue({
+      el: '#app',
+      data:{
+        navs:[
+          {id:1,name:'首页',icon:'van-icon-wap-home-o',path:'/home'},
+          {id:2,name:'分类',icon:'van-icon-apps-o',path:'/classify'},
+          {id:3,name:'我的',icon:'van-icon-contact',path:'/user'},
+        ]
+      },
+      router,
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+  
+    <!-- if条件 -->
+    <h2 v-if="Math.random() > 0.5">你可以看见我了吗？</h2>
+  
+    <!-- if else 条件 -->
+    <h2 v-if="age >= 18">已满18岁</h2>
+    <h2 v-else>未成年</h2>
+  
+    <!-- if elseif else 条件 -->
+    <h2 v-if="score >= 90">优秀</h2>
+    <h2 v-else-if="score >= 80 && score < 90">良好</h2>
+    <h2 v-else-if="score >= 60 && score < 80">及格</h2>
+    <h2 v-else>不及格</h2>
+  
+    <!-- 如果遇到的是多行情况，可以外套一个标签来实现，但这样有额外标签 -->
+    <div v-if="Math.random() > 0.5">
+      <h4>标题1</h4>
+      <p>描述1</p>
+    </div>
+    <div v-else>
+      <h4>标题2</h4>
+      <p>描述2</p>
+    </div>
+  
+    <!-- 解决上面产生额外标签的办法，template是一个不会 产生实体的标签-->
+    <template v-if="Math.random() > 0.5">
+      <h4>标题1</h4>
+      <p>描述1</p>
+    </template>
+    <template v-else>
+      <h4>标题2</h4>
+      <p>描述2</p>
+    </template>
+
+    <!-- v-if 和 v-else-if 或者 v-else 之间除了空格和换行之外，不能存在其它字符或元素会报错 -->
+    <h6 v-if="5>2">条件为真</h6>
+    <h5>其它</h5>
+    <h6 v-else>条件为假</h6>
+  
+  </div>
+
+  <script src="js/vue.js"></script>
+
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        age:16,
+        score:75
+      }
+    });
+  </script>
+  
+</body>
+</html>

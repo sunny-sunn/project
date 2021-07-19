@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    dl{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        margin-top: 20px;
+    }
+    .box dl{
+        border-top: 1px solid #ccc;
+    }
+    .box dl dt{
+        position: relative;
+        padding: 20px 0;
+        border-bottom: 1px solid #ccc;
+    }
+    .box dl dd{
+        font-size: 12px;
+        color: #666;
+    }
+    .box dl dd.one{
+        position: absolute;
+        top: 75px;
+        left: 30px;
+        width: 60px;
+        padding: 0 15px;
+        background-color: #fff;
+    } 
+    .box dl dd.two{
+        position: absolute;
+        top: 135px;
+        left: 50%;
+        margin-left: -20px;
+        width: 40px;
+        padding: 0 15px;
+        background-color: #fff;
+    }
+    .box dl dd.three{
+        position: absolute;
+        top: 195px;
+        right: 30px;
+        width: 40px;
+        padding: 0 15px;
+        background-color: #fff;
+    }
+</style>
+<body>
+    <div class="box">
+        <dl>
+            <dt>头上一片晴天，心中一个想念</dt>
+            <dd class="one">少年包青天</dd>
+            <dt>饿了别叫妈，叫饿了么</dt>
+            <dd class="two">饿了么</dd>
+            <dt>为了无法计算的价值</dt>
+            <dd class="three">阿里云</dd>
+        </dl>
+    </div>
+</body>
+</html>

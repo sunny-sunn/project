@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .bottom-nav{
+        border: 1px solid #ccc;
+    }
+    .bottom-nav a{
+        box-sizing: border-box;
+        display: inline-block;
+        width: 25%;
+        text-align: center;
+        border-right: 1px solid red;
+        text-decoration: none;
+        color: inherit;
+    }
+    .bottom-nav a.active{
+        color: red;
+    }
+    .bottom-nav a.last{
+        border-right: none;
+    }
+    .bottom-nav a i{
+        font-style: normal;
+    }
+    .bottom-nav a p{
+        margin: 0;
+    }
+</style>
+<body>
+    <div class="bottom-nav">
+        <a href="#" class="active">
+            <i>▷</i>
+            <p>首页</p>
+        </a><a href="#">
+            <i>◁</i>
+            <p>关于</p>
+        </a><a href="#">
+            <i>▶</i>
+            <p>产品</p>
+        </a><a href="#" class="last">
+            <i>◀</i>
+            <p>我的</p>
+        </a>
+    </div>
+</body>
+</html>

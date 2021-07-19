@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <a href="#/">首页</a>
+    <a href="#/home">首页</a>
+    <a href="#/about">关于</a>
+
+    <hr>
+
+    <router-link to="/">首页</router-link>
+    <router-link to="/home">首页</router-link>
+    <router-link to="/about">关于</router-link>
+
+    <hr>
+
+    <router-view></router-view>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+  <script src="view/home.js"></script>
+  <script src="view/about.js"></script>
+  <script>
+    const home = { template: `<div><h2>我是首页</h2></div>` };
+
+    const about = { template: `<div><h2>我是关于页面</h2></div>` };
+
+    const routes = [
+      { path: '/', component: home },
+      { path: '/home', component: home },
+      { path: '/about', component: about },
+    ];
+
+    const router = new VueRouter({
+      routes
+    });
+
+    const app = new Vue({
+      el: '#app',
+      router
+    });
+  </script>
+  
+</body>
+</html>

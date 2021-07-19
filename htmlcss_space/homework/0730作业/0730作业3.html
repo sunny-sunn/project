@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1971511_nyqy6vej6z.css">
+</head>
+<style>
+    .box{
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+    .box span{
+        font-size: 18px;
+        color: #E3E3E3;
+    }
+    .box span.change{
+        color: #D8B11E;
+    }
+</style>
+<body>
+    <div class="box">
+        <span class="iconfont iconarrow" id="star1"></span>
+        <span class="iconfont iconarrow" id="star2"></span>
+        <span class="iconfont iconarrow" id="star3"></span>
+        <span class="iconfont iconarrow" id="star4"></span>
+        <span class="iconfont iconarrow" id="star5"></span>
+    </div>
+    <script>
+        document.getElementById('star1').onclick=function(){
+            this.classList.toggle('change');
+        }
+        document.getElementById('star2').onclick=function(){
+            this.classList.toggle('change');
+        }
+        document.getElementById('star3').onclick=function(){
+            this.classList.toggle('change');
+        }
+        document.getElementById('star4').onclick=function(){
+            this.classList.toggle('change');
+        }
+        document.getElementById('star5').onclick=function(){
+            this.classList.toggle('change');
+        }
+    </script>
+</body>
+</html>

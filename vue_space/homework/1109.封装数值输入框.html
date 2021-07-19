@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <ly-page :num="num"></ly-page>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('ly-page',{
+      props:['num','maxNum'],
+      data(){
+        return {
+          num_:this.num
+        }
+      },
+      template:`
+      <div>
+        <button :disabled="num_===1" @click="num_-=1">-</button>
+        <input :value="num_">
+        <button :disabled="num_===maxNum" @click="num_+=1">+</button>
+      </div>
+      `
+    })
+    var app = new Vue({
+      el:'#app',
+      data:{
+        num:2,
+        maxNum:10,
+      }
+    });
+  </script>
+  
+</body>
+</html>

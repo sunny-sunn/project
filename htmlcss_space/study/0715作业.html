@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    ul{
+        list-style: none;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+    .tree li{
+        padding-left: 20px;
+        background-image: url(images/+.png);
+        background-repeat: no-repeat;
+        background-position: 0 5px;
+    }
+    .tree ul{
+        display: none;
+    }
+    ul .leaf{
+        background-image: url(images/leaf.png);
+        background-repeat: no-repeat;
+        background-position: 0 5px;
+    }
+    ul .open{
+        background-image: url(images/-.png);
+        background-repeat: no-repeat;
+        background-position: 0 5px;
+    }
+    ul .open > ul{
+        display: block;
+    }
+</style>
+
+<body>
+
+    <ul class="tree">
+        <li class="open">
+            <span>首页</span>
+            <ul>
+                <li class="leaf"><a href="#">顶部导航</a></li>
+                <li class="leaf"><a href="#">横幅</a></li>
+                <li class="open">推荐产品
+                    <ul >
+                        <li class="leaf"><a href="#">A系列产品</a></li>
+                        <li class="leaf"><a href="#">B系列产品</a></li>
+                        <li class="leaf"><a href="#">C系列产品</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span>关于</span>
+            <ul>
+                <li class="leaf"><a href="#">企业简介</a></li>
+                <li class="leaf"><a href="#">企业文化</a></li>
+                <li class="leaf"><a href="#">领导致词</a></li>
+            </ul>
+        </li>
+        <li class="leaf">
+            <span><a href="#">联系</a></span>
+        </li>
+    </ul>
+
+</body>
+</html>
